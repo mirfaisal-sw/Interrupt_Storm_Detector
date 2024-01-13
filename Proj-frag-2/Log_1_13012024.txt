@@ -1,0 +1,27 @@
+
+
+root@am64xx-evm:~# insmod procfs_read_write.ko
+
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# ls /proc/test_procfs_rw
+/proc/test_procfs_rw
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# ls -la /proc/test_procfs_rw
+-rw-------    1 root     root             0 Apr 29 00:30 /proc/test_procfs_rw
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# echo "Hello" > /proc/test_procfs_rw
+[10501.760951] DBG: String: Hello
+[10501.760951] ÿÿ, length - 6
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/test_procfs_rw
+[10776.581651] procfile read test_procfs_rw
+HelloWorld!
+[10776.585790] copy_to_user failed
+root@am64xx-evm:~#
