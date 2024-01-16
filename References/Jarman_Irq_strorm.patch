@@ -1,0 +1,96 @@
+We had difficult time to debug system performance issue by interrupt strom.
+It is very difficult to find the root-cause from DLT and other traces.
+For exmaple, slow boot problem and swdl problem.
+
+This patch is designed to detect the interrupt storm by monitoring the jiffies
+every 10000 interrupts. If 10000 irqs happened within 500ms, it will print error.
+---
+include/linux/irqdesc.h |  1 +
+kernel/irq/irqdesc.c    |  1 +
+kernel/irq/manage.c     |  1 +
+kernel/irq/spurious.c   | 23 +++++++++++++++++++++++
+
+4 files changed, 26 insertions(+)
+
+diff --git a/include/linux/irqdesc.h b/include/linux/irqdesc.h
+index 1e7fc375c36d..2a7920751c4d 100644
+--- a/include/linux/irqdesc.h
++++ b/include/linux/irqdesc.h
+@@ -69,6 +69,7 @@ struct irq_desc {
+              unsigned int                      tot_count;
+              unsigned int                      irq_count;           /* For detecting broken IRQs */
+              unsigned long                   last_unhandled;                /* Aging timer for unhandled count */
++             unsigned long                   prev_jiffy;            /* time base to detect interrupt storm  */
+              unsigned int                      irqs_unhandled;
+              atomic_t                             threads_handled;
+              int                                        threads_handled_last;
+
+diff --git a/kernel/irq/irqdesc.c b/kernel/irq/irqdesc.c
+index 21aa3a443122..5f98ea37ff8e 100644
+--- a/kernel/irq/irqdesc.c
++++ b/kernel/irq/irqdesc.c
+@@ -120,6 +120,7 @@ static void desc_set_defaults(unsigned int irq, struct irq_desc *desc, int node,
+              desc->depth = 1;
+              desc->irq_count = 0;
+              desc->irqs_unhandled = 0;
++             desc->prev_jiffy = 0;
+              desc->tot_count = 0;
+              desc->name = NULL;
+              desc->owner = owner;
+
+diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
+index aea20f2675f0..2e3b05e21c15 100644
+--- a/kernel/irq/manage.c
++++ b/kernel/irq/manage.c
+@@ -1618,6 +1618,7 @@ __setup_irq(unsigned int irq, struct irq_desc *desc, struct irqaction *new)
+              /* Reset broken irq detection when installing new handler */
+              desc->irq_count = 0;
+              desc->irqs_unhandled = 0;
++             desc->prev_jiffy = 0;
+
+               /*
+               * Check whether we disabled the irq via the spurious handler
+
+diff --git a/kernel/irq/spurious.c b/kernel/irq/spurious.c
+index 9e97124946a6..a673336e1462 100644
+--- a/kernel/irq/spurious.c
++++ b/kernel/irq/spurious.c
+@@ -266,6 +266,26 @@ try_misrouted_irq(unsigned int irq, struct irq_desc *desc,
+              return action && (action->flags & IRQF_IRQPOLL);
+}
+
++static void check_interrupt_storm(struct irq_desc *desc)
++{
++             unsigned int irq = irq_desc_get_irq(desc);
++             unsigned long delta;
++
++             if (desc->prev_jiffy == 0) {
++                            desc->prev_jiffy = jiffies;
++                            return;
++             }
++
++             delta = jiffies - desc->prev_jiffy;
++             desc->prev_jiffy = jiffies;
++
++             if (delta < (HZ/2)) {
++                            pr_err("Interrupt storm! IRQ:%d, %d ms / 10000 irqs\n",
++                                           irq, jiffies_to_msecs(delta));
++             }
++             return;
++}
++
+
+#define SPURIOUS_DEFERRED   0x80000000
+
+ void note_interrupt(struct irq_desc *desc, irqreturn_t action_ret)
+@@ -402,6 +422,9 @@ void note_interrupt(struct irq_desc *desc, irqreturn_t action_ret)
+                                            desc->irqs_unhandled -= ok;
+              }
+
++             if ((desc->irq_count % 10000) == 0)
++                            check_interrupt_storm(desc);
++
+              desc->irq_count++;
+              if (likely(desc->irq_count < 100000))
+                             return;
+--

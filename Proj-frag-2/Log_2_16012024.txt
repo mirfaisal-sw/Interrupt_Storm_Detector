@@ -1,0 +1,53 @@
+
+Test Case - I: Read chunk size - 1 bytes
+-----------------------------------------------------
+Date: - 15-01-2024, Time - 09:31pm
+
+root@am64xx-evm:~# ./app_proc_read
+[ 1733.170154] DBG: length - 1, bytes - 1, *offset - 1
+APP Log: n - 1, buff = H
+[ 1733.175924] DBG: length - 1, bytes - 1, *offset - 2
+APP Log: n - 1, buff = e
+[ 1733.183222] DBG: length - 1, bytes - 1, *offset - 3
+APP Log: n - 1, buff = l
+[ 1733.190529] DBG: length - 1, bytes - 1, *offset - 4
+APP Log: n - 1, buff = l
+[ 1733.197701] DBG: length - 1, bytes - 1, *offset - 5
+APP Log: n - 1, buff = o
+[ 1733.204976] DBG: length - 1, bytes - 1, *offset - 6
+APP Log: n - 1, buff = W
+[ 1733.212165] DBG: length - 1, bytes - 1, *offset - 7
+APP Log: n - 1, buff = o
+[ 1733.219436] DBG: length - 1, bytes - 1, *offset - 8
+APP Log: n - 1, buff = r
+[ 1733.226650] DBG: length - 1, bytes - 1, *offset - 9
+APP Log: n - 1, buff = l
+[ 1733.233915] DBG: length - 1, bytes - 1, *offset - a
+APP Log: n - 1, buff = d
+
+
+
+Test case - II: Read chunk size - 4 bytes
+-------------------------------------------------------
+
+root@am64xx-evm:~# ./app_proc_read 10
+
+Usage: ./app_read  [no. of bytes to read]
+
+[  537.622954] DBG: length - 4, bytes - 4, *offset - 4
+
+No. of bytes to read - 10
+
+[  537.631437] DBG: length - 4, bytes - 4, *offset - 8
+
+APP Log: n - 4, buff = Hell
+
+[  537.638589] DBG: length - 1, bytes - 1, *offset - 9
+
+APP Log: n - 4, buff = oWor
+
+[  537.646011] DBG: length - 1, bytes - 1, *offset - a
+
+APP Log: n - 1, buff = l
+APP Log: n - 1, buff = d
+

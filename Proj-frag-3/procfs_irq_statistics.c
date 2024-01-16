@@ -33,6 +33,10 @@ static ssize_t procfs_test_read(
 	int len_str = sizeof(str);
 	ssize_t ret = len_str;
 
+
+//	bytes = strlen(str) - (*offset); //how many bytes not yet sent?
+//	bytes = bytes > length ? length : bytes;
+
 	bytes = min(len_str, length);
 
 	pstr = str;
@@ -57,6 +61,16 @@ static ssize_t procfs_test_read(
 		}
 	}
 
+#if 0
+	if (*offset >= len || copy_to_user(buf, s, len)) {
+		pr_info("copy_to_user failed\n");
+		ret = 0;
+	} else {
+		pr_info("procfile read %s\n", 
+				filep->f_path.dentry->d_name.name);
+		*offset += len;
+	}
+#endif
 	return bytes;	
 }
 
