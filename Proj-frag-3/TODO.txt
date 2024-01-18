@@ -12,3 +12,5 @@
 	b. https://www.kernel.org/doc/html/v5.8/filesystems/seq_file.html
 
 	c. https://stackoverflow.com/questions/15217793/how-proc-interrupts-gets-updated
+
+	d. https://elixir.bootlin.com/linux/v5.5.6/source/kernel/irq/proc.c#L479
