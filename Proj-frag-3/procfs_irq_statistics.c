@@ -1,11 +1,17 @@
 
-#include <linux/fs.h>
+//#include <linux/fs.h>
+
+#include <linux/kernel_stat.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
 #include <linux/proc_fs.h>
 #include <linux/slab.h>
 #include <linux/uaccess.h>
+#include <linux/minmax.h>
+
+#include <linux/irqnr.h>
+#include <linux/irqdesc.h>
 
 #define MAX_SIZE	32
 
@@ -13,13 +19,45 @@ static struct proc_dir_entry *entry;
 
 static u8 *procfs_test_buffer;
 
+static int show_interrupts(struct seq_file *seq, void *pdata)
+{
+//	seq_puts(seq, "Open Boottime\n");
+//	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", timedata.phys_addr,
+//		 timedata.size);
+
+	return 0;
+}
+
+static int procfs_test_open(struct inode *inode, struct file *file)
+{
+	/*  */
+	//struct platform_device *pdev = PDE_DATA(file_inode(file));
+	int ret;
+
+	ret = single_open(file, show_interrupts, pdev);
+
+	return ret;
+}
+
+static int procfs_test_release(struct inode *, struct file *)
+{
+	int res = single_release(inode, file);
+
+	return res;
+}
+
 static ssize_t procfs_test_write(
       struct file *filep, const char __user *buf,
       size_t length, loff_t *off)
 {
     unsigned long n;
+    unsigned int irq_cnt = 0;
+
     n = copy_from_user(procfs_test_buffer, buf, length);
-    pr_alert("DBG: String: %s, length - %d\n", procfs_test_buffer, length);
+
+    //irq_cnt = kstat_irqs_cpu(152, 0);
+	struct irq_desc *desc = irq_data_to_desc(152);
+    pr_alert("DBG: String: %s, length - %d, irq_cnt - %ld\n", procfs_test_buffer, length, irq_cnt);
     return length;
 }
 
@@ -33,13 +71,11 @@ static ssize_t procfs_test_read(
 	int len_str = sizeof(str);
 	ssize_t ret = len_str;
 
-
-//	bytes = strlen(str) - (*offset); //how many bytes not yet sent?
-//	bytes = bytes > length ? length : bytes;
-
 	bytes = min(len_str, length);
 
 	pstr = str;
+
+	//kstat_irqs_cpu(irq, cpu);
 
 	if(bytes) { 
 
@@ -56,8 +92,7 @@ static ssize_t procfs_test_read(
 		} else {
 
 			*offset += bytes;
-
-			pr_alert("DBG: length - %d, bytes - %d, *offset - %x\n", length, bytes, *offset);
+			pr_info("DBG: length - %d, bytes - %d, *offset - %ld\n", length, bytes, *offset);
 		}
 	}
 
@@ -75,8 +110,10 @@ static ssize_t procfs_test_read(
 }
 
 static struct proc_ops procfs_test_pops = {
-    .proc_write = procfs_test_write,
-    .proc_read = procfs_test_read,
+	.proc_open = procfs_test_open,
+	.proc_write = procfs_test_write,
+	.proc_read = procfs_test_read,
+	.proc_release = procfs_test_release,
 };
 
 static int __init procfs_test_init(void)
