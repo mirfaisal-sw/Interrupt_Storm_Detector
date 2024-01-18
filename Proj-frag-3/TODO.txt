@@ -10,3 +10,5 @@
 	a. https://linux.die.net/lkmpg/x861.html
 	
 	b. https://www.kernel.org/doc/html/v5.8/filesystems/seq_file.html
+
+	c. https://stackoverflow.com/questions/15217793/how-proc-interrupts-gets-updated
