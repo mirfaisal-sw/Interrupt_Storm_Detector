@@ -7,6 +7,6 @@
 2) Study seq_file approach for virtual files
 
 3) Reference: - 
-	a. https://github.com/mirfaisal-sw/Interrupt_Storm_Detector/blob/main/Proj-frag-2/procfs_read_write.c
+	a. https://linux.die.net/lkmpg/x861.html
 	
 	b. https://www.kernel.org/doc/html/v5.8/filesystems/seq_file.html
