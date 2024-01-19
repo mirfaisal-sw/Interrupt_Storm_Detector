@@ -31,7 +31,7 @@ static int show_interrupts(struct seq_file *seq, void *pdata)
 static int procfs_test_open(struct inode *inode, struct file *file)
 {
 	/*  */
-	//struct platform_device *pdev = PDE_DATA(file_inode(file));
+	struct platform_device *pdev = pde_data(inode);
 	int ret;
 
 	ret = single_open(file, show_interrupts, pdev);
