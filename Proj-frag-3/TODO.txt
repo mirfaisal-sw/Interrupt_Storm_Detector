@@ -19,3 +19,6 @@
 		
 	f. For platform device private data: - 
 	drivers/pci/controller/pcie-altera-msi.c
+
+	g. VVI
+	https://medium.com/powerof2/sequence-file-interface-in-kernel-8967d749f57d
