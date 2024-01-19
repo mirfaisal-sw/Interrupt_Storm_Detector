@@ -9,7 +9,7 @@
 #include <linux/slab.h>
 #include <linux/uaccess.h>
 #include <linux/minmax.h>
-
+#include <linux/seq_file.h>
 #include <linux/irqnr.h>
 #include <linux/irqdesc.h>
 
@@ -19,12 +19,16 @@ static struct proc_dir_entry *entry;
 
 static u8 *procfs_test_buffer;
 
-static int show_interrupts(struct seq_file *seq, void *pdata)
+static int show_irq_statistics(struct seq_file *seq, void *pdata)
 {
 //	seq_puts(seq, "Open Boottime\n");
 //	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", timedata.phys_addr,
 //		 timedata.size);
 
+	unsigned long phys_addr = 0x100;
+	unsigned long size = 0x30;
+
+	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", phys_addr, size);
 	return 0;
 }
 
@@ -34,12 +38,12 @@ static int procfs_test_open(struct inode *inode, struct file *file)
 	struct platform_device *pdev = pde_data(inode);
 	int ret;
 
-	ret = single_open(file, show_interrupts, pdev);
+	ret = single_open(file, show_irq_statistics, pdev);
 
 	return ret;
 }
 
-static int procfs_test_release(struct inode *, struct file *)
+static int procfs_test_release(struct inode *inode, struct file *file)
 {
 	int res = single_release(inode, file);
 
@@ -112,7 +116,8 @@ static ssize_t procfs_test_read(
 static struct proc_ops procfs_test_pops = {
 	.proc_open = procfs_test_open,
 	.proc_write = procfs_test_write,
-	.proc_read = procfs_test_read,
+	//.proc_read = procfs_test_read,
+	.proc_read = seq_read,
 	.proc_release = procfs_test_release,
 };
 
