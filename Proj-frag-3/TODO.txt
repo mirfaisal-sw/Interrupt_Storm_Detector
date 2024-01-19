@@ -22,3 +22,5 @@
 
 	g. VVI
 	https://medium.com/powerof2/sequence-file-interface-in-kernel-8967d749f57d
+
+	h. https://reberhardt.com/blog/2020/11/18/my-first-kernel-module.html
