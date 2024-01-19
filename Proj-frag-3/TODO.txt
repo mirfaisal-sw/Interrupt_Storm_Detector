@@ -14,3 +14,5 @@
 	c. https://stackoverflow.com/questions/15217793/how-proc-interrupts-gets-updated
 
 	d. https://elixir.bootlin.com/linux/v5.5.6/source/kernel/irq/proc.c#L479
+	
+	e. Take help from: drivers/platform/x86/toshiba_acpi.c (TMDS64EVM Linux kernel)
