@@ -15,6 +15,8 @@
 
 #define MAX_SIZE	32
 
+#define CONFIG_SEQ_READ
+
 static struct proc_dir_entry *entry;
 
 static u8 *procfs_test_buffer;
@@ -116,8 +118,13 @@ static ssize_t procfs_test_read(
 static struct proc_ops procfs_test_pops = {
 	.proc_open = procfs_test_open,
 	.proc_write = procfs_test_write,
-	//.proc_read = procfs_test_read,
+
+#ifndef CONFIG_SEQ_READ
+	.proc_read = procfs_test_read,
+#else
 	.proc_read = seq_read,
+#endif
+
 	.proc_release = procfs_test_release,
 };
 
