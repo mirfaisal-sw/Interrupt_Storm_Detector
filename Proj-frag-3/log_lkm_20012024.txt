@@ -1,0 +1,10 @@
+
+
+# insmod procfs_irq_statistics.ko
+[  435.951976] procfs_irq_statistics: loading out-of-tree module taints kernel.
+#
+# cat /proc/test_procfs_rw
+Base(0x100) Size(0x30)
+
+Using seq_printf() API, the procfs file is written, which is then read by user app through 
+cat utility, which in turn invokes seq_read() API to give data to user.
