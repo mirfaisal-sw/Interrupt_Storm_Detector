@@ -41,8 +41,12 @@ static int show_irq_statistics(struct seq_file *seq, void *pdata)
 
 	unsigned long phys_addr = 0x100;
 	unsigned long size = 0x30;
+	
+	unsigned long irq_cnt = kstat_irqs_cpu(152, 0);
 
 	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", phys_addr, size);
+	seq_printf(seq, "IRQ count - %ld\n", irq_cnt);
+
 	return 0;
 }
 
@@ -170,15 +174,15 @@ static int irq_detector_probe(struct platform_device *pdev)
 	if (!mirq_data->proc_file)
 		return -ENOMEM;
 
+	pr_alert("DBG: In function - %s, Line - %d\n", __func__, __LINE__);
 probe_fail:
 	return ret;
 }
 
 static int irq_detector_remove(struct platform_device *pdev)
 {
-	struct device *dev = &pdev->dev;
-        struct irq_detector_data *mirq_data = dev_get_drvdata(dev);
-        int ret;
+        struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
+        int ret = 0;
 
 	//if (timedata.virt_addr)
 	//	vunmap(timedata.virt_addr);
@@ -187,7 +191,7 @@ static int irq_detector_remove(struct platform_device *pdev)
 
 	platform_set_drvdata(pdev, NULL);
 
-	return 0;
+	return ret;
 }
 
 static const struct of_device_id irq_detector_of_match_table[] = {
