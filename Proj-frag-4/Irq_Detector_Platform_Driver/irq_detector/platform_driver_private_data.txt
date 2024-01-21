@@ -1,0 +1,33 @@
+
+Setting driver's private data: -
+==================================
+static inline void platform_set_drvdata(struct platform_device *pdev,
+					void *data)
+{
+	dev_set_drvdata(&pdev->dev, data);
+}
+
+static inline void dev_set_drvdata(struct device *dev, void *data)
+{
+	dev->driver_data = data;
+}
+
+Getting driver's private data: -
+==================================
+static inline void *platform_get_drvdata(const struct platform_device *pdev)
+{
+	return dev_get_drvdata(&pdev->dev);
+}
+
+static inline void *dev_get_drvdata(const struct device *dev)
+{
+	return dev->driver_data;
+}
+
+Example: - 
+static int irq_detector_remove(struct platform_device *pdev)
+{
+        struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
+        //....
+}
+
