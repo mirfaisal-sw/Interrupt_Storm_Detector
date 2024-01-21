@@ -14,4 +14,4 @@ root@am64xx-evm:~#
 root@am64xx-evm:~#
 root@am64xx-evm:~# cat /proc/test_procfs_rw
 Base(0x100) Size(0x30)
-root@am64xx-evm:~#
+IRQ count - 46
