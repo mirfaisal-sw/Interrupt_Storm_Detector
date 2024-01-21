@@ -1,0 +1,17 @@
+
+
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /lib/modules/$(uname -r)/modules.builtin | grep irq_detector
+kernel/drivers/irq_detector/irq_detector.ko
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# ls /proc/test_procfs_rw
+/proc/test_procfs_rw
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/test_procfs_rw
+Base(0x100) Size(0x30)
+root@am64xx-evm:~#

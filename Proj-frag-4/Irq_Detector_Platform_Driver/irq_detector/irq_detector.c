@@ -5,6 +5,7 @@
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
+#include <linux/platform_device.h>
 #include <linux/proc_fs.h>
 #include <linux/slab.h>
 #include <linux/uaccess.h>
@@ -12,6 +13,7 @@
 #include <linux/seq_file.h>
 #include <linux/irqnr.h>
 #include <linux/irqdesc.h>
+#include <linux/of.h>
 
 #define MAX_SIZE	32
 
@@ -144,6 +146,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 	struct irq_detector_data *mirq_data;
 	struct device *dev = &pdev->dev;
 	struct device_node *np;
+	int ret = 0;
 
 	char name[10];
 
@@ -167,7 +170,8 @@ static int irq_detector_probe(struct platform_device *pdev)
 	if (!mirq_data->proc_file)
 		return -ENOMEM;
 
-	return 0;
+probe_fail:
+	return ret;
 }
 
 static int irq_detector_remove(struct platform_device *pdev)
@@ -187,10 +191,8 @@ static int irq_detector_remove(struct platform_device *pdev)
 }
 
 static const struct of_device_id irq_detector_of_match_table[] = {
-	{
-		.compatible = "mirfaisal,irq_detector",
-	},
-	{},
+	{ .compatible = "mirfaisal,irq_detector", .data = NULL },
+	{ },
 };
 
 static struct platform_driver irq_detector_driver = {
@@ -208,6 +210,3 @@ module_platform_driver(irq_detector_driver);
 MODULE_AUTHOR("Mir Faisal <mirfaisalfos@gmail.com>");
 MODULE_DESCRIPTION("Testing KASAN");
 MODULE_LICENSE("GPL");
-
-//module_init(procfs_test_init);
-//module_exit(procfs_test_exit);
