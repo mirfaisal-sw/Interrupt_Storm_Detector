@@ -1,0 +1,38 @@
+
+
+Design or TODO lkm link list: - 
+=====================================
+
+We can create node of link list having members as below:-
+
+1. Create node of list as below -
+
+#include <linux/list.h>
+
+struct my_irq_data {
+
+    int irq_number;
+    struct irq_desc *desc;
+    float time_stamp_us;
+    //....
+	struct list_head irq_timestamp_list ;
+};
+
+2. Kernel developers only implement circular doubly linked lists because this
+structure allows us to implement FIFO and LIFO, and kernel developers take care to
+maintain a minimal set of code. 
+
+3. Create linked list
+
+Note : - struct list_head is defined in kernel as 
+
+struct list_head is defined in include/linux/types.h as:
+
+struct list_head{
+    list_head *next, *prev;
+};
+
+It is core data structure to implement list in kernel.
+
+
+
