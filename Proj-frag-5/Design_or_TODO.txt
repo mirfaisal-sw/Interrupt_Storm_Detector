@@ -5,34 +5,131 @@ Design or TODO lkm link list: -
 
 We can create node of link list having members as below:-
 
-1. Create node of list as below -
-
-#include <linux/list.h>
-
-struct my_irq_data {
-
-    int irq_number;
-    struct irq_desc *desc;
-    float time_stamp_us;
-    //....
-	struct list_head irq_timestamp_list ;
-};
-
-2. Kernel developers only implement circular doubly linked lists because this
+1. Kernel developers only implement circular doubly linked lists because this
 structure allows us to implement FIFO and LIFO, and kernel developers take care to
 maintain a minimal set of code. 
 
-3. Create linked list
-
-Note : - struct list_head is defined in kernel as 
-
-struct list_head is defined in include/linux/types.h as:
+struct list_head is defined in kernel as 
 
 struct list_head{
     list_head *next, *prev;
 };
 
 It is core data structure to implement list in kernel.
+
+
+2. Create node of list as below -
+---------------------------------------
+
+In the world of the kernel, before a data structure can be represented as 
+a linked list, that structure must embed a struct list_head field.
+
+#include <linux/list.h>
+
+struct mirq_data {
+
+    int irq_number;
+	char *irq_name;
+    struct irq_desc *desc;
+    float time_stamp_us;
+    //....
+	struct list_head irq_data_list ;
+};
+
+To initialize list member of a node, we use INIT_LIST_HEAD() API
+
+The following is the expansion of INIT_LIST_HEAD:
+static inline void INIT_LIST_HEAD(struct list_head *list)
+{
+	list->next = list;
+	list->prev = list;
+}
+
+3. Creating or initializing a list:-
+------------------------------------------
+We need to create a struct list_head variable that will always point to the head
+(first element) of our list. This instance of list_head is not associated to any node and is
+special:
+
+static LIST_HEAD(mirq_list_head);
+
+Now, we can create mirq_data nodes and add them to our list, mirq_list_head:
+
+	#include <linux/list.h>
+	struct mirq_data *mirq_x = kmalloc(sizeof(*mirq_x), GFP_KERNEL);
+	struct mirq_data *mirq_y = kmalloc(sizeof(*mirq_y), GFP_KERNEL);
+
+	/* Initialize each node's list entry */
+	INIT_LIST_HEAD(&mirq_x->irq_data_list);
+	INIT_LIST_HEAD(&mirq_y->irq_data_list);
+
+	/*Fill every field of mirq_data.*/
+	mirq_x->irq_number = 100;
+	mirq_y->irq_number = 110;
+	list_add(&mirq_x->irq_data_list, &mirq_list_head);
+	list_add(&mirq_y->irq_data_list, &mirq_list_head);
+	
+	
+Now, mirq_list_head contains two nodes.
+
+4. Adding a list node: -
+-------------------------
+
+The kernel provides list_add() to add a new entry to the list, which is a wrapper around
+the internal function __list_add:
+
+void list_add(struct list_head *new, struct list_head *head);
+
+static inline void list_add(struct list_head *new, struct list_head *head)
+{
+	__list_add(new, head, head->next);
+}
+
+__list_add will take two known entries as a parameter, and inserts your elements
+between them. Its implementation in the kernel is quite easy:
+
+static inline void __list_add(struct list_head *new, struct list_head *prev,
+		struct list_head *next)
+{
+	next->prev = new;
+	new->next = next;
+	new->prev = prev;
+	prev->next = new;
+}
+
+list_add() API adds a node at the top, so it is used to implement a stack.
+list_add_tail() API adds a node at the end of a list, so it can be used to implement
+a FIFO or queue.
+
+5. Deleting a node from the list: - 
+-------------------------------------
+List handling is an easy task in kernel code. Deleting a node is straightforward:
+	void list_del(struct list_head *entry);
+
+Following the preceding example, let's delete the mirq_x node:
+list_del(&mirq_x->irq_data_list);
+
+list_del disconnects the prev and next pointers of the given entry,
+resulting in entry removal. The memory allocated for the node is not freed yet; we
+need to do that manually with kfree.
+
+6. Linked list traversal: - 
+-------------------------------------
+We have the macro list_for_each_entry(pos, head, member) for list traversal:
+	-> head is the list's head node.
+	-> member is the name of the struct list_head list within our data struct 
+	-> pos is used for iteration. It is a loop cursor (just like i in for(i=0; i<foo;
+		i++)). head could be the head node of the linked list, or any entry, and we don't
+		care since we are dealing with a doubly linked list:
+		
+	struct mirq_data *amirq; /* loop counter */
+	
+	/* 'list' is the name of the list_head struct in our data structure */
+	list_for_each_entry(amirq, mirq_list_head, irq_data_list){
+		pr_alert("DBG: IRQ name: %s\n", amirq->irq_name);
+	}
+
+7. list_entry: - 
 
 
 
