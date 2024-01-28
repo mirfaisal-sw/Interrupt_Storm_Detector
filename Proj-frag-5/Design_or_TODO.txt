@@ -45,17 +45,41 @@ static inline void INIT_LIST_HEAD(struct list_head *list)
 	list->prev = list;
 }
 
+Head of a list: - 
+------------------
+Head of the list must be a standalone list_head structure. List head must be 
+initialized prior to use with the INIT_LIST_HEAD macro.
+It is called dynamic method shown below: - 
+
+struct list_head todo_list;
+INIT_LIST_HEAD(&todo_list);
+
+
 3. Creating or initializing a list:-
 ------------------------------------------
 We need to create a struct list_head variable that will always point to the head
 (first element) of our list. This instance of list_head is not associated to any node and is
 special:
 
-static LIST_HEAD(mirq_list_head);
-
+Dynamic Method: - 
+	struct list_head my_list;
+	INIT_LIST_HEAD(&my_list);
+	
+Static method: - 
+Static allocation is done through the LIST_HEAD macro:
+	LIST_HEAD(my_list)
+	
+The LIST_HEAD definition is as follows:
+#define LIST_HEAD(name) \
+	struct list_head name = LIST_HEAD_INIT(name)
+	
 Now, we can create mirq_data nodes and add them to our list, mirq_list_head:
 
 	#include <linux/list.h>
+	
+	struct list_head todo_list;
+	INIT_LIST_HEAD(&todo_list);
+	
 	struct mirq_data *mirq_x = kmalloc(sizeof(*mirq_x), GFP_KERNEL);
 	struct mirq_data *mirq_y = kmalloc(sizeof(*mirq_y), GFP_KERNEL);
 
@@ -66,8 +90,8 @@ Now, we can create mirq_data nodes and add them to our list, mirq_list_head:
 	/*Fill every field of mirq_data.*/
 	mirq_x->irq_number = 100;
 	mirq_y->irq_number = 110;
-	list_add(&mirq_x->irq_data_list, &mirq_list_head);
-	list_add(&mirq_y->irq_data_list, &mirq_list_head);
+	list_add(&mirq_x->irq_data_list, &todo_list);
+	list_add(&mirq_y->irq_data_list, &todo_list);
 	
 	
 Now, mirq_list_head contains two nodes.
@@ -130,6 +154,24 @@ We have the macro list_for_each_entry(pos, head, member) for list traversal:
 	}
 
 7. list_entry: - 
+----------------------
+#define list_entry(ptr, type, member) \
+container_of(ptr, type, member)
+
+Why do we need the name of the list_head type field in our data structure? Look at the
+"list_for_each_entry" definition:
+
+	#define list_for_each_entry(pos, head, member) \
+	for (pos = list_entry((head)->next, typeof(*pos), member); \
+			&pos->member != (head); \
+		pos = list_entry(pos->member.next, typeof(*pos), member))
+		
+	#define list_entry(ptr, type, member) \
+		container_of(ptr, type, member)
+
+There is one more kernel list iteration API: - 
+	list_for_each_entry_safe(pos, n, head, member)
+	
 
 
 

@@ -34,9 +34,20 @@ static int show_irq_statistics(struct seq_file *seq, void *pdata)
 	return 0;
 }
 
+/*Note: - 
+ * 
+ * Obtain the private data passed by user through proc_create_data() or
+ * related.
+ */
+/*static inline void *pde_data(const struct inode *inode)
+{
+	return inode->i_private;
+}
+*/
+
 static int procfs_test_open(struct inode *inode, struct file *file)
 {
-	/*  */
+	/*Using pde_data(), obtain the private data from inode i.e. inode->i_private*/
 	struct platform_device *pdev = pde_data(inode);
 	int ret;
 
