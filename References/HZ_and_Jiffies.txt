@@ -1,0 +1,13 @@
+
+HZ and Jiffies: -
+--------------------
+HZ is the number of times jiffies is incremented in one second. Each increment is called a tick.
+
+Jiffies is incremented HZ times every second. If HZ = 1,000, then it is incremented 1,000 times 
+(that is, one tick every 1/1,000 seconds). 
+
+Example: - If HZ = 1000, then
+ 
+	(Current jiffies - prev jiffies) = HZ or 1000, represents 1 second.
+	
+Similarly, if (Current jiffies - prev jiffies) = HZ/2, then it means 500ms.
