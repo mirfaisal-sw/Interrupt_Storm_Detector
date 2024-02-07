@@ -6,4 +6,6 @@ Reference URLs: -
 1. HR Timer: -
 https://lwn.net/Articles/167897/
 
-2. 
+2. Linux IRQ Handling: - 
+https://docs.kernel.org/core-api/genericirq.html
+
