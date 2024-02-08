@@ -1,0 +1,29 @@
+
+
+1) File - kernel/irq/irqdesc.c
+
+=> static ssize_t per_cpu_count_show(struct kobject *kobj,
+				struct kobj_attribute *attr, char *buf)
+				
+=> static ssize_t hwirq_show(struct kobject *kobj,
+			  struct kobj_attribute *attr, char *buf)
+{
+	struct irq_desc *desc = container_of(kobj, struct irq_desc, kobj);
+	ssize_t ret = 0;
+
+	raw_spin_lock_irq(&desc->lock);
+	if (desc->irq_data.domain)
+		ret = sprintf(buf, "%lu\n", desc->irq_data.hwirq);
+	raw_spin_unlock_irq(&desc->lock);
+
+	return ret;
+}
+
+=> struct irq_desc *irq_to_desc(unsigned int irq)
+{
+	return (irq < NR_IRQS) ? irq_desc + irq : NULL;
+}
+EXPORT_SYMBOL(irq_to_desc);
+
+				  
+				  
