@@ -38,10 +38,23 @@ int time_before_eq(unsigned long a, unsigned long b);
 
 time_after(): 
 --------------
-The first evaluates true when "a" represents a time after "b".
+Evaluates true when "a" represents a time after "b".
 
 time_before(): -
 ----------------
-The second evaluates true when time "a" is before time "b".
+Evaluates true when time "a" is before time "b".
 
-The last two compare for a after or equal â and â before or equal â.
+time_after_eq():- 
+-------------------
+Evaluates true when "a" is after or equal to "b".
+
+Function's definition: -
+
+#define time_after_eq(a,b)	\
+	(typecheck(unsigned long, a) && \
+	 typecheck(unsigned long, b) && \
+	 ((long)((a) - (b)) >= 0))
+
+time_before_eq()
+-----------------
+Evaluates true when "a" is before or equal to "b".
