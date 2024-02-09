@@ -1,0 +1,100 @@
+
+
+/data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c: In function 'procfs_test_write':
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:96:22: error: unused variable 'irq_cnt' [-Werror=unused-variable]
+|    96 |         unsigned int irq_cnt = 0;
+|       |                      ^~~~~~~
+| In file included from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kernel.h:16,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/list.h:9,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/smp.h:12,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kernel_stat.h:5,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:4:
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c: In function 'procfs_test_read':
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/minmax.h:20:35: error: comparison of distinct pointer types lacks a cast [-Werror]
+|    20 |         (!!(sizeof((typeof(x) *)1 == (typeof(y) *)1)))
+|       |                                   ^~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/minmax.h:26:18: note: in expansion of macro '__typecheck'
+|    26 |                 (__typecheck(x, y) && __no_side_effects(x, y))
+|       |                  ^~~~~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/minmax.h:36:31: note: in expansion of macro '__safe_cmp'
+|    36 |         __builtin_choose_expr(__safe_cmp(x, y), \
+|       |                               ^~~~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/minmax.h:45:25: note: in expansion of macro '__careful_cmp'
+|    45 | #define min(x, y)       __careful_cmp(x, y, <)
+|       |                         ^~~~~~~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:116:17: note: in expansion of macro 'min'
+|   116 |         bytes = min(len_str, length);
+|       |                 ^~~
+| In file included from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kernel.h:19,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/list.h:9,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/smp.h:12,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kernel_stat.h:5,
+|                  from /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:4:
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kern_levels.h:5:25: error: format '%d' expects argument of type 'int', but argument 2 has type 'size_t' {aka 'long unsigned int'} [-Werror=format=]
+|     5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+|       |                         ^~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:422:25: note: in definition of macro 'printk_index_wrap'
+|   422 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+|       |                         ^~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:523:9: note: in expansion of macro 'printk'
+|   523 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+|       |         ^~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kern_levels.h:14:25: note: in expansion of macro 'KERN_SOH'
+|    14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+|       |                         ^~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:523:16: note: in expansion of macro 'KERN_INFO'
+|   523 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+|       |                ^~~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:137:25: note: in expansion of macro 'pr_info'
+|   137 |                         pr_info("DBG: length - %d, bytes - %d, *offset - %ld\n", length, bytes, *offset);
+|       |                         ^~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kern_levels.h:5:25: error: format '%d' expects argument of type 'int', but argument 3 has type 'ssize_t' {aka 'long int'} [-Werror=format=]
+|     5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+|       |                         ^~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:422:25: note: in definition of macro 'printk_index_wrap'
+|   422 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+|       |                         ^~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:523:9: note: in expansion of macro 'printk'
+|   523 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+|       |         ^~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kern_levels.h:14:25: note: in expansion of macro 'KERN_SOH'
+|    14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+|       |                         ^~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:523:16: note: in expansion of macro 'KERN_INFO'
+|   523 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+|       |                ^~~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:137:25: note: in expansion of macro 'pr_info'
+|   137 |                         pr_info("DBG: length - %d, bytes - %d, *offset - %ld\n", length, bytes, *offset);
+|       |                         ^~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kern_levels.h:5:25: error: format '%ld' expects argument of type 'long int', but argument 4 has type 'loff_t' {aka 'long long int'} [-Werror=format=]
+|     5 | #define KERN_SOH        "\001"          /* ASCII Start Of Header */
+|       |                         ^~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:422:25: note: in definition of macro 'printk_index_wrap'
+|   422 |                 _p_func(_fmt, ##__VA_ARGS__);                           \
+|       |                         ^~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:523:9: note: in expansion of macro 'printk'
+|   523 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+|       |         ^~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/kern_levels.h:14:25: note: in expansion of macro 'KERN_SOH'
+|    14 | #define KERN_INFO       KERN_SOH "6"    /* informational */
+|       |                         ^~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/include/linux/printk.h:523:16: note: in expansion of macro 'KERN_INFO'
+|   523 |         printk(KERN_INFO pr_fmt(fmt), ##__VA_ARGS__)
+|       |                ^~~~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:137:25: note: in expansion of macro 'pr_info'
+|   137 |                         pr_info("DBG: length - %d, bytes - %d, *offset - %ld\n", length, bytes, *offset);
+|       |                         ^~~~~~~
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c: In function 'irq_detector_remove':
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:204:35: error: unused variable 'mirq_data' [-Werror=unused-variable]
+|   204 |         struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
+|       |                                   ^~~~~~~~~
+| At top level:
+| /data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/drivers/harman/irq_detector/irq_detect.c:106:16: error: 'procfs_test_read' defined but not used [-Werror=unused-function]
+|   106 | static ssize_t procfs_test_read(struct file *filep, char __user *user_buf,
+|       |                ^~~~~~~~~~~~~~~~
+|   CC      drivers/rtc/dev.o
+| cc1: all warnings being treated as errors
+| make[3]: *** [/data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/scripts/Makefile.build:289: drivers/harman/irq_detector/irq_detect.o] Error 1
+| make[2]: *** [/data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/scripts/Makefile.build:552: drivers/harman/irq_detector] Error 2
+| make[1]: *** [/data/home/mirfaisal/BMW_IDC/ES6_Codes/ES6_Artifact_195/sources/kernel/scripts/Makefile.build:552: drivers/harman] Error 2
+| make[1]: *** Waiting for unfinished jobs....
