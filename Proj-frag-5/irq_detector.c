@@ -1,6 +1,3 @@
-
-//#include <linux/fs.h>
-
 #include <linux/kernel_stat.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
@@ -11,6 +8,7 @@
 #include <linux/uaccess.h>
 #include <linux/minmax.h>
 #include <linux/seq_file.h>
+#include <linux/irq.h>
 #include <linux/irqnr.h>
 #include <linux/irqdesc.h>
 #include <linux/of.h>
@@ -22,7 +20,7 @@ struct irq_desc *irq_desc_node;
 int irq;
 
 struct irq_detector_data {
-
+	char 				name[10];
 	struct platform_device		*pdev;
 	struct mutex			lock;
 	struct proc_dir_entry		*proc_file;
@@ -36,11 +34,11 @@ struct irq_detector_data {
 static u8 *procfs_test_buffer;
 
 /*Read Irq data*/
-static void read_irq_data()
+static void read_irq_data(void)
 {
 	for_each_irq_desc(irq, irq_desc_node) {
-		pr_alert("irq_detect: Linux Irq No. - %d, Hw Irq No. - %d, Last unhandled - %lu\n",
-			irq_desc_node->irq_data.irq, irq_desc_node->irq_data.hwirq, 
+		pr_alert("irq_detect: Linux Irq No. - %d, Hw Irq No. - %lu, Last unhandled - %lu\n",
+			irq_desc_node->irq_data.irq, irq_desc_node->irq_data.hwirq,
 			irq_desc_node->last_unhandled);
 	}
 }
@@ -53,13 +51,21 @@ static int show_irq_statistics(struct seq_file *seq, void *pdata)
 
 	unsigned long phys_addr = 0x100;
 	unsigned long size = 0x30;
-	
+
 	unsigned long irq_cnt = kstat_irqs_cpu(152, 0);
 
 	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", phys_addr, size);
 	seq_printf(seq, "IRQ count - %ld\n", irq_cnt);
 
-	read_irq_data();
+	//read_irq_data();
+
+	for_each_irq_desc(irq, irq_desc_node) {
+		if(irq_desc_node) {
+			seq_printf(seq, "irq_detect: Linux Irq No. - %d, Hw Irq No. - %lu, Last unhandled - %lu\n",
+				irq_desc_node->irq_data.irq, irq_desc_node->irq_data.hwirq,
+				irq_desc_node->last_unhandled);
+		} 
+	}
 
 	return 0;
 }
@@ -67,6 +73,7 @@ static int show_irq_statistics(struct seq_file *seq, void *pdata)
 static int procfs_test_open(struct inode *inode, struct file *file)
 {
 	/*  */
+	//struct platform_device *pdev = PDE_DATA(inode);
 	struct platform_device *pdev = pde_data(inode);
 	int ret;
 
@@ -82,8 +89,7 @@ static int procfs_test_release(struct inode *inode, struct file *file)
 	return res;
 }
 
-static ssize_t procfs_test_write(
-      struct file *filep, const char __user *buf,
+static ssize_t procfs_test_write(struct file *filep, const char __user *buf,
       size_t length, loff_t *off)
 {
 	unsigned long n;
@@ -92,13 +98,13 @@ static ssize_t procfs_test_write(
 	n = copy_from_user(procfs_test_buffer, buf, length);
 
 	//irq_cnt = kstat_irqs_cpu(152, 0);
-	struct irq_desc *desc = irq_data_to_desc(152);
-	pr_alert("DBG: String: %s, length - %d, irq_cnt - %ld\n", procfs_test_buffer, length, irq_cnt);
+	//struct irq_desc *desc = irq_data_to_desc(152);
+	//pr_alert("DBG: String: %s, length - %d, irq_cnt - %ld\n", procfs_test_buffer, length, irq_cnt);
 	return length;
 }
 
-static ssize_t procfs_test_read(
-	struct file *filep, char __user *user_buf, size_t length, loff_t *offset)
+static ssize_t procfs_test_read(struct file *filep, char __user *user_buf, 
+		size_t length, loff_t *offset)
 {
 	char str[13] = "HelloWorld!\n";
 	char *pstr;
@@ -113,11 +119,11 @@ static ssize_t procfs_test_read(
 
 	//kstat_irqs_cpu(irq, cpu);
 
-	if(bytes) { 
+	if(bytes) {
 
-		if(*offset < len_str)  /*Check for user buffer guard i.e. str[13]*/
+		if(*offset < (loff_t)len_str)  /*Check for user buffer guard i.e. str[13]*/
 			pstr += *offset;
-		else 
+		else
 			return -EFAULT;
 
 		ret = copy_to_user(user_buf, pstr, bytes);
@@ -128,7 +134,7 @@ static ssize_t procfs_test_read(
 		} else {
 
 			*offset += bytes;
-			pr_info("DBG: length - %d, bytes - %d, *offset - %ld\n", length, bytes, *offset);
+			pr_info("DBG: length - %d, bytes - %lu, *offset - %llu\n", length, bytes, *offset);
 		}
 	}
 
@@ -137,12 +143,12 @@ static ssize_t procfs_test_read(
 		pr_info("copy_to_user failed\n");
 		ret = 0;
 	} else {
-		pr_info("procfile read %s\n", 
+		pr_info("procfile read %s\n",
 				filep->f_path.dentry->d_name.name);
 		*offset += len;
 	}
 #endif
-	return bytes;	
+	return bytes;
 }
 
 static struct proc_ops procfs_test_pops = {
@@ -166,7 +172,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 	struct device_node *np;
 	int ret = 0;
 
-	char name[10];
+	//char name[10];
 
 	if(dev == NULL) {
 		ret = -EINVAL;
@@ -198,6 +204,9 @@ static int irq_detector_remove(struct platform_device *pdev)
         struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
         int ret = 0;
 
+	if(mirq_data)
+		kfree(mirq_data);
+
 	//if (timedata.virt_addr)
 	//	vunmap(timedata.virt_addr);
 
@@ -226,5 +235,5 @@ static struct platform_driver irq_detector_driver = {
 module_platform_driver(irq_detector_driver);
 
 MODULE_AUTHOR("Mir Faisal <mirfaisalfos@gmail.com>");
-MODULE_DESCRIPTION("Testing KASAN");
+MODULE_DESCRIPTION("IRQ Detector");
 MODULE_LICENSE("GPL");

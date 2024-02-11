@@ -1,0 +1,122 @@
+
+
+# cat /proc/test_procfs_rw | more
+Base(0x100) Size(0x30)
+IRQ count - 44
+irq_detect: Linux Irq No. - 1, Hw Irq No. - 0, Last unhandled - 0
+irq_detect: Linux Irq No. - 2, Hw Irq No. - 1, Last unhandled - 0
+irq_detect: Linux Irq No. - 3, Hw Irq No. - 2, Last unhandled - 0
+irq_detect: Linux Irq No. - 4, Hw Irq No. - 3, Last unhandled - 0
+irq_detect: Linux Irq No. - 5, Hw Irq No. - 4, Last unhandled - 0
+irq_detect: Linux Irq No. - 6, Hw Irq No. - 5, Last unhandled - 0
+irq_detect: Linux Irq No. - 7, Hw Irq No. - 6, Last unhandled - 0
+irq_detect: Linux Irq No. - 8, Hw Irq No. - 7, Last unhandled - 0
+irq_detect: Linux Irq No. - 9, Hw Irq No. - 25, Last unhandled - 0
+irq_detect: Linux Irq No. - 10, Hw Irq No. - 29, Last unhandled - 0
+irq_detect: Linux Irq No. - 11, Hw Irq No. - 30, Last unhandled - 0
+irq_detect: Linux Irq No. - 12, Hw Irq No. - 27, Last unhandled - 0
+irq_detect: Linux Irq No. - 13, Hw Irq No. - 26, Last unhandled - 0
+irq_detect: Linux Irq No. - 14, Hw Irq No. - 112, Last unhandled - 0
+irq_detect: Linux Irq No. - 15, Hw Irq No. - 116, Last unhandled - 0
+irq_detect: Linux Irq No. - 16, Hw Irq No. - 108, Last unhandled - 0
+irq_detect: Linux Irq No. - 17, Hw Irq No. - 23, Last unhandled - 0
+irq_detect: Linux Irq No. - 18, Hw Irq No. - 66, Last unhandled - 0
+irq_detect: Linux Irq No. - 19, Hw Irq No. - 194, Last unhandled - 0
+irq_detect: Linux Irq No. - 20, Hw Irq No. - 1713152, Last unhandled - 0
+irq_detect: Linux Irq No. - 21, Hw Irq No. - 1713153, Last unhandled - 0
+irq_detect: Linux Irq No. - 22, Hw Irq No. - 1713154, Last unhandled - 0
+irq_detect: Linux Irq No. - 23, Hw Irq No. - 1713155, Last unhandled - 0
+irq_detect: Linux Irq No. - 24, Hw Irq No. - 1713156, Last unhandled - 0
+irq_detect: Linux Irq No. - 25, Hw Irq No. - 1713157, Last unhandled - 0
+irq_detect: Linux Irq No. - 26, Hw Irq No. - 1713158, Last unhandled - 0
+irq_detect: Linux Irq No. - 27, Hw Irq No. - 1713159, Last unhandled - 0
+irq_detect: Linux Irq No. - 28, Hw Irq No. - 1713160, Last unhandled - 0
+irq_detect: Linux Irq No. - 29, Hw Irq No. - 1713161, Last unhandled - 0
+irq_detect: Linux Irq No. - 30, Hw Irq No. - 1713162, Last unhandled - 0
+irq_detect: Linux Irq No. - 31, Hw Irq No. - 1713163, Last unhandled - 0
+irq_detect: Linux Irq No. - 32, Hw Irq No. - 1714176, Last unhandled - 0
+irq_detect: Linux Irq No. - 33, Hw Irq No. - 1714177, Last unhandled - 0
+irq_detect: Linux Irq No. - 34, Hw Irq No. - 1714178, Last unhandled - 0
+irq_detect: Linux Irq No. - 35, Hw Irq No. - 1714179, Last unhandled - 0
+irq_detect: Linux Irq No. - 36, Hw Irq No. - 1714180, Last unhandled - 0
+irq_detect: Linux Irq No. - 37, Hw Irq No. - 1714181, Last unhandled - 0
+irq_detect: Linux Irq No. - 38, Hw Irq No. - 1714688, Last unhandled - 0
+irq_detect: Linux Irq No. - 39, Hw Irq No. - 1714689, Last unhandled - 0
+irq_detect: Linux Irq No. - 40, Hw Irq No. - 1714690, Last unhandled - 0
+irq_detect: Linux Irq No. - 41, Hw Irq No. - 1714691, Last unhandled - 0
+irq_detect: Linux Irq No. - 42, Hw Irq No. - 1714692, Last unhandled - 0
+irq_detect: Linux Irq No. - 43, Hw Irq No. - 1714693, Last unhandled - 0
+irq_detect: Linux Irq No. - 44, Hw Irq No. - 1715712, Last unhandled - 0
+irq_detect: Linux Irq No. - 45, Hw Irq No. - 1715713, Last unhandled - 0
+irq_detect: Linux Irq No. - 46, Hw Irq No. - 1715714, Last unhandled - 0
+irq_detect: Linux Irq No. - 47, Hw Irq No. - 1715715, Last unhandled - 0
+irq_detect: Linux Irq No. - 48, Hw Irq No. - 1715716, Last unhandled - 0
+irq_detect: Linux Irq No. - 49, Hw Irq No. - 1715717, Last unhandled - 0
+irq_detect: Linux Irq No. - 50, Hw Irq No. - 1716224, Last unhandled - 0
+irq_detect: Linux Irq No. - 51, Hw Irq No. - 1716225, Last unhandled - 0
+irq_detect: Linux Irq No. - 52, Hw Irq No. - 1716226, Last unhandled - 0
+irq_detect: Linux Irq No. - 53, Hw Irq No. - 1716227, Last unhandled - 0
+irq_detect: Linux Irq No. - 54, Hw Irq No. - 1716228, Last unhandled - 0
+irq_detect: Linux Irq No. - 55, Hw Irq No. - 1716229, Last unhandled - 0
+irq_detect: Linux Irq No. - 56, Hw Irq No. - 1970688, Last unhandled - 0
+irq_detect: Linux Irq No. - 57, Hw Irq No. - 1970689, Last unhandled - 0
+irq_detect: Linux Irq No. - 58, Hw Irq No. - 1970690, Last unhandled - 0
+irq_detect: Linux Irq No. - 59, Hw Irq No. - 1970691, Last unhandled - 0
+irq_detect: Linux Irq No. - 60, Hw Irq No. - 1970704, Last unhandled - 0
+irq_detect: Linux Irq No. - 61, Hw Irq No. - 1970705, Last unhandled - 0
+irq_detect: Linux Irq No. - 62, Hw Irq No. - 1970706, Last unhandled - 0
+irq_detect: Linux Irq No. - 63, Hw Irq No. - 1970707, Last unhandled - 0
+irq_detect: Linux Irq No. - 64, Hw Irq No. - 1970708, Last unhandled - 0
+irq_detect: Linux Irq No. - 65, Hw Irq No. - 1970709, Last unhandled - 0
+irq_detect: Linux Irq No. - 66, Hw Irq No. - 1970710, Last unhandled - 0
+irq_detect: Linux Irq No. - 67, Hw Irq No. - 1970711, Last unhandled - 0
+irq_detect: Linux Irq No. - 68, Hw Irq No. - 1970712, Last unhandled - 0
+irq_detect: Linux Irq No. - 69, Hw Irq No. - 1970713, Last unhandled - 0
+irq_detect: Linux Irq No. - 70, Hw Irq No. - 1970714, Last unhandled - 0
+irq_detect: Linux Irq No. - 71, Hw Irq No. - 1970715, Last unhandled - 0
+irq_detect: Linux Irq No. - 72, Hw Irq No. - 1970716, Last unhandled - 0
+irq_detect: Linux Irq No. - 73, Hw Irq No. - 1970717, Last unhandled - 0
+irq_detect: Linux Irq No. - 74, Hw Irq No. - 1970718, Last unhandled - 0
+irq_detect: Linux Irq No. - 75, Hw Irq No. - 1970719, Last unhandled - 0
+irq_detect: Linux Irq No. - 76, Hw Irq No. - 1970720, Last unhandled - 0
+irq_detect: Linux Irq No. - 77, Hw Irq No. - 1970721, Last unhandled - 0
+irq_detect: Linux Irq No. - 78, Hw Irq No. - 1970722, Last unhandled - 0
+irq_detect: Linux Irq No. - 79, Hw Irq No. - 1970723, Last unhandled - 0
+irq_detect: Linux Irq No. - 80, Hw Irq No. - 1970724, Last unhandled - 0
+
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/interrupts
+           CPU0       CPU1
+  9:          0          0     GICv3  25 Level     vgic
+ 11:       7035       7286     GICv3  30 Level     arch_timer
+ 12:          0          0     GICv3  27 Level     kvm guest vtimer
+ 17:          0          0     GICv3  23 Level     arm-pmu
+ 18:        623          0     GICv3  66 Level     4d000000.mailbox thr_012
+ 19:       1522          0     GICv3 194 Level     20010000.i2c
+ 20:       1701          0  MSI-INTA 1713152 Level     485c0100.dma-controller chan0
+ 56:          0          0  MSI-INTA 1970688 Level     485c0000.dma-controller chan1
+ 60:         29          0  MSI-INTA 1970704 Level     8000000.ethernet-tx0
+124:          0          0  MSI-INTA 1970776 Level     485c0000.dma-controller chan4
+148:          0          0  MSI-INTA 1971712 Level     485c0000.dma-controller chan0
+152:         46          0  MSI-INTA 1971728 Level     8000000.ethernet
+168:          0          0  MSI-INTA 1971752 Level     485c0000.dma-controller chan2
+169:          0          0  MSI-INTA 1971753 Level     485c0000.dma-controller chan3
+304:       1293          0     GICv3 210 Level     2800000.serial
+305:          2          0     GICv3 171 Level     fc40000.spi
+307:          0          0     GICv3 134 Level     8000000.ethernet
+310:          0          0     GICv3 129 Level     39000000.cpts
+311:        283          0     GICv3 165 Level     mmc0
+499:       7050          0     GICv3 166 Level     mmc1
+503:          0          0     GICv3 204 Level     20100000.spi
+508:          0          0     GICv3 235 Edge      j721e-pcie-link-down-irq
+511:          0          0   ITS-MSI   0 Edge      PCIe PME, aerdrv
+530:          0          0     GICv3 228 Level     f400000.usb
+IPI0:       616       1982       Rescheduling interrupts
+IPI1:      2148       2832       Function call interrupts
+IPI2:         0          0       CPU stop interrupts
+IPI3:         0          0       CPU stop (for crash dump) interrupts
+IPI4:         0          0       Timer broadcast interrupts
+IPI5:         0          0       IRQ work interrupts
+IPI6:         0          0       CPU wake-up interrupts
+Err:          0
