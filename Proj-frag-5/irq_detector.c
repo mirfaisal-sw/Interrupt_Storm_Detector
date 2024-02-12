@@ -1,3 +1,4 @@
+
 #include <linux/kernel_stat.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
@@ -20,7 +21,7 @@ struct irq_desc *irq_desc_node;
 int irq;
 
 struct irq_detector_data {
-	char 				name[10];
+	char 				name[20];
 	struct platform_device		*pdev;
 	struct mutex			lock;
 	struct proc_dir_entry		*proc_file;
@@ -172,8 +173,6 @@ static int irq_detector_probe(struct platform_device *pdev)
 	struct device_node *np;
 	int ret = 0;
 
-	//char name[10];
-
 	if(dev == NULL) {
 		ret = -EINVAL;
 		goto probe_fail;
@@ -183,14 +182,15 @@ static int irq_detector_probe(struct platform_device *pdev)
 	mirq_data = devm_kzalloc(dev, sizeof(*mirq_data), GFP_KERNEL);
         if (!mirq_data)
                 return -ENOMEM;
-
+	
+	scnprintf(mirq_data->name, 10, "irq_storm_stat");
 	platform_set_drvdata(pdev, mirq_data);
 
 	//procfs_test_buffer = kmalloc(MAX_SIZE, GFP_KERNEL);
 	//if (!procfs_test_buffer)
 	//	return -ENOMEM;
 
-	mirq_data->proc_file = proc_create("test_procfs_rw", S_IWUSR | S_IRUSR, NULL, &procfs_test_pops);
+	mirq_data->proc_file = proc_create(mirq_data->name, S_IWUSR | S_IRUSR, NULL, &procfs_test_pops);
 	if (!mirq_data->proc_file)
 		return -ENOMEM;
 
