@@ -1,0 +1,187 @@
+
+
+1) note_interrupt() function is called in handle_irq_event_percpu() i.e. handle_irq_event() -> handle_irq_event_percpu(),
+which is eventually called in handle_irq_event_percpu().
+
+Since the function handle_irq_event() is called high level flow handler function. So, as handle_irq_event() is invoked for 
+each interrupt. The function note_interrupt() is also called for each and every functions.
+
+Function definitions: -
+----------------------- 
+File - kernel/irq/handle.c
+
+irqreturn_t handle_irq_event(struct irq_desc *desc)
+{
+
+        irqreturn_t ret;
+        desc->istate &= ~IRQS_PENDING;
+
+        irqd_set(&desc->irq_data, IRQD_IRQ_INPROGRESS);
+        raw_spin_unlock(&desc->lock);
+
+        ret = handle_irq_event_percpu(desc);
+        raw_spin_lock(&desc->lock);
+
+        irqd_clear(&desc->irq_data, IRQD_IRQ_INPROGRESS);
+		
+        return ret;
+}
+
+irqreturn_t handle_irq_event_percpu(struct irq_desc *desc)
+{
+        irqreturn_t retval;
+		
+        retval = __handle_irq_event_percpu(desc);
+        add_interrupt_randomness(desc->irq_data.irq);
+        if (!irq_settings_no_debug(desc))
+                note_interrupt(desc, retval);
+        return retval;
+}
+
+Logic used in note_interrupt() function: -
+------------------------------------------------
+
+#define SPURIOUS_DEFERRED       0x80000000
+
+void note_interrupt(struct irq_desc *desc, irqreturn_t action_ret)
+{
+	/*There is thread woken*/
+	if (action_ret & IRQ_WAKE_THREAD) {
+	
+		//....
+		/* There is a thread woken. Check whether one of the
+         * shared primary handlers returned IRQ_HANDLED.
+		 */
+		if (action_ret == IRQ_WAKE_THREAD) {
+		
+			//....
+			if (!(desc->threads_handled_last & SPURIOUS_DEFERRED)) {
+                desc->threads_handled_last |= SPURIOUS_DEFERRED;
+                return;
+            }
+			
+			/*Check the count being different than the one we saw before.
+             */
+			handled = atomic_read(&desc->threads_handled);
+            handled |= SPURIOUS_DEFERRED;
+				
+            if (handled != desc->threads_handled_last) {
+                action_ret = IRQ_HANDLED;
+
+				desc->threads_handled_last = handled;
+
+            } else {
+			
+				action_ret = IRQ_NONE;
+			}
+		
+		} else { /*if action_ret == IRQ_HANDLED*/
+		
+			/*
+			 * One of the primary handlers returned
+             * IRQ_HANDLED. So we don't care about the
+             * threaded handlers on the same line. Clear
+             * the deferred detection bit.
+			 */
+			desc->threads_handled_last &= ~SPURIOUS_DEFERRED;
+		}		
+		
+	} /*End of if (action_ret & IRQ_WAKE_THREAD)*/
+	
+	if (unlikely(action_ret == IRQ_NONE)) {
+	
+		/*If time gap between two unhandled IRQs are 100ms, then don't make
+		 * desc->irqs_unhandled = 1.
+		 */
+        if (time_after(jiffies, desc->last_unhandled + HZ/10))
+            desc->irqs_unhandled = 1;
+        else
+            desc->irqs_unhandled++;
+            desc->last_unhandled = jiffies;
+    }
+
+	//....
+	
+	/* Now getting into unhandled irq detection */
+    desc->irq_count++;
+
+    if (likely(desc->irq_count < 100000))
+        return;
+
+    desc->irq_count = 0;
+
+    if (unlikely(desc->irqs_unhandled > 99900)) {
+        /*
+         * The interrupt is stuck
+         */
+
+        __report_bad_irq(desc, action_ret);
+
+        /*
+         * Now kill the IRQ
+         */
+
+        printk(KERN_EMERG "Disabling IRQ #%d\n", irq);
+        desc->istate |= IRQS_SPURIOUS_DISABLED;
+        desc->depth++;
+
+        irq_disable(desc);
+
+        mod_timer(&poll_spurious_irq_timer,
+                        jiffies + POLL_SPURIOUS_IRQ_INTERVAL);
+        }
+		
+        desc->irqs_unhandled = 0;
+}
+
+Summary: =
+=============
+
+1. If IRQs return IRQ_NONE, then "desc->irqs_unhandled" count is 
+	incremented by 1.
+
+2. If woken threaded IRQ count as previous interrupt, then also
+	"desc->irqs_unhandled" count is incremented by 1.
+	
+3. If time gap between two unhandled IRQs are greater than 100ms,
+	then we reset the unhandled IRQ count to 1.
+
+Note: - 
+--------
+	struct irq_desc {
+	
+		//....
+		
+		/*@threads_handled: stats field for deferred spurious detection of 
+		 *threaded handlers.
+	     */
+		atomic_t		threads_handled;
+		int				threads_handled_last;
+	  
+		//....
+	}
+
+static irqreturn_t irq_thread_fn(struct irq_desc *desc,
+                struct irqaction *action)
+{
+        irqreturn_t ret;
+
+        ret = action->thread_fn(action->irq, action->dev_id);
+        if (ret == IRQ_HANDLED)
+            atomic_inc(&desc->threads_handled);
+
+        irq_finalize_oneshot(desc, action);
+        return ret;
+}
+
+
+
+	
+	
+
+		
+				
+				
+
+
+

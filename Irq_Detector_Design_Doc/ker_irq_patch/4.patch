@@ -1,0 +1,13 @@
+diff --git a/kernel/irq/manage.c b/kernel/irq/manage.c
+index 40fe7806c..8d9497823 100644
+--- a/kernel/irq/manage.c
++++ b/kernel/irq/manage.c
+@@ -1796,6 +1796,8 @@ __setup_irq(unsigned int irq, struct irq_desc *desc, struct irqaction *new)
+ 	/* Reset broken irq detection when installing new handler */
+ 	desc->irq_count = 0;
+ 	desc->irqs_unhandled = 0;
++	/*MIR*/
++	desc->timestamp_jiffies = 0;
+ 
+ 	/*
+ 	 * Check whether we disabled the irq via the spurious handler

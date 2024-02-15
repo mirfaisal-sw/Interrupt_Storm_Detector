@@ -1,0 +1,13 @@
+diff --git a/include/linux/irqdesc.h b/include/linux/irqdesc.h
+index 844a8e30e..f1365d7f5 100644
+--- a/include/linux/irqdesc.h
++++ b/include/linux/irqdesc.h
+@@ -102,6 +102,8 @@ struct irq_desc {
+ 	int			parent_irq;
+ 	struct module		*owner;
+ 	const char		*name;
++	unsigned long		timestamp_jiffies;
++
+ } ____cacheline_internodealigned_in_smp;
+ 
+ #ifdef CONFIG_SPARSE_IRQ

@@ -1,0 +1,14 @@
+diff --git a/kernel/irq/handle.c b/kernel/irq/handle.c
+index 9489f93b3..e1b0b9b07 100644
+--- a/kernel/irq/handle.c
++++ b/kernel/irq/handle.c
+@@ -158,6 +158,9 @@ irqreturn_t __handle_irq_event_percpu(struct irq_desc *desc)
+ 		res = action->handler(irq, action->dev_id);
+ 		trace_irq_handler_exit(irq, action, res);
+ 
++		/*MIR*/
++		//desc->timestamp_jiffies = jiffies;
++
+ 		if (WARN_ONCE(!irqs_disabled(),"irq %u handler %pS enabled interrupts\n",
+ 			      irq, action->handler))
+ 			local_irq_disable();

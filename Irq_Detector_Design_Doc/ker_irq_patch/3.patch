@@ -1,0 +1,13 @@
+diff --git a/kernel/irq/irqdesc.c b/kernel/irq/irqdesc.c
+index fd0996274..f3cd3ff79 100644
+--- a/kernel/irq/irqdesc.c
++++ b/kernel/irq/irqdesc.c
+@@ -125,6 +125,8 @@ static void desc_set_defaults(unsigned int irq, struct irq_desc *desc, int node,
+ 	for_each_possible_cpu(cpu)
+ 		*per_cpu_ptr(desc->kstat_irqs, cpu) = 0;
+ 	desc_smp_init(desc, node, affinity);
++	/*MIR*/
++	desc->timestamp_jiffies = 0;
+ }
+ 
+ int nr_irqs = NR_IRQS;

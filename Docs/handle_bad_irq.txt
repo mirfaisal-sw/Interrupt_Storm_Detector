@@ -1,0 +1,213 @@
+
+
+handle_bad_irq()
+==================
+Bad IRQ flow handler
+handle_bad_irq() is used for spurious interrupts which have no real handler assigned.
+
+* Handling of unhandled and spurious interrupts: */
+extern void note_interrupt(struct irq_desc *desc, irqreturn_t action_ret);
+
+
+1)
+----
+/**
+ * enum irqreturn
+ * @IRQ_NONE            interrupt was not from this device or was not handled
+ * @IRQ_HANDLED         interrupt was handled by this device
+ * @IRQ_WAKE_THREAD     handler requests to wake the handler thread
+ */
+
+enum irqreturn {
+        IRQ_NONE                = (0 << 0),
+        IRQ_HANDLED             = (1 << 0),
+        IRQ_WAKE_THREAD         = (1 << 1),
+};
+
+1)
+----
+/**
+ * handle_bad_irq - handle spurious and unhandled irqs
+ * @desc:      description of the interrupt
+ *
+ * Handles spurious and unhandled IRQ's. It also prints a debugmessage.
+ */
+void handle_bad_irq(struct irq_desc *desc)
+{
+	unsigned int irq = irq_desc_get_irq(desc);
+
+	print_irq_desc(irq, desc);
+	kstat_incr_irqs_this_cpu(desc);
+	ack_bad_irq(irq);
+}
+
+
+2) 
+---
+static int altera_gpio_irq_set_type(struct irq_data *d,
+				   unsigned int type)
+{
+	struct altera_gpio_chip *altera_gc;
+
+	altera_gc = gpiochip_get_data(irq_data_get_irq_chip_data(d));
+
+	if (type == IRQ_TYPE_NONE) {
+		irq_set_handler_locked(d, handle_bad_irq);
+		return 0;
+	}
+	if (type == altera_gc->interrupt_trigger) {
+		if (type == IRQ_TYPE_LEVEL_HIGH)
+			irq_set_handler_locked(d, handle_level_irq);
+		else
+			irq_set_handler_locked(d, handle_simple_irq);
+		return 0;
+	}
+	irq_set_handler_locked(d, handle_bad_irq);
+	return -EINVAL;
+}
+
+3)
+----
+static void desc_set_defaults(unsigned int irq, struct irq_desc *desc, int node,
+			      const struct cpumask *affinity, struct module *owner)
+{
+	int cpu;
+
+	desc->irq_common_data.handler_data = NULL;
+	desc->irq_common_data.msi_desc = NULL;
+
+	desc->irq_data.common = &desc->irq_common_data;
+	desc->irq_data.irq = irq;
+	desc->irq_data.chip = &no_irq_chip;
+	desc->irq_data.chip_data = NULL;
+	irq_settings_clr_and_set(desc, ~0, _IRQ_DEFAULT_INIT_FLAGS);
+	irqd_set(&desc->irq_data, IRQD_IRQ_DISABLED);
+	irqd_set(&desc->irq_data, IRQD_IRQ_MASKED);
+	desc->handle_irq = handle_bad_irq;
+	desc->depth = 1;
+	desc->irq_count = 0;
+	desc->irqs_unhandled = 0;
+	desc->tot_count = 0;
+	desc->name = NULL;
+	desc->owner = owner;
+	for_each_possible_cpu(cpu)
+		*per_cpu_ptr(desc->kstat_irqs, cpu) = 0;
+	desc_smp_init(desc, node, affinity);
+}
+
+3) 
+static inline int bad_action_ret(irqreturn_t action_ret){{
+	unsigned int r = action_ret;
+
+	if (likely(r <= (IRQ_HANDLED | IRQ_WAKE_THREAD)))
+		return 0;
+	return 1;
+}
+
+IRQ_HANDLED - 01b
+IRQ_WAKE_THREAD - 10b
+
+IRQ_HANDLED | IRQ_WAKE_THREAD = 11b 
+
+In above function, r is always less than 3.
+
+note_interrupt()
+{
+
+	//....
+		if (action_ret & IRQ_WAKE_THREAD) {   //ret & 10b, 
+		
+		if (action_ret == IRQ_WAKE_THREAD) {
+			int handled;
+			/*
+			 * We use bit 31 of thread_handled_last to
+			 * denote the deferred spurious detection
+			 * active. No locking necessary as
+			 * thread_handled_last is only accessed here
+			 * and we have the guarantee that hard
+			 * interrupts are not reentrant.
+			 */
+			if (!(desc->threads_handled_last & SPURIOUS_DEFERRED)) {
+				desc->threads_handled_last |= SPURIOUS_DEFERRED;
+				return;
+			}
+			/*
+			 * Check whether one of the threaded handlers
+			 * returned IRQ_HANDLED since the last
+			 * interrupt happened.
+			 *
+			 * For simplicity we just set bit 31, as it is
+			 * set in threads_handled_last as well. So we
+			 * avoid extra masking. And we really do not
+			 * care about the high bits of the handled
+			 * count. We just care about the count being
+			 * different than the one we saw before.
+			 */
+			handled = atomic_read(&desc->threads_handled);
+			handled |= SPURIOUS_DEFERRED;
+			if (handled != desc->threads_handled_last) {
+			
+			} else {
+				
+			}
+		} else {
+			
+			desc->threads_handled_last &= ~SPURIOUS_DEFERRED;
+		}
+		
+	} /* end of "if (action_ret & IRQ_WAKE_THREAD)" */
+	
+	if (unlikely(action_ret == IRQ_NONE)) {
+
+                /*
+                 * If we are seeing only the odd spurious IRQ caused by
+                 * bus asynchronicity then don't eventually trigger an error,
+                 * otherwise the counter becomes a doomsday timer for otherwise
+                 * working systems
+                 */
+
+                if (time_after(jiffies, desc->last_unhandled + HZ/10))
+                        desc->irqs_unhandled = 1;
+                else
+                        desc->irqs_unhandled++;
+                desc->last_unhandled = jiffies;
+        }
+
+        irq = irq_desc_get_irq(desc);
+        if (unlikely(try_misrouted_irq(irq, desc, action_ret))) {
+                int ok = misrouted_irq(irq);
+                if (action_ret == IRQ_NONE)
+                        desc->irqs_unhandled -= ok;
+
+        }
+
+        if (likely(!desc->irqs_unhandled))
+                return;
+
+        /* Now getting into unhandled irq detection */
+
+        desc->irq_count++;
+        if (likely(desc->irq_count < 100000))
+                return;
+        desc->irq_count = 0;
+		
+		if (unlikely(desc->irqs_unhandled > 99900)) {
+		
+                /*
+                 * The interrupt is stuck
+                 */
+                __report_bad_irq(desc, action_ret);
+                /*
+                 * Now kill the IRQ
+                 */
+                printk(KERN_EMERG "Disabling IRQ #%d\n", irq);
+                desc->istate |= IRQS_SPURIOUS_DISABLED;
+                desc->depth++;
+                irq_disable(desc);
+
+                mod_timer(&poll_spurious_irq_timer,
+                          jiffies + POLL_SPURIOUS_IRQ_INTERVAL);
+        }
+        desc->irqs_unhandled = 0;
+}
+
