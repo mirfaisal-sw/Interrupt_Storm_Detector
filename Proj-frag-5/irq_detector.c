@@ -30,6 +30,9 @@ struct irq_detector_data {
 	phys_addr_t			phys_addr;
 	int				irq;
 	struct irq_desc 		*desc;
+
+	unsigned long                   irq_timestamp;
+	unsigned long                   last_irq_timestamp;
 };
 
 static u8 *procfs_test_buffer;
@@ -42,6 +45,11 @@ static void read_irq_data(void)
 			irq_desc_node->irq_data.irq, irq_desc_node->irq_data.hwirq,
 			irq_desc_node->last_unhandled);
 	}
+}
+
+static void log_irq_timestamp(void)
+{
+
 }
 
 static int show_irq_statistics(struct seq_file *seq, void *pdata)
