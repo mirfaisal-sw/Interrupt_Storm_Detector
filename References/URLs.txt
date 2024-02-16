@@ -9,3 +9,8 @@ https://lwn.net/Articles/167897/
 2. Linux IRQ Handling: - 
 https://docs.kernel.org/core-api/genericirq.html
 
+3. Sample codes: -
+https://sysprog21.github.io/lkmpg/#avoiding-collisions-and-deadlocks
+
+4. 
+

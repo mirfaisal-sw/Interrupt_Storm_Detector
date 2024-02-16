@@ -13,6 +13,10 @@
 #include <linux/irqnr.h>
 #include <linux/irqdesc.h>
 #include <linux/of.h>
+#include <linux/kthread.h>             //kernel threads
+#include <linux/sched.h>               //task_struct
+#include <linux/delay.h>
+#include <linux/atomic.h>
 
 #define MAX_SIZE	32
 #define CONFIG_SEQ_READ
@@ -23,9 +27,10 @@ int irq;
 struct irq_detector_data {
 	char 				name[20];
 	struct platform_device		*pdev;
-	struct mutex			lock;
+	struct mutex			mutex_lock;
 	struct proc_dir_entry		*proc_file;
 	unsigned long			irq_interval_threshold_us;
+	atomic_t 			inst_irq_rate;
 	void				*virt_addr;
 	phys_addr_t			phys_addr;
 	int				irq;
@@ -33,10 +38,45 @@ struct irq_detector_data {
 
 	unsigned long                   irq_timestamp;
 	unsigned long                   last_irq_timestamp;
+
+	struct task_struct		*irq_poll_thread;
 };
 
 static u8 *procfs_test_buffer;
 
+/*Thread*/
+int thread_function(void *pv)
+{
+    int i=0;
+    unsigned long temp_timestamp;
+
+    while(!kthread_should_stop()) {
+        //pr_alert("In IRQ Poll Thread Function %d\n", i++);
+        //msleep(1000);
+	for_each_irq_desc(irq, irq_desc_node) {
+
+                if(irq_desc_node) {
+
+			if(irq_desc_node->irq_count > 1000) {
+				if(time_after(jiffies, mirq_data->last_irq_timestamp + HZ/10) {
+					pr_alert(" Interrupt storm detected");
+				}
+
+				mirq_data->last_irq_timestamp = 0;
+			}
+                }
+        }
+
+
+	if( ) {
+
+	}
+
+    }
+    return 0;
+}
+
+#if 0
 /*Read Irq data*/
 static void read_irq_data(void)
 {
@@ -46,6 +86,7 @@ static void read_irq_data(void)
 			irq_desc_node->last_unhandled);
 	}
 }
+#endif
 
 static void log_irq_timestamp(void)
 {
@@ -190,8 +231,9 @@ static int irq_detector_probe(struct platform_device *pdev)
 	mirq_data = devm_kzalloc(dev, sizeof(*mirq_data), GFP_KERNEL);
         if (!mirq_data)
                 return -ENOMEM;
-	
-	scnprintf(mirq_data->name, 10, "irq_storm_stat");
+
+	mirq_data->irq_timestamp = jiffies;
+	scnprintf(mirq_data->name, 20, "irq_storm_stat");
 	platform_set_drvdata(pdev, mirq_data);
 
 	//procfs_test_buffer = kmalloc(MAX_SIZE, GFP_KERNEL);
@@ -202,6 +244,14 @@ static int irq_detector_probe(struct platform_device *pdev)
 	if (!mirq_data->proc_file)
 		return -ENOMEM;
 
+	mirq_data->irq_poll_thread = kthread_create(thread_function, NULL, "Irq Poll Thread");
+
+        if(mirq_data->irq_poll_thread) {
+            wake_up_process(mirq_data->irq_poll_thread);
+        } else {
+            pr_err("Cannot create kthread\n");
+            goto probe_fail;
+        }
 	pr_alert("DBG: In function - %s, Line - %d\n", __func__, __LINE__);
 probe_fail:
 	return ret;
@@ -212,13 +262,15 @@ static int irq_detector_remove(struct platform_device *pdev)
         struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
         int ret = 0;
 
+	kthread_stop(mirq_data->irq_poll_thread);
+
 	if(mirq_data)
 		kfree(mirq_data);
 
 	//if (timedata.virt_addr)
 	//	vunmap(timedata.virt_addr);
 
-	remove_proc_entry("test_procfs_rw", NULL);
+	remove_proc_entry("irq_storm_stat", NULL);
 
 	platform_set_drvdata(pdev, NULL);
 
@@ -230,7 +282,39 @@ static const struct of_device_id irq_detector_of_match_table[] = {
 	{ },
 };
 
+static int devicemodel_suspend(struct device *dev)
+{
+	pr_info("devicemodel example suspend\n");
+
+	/* Your device suspend code */
+	return 0;
+}
+
+static int devicemodel_resume(struct device *dev)
+{
+	pr_info("devicemodel example resume\n");
+
+	/* Your device resume code */
+
+	return 0;
+}
+
+static const struct dev_pm_ops devicemodel_pm_ops = {
+	.suspend = devicemodel_suspend,
+	.resume = devicemodel_resume,
+	.poweroff = devicemodel_suspend,
+	.freeze = devicemodel_suspend,
+	.thaw = devicemodel_resume,
+	.restore = devicemodel_resume,
+};
+
 static struct platform_driver irq_detector_driver = {
+	
+	.driver = {
+		.name = "devicemodel_example",
+		.pm = &devicemodel_pm_ops,
+	},
+
 	.probe = irq_detector_probe,
 	.remove = irq_detector_remove,
 	.driver = {

@@ -140,7 +140,7 @@ Summary: =
 1. If IRQs return IRQ_NONE, then "desc->irqs_unhandled" count is 
 	incremented by 1.
 
-2. If woken threaded IRQ count as previous interrupt, then also
+2. If woken threaded IRQ count is same as previous interrupt, then also
 	"desc->irqs_unhandled" count is incremented by 1.
 	
 3. If time gap between two unhandled IRQs are greater than 100ms,
