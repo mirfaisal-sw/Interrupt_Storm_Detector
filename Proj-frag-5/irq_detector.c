@@ -1,3 +1,7 @@
+/*
+ *
+ *
+ */
 
 #include <linux/kernel_stat.h>
 #include <linux/init.h>
@@ -13,12 +17,17 @@
 #include <linux/irqnr.h>
 #include <linux/irqdesc.h>
 #include <linux/of.h>
-#include <linux/kthread.h>             //kernel threads
-#include <linux/sched.h>               //task_struct
+#include <linux/kthread.h>
+#include <linux/sched.h>  
 #include <linux/delay.h>
 #include <linux/atomic.h>
+#include <linux/hrtimer.h>
+#include <linux/ktime.h>
 
-#define MAX_SIZE	32
+#define SAMPLING_INTERVAL	500L /*10 milli second*/
+#define MS_TO_NS(x)		(x * 1E6L)
+#define MAX_SIZE		32
+
 #define CONFIG_SEQ_READ
 
 struct irq_desc *irq_desc_node;
@@ -28,6 +37,7 @@ struct irq_detector_data {
 	char 				name[20];
 	struct platform_device		*pdev;
 	struct mutex			mutex_lock;
+	struct proc_dir_entry		*proc_dir;
 	struct proc_dir_entry		*proc_file;
 	unsigned long			irq_interval_threshold_us;
 	atomic_t 			inst_irq_rate;
@@ -38,41 +48,53 @@ struct irq_detector_data {
 
 	unsigned long                   irq_timestamp;
 	unsigned long                   last_irq_timestamp;
-
+	struct hrtimer 			mhr_timer;
 	struct task_struct		*irq_poll_thread;
 };
 
 static u8 *procfs_test_buffer;
 
+enum hrtimer_restart read_irq_interval_cb( struct hrtimer *timer )
+{
+    pr_info( "my_hrtimer_callback called (%ld).\n", jiffies );
+    return HRTIMER_RESTART;
+}
+
 /*Thread*/
 int thread_function(void *pv)
 {
-    int i=0;
-    unsigned long temp_timestamp;
+	int i=0;
+	unsigned long temp_timestamp;
+	struct irq_detector_data *mirq_data = pv;
 
-    while(!kthread_should_stop()) {
-        //pr_alert("In IRQ Poll Thread Function %d\n", i++);
-        //msleep(1000);
 	for_each_irq_desc(irq, irq_desc_node) {
 
-                if(irq_desc_node) {
+                pr_alert("IRQ name - %s\n", irq_desc_node->name);
+	}
+#if 1
+	while(!kthread_should_stop()) {
+	//pr_alert("In IRQ Poll Thread Function %d\n", i++);
+	//msleep(1000);
+	for_each_irq_desc(irq, irq_desc_node) {
 
-			if(irq_desc_node->irq_count > 1000) {
-				if(time_after(jiffies, mirq_data->last_irq_timestamp + HZ/10) {
-					pr_alert(" Interrupt storm detected");
-				}
+		pr_alert("IRQ name - %s\n", irq_desc_node->name);
+		if(irq_desc_node && !(irq_desc_node->irq_count % 100)) { //1000 -> 5 for debugging
 
-				mirq_data->last_irq_timestamp = 0;
+			if(time_before(jiffies, 
+				mirq_data->last_irq_timestamp + HZ/10)) {
+				pr_alert(" Interrupt storm detected");
 			}
+			pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
+			mirq_data->last_irq_timestamp = jiffies;
                 }
         }
 
+	/*if( ) {
 
-	if( ) {
-
-	}
+	}*/
 
     }
+#endif
     return 0;
 }
 
@@ -214,13 +236,45 @@ static struct proc_ops procfs_test_pops = {
 	.proc_release = procfs_test_release,
 };
 
-static int irq_detector_probe(struct platform_device *pdev)
+static int create_proc_entry(struct irq_detector_data *mirq_data)
+{
+	if(mirq_data == NULL)
+		return -EINVAL;
+
+	mirq_data->proc_dir = proc_mkdir("irq_diag",NULL);
+	if(!mirq_data->proc_dir) {
+		pr_err("DBG: Error creating proc directory\n");
+		return -ENOMEM;
+	}
+
+	scnprintf(mirq_data->name, 20, "irq_storm_stat");
+	mirq_data->proc_file = proc_create(mirq_data->name, 
+			S_IWUSR | S_IRUSR, mirq_data->proc_dir, &procfs_test_pops);
+        if (!mirq_data->proc_file) {
+                return -ENOMEM;
+	}
+
+	return 0;
+}
+
+static void delete_proc_entry(struct irq_detector_data *mirq_data)
 {
 
+	if(mirq_data == NULL)
+		return;
+
+	remove_proc_entry("irq_storm_stat", mirq_data->proc_dir);
+	remove_proc_entry("irq_diag", NULL);
+}
+
+static int irq_detector_probe(struct platform_device *pdev)
+{
 	struct irq_detector_data *mirq_data;
 	struct device *dev = &pdev->dev;
 	struct device_node *np;
 	int ret = 0;
+	ktime_t ktime;
+	unsigned long delay_in_ms = SAMPLING_INTERVAL;
 
 	if(dev == NULL) {
 		ret = -EINVAL;
@@ -233,18 +287,33 @@ static int irq_detector_probe(struct platform_device *pdev)
                 return -ENOMEM;
 
 	mirq_data->irq_timestamp = jiffies;
-	scnprintf(mirq_data->name, 20, "irq_storm_stat");
+
+	ktime = ktime_set(0, MS_TO_NS(delay_in_ms) );
+
+	//hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+	//mirq_data->mhr_timer.function = &read_irq_interval_cb;
+
+	pr_info("Starting timer to fire in %ldms (%ld)\n", \
+					delay_in_ms, jiffies );
+
+	//hrtimer_start(&mirq_data->mhr_timer, ktime, HRTIMER_MODE_REL);
+
 	platform_set_drvdata(pdev, mirq_data);
 
 	//procfs_test_buffer = kmalloc(MAX_SIZE, GFP_KERNEL);
 	//if (!procfs_test_buffer)
 	//	return -ENOMEM;
 
-	mirq_data->proc_file = proc_create(mirq_data->name, S_IWUSR | S_IRUSR, NULL, &procfs_test_pops);
-	if (!mirq_data->proc_file)
-		return -ENOMEM;
+	ret = create_proc_entry(mirq_data);
+	if(ret < 0) {
+		pr_alert("DBG: proc file creation failed!");
+		goto probe_fail;
+	}
 
-	mirq_data->irq_poll_thread = kthread_create(thread_function, NULL, "Irq Poll Thread");
+	mirq_data->irq_poll_thread = kthread_create(thread_function, 
+					mirq_data, "Irq Poll Thread");
+	if (IS_ERR(mirq_data->irq_poll_thread))
+		return PTR_ERR(mirq_data->irq_poll_thread);
 
         if(mirq_data->irq_poll_thread) {
             wake_up_process(mirq_data->irq_poll_thread);
@@ -252,7 +321,9 @@ static int irq_detector_probe(struct platform_device *pdev)
             pr_err("Cannot create kthread\n");
             goto probe_fail;
         }
+
 	pr_alert("DBG: In function - %s, Line - %d\n", __func__, __LINE__);
+
 probe_fail:
 	return ret;
 }
@@ -262,15 +333,16 @@ static int irq_detector_remove(struct platform_device *pdev)
         struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
         int ret = 0;
 
+	//hrtimer_cancel(&mirq_data->mhr_timer);
 	kthread_stop(mirq_data->irq_poll_thread);
+
+	delete_proc_entry(mirq_data);
 
 	if(mirq_data)
 		kfree(mirq_data);
 
 	//if (timedata.virt_addr)
 	//	vunmap(timedata.virt_addr);
-
-	remove_proc_entry("irq_storm_stat", NULL);
 
 	platform_set_drvdata(pdev, NULL);
 
