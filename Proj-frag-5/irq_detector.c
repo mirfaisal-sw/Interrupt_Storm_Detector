@@ -56,7 +56,18 @@ static u8 *procfs_test_buffer;
 
 enum hrtimer_restart read_irq_interval_cb( struct hrtimer *timer )
 {
-    pr_info( "my_hrtimer_callback called (%ld).\n", jiffies );
+	//pr_info( "my_hrtimer_callback called (%ld).\n", jiffies );
+
+	struct irq_detector_data *mirq_data;
+	mirq_data = container_of(timer, struct irq_detector_data, mhr_timer);
+
+ 	for_each_irq_desc(irq, irq_desc_node) {
+
+                pr_alert("IRQ# - %d, IRQ inst rate = %d\n", 
+				irq_desc_node->irq_data.irq, 
+				((irq_desc_node->irq_count)/SAMPLING_INTERVAL));
+        }
+
     return HRTIMER_RESTART;
 }
 
@@ -77,14 +88,14 @@ int thread_function(void *pv)
 	//msleep(1000);
 	for_each_irq_desc(irq, irq_desc_node) {
 
-		pr_alert("IRQ name - %s\n", irq_desc_node->name);
-		if(irq_desc_node && !(irq_desc_node->irq_count % 100)) { //1000 -> 5 for debugging
+		//pr_alert("IRQ name - %s\n", irq_desc_node->name);
+		if(irq_desc_node && !(irq_desc_node->irq_count % 1000)) { //1000 -> 5 for debugging
 
 			if(time_before(jiffies, 
 				mirq_data->last_irq_timestamp + HZ/10)) {
 				pr_alert(" Interrupt storm detected");
 			}
-			pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
+			//pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
 			mirq_data->last_irq_timestamp = jiffies;
                 }
         }
@@ -290,13 +301,13 @@ static int irq_detector_probe(struct platform_device *pdev)
 
 	ktime = ktime_set(0, MS_TO_NS(delay_in_ms) );
 
-	//hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
-	//mirq_data->mhr_timer.function = &read_irq_interval_cb;
+	hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+	mirq_data->mhr_timer.function = &read_irq_interval_cb;
 
 	pr_info("Starting timer to fire in %ldms (%ld)\n", \
 					delay_in_ms, jiffies );
 
-	//hrtimer_start(&mirq_data->mhr_timer, ktime, HRTIMER_MODE_REL);
+	hrtimer_start(&mirq_data->mhr_timer, ktime, HRTIMER_MODE_REL);
 
 	platform_set_drvdata(pdev, mirq_data);
 

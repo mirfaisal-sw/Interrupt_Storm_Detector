@@ -145,6 +145,11 @@ Summary: =
 	
 3. If time gap between two unhandled IRQs are greater than 100ms,
 	then we reset the unhandled IRQ count to 1.
+	
+4. We hit __report_bad_irq() function in note_interrupt(), if out of 100,000 
+	interrupts, 99,900 are unhandled. Then that IRQ# is disabled.
+	The other 100-of-100,000 interrupts may have been a correctly functioning
+	device sharing an IRQ with the failing one.
 
 Note: - 
 --------
