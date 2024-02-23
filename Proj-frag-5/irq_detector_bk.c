@@ -23,9 +23,8 @@
 #include <linux/atomic.h>
 #include <linux/hrtimer.h>
 #include <linux/ktime.h>
-#include <linux/kstrtox.h>
 
-#define SAMPLING_INTERVAL	5000L /*10 milli second*/
+#define SAMPLING_INTERVAL	500L /*10 milli second*/
 #define MS_TO_NS(x)		(x * 1E6L)
 #define MAX_SIZE		32
 
@@ -54,9 +53,7 @@ struct irq_detector_data {
 };
 
 static u8 *procfs_test_buffer;
-u8 cnt = 0;
 
-#if 1
 enum hrtimer_restart read_irq_interval_cb( struct hrtimer *timer )
 {
 	//pr_info( "my_hrtimer_callback called (%ld).\n", jiffies );
@@ -64,29 +61,16 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *timer )
 	struct irq_detector_data *mirq_data;
 	mirq_data = container_of(timer, struct irq_detector_data, mhr_timer);
 
-	pr_alert("In func - %s, line - %d\n", __func__, __LINE__);
- 	//for_each_irq_desc(irq, irq_desc_node) {
+ 	for_each_irq_desc(irq, irq_desc_node) {
 
-	//if(cnt %20) {
-
-//		cnt ++;
-         //       pr_alert("IRQ# - %d, IRQ count = %d\n", 
-	//			irq_desc_node->irq_data.irq, 
-	//			((irq_desc_node->irq_count)));
-
-		//msleep(100);
-                /*pr_alert("IRQ# - %d, IRQ inst rate = %d\n", 
+                pr_alert("IRQ# - %d, IRQ inst rate = %d\n", 
 				irq_desc_node->irq_data.irq, 
-				((irq_desc_node->irq_count)/SAMPLING_INTERVAL));*/
-	//}
-
-        //}
+				((irq_desc_node->irq_count)/SAMPLING_INTERVAL));
+        }
 
     return HRTIMER_RESTART;
 }
-#endif
 
-#if 0
 /*Thread*/
 int thread_function(void *pv)
 {
@@ -102,14 +86,8 @@ int thread_function(void *pv)
 	while(!kthread_should_stop()) {
 	//pr_alert("In IRQ Poll Thread Function %d\n", i++);
 	//msleep(1000);
-//	for_each_irq_desc(irq, irq_desc_node) {
+	for_each_irq_desc(irq, irq_desc_node) {
 
-		if(cnt % 10000) {
-			cnt++;
-			pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
-		}
-
-#if 0
 		//pr_alert("IRQ name - %s\n", irq_desc_node->name);
 		if(irq_desc_node && !(irq_desc_node->irq_count % 1000)) { //1000 -> 5 for debugging
 
@@ -120,8 +98,7 @@ int thread_function(void *pv)
 			//pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
 			mirq_data->last_irq_timestamp = jiffies;
                 }
-#endif
-  //      }
+        }
 
 	/*if( ) {
 
@@ -131,8 +108,6 @@ int thread_function(void *pv)
 #endif
     return 0;
 }
-
-#endif
 
 #if 0
 /*Read Irq data*/
@@ -169,9 +144,9 @@ static int show_irq_statistics(struct seq_file *seq, void *pdata)
 
 	for_each_irq_desc(irq, irq_desc_node) {
 		if(irq_desc_node) {
-			seq_printf(seq, "irq_detect: Linux Irq No. - %d, Hw Irq No. - %lu, Irq name - %s\n",
+			seq_printf(seq, "irq_detect: Linux Irq No. - %d, Hw Irq No. - %lu, Last unhandled - %lu\n",
 				irq_desc_node->irq_data.irq, irq_desc_node->irq_data.hwirq,
-				irq_desc_node->irq_data.chip->name);
+				irq_desc_node->last_unhandled);
 		} 
 	}
 
@@ -197,58 +172,18 @@ static int procfs_test_release(struct inode *inode, struct file *file)
 	return res;
 }
 
-static int parse_number(const char __user *p, size_t count, unsigned int *val)
-{
-	char buf[40];
-	char *end;
-
-	if (count > 39)
-		return -EINVAL;
-
-	if (copy_from_user(buf, p, count))
-		return -EFAULT;
-
-	buf[count] = 0;
-	*val = simple_strtoul(buf, &end, 10);
-	if (*end && *end != '\n')
-		return -EINVAL;
-
-	return 0;
-}
-
 static ssize_t procfs_test_write(struct file *filep, const char __user *buf,
       size_t length, loff_t *off)
 {
-	int ret;
 	unsigned long n;
 	unsigned int irq_cnt = 0;
 
-	char *temp_buffer = kzalloc(32, GFP_USER);
-
-	if (!temp_buffer)
-		return -ENOMEM;
-
-	ret = -EINVAL;
-	if (length >= PAGE_SIZE)
-		goto out;
-
-	ret = -EFAULT;
-	if (copy_from_user(temp_buffer, buf, length))
-		goto out;
-
-	temp_buffer[length] = '\0';
+	n = copy_from_user(procfs_test_buffer, buf, length);
 
 	//irq_cnt = kstat_irqs_cpu(152, 0);
 	//struct irq_desc *desc = irq_data_to_desc(152);
-	ret = length;
-	pr_alert("DBG: String: %s, length - %d\n", temp_buffer, length);
-
-	ret = parse_number(buf, length, &irq_cnt);
-	if(ret != 0)
-		goto out;
-out:
-	kfree(temp_buffer);
-	return ret;
+	//pr_alert("DBG: String: %s, length - %d, irq_cnt - %ld\n", procfs_test_buffer, length, irq_cnt);
+	return length;
 }
 
 static ssize_t procfs_test_read(struct file *filep, char __user *user_buf, 
@@ -312,38 +247,8 @@ static struct proc_ops procfs_test_pops = {
 	.proc_release = procfs_test_release,
 };
 
-/*
- * Manifest of proc files to create
- */
-struct irq_diag_file {
-	const char *filename;
-	int *status;
-	const struct proc_ops ops;
-};
-
-static const struct irq_diag_file irq_diag_files[] = {
-	{
-		.filename	= "irq_diag_cmd",
-		.status		= NULL,
-		.ops.proc_read	= rtas_flash_read_msg,
-		.ops.proc_write	= rtas_flash_write,
-		.ops.proc_release = rtas_flash_release,
-		.ops.proc_lseek	= default_llseek,
-	},
-	{
-		.filename	= "irq_diag_stat",
-		.status		= NULL,
-		.ops.proc_read	= rtas_flash_read_num,
-		.ops.proc_write	= rtas_flash_write,
-		.ops.proc_release = rtas_flash_release,
-		.ops.proc_lseek	= default_llseek,
-	},
-}
-
 static int create_proc_entry(struct irq_detector_data *mirq_data)
 {
-	int i;
-
 	if(mirq_data == NULL)
 		return -EINVAL;
 
@@ -353,27 +258,11 @@ static int create_proc_entry(struct irq_detector_data *mirq_data)
 		return -ENOMEM;
 	}
 
-	for (i = 0; i < ARRAY_SIZE(irq_diag_files); i++) {
-		const struct irq_diag_file *f = &irq_diag_files[i];
-
-		if (!proc_create(f->filename, S_IWUSR | S_IRUSR, 
-					mirq_data->proc_dir, &f->ops))
-			goto enomem;
-	}
-
-#if 0
 	scnprintf(mirq_data->name, 20, "irq_storm_stat");
 	mirq_data->proc_file = proc_create(mirq_data->name, 
 			S_IWUSR | S_IRUSR, mirq_data->proc_dir, &procfs_test_pops);
         if (!mirq_data->proc_file) {
                 return -ENOMEM;
-	}
-#endif
-	
-enomem:
-	while (--i >= 0) {
-		const struct irq_diag_file *f = &irq_diag_files[i];
-		remove_proc_entry(f->filename, NULL);
 	}
 
 	return 0;
@@ -381,18 +270,11 @@ enomem:
 
 static void delete_proc_entry(struct irq_detector_data *mirq_data)
 {
-	int i;
 
-//	if(mirq_data == NULL)
-//		return;
+	if(mirq_data == NULL)
+		return;
 
-//	remove_proc_entry("irq_storm_stat", mirq_data->proc_dir);
-	for (i = 0; i < ARRAY_SIZE(irq_diag_files); i++) {
-		const struct irq_diag_file *f = &irq_diag_files[i];
-
-		remove_proc_entry(f->filename, NULL);
-	}
-
+	remove_proc_entry("irq_storm_stat", mirq_data->proc_dir);
 	remove_proc_entry("irq_diag", NULL);
 }
 
@@ -419,7 +301,6 @@ static int irq_detector_probe(struct platform_device *pdev)
 
 	ktime = ktime_set(0, MS_TO_NS(delay_in_ms) );
 
-#if 0
 	hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
 	mirq_data->mhr_timer.function = &read_irq_interval_cb;
 
@@ -427,7 +308,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 					delay_in_ms, jiffies );
 
 	hrtimer_start(&mirq_data->mhr_timer, ktime, HRTIMER_MODE_REL);
-#endif
+
 	platform_set_drvdata(pdev, mirq_data);
 
 	//procfs_test_buffer = kmalloc(MAX_SIZE, GFP_KERNEL);
@@ -440,7 +321,6 @@ static int irq_detector_probe(struct platform_device *pdev)
 		goto probe_fail;
 	}
 
-#if 0
 	mirq_data->irq_poll_thread = kthread_create(thread_function, 
 					mirq_data, "Irq Poll Thread");
 	if (IS_ERR(mirq_data->irq_poll_thread))
@@ -452,7 +332,7 @@ static int irq_detector_probe(struct platform_device *pdev)
             pr_err("Cannot create kthread\n");
             goto probe_fail;
         }
-#endif
+
 	pr_alert("DBG: In function - %s, Line - %d\n", __func__, __LINE__);
 
 probe_fail:

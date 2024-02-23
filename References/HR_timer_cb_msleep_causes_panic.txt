@@ -1,0 +1,78 @@
+
+Added msleep(100) in HR timer callback. resulted in kernel panic: -
+====================================================================
+
+[    1.864282] Hardware name: Texas Instruments AM642 EVM (DT)
+[    1.869838] Call trace:
+[    1.872273]  dump_backtrace.part.0+0xdc/0xf0
+[    1.876538]  show_stack+0x18/0x30
+[    1.879848]  dump_stack_lvl+0x68/0x84
+[    1.883503]  dump_stack+0x18/0x34
+[    1.886812]  dequeue_task_idle+0x30/0x60
+[    1.890728]  __schedule+0x470/0x704
+[    1.894211]  schedule+0x5c/0xcc
+[    1.897349]  schedule_timeout+0x80/0xf0
+[    1.901177]  msleep+0x2c/0x40
+[    1.904137]  read_irq_interval_cb+0xb8/0xc0
+[    1.908313]  __hrtimer_run_queues+0x138/0x1d0
+[    1.912660]  hrtimer_interrupt+0xe8/0x244
+[    1.916661]  arch_timer_handler_phys+0x34/0x44
+[    1.921099]  handle_percpu_devid_irq+0x84/0x130
+[    1.925620]  generic_handle_domain_irq+0x2c/0x44
+[    1.930230]  gic_handle_irq+0x50/0x124
+[    1.933973]  call_on_irq_stack+0x24/0x4c
+[    1.937888]  do_interrupt_handler+0x80/0x84
+[    1.942065]  el1_interrupt+0x34/0x70
+[    1.945633]  el1h_64_irq_handler+0x18/0x2c
+[    1.949722]  el1h_64_irq+0x64/0x68
+[    1.953115]  arch_cpu_idle+0x18/0x2c
+[    1.956684]  default_idle_call+0x30/0x6c
+[    1.960599]  do_idle+0x244/0x2c0
+[    1.963820]  cpu_startup_entry+0x24/0x30
+[    1.967736]  kernel_init+0x0/0x12c
+[    1.971131]  arch_post_acpi_subsys_init+0x0/0x18
+[    1.975742]  start_kernel+0x65c/0x69c
+[    1.979398]  __primary_switched+0xbc/0xc4
+[    1.986579] Unable to handle kernel paging request at virtual address 000000005cc9590f
+[    1.994592] Mem abort info:
+[    1.997413]   ESR = 0x0000000096000004
+[    1.997509] mmc0: CQHCI version 5.10
+[    2.004653]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    2.004754]   SET = 0, FnV = 0
+[    2.004760]   EA = 0, S1PTW = 0
+[    2.004764]   FSC = 0x04: level 0 translation fault
+[    2.004769] Data abort info:
+[    2.004771]   ISV = 0, ISS = 0x00000004
+[    2.004774]   CM = 0, WnR = 0
+[    2.030801] [000000005cc9590f] user address but active_mm is swapper
+[    2.037176] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+[    2.043434] Modules linked in:
+[    2.046488] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W          6.1.46Mirf-dirty #23
+[    2.051675] mmc0: SDHCI controller on fa10000.mmc [fa10000.mmc] using ADMA 64-bit
+[    2.054824] Hardware name: Texas Instruments AM642 EVM (DT)
+[    2.054830] pstate: 00000005 (nzcv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    2.054840] pc : enqueue_top_rt_rq+0x0/0xc0
+[    2.054863] lr : enqueue_task_rt+0x68/0x10c
+[    2.083147] sp : ffff800008003e10
+[    2.086450] x29: ffff800008003e30 x28: 0000000000000000 x27: ffff800008e255f0
+[    2.093579] x26: 0000000000000001 x25: 00000000000000c0 x24: 000000005cc9502f
+[    2.100705] x23: ffff00007fbbd500 x22: ffff00007fbbd560 x21: ffff800009979a70
+[    2.107833] x20: 0000000000000009 x19: 0000000000000000 x18: 0000000000000000
+[    2.114960] x17: 342e312e36202020 x16: 2020202020202057 x15: 0000000000000222
+[    2.122087] x14: 0000000000000000 x13: 0000000000000000 x12: 0000000000000000
+[    2.129214] x11: 0000000000000001 x10: 0000000000000000 x9 : 0000000000000001
+[    2.136341] x8 : 0000000000000000 x7 : ffff0000001b8c80 x6 : ffff000001546740
+[    2.143468] x5 : 0000000000000001 x4 : 0000000000000000 x3 : ffff80000a541458
+[    2.150595] x2 : 0000000000000001 x1 : ffff80000a193ec0 x0 : 000000005cc9526f
+[    2.157724] Call trace:
+[    2.160161]  enqueue_top_rt_rq+0x0/0xc0
+[    2.163991]  sched_clock_cpu+0x14/0x2c
+[    2.167735]  update_rq_clock.part.0+0x1c/0x110
+[    2.172172]  update_rq_clock+0x1c/0x30
+[    2.175913]  _nohz_idle_balance.isra.0+0x17c/0x320
+[    2.180695]  run_rebalance_domains+0x64/0x74
+[    2.184957]  0x38
+[    2.186884] Code: a9046bf9 a90573fb 943e504e d503201f (f9435001)
+[    2.192967] ---[ end trace 0000000000000000 ]---
+[    2.197691] Kernel panic - not syncing: Attempted to kill the idle task!
+[    2.197739] gpio-mux mux-controller: 2-way mux-controller registered
