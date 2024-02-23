@@ -82,7 +82,7 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *timer )
 
         //}
 
-    return HRTIMER_RESTART;
+	return HRTIMER_RESTART;
 }
 #endif
 
@@ -178,7 +178,7 @@ static int show_irq_statistics(struct seq_file *seq, void *pdata)
 	return 0;
 }
 
-static int procfs_test_open(struct inode *inode, struct file *file)
+static int irq_diag_open(struct inode *inode, struct file *file)
 {
 	/*  */
 	//struct platform_device *pdev = PDE_DATA(inode);
@@ -325,9 +325,14 @@ static const struct irq_diag_file irq_diag_files[] = {
 	{
 		.filename	= "irq_diag_cmd",
 		.status		= NULL,
-		.ops.proc_read	= rtas_flash_read_msg,
-		.ops.proc_write	= rtas_flash_write,
-		.ops.proc_release = rtas_flash_release,
+		.ops.proc_open	= irq_diag_open,
+#ifndef CONFIG_SEQ_READ
+		.ops.proc_read	= irq_diag_read_cmd,
+#else
+		.ops.proc_read = seq_read,
+#endif
+		.ops.proc_write	= irq_diag_write_cmd,
+		.ops.proc_release = irq_diag_release,
 		.ops.proc_lseek	= default_llseek,
 	},
 	{
