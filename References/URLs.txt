@@ -12,5 +12,6 @@ https://docs.kernel.org/core-api/genericirq.html
 3. Sample codes: -
 https://sysprog21.github.io/lkmpg/#avoiding-collisions-and-deadlocks
 
-4. 
+4. Interrupt Core API documentation: -
+https://www.kernel.org/doc/html/v4.15/core-api/genericirq.html
 
