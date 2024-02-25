@@ -8,6 +8,7 @@
 #include <linux/init.h>
 #include <linux/kernel.h>
 #include <linux/module.h>
+#include <linux/version.h>
 #include <linux/platform_device.h>
 #include <linux/proc_fs.h>
 #include <linux/slab.h>
@@ -35,12 +36,21 @@
 struct irq_desc *irq_desc_node;
 int irq;
 
+/*
+ * Manifest of proc files to create
+ */
+struct irq_diag_file {
+	const char *filename;
+	int *status;
+	const struct proc_ops ops;
+};
+
 struct irq_detector_data {
 	char 				name[20];
 	struct platform_device		*pdev;
 	struct mutex			mutex_lock;
 	struct proc_dir_entry		*proc_dir;
-	struct proc_dir_entry		*proc_file;
+	struct irq_diag_file		*mproc_files;
 	unsigned long			irq_interval_threshold_us;
 	atomic_t 			inst_irq_rate;
 	void				*virt_addr;
@@ -151,9 +161,10 @@ static int start_irq_rate_calc(struct irq_detector_data *mirq_data)
 {
 	int ret = 0;
 	ktime_t ktime;
+	unsigned long delay_in_ms = SAMPLING_INTERVAL;
 
 	if(mirq_data == NULL) {
-		ret = -EINVALID;
+		ret = -EINVAL;
 		goto out;
 	}
 
@@ -173,7 +184,7 @@ static void log_irq_timestamp(void)
 
 }
 
-static int show_irq_statistics(struct seq_file *seq, void *pdata)
+static int show_irq_cmd(struct seq_file *seq, void *pdata)
 {
 //	seq_puts(seq, "Open Boottime\n");
 //	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", timedata.phys_addr,
@@ -213,7 +224,7 @@ static int irq_diag_open_cmd(struct inode *inode, struct file *file)
 #endif
 
 	pr_alert("DBG: In func - %s\n", __func__);
-	ret = single_open(file, show_irq_statistics, mirq_data);
+	ret = single_open(file, show_irq_cmd, mirq_data);
 
 	return ret;
 }
@@ -294,7 +305,7 @@ static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
 	}
 
 out:
-	kfree(temp_buffer);
+	kfree(temp_buf);
 	return ret;
 }
 
@@ -353,14 +364,51 @@ static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf,
 	return bytes;
 }
 
-/*
- * Manifest of proc files to create
- */
-struct irq_diag_file {
-	const char *filename;
-	int *status;
-	const struct proc_ops ops;
-};
+static int show_irq_stat(struct seq_file *seq, void *pdata)
+{
+	return 0;
+}
+
+static int irq_diag_open_stat(struct inode *inode, struct file *file)
+{
+	struct irq_detector_data *mirq_data;
+	int ret;
+
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
+	mirq_data = pde_data(inode);
+#else
+    mirq_data = PDEV_DATA(inode);
+#endif
+
+	pr_alert("DBG: In func - %s\n", __func__);
+
+	ret = single_open(file, show_irq_stat, mirq_data);
+
+	return ret;
+}
+
+static int irq_diag_release_stat(struct inode *inode, struct file *file)
+{
+	int res = single_release(inode, file);
+
+	return res;
+}
+
+static ssize_t irq_diag_write_stat(struct file *filep, const char __user *buf,
+      size_t count, loff_t *off)
+{
+	int ret = count;
+	
+	return ret;
+}
+
+static ssize_t irq_diag_read_stat(struct file *filep, char __user *user_buf,
+                size_t count, loff_t *offset)
+{
+	ssize_t bytes = count;
+	
+	return bytes;
+}
 
 static const struct irq_diag_file irq_diag_files[] = {
 	{
@@ -385,11 +433,12 @@ static const struct irq_diag_file irq_diag_files[] = {
 		.ops.proc_release = irq_diag_release_stat,
 		.ops.proc_lseek	= default_llseek,
 	},
-}
+};
 
 static int create_proc_entry(struct irq_detector_data *mirq_data)
 {
 	int i;
+	struct irq_diag_file *f;
 
 	if(mirq_data == NULL)
 		return -EINVAL;
@@ -401,7 +450,7 @@ static int create_proc_entry(struct irq_detector_data *mirq_data)
 	}
 
 	for (i = 0; i < ARRAY_SIZE(irq_diag_files); i++) {
-		const struct irq_diag_file *f = &irq_diag_files[i];
+		f = &mirq_data->mproc_files[i];
 
 		if (!proc_create_data(f->filename, S_IWUSR | S_IRUSR, 
 					mirq_data->proc_dir, &f->ops, mirq_data))
@@ -419,7 +468,7 @@ static int create_proc_entry(struct irq_detector_data *mirq_data)
 	
 enomem:
 	while (--i >= 0) {
-		const struct irq_diag_file *f = &irq_diag_files[i];
+		f = &mirq_data->mproc_files[i];
 		remove_proc_entry(f->filename, NULL);
 	}
 
@@ -429,13 +478,14 @@ enomem:
 static void delete_proc_entry(struct irq_detector_data *mirq_data)
 {
 	int i;
+	struct irq_diag_file *f;
 
 //	if(mirq_data == NULL)
 //		return;
 
 //	remove_proc_entry("irq_storm_stat", mirq_data->proc_dir);
 	for (i = 0; i < ARRAY_SIZE(irq_diag_files); i++) {
-		const struct irq_diag_file *f = &irq_diag_files[i];
+		f = &mirq_data->mproc_files[i];
 
 		remove_proc_entry(f->filename, NULL);
 	}
@@ -450,7 +500,6 @@ static int irq_detector_probe(struct platform_device *pdev)
 	struct device *dev = &pdev->dev;
 	struct device_node *np;
 	int ret = 0;
-	unsigned long delay_in_ms = SAMPLING_INTERVAL;
 
 	if(dev == NULL) {
 		ret = -EINVAL;
@@ -463,6 +512,8 @@ static int irq_detector_probe(struct platform_device *pdev)
                 return -ENOMEM;
 
 	mirq_data->irq_timestamp = jiffies;
+
+	mirq_data->mproc_files = irq_diag_files;
 
 	hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
 	mirq_data->mhr_timer.function = &read_irq_interval_cb;
