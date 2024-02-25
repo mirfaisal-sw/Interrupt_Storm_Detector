@@ -42,3 +42,69 @@ static const struct rtas_flash_file rtas_flash_files[] = {
 
 
 https://android.googlesource.com/kernel/tegra.git/+/android-8.1.0_r0.123/arch/powerpc/kernel/rtas-proc.c?autodive=0%2F%2F%2F
+
+
+void *PDE_DATA(const struct inode *inode)
+{
+	return __PDE_DATA(inode);
+}
+EXPORT_SYMBOL(PDE_DATA);
+
+static inline void *__PDE_DATA(const struct inode *inode)
+{
+	return PDE(inode)->data;
+}
+
+API: PDE_DATA( ): -
+=====================
+`pde_data()` is a function used in the Linux kernel codebase. It is typically used to retrieve data associated
+ with a specific entry in the kernel's "per-device" or "per-CPU" data structures. The "pde" stands for "proc 
+ directory entry," indicating that this function is often used in the context of the `/proc` filesystem, which
+ provides an interface for user-space programs to access kernel data.
+
+Here's a general overview of what `pde_data()` does:
+
+1. **Input**: It takes as input a pointer to a `struct proc_dir_entry`, which represents an entry in the `/proc`
+ filesystem. This entry typically corresponds to a particular piece of kernel data that is exposed to user-space.
+
+2. **Output**: It returns a pointer to the data associated with that proc directory entry.
+
+3. **Purpose**: This function is commonly used when implementing kernel modules or subsystems that need to expose
+ some data to user-space through the `/proc` filesystem. The data associated with a proc directory entry could be
+ dynamically allocated or could be part of a larger data structure. `pde_data()` simplifies the process of accessing
+ this data.
+
+For a more detailed understanding, you would need to refer to the specific context in the Linux kernel source code where
+`pde_data()` is being used, as its usage and behavior can vary depending on the context.
+
+
+
+Ex: - https://elixir.bootlin.com/linux/v4.4/source/arch/cris/arch-v10/kernel/fasttimer.c#L633
+==================
+//int single_open_size(struct file *, int (*)(struct seq_file *, void *), void *, size_t);
+
+
+static int proc_fasttimer_show(struct seq_file *m, void *v)
+{
+
+}
+
+static int proc_fasttimer_open(struct inode *inode, struct file *file)
+{
+	return single_open_size(file, proc_fasttimer_show, PDE_DATA(inode), BIG_BUF_SIZE);
+}
+
+static const struct file_operations proc_fasttimer_fops = {
+	.open		= proc_fasttimer_open,
+	.read		= seq_read,
+	.llseek		= seq_lseek,
+	.release	= single_release,
+};
+
+int fast_timer_init(void)
+{
+	//....
+
+   proc_create("fasttimer", 0, NULL, &proc_fasttimer_fops);
+
+}
