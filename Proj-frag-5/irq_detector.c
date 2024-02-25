@@ -2,6 +2,7 @@
  *
  *
  */
+//Reference:  - https://elixir.bootlin.com/linux/v5.15.70/source/arch/powerpc/kernel/rtas_flash.c#L654
 
 #include <linux/kernel_stat.h>
 #include <linux/init.h>
@@ -146,6 +147,27 @@ static void read_irq_data(void)
 }
 #endif
 
+static int start_irq_rate_calc(struct irq_detector_data *mirq_data)
+{
+	int ret = 0;
+	ktime_t ktime;
+
+	if(mirq_data == NULL) {
+		ret = -EINVALID;
+		goto out;
+	}
+
+	ktime = ktime_set(0, MS_TO_NS(delay_in_ms) );
+
+	pr_info("Starting timer to fire in %ldms (%ld)\n", \
+					delay_in_ms, jiffies );
+
+	hrtimer_start(&mirq_data->mhr_timer, ktime, HRTIMER_MODE_REL);
+
+out: 
+	return ret;
+}
+
 static void log_irq_timestamp(void)
 {
 
@@ -178,19 +200,25 @@ static int show_irq_statistics(struct seq_file *seq, void *pdata)
 	return 0;
 }
 
-static int irq_diag_open(struct inode *inode, struct file *file)
+static int irq_diag_open_cmd(struct inode *inode, struct file *file)
 {
 	/*  */
-	//struct platform_device *pdev = PDE_DATA(inode);
-	struct platform_device *pdev = pde_data(inode);
+	struct irq_detector_data *mirq_data;
 	int ret;
 
-	ret = single_open(file, show_irq_statistics, pdev);
+#if(LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
+	mirq_data = pde_data(inode);
+#else
+	mirq_data = PDEV_DATA(inode);
+#endif
+
+	pr_alert("DBG: In func - %s\n", __func__);
+	ret = single_open(file, show_irq_statistics, mirq_data);
 
 	return ret;
 }
 
-static int procfs_test_release(struct inode *inode, struct file *file)
+static int irq_diag_release_cmd(struct inode *inode, struct file *file)
 {
 	int res = single_release(inode, file);
 
@@ -216,42 +244,61 @@ static int parse_number(const char __user *p, size_t count, unsigned int *val)
 	return 0;
 }
 
-static ssize_t procfs_test_write(struct file *filep, const char __user *buf,
-      size_t length, loff_t *off)
+static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
+      size_t count, loff_t *off)
 {
 	int ret;
 	unsigned long n;
 	unsigned int irq_cnt = 0;
 
-	char *temp_buffer = kzalloc(32, GFP_USER);
+	struct irq_detector_data *mirq_data;
 
-	if (!temp_buffer)
+#if(LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
+        mirq_data = pde_data(file_inode(filep));
+#else
+        mirq_data = PDE_DATA(file_inode(filep));
+#endif
+
+	char *temp_buf = kzalloc(32, GFP_USER);
+
+	if (!temp_buf)
 		return -ENOMEM;
 
 	ret = -EINVAL;
-	if (length >= PAGE_SIZE)
+	if (count >= PAGE_SIZE)
 		goto out;
 
 	ret = -EFAULT;
-	if (copy_from_user(temp_buffer, buf, length))
+	if (copy_from_user(temp_buf, buf, count))
 		goto out;
 
-	temp_buffer[length] = '\0';
+	temp_buf[count-1] = '\0';
 
 	//irq_cnt = kstat_irqs_cpu(152, 0);
 	//struct irq_desc *desc = irq_data_to_desc(152);
-	ret = length;
-	pr_alert("DBG: String: %s, length - %d\n", temp_buffer, length);
+	ret = count;
+	pr_alert("DBG: String: %s, length - %d\n", temp_buf, count);
 
-	ret = parse_number(buf, length, &irq_cnt);
-	if(ret != 0)
-		goto out;
+	if(!strcmp(temp_buf, "on")) { /*Start IRQ scanning*/
+
+	} else if (!strcmp(temp_buf, "off")) { /*Stop IRQ scanning*/
+
+	} else if ((*temp_buf > 0) && (*temp_buf <= 65535)) {
+
+		ret = parse_number(buf, count, &irq_cnt);
+		if(ret != 0)
+			goto out;
+	} else {
+		pr_alert("DBG: Wrong command\n");
+		ret = -EINVAL;
+	}
+
 out:
 	kfree(temp_buffer);
 	return ret;
 }
 
-static ssize_t procfs_test_read(struct file *filep, char __user *user_buf, 
+static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf, 
 		size_t length, loff_t *offset)
 {
 	char str[13] = "HelloWorld!\n";
@@ -261,6 +308,13 @@ static ssize_t procfs_test_read(struct file *filep, char __user *user_buf,
 	int len_str = sizeof(str);
 	ssize_t ret = len_str;
 
+	struct irq_detector_data *mirq_data;
+
+#if(LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
+        mirq_data = pde_data(file_inode(filep));
+#else
+        mirq_data = PDE_DATA(file_inode(filep));
+#endif
 	bytes = min(len_str, length);
 
 	pstr = str;
@@ -299,19 +353,6 @@ static ssize_t procfs_test_read(struct file *filep, char __user *user_buf,
 	return bytes;
 }
 
-static struct proc_ops procfs_test_pops = {
-	.proc_open = procfs_test_open,
-	.proc_write = procfs_test_write,
-
-#ifndef CONFIG_SEQ_READ
-	.proc_read = procfs_test_read,
-#else
-	.proc_read = seq_read,
-#endif
-
-	.proc_release = procfs_test_release,
-};
-
 /*
  * Manifest of proc files to create
  */
@@ -325,22 +366,23 @@ static const struct irq_diag_file irq_diag_files[] = {
 	{
 		.filename	= "irq_diag_cmd",
 		.status		= NULL,
-		.ops.proc_open	= irq_diag_open,
+		.ops.proc_open	= irq_diag_open_cmd,
 #ifndef CONFIG_SEQ_READ
 		.ops.proc_read	= irq_diag_read_cmd,
 #else
 		.ops.proc_read = seq_read,
 #endif
 		.ops.proc_write	= irq_diag_write_cmd,
-		.ops.proc_release = irq_diag_release,
+		.ops.proc_release = irq_diag_release_cmd,
 		.ops.proc_lseek	= default_llseek,
 	},
 	{
 		.filename	= "irq_diag_stat",
 		.status		= NULL,
-		.ops.proc_read	= rtas_flash_read_num,
-		.ops.proc_write	= rtas_flash_write,
-		.ops.proc_release = rtas_flash_release,
+		.ops.proc_open  = irq_diag_open_stat,
+		.ops.proc_read	= irq_diag_read_stat,
+		.ops.proc_write	= irq_diag_write_stat,
+		.ops.proc_release = irq_diag_release_stat,
 		.ops.proc_lseek	= default_llseek,
 	},
 }
@@ -361,8 +403,8 @@ static int create_proc_entry(struct irq_detector_data *mirq_data)
 	for (i = 0; i < ARRAY_SIZE(irq_diag_files); i++) {
 		const struct irq_diag_file *f = &irq_diag_files[i];
 
-		if (!proc_create(f->filename, S_IWUSR | S_IRUSR, 
-					mirq_data->proc_dir, &f->ops))
+		if (!proc_create_data(f->filename, S_IWUSR | S_IRUSR, 
+					mirq_data->proc_dir, &f->ops, mirq_data))
 			goto enomem;
 	}
 
@@ -401,13 +443,13 @@ static void delete_proc_entry(struct irq_detector_data *mirq_data)
 	remove_proc_entry("irq_diag", NULL);
 }
 
+
 static int irq_detector_probe(struct platform_device *pdev)
 {
 	struct irq_detector_data *mirq_data;
 	struct device *dev = &pdev->dev;
 	struct device_node *np;
 	int ret = 0;
-	ktime_t ktime;
 	unsigned long delay_in_ms = SAMPLING_INTERVAL;
 
 	if(dev == NULL) {
@@ -422,17 +464,10 @@ static int irq_detector_probe(struct platform_device *pdev)
 
 	mirq_data->irq_timestamp = jiffies;
 
-	ktime = ktime_set(0, MS_TO_NS(delay_in_ms) );
-
-#if 0
 	hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
 	mirq_data->mhr_timer.function = &read_irq_interval_cb;
 
-	pr_info("Starting timer to fire in %ldms (%ld)\n", \
-					delay_in_ms, jiffies );
 
-	hrtimer_start(&mirq_data->mhr_timer, ktime, HRTIMER_MODE_REL);
-#endif
 	platform_set_drvdata(pdev, mirq_data);
 
 	//procfs_test_buffer = kmalloc(MAX_SIZE, GFP_KERNEL);
