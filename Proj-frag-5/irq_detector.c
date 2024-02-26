@@ -26,6 +26,7 @@
 #include <linux/hrtimer.h>
 #include <linux/ktime.h>
 #include <linux/kstrtox.h>
+#include <linux/preempt.h>
 
 #define SAMPLING_INTERVAL	5000L /*10 milli second*/
 #define MS_TO_NS(x)		(x * 1E6L)
@@ -71,11 +72,14 @@ u8 cnt = 0;
 enum hrtimer_restart read_irq_interval_cb( struct hrtimer *timer )
 {
 	//pr_info( "my_hrtimer_callback called (%ld).\n", jiffies );
-
+	char check_context;
+	
 	struct irq_detector_data *mirq_data;
 	mirq_data = container_of(timer, struct irq_detector_data, mhr_timer);
 
-	pr_alert("In func - %s, line - %d\n", __func__, __LINE__);
+	check_context = in_ interrupt();
+	
+	pr_alert("In func - %s, line - %d, context = %d\n", __func__, __LINE__, check_context);
  	//for_each_irq_desc(irq, irq_desc_node) {
 
 	//if(cnt %20) {

@@ -1,0 +1,124 @@
+
+
+Using Kernel timer: -
+==============================
+In order to use a kernel timer, we must follow a few steps. 
+
+1. Initialize the timer metadata structure (struct timer_list) with the timer_setup() macro. The key items that get initialized here are as follows:
+
+	The time to expire by (that value that jiffies should reach for the timer to expire).
+	
+	The function to invoke when the timer expires – in effect, the timer "callback" function.
+	
+2. Write timer callback routine.
+
+3. When appropriate, "arm" the timer – that is, have it start – by invoking the add_timer() (or mod_timer()) function.
+
+4. When the timer times out (expires), the OS will automatically invoke your timer's callback function, it will be running in the timer softirq or an atomic
+	or interrupt context.
+
+5. (Optional) Timers are not cyclic, they are one-time by default. To have your timer run again, you will have to invoke the mod_timer() API; this is how you
+	can set up an interval timer – one that times out at a given fixed time interval. If you don't perform this step, your timer will be a one-shot timer - it
+	will count down and expire exactly once.
+	
+6. When you are done, delete the timer with del_timer[_sync](); this can also be used to cancel the timeout. It returns a value denoting whether a pending timer
+  has been deactivated or not; that is, it returns 1 for an active timer or 0 for an inactive timer being canceled.
+  
+  // include/linux/timer.h
+	struct timer_list {[ ... ]
+		unsigned long expires;
+		void (*function)(struct timer_list *);
+		u32 flags; 
+	[ ...] };
+
+Use the timer_setup() macro to initialize it:
+
+	timer_setup(timer, callback, flags);
+	
+The parameters of timer_setup() are as follows:
+
+@timer: The pointer to the timer_list data structure (this should be allocated memory first; also, prefixing the formal parameter name with an @ is a common convention).
+
+@callback: The pointer to the callback function. This is the function that the OS invokes (in the softirq context) when the timer expires. Its signature is
+void (*function)(struct timer_list *);. The parameter you receive in the callback function is the pointer to the timer_list data structure. So, how can we pass and access some 
+arbitrary data within our timer callback? We'll answer this question shortly.
+
+@flags: These are the timer flags. We typically pass this as 0 (implying no special behavior). The flags you can specify are TIMER_DEFERRABLE, TIMER_PINNED, and TIMER_IRQSAFE. 
+Let's look at both in the kernel source code:
+
+
+=> Next, use the add_timer() API to arm, or start, the timer. Once called, the timer is "live" and starts counting down:
+
+	void add_timer(struct timer_list *timer);
+	
+	Its parameter is the pointer to the timer_list structure that you just initialized (via the timer_setup() macro).
+
+
+HR timers: -
+==============
+Reference: https://embetronicx.com/tutorials/linux/device-drivers/using-high-resolution-timer-in-linux-device-driver/
+
+Kernel Timers are bound to jiffies. But this High Resolution Timer (HRT) is bound with 64-bit nanoseconds resolution.
+
+struct hrtimer {
+  struct rb_node node;
+  ktime_t expires;
+  int (* function) (struct hrtimer *);
+  struct hrtimer_base * base;
+};
+
+If we want to use HR timer as periodic timer, then we have to return "HRTIMER_RESTART" from callback function.
+
+=> Start HR timer: -
+	int hrtimer_start(struct hrtimer *timer, ktime_t time, const enum hrtimer_mode mode);
+
+=> Stop HR timer: -
+	int hrtimer_cancel(struct hrtimer * timer);
+	
+=> ktime_set()
+ktime_t is used to store a time value in nanoseconds. On 64-bit systems, a ktime_t is really just a 64-bit integer value in nanoseconds.
+The below function is used to get the ktime_t from seconds and nanoseconds.
+
+ktime_set(long secs, long nanosecs);
+
+Arguments:
+	secs – seconds to set
+	nsecs – nanoseconds to set
+
+Return:
+	The ktime_t representation of the value.	
+	
+Points to remember about HR timer: -
+-------------------------------------
+This timer callback function will be executed from the interrupt context. If you want to check that, you can use function in_ interrupt( ), which takes no parameters and returns
+nonzero if the processor is currently running in interrupt context, either hardware interrupt or software interrupt. Since it is running in an interrupt context, the user cannot
+perform some actions inside the callback function mentioned below.
+
+* Go to sleep or relinquish the processor
+* Acquire a mutex
+* Perform time-consuming tasks
+* Access user space virtual memory
+
+
+
+kernel-global workqueue
+============================== 
+
+The key characteristics of the workqueue are as follows:
+
+The workqueue task(s) (callbacks) always execute in a preemptible process context. This is obvious once you realize that they are executed by kernel (worker) threads, 
+which run in a preemptible process context.
+By default, all interrupts are enabled and no locks are taken.
+The aforementioned points imply that you can do lengthy, blocking, I/O-bound work within your workqueue function(s) (this is diametrically opposite to an atomic context
+such as a hardirq, tasklet, or softirq!).
+Just as you learned about kernel threads, transferring data to and from user space (via the typical copy_[to|from]_user() and similar routines) is not possible; this is 
+because your workqueue handler (function) executes within its own process context – that of a kernel thread. As we know, kernel threads have no user mapping.
+The kernel workqueue framework maintains worker pools. These are literally several kernel worker threads organized in differing ways according to their needs. The kernel
+handles all the complexity of managing them, as well as concurrency concerns. The following screenshot shows several workqueue kernel worker threads (this was taken on my
+x86_64 Ubuntu 20.04 guest VM):
+
+# ps -e | grep kworker
+
+It's important to understand that the kernel has an always-ready default workqueue available for use; it's known as the kernel-global workqueue or system workqueue. To avoid
+stressing the system, it's highly recommended that you use it. We shall use the kernel-global workqueue, enque our work task(s) on it, and have it consume our work.
+
