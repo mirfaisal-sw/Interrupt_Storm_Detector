@@ -1,6 +1,6 @@
 
 
-Using Kernel timer: -
+I. Using Kernel timer: -
 ==============================
 In order to use a kernel timer, we must follow a few steps. 
 
@@ -54,7 +54,7 @@ Let's look at both in the kernel source code:
 	Its parameter is the pointer to the timer_list structure that you just initialized (via the timer_setup() macro).
 
 
-HR timers: -
+II. HR timers: -
 ==============
 Reference: https://embetronicx.com/tutorials/linux/device-drivers/using-high-resolution-timer-in-linux-device-driver/
 
@@ -90,9 +90,10 @@ Return:
 	
 Points to remember about HR timer: -
 -------------------------------------
-This timer callback function will be executed from the interrupt context. If you want to check that, you can use function in_ interrupt( ), which takes no parameters and returns
-nonzero if the processor is currently running in interrupt context, either hardware interrupt or software interrupt. Since it is running in an interrupt context, the user cannot
-perform some actions inside the callback function mentioned below.
+This timer callback function will be executed from the interrupt context. If you want to check that, you can use function in_interrupt( ),
+which takes no parameters and returns nonzero if the processor is currently running in interrupt context, either hardware interrupt or 
+software interrupt. Since it is running in an interrupt context, the user cannot perform some actions inside the callback function 
+mentioned below.
 
 * Go to sleep or relinquish the processor
 * Acquire a mutex
@@ -101,24 +102,33 @@ perform some actions inside the callback function mentioned below.
 
 
 
-kernel-global workqueue
+III. kernel-global workqueue
 ============================== 
 
-The key characteristics of the workqueue are as follows:
+The key characteristics of the workqueue are as follows: -
+-------------------------------------------------------------
 
-The workqueue task(s) (callbacks) always execute in a preemptible process context. This is obvious once you realize that they are executed by kernel (worker) threads, 
-which run in a preemptible process context.
-By default, all interrupts are enabled and no locks are taken.
-The aforementioned points imply that you can do lengthy, blocking, I/O-bound work within your workqueue function(s) (this is diametrically opposite to an atomic context
-such as a hardirq, tasklet, or softirq!).
-Just as you learned about kernel threads, transferring data to and from user space (via the typical copy_[to|from]_user() and similar routines) is not possible; this is 
-because your workqueue handler (function) executes within its own process context – that of a kernel thread. As we know, kernel threads have no user mapping.
-The kernel workqueue framework maintains worker pools. These are literally several kernel worker threads organized in differing ways according to their needs. The kernel
-handles all the complexity of managing them, as well as concurrency concerns. The following screenshot shows several workqueue kernel worker threads (this was taken on my
-x86_64 Ubuntu 20.04 guest VM):
+1. The workqueue task(s) (callbacks) always execute in a preemptible process context.
+They are executed by kernel (worker) threads, which run in a preemptible process context.
+
+2. By default, all interrupts are enabled and no locks are taken. The aforementioned points imply that you can do lengthy, blocking, 
+I/O-bound work within your workqueue function(s) (this is diametrically opposite to an atomic context such as a hardirq, tasklet,
+or softirq !).
+
+3. Just as we learned about kernel threads, transferring data to and from user space (via the typical copy_[to|from]_user() and similar 
+routines) is not possible with workqueue; this is because our workqueue handler (function) executes within its own process context – that of a kernel
+thread. As we know, kernel threads have no user mapping.
+
+4. The kernel workqueue framework maintains worker pools. These are literally several kernel worker threads organized in differing ways 
+according to their needs. The kernel handles all the complexity of managing them, as well as concurrency concerns. The following screenshot 
+shows several workqueue kernel worker threads (this was taken on my x86_64 Ubuntu 20.04 guest VM):
 
 # ps -e | grep kworker
 
-It's important to understand that the kernel has an always-ready default workqueue available for use; it's known as the kernel-global workqueue or system workqueue. To avoid
-stressing the system, it's highly recommended that you use it. We shall use the kernel-global workqueue, enque our work task(s) on it, and have it consume our work.
+VVI
+5. It's important to understand that the kernel has an always-ready default workqueue available for use; it's known as the kernel-global 
+workqueue or system workqueue. To avoid stressing the system, it's highly recommended that we use it. We shall use the kernel-global
+workqueue, enque our work task(s) on it, and have it consume our work.
 
+III.a) Using the kernel-global workqueue
+==========================================
