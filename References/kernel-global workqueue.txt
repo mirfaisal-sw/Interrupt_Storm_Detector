@@ -175,7 +175,7 @@ INIT_WORK() macro.
 	#include <linux/workqueue.h>
 	INIT_WORK(struct work_struct *_work, work_func_t _func);
 
-Step 2. Execute your work.
+Step 2. Execute your work
 -----------------------------
 
 Calling INIT_WORK() registers the specified work structure and function with
@@ -199,6 +199,9 @@ number of jiffies we want to wait for.
 
 We can pass msecs_to_jiffies(n) value as the second parameter to have it
 execute n milliseconds from now.
+
+To initialize it, just allocate memory to it and then make use of the 
+INIT_DELAYED_WORK().
 
 Example: -  schedule_delayed_work(my_work, msecs_to_jiffies(100));
 
@@ -247,7 +250,12 @@ III. Clean up. Typically, in the kernel module (or driver's) cleanup code path,
 cancel it. Preferably, do this with synchronization so that any pending work
 tasks are completed.
 
-Example: -
+Example 1: -
 -----------
 (Simple work queue kernel module)
 URL: - https://github.com/PacktPublishing/Linux-Kernel-Programming-Part-2/blob/main/ch5/workq_simple/workq_simple.c
+
+Example 2: -
+-----------------
+(Write a linux kernel module, which invokes schedule_work() in HR timer
+ interrupt callback.)
