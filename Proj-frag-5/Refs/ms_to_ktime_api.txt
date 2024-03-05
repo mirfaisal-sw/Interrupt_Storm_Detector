@@ -1,0 +1,18 @@
+
+
+
+ms_to_ktime()
+==================
+This API accepts, ms time as argument and returns ktime. This can be used with HR timer 
+API as below.
+
+	hrtimer_init(&test_hrtimer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
+    test_hrtimer.function = &test_hrtimer_handler;
+    hrtimer_start(&test_hrtimer, ms_to_ktime(sampling_period_ms), HRTIMER_MODE_REL);
+	
+	hrtimer_forward_now(&test_hrtimer, ms_to_ktime(sampling_period_ms));
+	
+
+ms_to_jiffies(): -
+====================
+Similarly this API accepts ms time as argument and returns jiffies count.

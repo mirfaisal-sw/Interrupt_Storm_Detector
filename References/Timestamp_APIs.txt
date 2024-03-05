@@ -1,0 +1,35 @@
+
+
+Reference: -
+--------------
+a. LKP Part 2 book, Billimoria
+
+
+1. ktime_get_real_fast_ns()
+This API is fast and NMI safe.
+This routine internally queries the wall (clock) time via the ktime_get_real() API and
+then converts the result into a nanosecond quantity.
+
+2. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

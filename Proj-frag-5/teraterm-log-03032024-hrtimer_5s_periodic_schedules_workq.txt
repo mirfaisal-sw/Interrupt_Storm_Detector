@@ -1,0 +1,289 @@
+
+
+root@am64xx-evm:~# cd /proc/irq_diag/
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag# ls
+irq_diag_cmd   irq_diag_stat
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag# echo on > irq_diag_cmd
+[   42.124359] DBG: In func - irq_diag_open_cmd
+[   42.128781] DBG: String: on, length - 3
+[   42.132644] Starting timer to fire in 5000ms (4294902790)
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag# [   47.138086] my_hrtimer_callback called (-140737327427584).
+[   47.143595] In func - read_irq_interval_cb, line - 100, context = 0
+[   47.149881] In our workq function: work_func
+[   47.154182] delta: 26155 ns (~ 26 us)
+[   52.138085] my_hrtimer_callback called (-140737327427584).
+[   52.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[   52.149876] In our workq function: work_func
+[   52.154177] delta: 22940 ns (~ 22 us)
+
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag# [   57.138087] my_hrtimer_callback called (-140737327427584).
+[   57.143595] In func - read_irq_interval_cb, line - 100, context = 0
+[   57.149886] In our workq function: work_func
+[   57.154182] delta: 31940 ns (~ 31 us)
+
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag#
+root@am64xx-evm:/proc/irq_diag# [   62.138087] my_hrtimer_callback called (-140737327427584).
+[   62.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[   62.149924] In our workq function: work_func
+[   62.154221] delta: 63955 ns (~ 63 us)
+[   67.138085] my_hrtimer_callback called (-140737327427584).
+[   67.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[   67.149908] In our workq function: work_func
+[   67.154213] delta: 49815 ns (~ 49 us)
+[   72.138087] my_hrtimer_callback called (-140737327427584).
+[   72.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[   72.149888] In our workq function: work_func
+[   72.154189] delta: 32890 ns (~ 32 us)
+[   77.138086] my_hrtimer_callback called (-140737327427584).
+[   77.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[   77.149905] In our workq function: work_func
+[   77.154251] delta: 47025 ns (~ 47 us)
+[   82.138087] my_hrtimer_callback called (-140737327427584).
+[   82.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[   82.149897] In our workq function: work_func
+[   82.154246] delta: 39605 ns (~ 39 us)
+[   87.138085] my_hrtimer_callback called (-140737327427584).
+[   87.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[   87.149880] In our workq function: work_func
+[   87.154179] delta: 25160 ns (~ 25 us)
+[   92.138088] my_hrtimer_callback called (-140737327427584).
+[   92.143595] In func - read_irq_interval_cb, line - 100, context = 0
+[   92.149878] In our workq function: work_func
+[   92.154193] delta: 24355 ns (~ 24 us)
+[   97.138084] my_hrtimer_callback called (-140737327427584).
+[   97.143596] In func - read_irq_interval_cb, line - 100, context = 0
+[   97.150191] In our workq function: work_func
+[   97.154499] delta: 332880 ns (~ 332 us)
+[  102.138085] my_hrtimer_callback called (-140737327427584).
+[  102.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  102.149873] In our workq function: work_func
+[  102.154171] delta: 23185 ns (~ 23 us)
+[  107.138084] my_hrtimer_callback called (-140737327427584).
+[  107.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  107.149882] In our workq function: work_func
+[  107.154179] delta: 30965 ns (~ 30 us)
+[  112.138087] my_hrtimer_callback called (-140737327427584).
+[  112.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  112.149891] In our workq function: work_func
+[  112.154195] delta: 32475 ns (~ 32 us)
+[  117.138084] my_hrtimer_callback called (-140737327427584).
+[  117.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  117.149879] In our workq function: work_func
+[  117.154171] delta: 28080 ns (~ 28 us)
+[  122.138087] my_hrtimer_callback called (-140737327427584).
+[  122.143595] In func - read_irq_interval_cb, line - 100, context = 0
+[  122.149883] In our workq function: work_func
+[  122.154182] delta: 28970 ns (~ 28 us)
+[  127.138085] my_hrtimer_callback called (-140737327427584).
+[  127.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  127.149879] In our workq function: work_func
+[  127.154174] delta: 25585 ns (~ 25 us)
+[  132.138085] my_hrtimer_callback called (-140737327427584).
+[  132.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  132.149883] In our workq function: work_func
+[  132.154181] delta: 30890 ns (~ 30 us)
+[  137.138085] my_hrtimer_callback called (-140737327427584).
+[  137.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  137.149875] In our workq function: work_func
+[  137.154178] delta: 21020 ns (~ 21 us)
+[  142.138084] my_hrtimer_callback called (-140737327427584).
+[  142.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  142.149874] In our workq function: work_func
+[  142.154170] delta: 24000 ns (~ 24 us)
+[  147.138085] my_hrtimer_callback called (-140737327427584).
+[  147.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  147.149874] In our workq function: work_func
+[  147.154166] delta: 21255 ns (~ 21 us)
+[  152.138085] my_hrtimer_callback called (-140737327427584).
+[  152.143590] In func - read_irq_interval_cb, line - 100, context = 0
+[  152.149875] In our workq function: work_func
+[  152.154173] delta: 24675 ns (~ 24 us)
+[  157.138086] my_hrtimer_callback called (-140737327427584).
+[  157.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  157.149879] In our workq function: work_func
+[  157.154197] delta: 23785 ns (~ 23 us)
+[  162.138086] my_hrtimer_callback called (-140737327427584).
+[  162.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  162.149898] In our workq function: work_func
+[  162.154199] delta: 43155 ns (~ 43 us)
+[  167.138087] my_hrtimer_callback called (-140737327427584).
+[  167.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  167.149874] In our workq function: work_func
+[  167.154171] delta: 21155 ns (~ 21 us)
+[  172.138085] my_hrtimer_callback called (-140737327427584).
+[  172.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  172.149872] In our workq function: work_func
+[  172.154163] delta: 21160 ns (~ 21 us)
+[  177.138086] my_hrtimer_callback called (-140737327427584).
+[  177.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  177.149877] In our workq function: work_func
+[  177.154173] delta: 24260 ns (~ 24 us)
+[  182.138086] my_hrtimer_callback called (-140737327427584).
+[  182.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  182.149918] In our workq function: work_func
+[  182.154218] delta: 63610 ns (~ 63 us)
+[  187.138085] my_hrtimer_callback called (-140737327427584).
+[  187.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  187.149883] In our workq function: work_func
+[  187.154194] delta: 29445 ns (~ 29 us)
+[  192.138085] my_hrtimer_callback called (-140737327427584).
+[  192.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  192.149877] In our workq function: work_func
+[  192.154174] delta: 24085 ns (~ 24 us)
+[  197.138085] my_hrtimer_callback called (-140737327427584).
+[  197.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  197.149877] In our workq function: work_func
+[  197.154178] delta: 22995 ns (~ 22 us)
+[  202.138085] my_hrtimer_callback called (-140737327427584).
+[  202.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  202.149880] In our workq function: work_func
+[  202.154176] delta: 23485 ns (~ 23 us)
+[  207.138085] my_hrtimer_callback called (-140737327427584).
+[  207.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  207.149878] In our workq function: work_func
+[  207.154185] delta: 24280 ns (~ 24 us)
+[  212.138085] my_hrtimer_callback called (-140737327427584).
+[  212.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  212.149879] In our workq function: work_func
+[  212.154186] delta: 24865 ns (~ 24 us)
+[  217.138086] my_hrtimer_callback called (-140737327427584).
+[  217.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  217.149878] In our workq function: work_func
+[  217.154180] delta: 23175 ns (~ 23 us)
+[  222.138086] my_hrtimer_callback called (-140737327427584).
+[  222.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  222.149875] In our workq function: work_func
+[  222.154175] delta: 22645 ns (~ 22 us)
+[  227.138085] my_hrtimer_callback called (-140737327427584).
+[  227.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  227.149878] In our workq function: work_func
+[  227.154177] delta: 24335 ns (~ 24 us)
+[  232.138085] my_hrtimer_callback called (-140737327427584).
+[  232.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  232.149881] In our workq function: work_func
+[  232.154185] delta: 24140 ns (~ 24 us)
+[  237.138085] my_hrtimer_callback called (-140737327427584).
+[  237.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  237.149875] In our workq function: work_func
+[  237.154177] delta: 20925 ns (~ 20 us)
+[  242.138083] my_hrtimer_callback called (-140737327427584).
+[  242.143590] In func - read_irq_interval_cb, line - 100, context = 0
+[  242.149878] In our workq function: work_func
+[  242.154177] delta: 24750 ns (~ 24 us)
+[  247.138086] my_hrtimer_callback called (-140737327427584).
+[  247.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  247.149878] In our workq function: work_func
+[  247.154178] delta: 22605 ns (~ 22 us)
+[  252.138084] my_hrtimer_callback called (-140737327427584).
+[  252.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  252.149884] In our workq function: work_func
+[  252.154186] delta: 28510 ns (~ 28 us)
+[  257.138085] my_hrtimer_callback called (-140737327427584).
+[  257.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  257.149916] In our workq function: work_func
+[  257.154221] delta: 61280 ns (~ 61 us)
+[  262.138083] my_hrtimer_callback called (-140737327427584).
+[  262.143590] In func - read_irq_interval_cb, line - 100, context = 0
+[  262.149874] In our workq function: work_func
+[  262.154172] delta: 24550 ns (~ 24 us)
+[  267.138085] my_hrtimer_callback called (-140737327427584).
+[  267.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  267.149878] In our workq function: work_func
+[  267.154183] delta: 23415 ns (~ 23 us)
+[  272.138088] my_hrtimer_callback called (-140737327427584).
+[  272.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  272.149882] In our workq function: work_func
+[  272.154181] delta: 24795 ns (~ 24 us)
+[  277.138083] my_hrtimer_callback called (-140737327427584).
+[  277.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  277.149879] In our workq function: work_func
+[  277.154176] delta: 23865 ns (~ 23 us)
+[  282.138086] my_hrtimer_callback called (-140737327427584).
+[  282.143595] In func - read_irq_interval_cb, line - 100, context = 0
+[  282.149878] In our workq function: work_func
+[  282.154176] delta: 23060 ns (~ 23 us)
+[  287.138085] my_hrtimer_callback called (-140737327427584).
+[  287.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  287.149873] In our workq function: work_func
+[  287.154167] delta: 22580 ns (~ 22 us)
+[  292.138083] my_hrtimer_callback called (-140737327427584).
+[  292.143590] In func - read_irq_interval_cb, line - 100, context = 0
+[  292.149878] In our workq function: work_func
+[  292.154181] delta: 24960 ns (~ 24 us)
+[  297.138086] my_hrtimer_callback called (-140737327427584).
+[  297.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  297.149878] In our workq function: work_func
+[  297.154181] delta: 23155 ns (~ 23 us)
+[  302.138085] my_hrtimer_callback called (-140737327427584).
+[  302.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  302.149870] In our workq function: work_func
+[  302.154169] delta: 21005 ns (~ 21 us)
+[  307.138085] my_hrtimer_callback called (-140737327427584).
+[  307.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  307.149872] In our workq function: work_func
+[  307.154165] delta: 22200 ns (~ 22 us)
+[  312.138085] my_hrtimer_callback called (-140737327427584).
+[  312.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  312.149874] In our workq function: work_func
+[  312.154171] delta: 23140 ns (~ 23 us)
+[  317.138086] my_hrtimer_callback called (-140737327427584).
+[  317.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  317.149880] In our workq function: work_func
+[  317.154183] delta: 23135 ns (~ 23 us)
+[  322.138086] my_hrtimer_callback called (-140737327427584).
+[  322.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  322.149886] In our workq function: work_func
+[  322.154201] delta: 29295 ns (~ 29 us)
+[  327.138086] my_hrtimer_callback called (-140737327427584).
+[  327.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  327.149881] In our workq function: work_func
+[  327.154177] delta: 25180 ns (~ 25 us)
+[  332.138087] my_hrtimer_callback called (-140737327427584).
+[  332.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  332.149879] In our workq function: work_func
+[  332.154178] delta: 23960 ns (~ 23 us)
+[  337.138088] my_hrtimer_callback called (-140737327427584).
+[  337.143600] In func - read_irq_interval_cb, line - 100, context = 0
+[  337.149904] In our workq function: work_func
+[  337.154207] delta: 35860 ns (~ 35 us)
+[  342.138085] my_hrtimer_callback called (-140737327427584).
+[  342.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  342.149876] In our workq function: work_func
+[  342.154172] delta: 23135 ns (~ 23 us)
+[  347.138085] my_hrtimer_callback called (-140737327427584).
+[  347.143591] In func - read_irq_interval_cb, line - 100, context = 0
+[  347.149872] In our workq function: work_func
+[  347.154168] delta: 21825 ns (~ 21 us)
+[  352.138085] my_hrtimer_callback called (-140737327427584).
+[  352.143594] In func - read_irq_interval_cb, line - 100, context = 0
+[  352.149893] In our workq function: work_func
+[  352.154192] delta: 40015 ns (~ 40 us)
+[  357.138085] my_hrtimer_callback called (-140737327427584).
+[  357.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  357.149872] In our workq function: work_func
+[  357.154167] delta: 21045 ns (~ 21 us)
+[  362.138085] my_hrtimer_callback called (-140737327427584).
+[  362.143593] In func - read_irq_interval_cb, line - 100, context = 0
+[  362.149921] In our workq function: work_func
+[  362.154271] delta: 69320 ns (~ 69 us)
+[  367.138086] my_hrtimer_callback called (-140737327427584).
+[  367.143595] In func - read_irq_interval_cb, line - 100, context = 0
+[  367.149884] In our workq function: work_func
+[  367.154187] delta: 25825 ns (~ 25 us)
+[  372.138085] my_hrtimer_callback called (-140737327427584).
+[  372.143592] In func - read_irq_interval_cb, line - 100, context = 0
+[  372.149890] In our workq function: work_func
+[  372.154193] delta: 31160 ns (~ 31 us)
