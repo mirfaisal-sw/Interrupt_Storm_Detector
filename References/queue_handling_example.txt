@@ -1,0 +1,15 @@
+
+
+
+
+	  mutex_lock(&pcie_dev->enumerate_lock);
+                list_for_each_entry_safe(dev_info_itr, temp,
+                                         &pcie_dev->susp_ep_list, pcidev_node) {
+                        if (dev_info_itr->dev == user) {
+                                list_del(&dev_info_itr->pcidev_node);
+                                dev_info = dev_info_itr;
+                                list_add_tail(&dev_info->pcidev_node,
+                                              &pcie_dev->enum_ep_list);
+                                break;
+                        }
+                }
