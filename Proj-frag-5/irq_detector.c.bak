@@ -244,7 +244,7 @@ static int show_irq_cmd(struct seq_file *seq, void *pdata)
 	unsigned long size = 0x30;
 	struct irq_detector_data *pirq_data = pdata;
 
-	unsigned long irq_cnt = kstat_irqs_cpu(152, 0); //IRQ num, CPU#
+	unsigned long irq_cnt = kstat_irqs_cpu(152, 0);
 
 	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", phys_addr, size);
 	seq_printf(seq, "IRQ count - %ld\n", irq_cnt);
