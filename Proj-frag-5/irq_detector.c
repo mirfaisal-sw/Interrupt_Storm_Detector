@@ -75,7 +75,8 @@ struct irq_detector_data {
 	phys_addr_t			phys_addr;
 	int				irq;
 	struct irq_desc 		*desc;
-
+	int 				irq_count;
+	int 				prev_irq_count;
 	unsigned long               	irq_timestamp;
 	unsigned long               	last_irq_timestamp;
 	struct hrtimer 			mhr_timer;
@@ -116,17 +117,17 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
  */
 static void work_func(struct work_struct *work)
 {
-    struct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
-	int irq_cnt = 0;
+	truct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
+	int cpu_i, irq_cnt_per_sample = 0;
 	float irq_rate = 0;
-	
-    t2 = ktime_get_real_ns();
+
+	t2 = ktime_get_real_ns();
 	
 	/*Iterate through all IRQ descriptors*/
 	for_each_irq_desc(irq, priv->desc) {
-		
+
 		if(priv->desc) {
-			
+	
 			//******************TODO******************//
 			//1. Find online CPUs
 			//2. Find IRQ count for each CPU
@@ -138,11 +139,39 @@ static void work_func(struct work_struct *work)
 			/*seq_printf(seq, "irq_detect: Linux Irq No. - %d, Hw Irq No. - %lu, Irq name - %s\n",
 				pirq_data->desc->irq_data.irq, pirq_data->desc->irq_data.hwirq,
 				pirq_data->desc->irq_data.chip->name);*/
-		} 
-	}
 
-    pr_alert("In our workq function: %s\n", __func__);
-    SHOW_DELTA(t2, t1);
+			/*Iterate over all CPUs*/
+			for_each_online_cpu(j) {
+		
+				if (desc->kstat_irqs) {
+			
+					//Irq No - desc_node->irq_data.irq
+					pr_alert("MIR: CPU no - %d, IRQ no. - %d, IRQ count - %u", 
+						j, desc->irq_data.irq, *per_cpu_ptr(desc->kstat_irqs, j));
+					
+					priv->irq_count += *per_cpu_ptr(desc->kstat_irqs, i);
+				}			
+			}
+
+			if (priv->prev_irq_count == 0) {
+				priv->prev_irq_count = priv->irq_count;
+				goto out;	
+			}
+
+			irq_cnt_per_sample = (priv->irq_count - priv->prev_irq_count);
+
+			pr_alert("For Irq# - %d, IRQ rate - %d per %d ms = %d\n",
+					desc->irq_data.irq, irq_cnt_per_sample, SAMPLING_INTERVAL);
+		} 
+	}/*for_each_irq_desc()*/
+
+	//TODO
+	//Calculate total irqs occurred in one Sampling interval to 
+	//calculate IRQ rate
+
+out:
+	pr_alert("In our workq function: %s\n", __func__);
+	SHOW_DELTA(t2, t1);
 }
 
 #if 0
@@ -229,10 +258,12 @@ out:
 	return ret;
 }
 
+#if 0
 static void log_irq_timestamp(void)
 {
 
 }
+#endif
 
 static int show_irq_cmd(struct seq_file *seq, void *pdata)
 {
@@ -428,7 +459,7 @@ static int irq_diag_open_stat(struct inode *inode, struct file *file)
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
 	mirq_data = pde_data(inode);
 #else
-    mirq_data = PDEV_DATA(inode);
+	mirq_data = PDEV_DATA(inode);
 #endif
 
 	pr_alert("DBG: In func - %s\n", __func__);
@@ -609,8 +640,8 @@ static int irq_detector_remove(struct platform_device *pdev)
         int ret = 0;
 
 	/* Wait for any pending work (queue) to finish*/
-    if (cancel_work_sync(&mirq_data->work))
-        pr_info("yes, there was indeed some pending work; now done...\n");
+    	if (cancel_work_sync(&mirq_data->work))
+		pr_info("yes, there was indeed some pending work; now done...\n");
 	
 	hrtimer_cancel(&mirq_data->mhr_timer);
 	
