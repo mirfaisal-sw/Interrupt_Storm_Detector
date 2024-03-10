@@ -1,0 +1,182 @@
+
+
+root@am64xx-evm:~#
+root@am64xx-evm:~# [   33.626464] my_hrtimer_callback called (-140737327427584).
+[   33.631971] In func - read_irq_interval_cb, line - 93, context = 0
+[   33.638185] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 448
+[   33.638193] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1638
+[   33.643699] For Irq# - 1, IRQ rate - 0 per 500 ms
+
+[   33.654635] In our workq function: work_func
+[   33.658988] delta: 35130 ns (~ 35 us)
+root@am64xx-evm:~# [   34.126464] my_hrtimer_callback called (-140737327427584).
+[   34.131970] In func - read_irq_interval_cb, line - 93, context = 0
+[   34.138171] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 449
+[   34.138181] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1639
+[   34.143616] For Irq# - 1, IRQ rate - -2 per 500 ms
+[   34.154067] In our workq function: work_func
+[   34.158352] delta: 23680 ns (~ 23 us)
+[   34.626463] my_hrtimer_callback called (-140737327427584).
+[   34.631970] In func - read_irq_interval_cb, line - 93, context = 0
+[   34.638175] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 449
+[   34.638183] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1639
+[   34.643617] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   34.653978] In our workq function: work_func
+[   34.658259] delta: 25155 ns (~ 25 us)
+[   35.126464] my_hrtimer_callback called (-140737327427584).
+[   35.131971] In func - read_irq_interval_cb, line - 93, context = 0
+[   35.138182] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 449
+[   35.138195] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1639
+[   35.143639] For Irq# - 1, IRQ rate - -1 per 500 ms
+[   35.154105] In our workq function: work_func
+[   35.158404] delta: 27870 ns (~ 27 us)
+[   35.626464] my_hrtimer_callback called (-140737327427584).
+[   35.631966] In func - read_irq_interval_cb, line - 93, context = 0
+[   35.638165] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 450
+[   35.638173] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1640
+[   35.643610] For Irq# - 1, IRQ rate - -1 per 500 ms
+[   35.654057] In our workq function: work_func
+[   35.658338] delta: 22870 ns (~ 22 us)
+[   36.126464] my_hrtimer_callback called (-140737327427584).
+[   36.131969] In func - read_irq_interval_cb, line - 93, context = 0
+[   36.138170] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 451
+[   36.138179] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1641
+[   36.143604] For Irq# - 1, IRQ rate - -2 per 500 ms
+[   36.154050] In our workq function: work_func
+[   36.158334] delta: 22645 ns (~ 22 us)
+[   36.626465] my_hrtimer_callback called (-140737327427584).
+[   36.631971] In func - read_irq_interval_cb, line - 93, context = 0
+[   36.638180] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 451
+[   36.638188] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1642
+[   36.643626] For Irq# - 1, IRQ rate - -1 per 500 ms
+[   36.654079] In our workq function: work_func
+[   36.658362] delta: 26750 ns (~ 26 us)
+[   37.126464] my_hrtimer_callback called (-140737327427584).
+[   37.131971] In func - read_irq_interval_cb, line - 93, context = 0
+[   37.138174] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 451
+[   37.138181] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1642
+[   37.143604] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   37.153972] In our workq function: work_func
+[   37.158260] delta: 24565 ns (~ 24 us)
+[   37.626463] my_hrtimer_callback called (-140737327427584).
+[   37.631969] In func - read_irq_interval_cb, line - 93, context = 0
+[   37.638171] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 452
+[   37.638179] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1643
+[   37.643615] For Irq# - 1, IRQ rate - -2 per 500 ms
+[   37.654084] In our workq function: work_func
+[   37.658390] delta: 22180 ns (~ 22 us)
+[   38.126464] my_hrtimer_callback called (-140737327427584).
+[   38.131973] In func - read_irq_interval_cb, line - 93, context = 0
+[   38.138175] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 454
+[   38.138183] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1644
+[   38.143618] For Irq# - 1, IRQ rate - -3 per 500 ms
+[   38.154061] In our workq function: work_func
+[   38.158342] delta: 24495 ns (~ 24 us)
+[   38.626465] my_hrtimer_callback called (-140737327427584).
+[   38.631972] In func - read_irq_interval_cb, line - 93, context = 0
+[   38.638178] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 455
+[   38.638187] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1645
+[   38.643626] For Irq# - 1, IRQ rate - -2 per 500 ms
+[   38.654073] In our workq function: work_func
+[   38.658355] delta: 24500 ns (~ 24 us)
+[   39.126463] my_hrtimer_callback called (-140737327427584).
+[   39.131969] In func - read_irq_interval_cb, line - 93, context = 0
+[   39.138162] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 456
+[   39.138171] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1646
+[   39.143605] For Irq# - 1, IRQ rate - -2 per 500 ms
+[   39.154054] In our workq function: work_func
+[   39.158338] delta: 18745 ns (~ 18 us)
+[   39.626465] my_hrtimer_callback called (-140737327427584).
+[   39.631970] In func - read_irq_interval_cb, line - 93, context = 0
+[   39.638176] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 456
+[   39.638184] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1646
+[   39.643621] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   39.653982] In our workq function: work_func
+[   39.658268] delta: 24670 ns (~ 24 us)
+[   40.126464] my_hrtimer_callback called (-140737327427584).
+[   40.131969] In func - read_irq_interval_cb, line - 93, context = 0
+[   40.138164] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 457
+[   40.138172] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1647
+[   40.143595] For Irq# - 1, IRQ rate - -2 per 500 ms
+[   40.154052] In our workq function: work_func
+[   40.158339] delta: 19330 ns (~ 19 us)
+[   40.626465] my_hrtimer_callback called (-140737327427584).
+[   40.631972] In func - read_irq_interval_cb, line - 93, context = 0
+[   40.638171] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 457
+[   40.638179] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1647
+[   40.643626] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   40.653995] In our workq function: work_func
+[   40.658280] delta: 20860 ns (~ 20 us)
+[   41.126463] my_hrtimer_callback called (-140737327427584).
+[   41.131969] In func - read_irq_interval_cb, line - 93, context = 0
+[   41.138166] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 457
+[   41.138174] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1647
+[   41.143596] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   41.153954] In our workq function: work_func
+[   41.158237] delta: 20240 ns (~ 20 us)
+[   41.626464] my_hrtimer_callback called (-140737327427584).
+[   41.631972] In func - read_irq_interval_cb, line - 93, context = 0
+[   41.638184] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 457
+[   41.638193] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1647
+[   41.643624] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   41.653982] In our workq function: work_func
+[   41.658267] delta: 30595 ns (~ 30 us)
+[   42.126464] my_hrtimer_callback called (-140737327427584).
+[   42.131971] In func - read_irq_interval_cb, line - 93, context = 0
+[   42.138171] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 457
+[   42.138180] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1647
+[   42.143627] For Irq# - 1, IRQ rate - -1 per 500 ms
+[   42.154100] In our workq function: work_func
+[   42.158399] delta: 21155 ns (~ 21 us)
+[   42.626464] my_hrtimer_callback called (-140737327427584).
+[   42.631970] In func - read_irq_interval_cb, line - 93, context = 0
+[   42.638176] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 458
+[   42.638186] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1648
+[   42.643617] For Irq# - 1, IRQ rate - -1 per 500 ms
+[   42.654068] In our workq function: work_func
+[   42.658353] delta: 23455 ns (~ 23 us)
+[   43.126464] my_hrtimer_callback called (-140737327427584).
+[   43.131971] In func - read_irq_interval_cb, line - 93, context = 0
+[   43.138177] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 458
+[   43.138185] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1648
+[   43.143622] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   43.153985] In our workq function: work_func
+[   43.158269] delta: 25115 ns (~ 25 us)
+
+root@am64xx-evm:~# [   43.626464] my_hrtimer_callback called (-140737327427584).
+[   43.631970] In func - read_irq_interval_cb, line - 93, context = 0
+
+[   43.638182] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 458
+[   43.638191] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1648
+[   43.643869] For Irq# - 1, IRQ rate - -1 per 500 ms
+[   43.654353] In our workq function: work_func
+[   43.658677] delta: 30035 ns (~ 30 us)
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# [   44.126465] my_hrtimer_callback called (-140737327427584).
+[   44.131971] In func - read_irq_interval_cb, line - 93, context = 0
+[   44.138179] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 461
+[   44.138187] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1651
+[   44.143626] For Irq# - 1, IRQ rate - -6 per 500 ms
+[   44.154096] In our workq function: work_func
+[   44.158390] delta: 27270 ns (~ 27 us)
+
+root@am64xx-evm:~# echo off > /proc/irq_diag/irq_diag_cmd[   44.626465] my_hrtimer_callback called (-140737327427584).
+[   44.631970] In func - read_irq_interval_cb, line - 93, context = 0
+[   44.638173] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 461
+[   44.638182] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1652
+[   44.643624] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   44.653990] In our workq function: work_func
+[   44.658277] delta: 23055 ns (~ 23 us)
+
+[   44.816681] DBG: In func - irq_diag_open_cmd
+[   44.821104] DBG: String: off, length - 4
+[   44.825046] DBG: Stopping HR timer used for IRQ rate calculation
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/irq_diag/irq_diag_stat
+[   52.581743] DBG: In func - irq_diag_open_stat
+[   52.586284] DBG: In func - show_irq_stat, line - 469
+
+==> Hangs here

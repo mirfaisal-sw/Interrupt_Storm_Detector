@@ -29,26 +29,13 @@
 #include <linux/preempt.h>
 #include <linux/workqueue.h>
 
+#include "irq_detector.h"
+
 #define SAMPLING_INTERVAL	500L /*10 milli second*/
 #define MS_TO_NS(x)		(x * 1E6L)
 #define MAX_SIZE		32
 
 #define CONFIG_SEQ_READ
-
-#define SHOW_DELTA(later, earlier) 	do {    \
-	if (time_after((unsigned long)later, (unsigned long)earlier)) { \
-            s64 delta_ns = ktime_to_ns(ktime_sub(later, earlier));      \
-        pr_info("delta: %lld ns", delta_ns);       \
-                if (delta_ns/1000 >= 1)                    \
-                        pr_cont(" (~ %lld us", delta_ns/1000);   \
-                if (delta_ns/1000000 >= 1)                \
-                        pr_cont(" ~ %lld ms", delta_ns/1000000); \
-                if (delta_ns/1000 >= 1)                  \
-                        pr_cont(")\n");                         \
-    } else  \
-	pr_warn("SHOW_DELTA(): *invalid* earlier > later? (check order of params)\n");  \
-} while (0)
-
 
 struct irq_desc *irq_desc_node;
 int irq;
@@ -63,6 +50,8 @@ struct irq_diag_file {
 	const struct proc_ops ops;
 };
 
+LIST_HEAD(my_list);
+
 struct irq_detector_data {
 	char				name[20];
 	struct platform_device		*pdev;
@@ -75,13 +64,16 @@ struct irq_detector_data {
 	phys_addr_t			phys_addr;
 	int				irq;
 	struct irq_desc 		*desc;
-	int 				irq_count;
-	int 				prev_irq_count;
-	unsigned long               	irq_timestamp;
-	unsigned long               	last_irq_timestamp;
+	//int 				irq_count;
+	//int 				prev_irq_count;
+	//unsigned long               	irq_timestamp;
+	//unsigned long               	last_irq_timestamp;
 	struct hrtimer 			mhr_timer;
 	struct task_struct		*irq_poll_thread;
-	
+
+	//struct irq_num_list_head	*irq_num_list_head;	
+	/*For debugging single irq num stat*/
+	struct irq_num_statistics_list         *irq_num_statistics_node;
 	struct work_struct          	work;
 };
 
@@ -117,51 +109,66 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
  */
 static void work_func(struct work_struct *work)
 {
-	truct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
-	int cpu_i, irq_cnt_per_sample = 0;
-	float irq_rate = 0;
+	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
+	int cpu_i;//, irq_cnt_per_sample = 0;
+	int tot_irq_count_per_sample = 0;
+	//float irq_rate = 0;
 
 	t2 = ktime_get_real_ns();
-	
+
 	/*Iterate through all IRQ descriptors*/
 	for_each_irq_desc(irq, priv->desc) {
 
 		if(priv->desc) {
 	
-			//******************TODO******************//
-			//1. Find online CPUs
-			//2. Find IRQ count for each CPU
-			//3. 
-			//****************************************//
-			//irq_rate = 
-			//pr_alert("MIR: Irq number - %d, Irq rate - %f\n",
-			//					priv->desc->irq_data.irq, irq_rate);
-			/*seq_printf(seq, "irq_detect: Linux Irq No. - %d, Hw Irq No. - %lu, Irq name - %s\n",
-				pirq_data->desc->irq_data.irq, pirq_data->desc->irq_data.hwirq,
-				pirq_data->desc->irq_data.chip->name);*/
+		//******************TODO******************//
+		//1. Find online CPUs
+		//2. Find IRQ count for each CPU
+		//3. 
+		//****************************************//
+
+		/*For debugging purpose let us first concentrate on 
+		 * only one IRQ
+		 */
+		if(priv->desc->irq_data.irq != DEBUG_IRQ_NUM_UNDER_TEST)
+			continue;
 
 			/*Iterate over all CPUs*/
-			for_each_online_cpu(j) {
+			for_each_online_cpu(cpu_i) {
 		
-				if (desc->kstat_irqs) {
+				if (priv->desc->kstat_irqs) {
 			
 					//Irq No - desc_node->irq_data.irq
 					pr_alert("MIR: CPU no - %d, IRQ no. - %d, IRQ count - %u", 
-						j, desc->irq_data.irq, *per_cpu_ptr(desc->kstat_irqs, j));
+						cpu_i, priv->desc->irq_data.irq,
+						*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i));
 					
-					priv->irq_count += *per_cpu_ptr(desc->kstat_irqs, i);
+					priv->irq_num_statistics_node->irq_count_per_cpu[cpu_i] =
+								*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
+					tot_irq_count_per_sample += *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i);
 				}			
 			}
 
-			if (priv->prev_irq_count == 0) {
-				priv->prev_irq_count = priv->irq_count;
+
+			if (priv->irq_num_statistics_node->irq_prev_count == 0) {
+				priv->irq_num_statistics_node->irq_prev_count =
+					tot_irq_count_per_sample;
 				goto out;	
 			}
 
-			irq_cnt_per_sample = (priv->irq_count - priv->prev_irq_count);
+			/*Fill the node of list*/
+			priv->irq_num_statistics_node->irq_num = priv->desc->irq_data.irq;
+			priv->irq_num_statistics_node->irq_count = tot_irq_count_per_sample;	
+			priv->irq_num_statistics_node->irq_rate =
+				(priv->irq_num_statistics_node->irq_prev_count - priv->irq_num_statistics_node->irq_count);
 
-			pr_alert("For Irq# - %d, IRQ rate - %d per %d ms = %d\n",
-					desc->irq_data.irq, irq_cnt_per_sample, SAMPLING_INTERVAL);
+			priv->irq_num_statistics_node->irq_prev_count = tot_irq_count_per_sample;
+
+			list_add_tail(&priv->irq_num_statistics_node->list, &my_list);
+
+			pr_alert("For Irq# - %d, IRQ rate - %d per %d ms\n",
+					priv->desc->irq_data.irq,
+					priv->irq_num_statistics_node->irq_rate, SAMPLING_INTERVAL);
 		} 
 	}/*for_each_irq_desc()*/
 
@@ -256,6 +263,13 @@ static int start_irq_rate_calc(struct irq_detector_data *mirq_data)
 
 out: 
 	return ret;
+}
+
+static void stop_irq_rate_calc(struct irq_detector_data *mirq_data)
+{
+	pr_alert("DBG: Stopping HR timer used for IRQ rate calculation\n");
+
+	hrtimer_cancel(&mirq_data->mhr_timer);
 }
 
 #if 0
@@ -375,7 +389,7 @@ static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
 	if(!strcmp(temp_buf, "on")) { /*Start IRQ scanning*/
 		start_irq_rate_calc(mirq_data);
 	} else if (!strcmp(temp_buf, "off")) { /*Stop IRQ scanning*/
-
+		stop_irq_rate_calc(mirq_data);
 	} else if ((*temp_buf > 0) && (*temp_buf <= 65535)) {
 
 		ret = parse_number(buf, count, &irq_cnt);
@@ -448,6 +462,20 @@ static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf,
 
 static int show_irq_stat(struct seq_file *seq, void *pdata)
 {
+	struct list_head *ptr;
+	struct irq_detector_data *mirq_data = (struct irq_detector_data *)pdata;
+	struct irq_num_statistics_list *tmp = mirq_data->irq_num_statistics_node;
+
+	pr_alert("DBG: In func - %s, line - %d\n", __func__, __LINE__);
+
+	//seq_printf(seq, "In func - %s\n", __func__);
+	//list_for_each_entry(tmp, &my_list, list) {
+	list_for_each_prev(ptr, &my_list) {
+		tmp = list_entry(ptr, struct irq_num_statistics_list, list);
+		//pr_alert("DBG: In func - %s, line - %d\n", __func__, __LINE__);
+		seq_printf(seq, "Irq No. - %d, IRQ count - %d, IRQ rate - %d\n",
+                               tmp->irq_num, tmp->irq_count, tmp->irq_rate);
+        }
 	return 0;
 }
 
@@ -510,7 +538,11 @@ static const struct irq_diag_file irq_diag_files[] = {
 		.filename	= "irq_diag_stat",
 		.status		= NULL,
 		.ops.proc_open  = irq_diag_open_stat,
+#ifndef CONFIG_SEQ_READ
 		.ops.proc_read	= irq_diag_read_stat,
+#else
+		.ops.proc_read  = seq_read,
+#endif
 		.ops.proc_write	= irq_diag_write_stat,
 		.ops.proc_release = irq_diag_release_stat,
 		.ops.proc_lseek	= default_llseek,
@@ -593,12 +625,19 @@ static int irq_detector_probe(struct platform_device *pdev)
         if (!mirq_data)
                 return -ENOMEM;
 
-	mirq_data->irq_timestamp = jiffies;
+	mirq_data->irq_num_statistics_node =
+		kzalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+	if(!mirq_data->irq_num_statistics_node)
+		return -ENOMEM;
+
+	//mirq_data->irq_timestamp = jiffies;
 
 	mirq_data->mproc_files = irq_diag_files;
 
 	hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
 	mirq_data->mhr_timer.function = &read_irq_interval_cb;
+
+	INIT_LIST_HEAD(&mirq_data->irq_num_statistics_node->list);
 
 	/* Initialize our workqueue */
 	INIT_WORK(&mirq_data->work, work_func);
