@@ -162,7 +162,7 @@ static void work_func(struct work_struct *work)
 			node_linked_list->irq_num = priv->desc->irq_data.irq;
 			node_linked_list->irq_count = tot_irq_count_per_sample;	
 			node_linked_list->irq_rate =
-				(node_linked_list->irq_count - priv->irq_num_statistics_node->irq_prev_count);
+				(priv->irq_num_statistics_node->irq_count - priv->irq_num_statistics_node->irq_prev_count);
 
 			priv->irq_num_statistics_node->irq_prev_count = tot_irq_count_per_sample;
 
