@@ -150,6 +150,7 @@ static void work_func(struct work_struct *work)
 				}			
 			}
 
+			priv->irq_num_statistics_node->irq_count = tot_irq_count_per_sample;
 
 			if (priv->irq_num_statistics_node->irq_prev_count == 0) {
 				priv->irq_num_statistics_node->irq_prev_count =
@@ -157,12 +158,13 @@ static void work_func(struct work_struct *work)
 				goto out;	
 			}
 
-			/*Fill the node of list*/
 			node_linked_list = kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+
+			/*Fill the node of list*/
 			node_linked_list->irq_num = priv->desc->irq_data.irq;
-			node_linked_list->irq_count = tot_irq_count_per_sample;	
+			node_linked_list->irq_count = priv->irq_num_statistics_node->irq_count;	
 			node_linked_list->irq_rate =
-				(node_linked_list->irq_count - priv->irq_num_statistics_node->irq_prev_count);
+				(priv->irq_num_statistics_node->irq_count - priv->irq_num_statistics_node->irq_prev_count);
 
 			priv->irq_num_statistics_node->irq_prev_count = tot_irq_count_per_sample;
 
