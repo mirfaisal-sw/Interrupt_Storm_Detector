@@ -1,0 +1,66 @@
+
+
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+[   52.582196] my_hrtimer_callback called (-140737327427584).
+[   52.587702] In func - read_irq_interval_cb, line - 93, context = 0
+root@am64xx-evm:~# [   52.594269] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 510
+[   52.594294] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1440
+[   52.601294] For Irq# - 1, IRQ rate - -1950 per 500 ms
+[   52.612007] In our workq function: work_func
+[   52.616293] delta: 380955 ns (~ 380 us)
+
+root@am64xx-evm:~# echo off > /proc/irq_diag/irq_diag_cmd[   53.082196] my_hrtimer_callback called (-140737327427584).
+[   53.087704] In func - read_irq_interval_cb, line - 93, context = 0
+[   53.093908] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 510
+[   53.093917] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1440
+[   53.099390] For Irq# - 1, IRQ rate - -1950 per 500 ms
+[   53.110123] In our workq function: work_func
+[   53.114408] delta: 25055 ns (~ 25 us)
+
+[   53.304445] DBG: In func - irq_diag_open_cmd
+[   53.308868] DBG: String: off, length - 4
+[   53.312806] DBG: Stopping HR timer used for IRQ rate calculation
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/irq_diag/irq_diag_stat
+[   61.789763] DBG: In func - irq_diag_open_stat
+[   61.794308] DBG: In func - show_irq_stat, line - 471, Version - (efault)
+Irq No. - 1, IRQ count - 1914, IRQ rate - -1914
+Irq No. - 1, IRQ count - 1915, IRQ rate - -1914
+Irq No. - 1, IRQ count - 1916, IRQ rate - -1915
+Irq No. - 1, IRQ count - 1917, IRQ rate - -1916
+Irq No. - 1, IRQ count - 1919, IRQ rate - -1917
+Irq No. - 1, IRQ count - 1921, IRQ rate - -1919
+Irq No. - 1, IRQ count - 1921, IRQ rate - -1921
+Irq No. - 1, IRQ count - 1922, IRQ rate - -1921
+Irq No. - 1, IRQ count - 1924, IRQ rate - -1922
+Irq No. - 1, IRQ count - 1925, IRQ rate - -1924
+Irq No. - 1, IRQ count - 1926, IRQ rate - -1925
+Irq No. - 1, IRQ count - 1927, IRQ rate - -1926
+Irq No. - 1, IRQ count - 1928, IRQ rate - -1927
+Irq No. - 1, IRQ count - 1930, IRQ rate - -1928
+Irq No. - 1, IRQ count - 1932, IRQ rate - -1930
+Irq No. - 1, IRQ count - 1934, IRQ rate - -1932
+Irq No. - 1, IRQ count - 1934, IRQ rate - -1934
+Irq No. - 1, IRQ count - 1934, IRQ rate - -1934
+Irq No. - 1, IRQ count - 1935, IRQ rate - -1934
+Irq No. - 1, IRQ count - 1936, IRQ rate - -1935
+Irq No. - 1, IRQ count - 1937, IRQ rate - -1936
+Irq No. - 1, IRQ count - 1939, IRQ rate - -1937
+Irq No. - 1, IRQ count - 1939, IRQ rate - -1939
+Irq No. - 1, IRQ count - 1941, IRQ rate - -1939
+Irq No. - 1, IRQ count - 1941, IRQ rate - -1941
+Irq No. - 1, IRQ count - 1941, IRQ rate - -1941
+Irq No. - 1, IRQ count - 1943, IRQ rate - -1941
+Irq No. - 1, IRQ count - 1943, IRQ rate - -1943
+Irq No. - 1, IRQ count - 1943, IRQ rate - -1943
+Irq No. - 1, IRQ count - 1945, IRQ rate - -1943
+Irq No. - 1, IRQ count - 1946, IRQ rate - -1945
+Irq No. - 1, IRQ count - 1947, IRQ rate - -1946
+Irq No. - 1, IRQ count - 1947, IRQ rate - -1947
+Irq No. - 1, IRQ count - 1949, IRQ rate - -1947
+Irq No. - 1, IRQ count - 1950, IRQ rate - -1949
+Irq No. - 1, IRQ count - 1950, IRQ rate - -1950
+Irq No. - 1, IRQ count - 1950, IRQ rate - -1950
+Irq No. - 1, IRQ count - 1950, IRQ rate - -1950

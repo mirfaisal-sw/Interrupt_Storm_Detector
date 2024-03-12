@@ -53,7 +53,7 @@ struct irq_diag_file {
 LIST_HEAD(my_list);
 
 struct irq_detector_data {
-	char				name[20];
+	char				version_id[64];
 	struct platform_device		*pdev;
 	struct mutex			mutex_lock;
 	struct proc_dir_entry		*proc_dir;
@@ -110,6 +110,7 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
 static void work_func(struct work_struct *work)
 {
 	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
+	struct irq_num_statistics_list *node_linked_list;
 	int cpu_i;//, irq_cnt_per_sample = 0;
 	int tot_irq_count_per_sample = 0;
 	//float irq_rate = 0;
@@ -157,18 +158,19 @@ static void work_func(struct work_struct *work)
 			}
 
 			/*Fill the node of list*/
-			priv->irq_num_statistics_node->irq_num = priv->desc->irq_data.irq;
-			priv->irq_num_statistics_node->irq_count = tot_irq_count_per_sample;	
-			priv->irq_num_statistics_node->irq_rate =
-				(priv->irq_num_statistics_node->irq_prev_count - priv->irq_num_statistics_node->irq_count);
+			node_linked_list = kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+			node_linked_list->irq_num = priv->desc->irq_data.irq;
+			node_linked_list->irq_count = tot_irq_count_per_sample;	
+			node_linked_list->irq_rate =
+				(priv->irq_num_statistics_node->irq_count - priv->irq_num_statistics_node->irq_prev_count);
 
 			priv->irq_num_statistics_node->irq_prev_count = tot_irq_count_per_sample;
 
-			list_add_tail(&priv->irq_num_statistics_node->list, &my_list);
+			list_add_tail(&node_linked_list->list, &my_list);
 
 			pr_alert("For Irq# - %d, IRQ rate - %d per %d ms\n",
-					priv->desc->irq_data.irq,
-					priv->irq_num_statistics_node->irq_rate, SAMPLING_INTERVAL);
+					node_linked_list->irq_num,
+					node_linked_list->irq_rate, SAMPLING_INTERVAL);
 		} 
 	}/*for_each_irq_desc()*/
 
@@ -466,15 +468,21 @@ static int show_irq_stat(struct seq_file *seq, void *pdata)
 	struct irq_detector_data *mirq_data = (struct irq_detector_data *)pdata;
 	struct irq_num_statistics_list *tmp = mirq_data->irq_num_statistics_node;
 
-	pr_alert("DBG: In func - %s, line - %d\n", __func__, __LINE__);
+	pr_alert("DBG: In func - %s, line - %d, Version - %s\n",
+			__func__, __LINE__, mirq_data->version_id);
 
 	//seq_printf(seq, "In func - %s\n", __func__);
 	//list_for_each_entry(tmp, &my_list, list) {
-	list_for_each_prev(ptr, &my_list) {
+	//list_for_each_prev(ptr, &my_list) {
+	
+	list_for_each(ptr, &my_list) {
 		tmp = list_entry(ptr, struct irq_num_statistics_list, list);
 		//pr_alert("DBG: In func - %s, line - %d\n", __func__, __LINE__);
 		seq_printf(seq, "Irq No. - %d, IRQ count - %d, IRQ rate - %d\n",
                                tmp->irq_num, tmp->irq_count, tmp->irq_rate);
+
+		//pr_alert("DBG: Irq No. - %d, IRQ count - %d, IRQ rate - %d\n",
+                //               tmp->irq_num, tmp->irq_count, tmp->irq_rate);
         }
 	return 0;
 }
@@ -624,7 +632,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 	mirq_data = devm_kzalloc(dev, sizeof(*mirq_data), GFP_KERNEL);
         if (!mirq_data)
                 return -ENOMEM;
-
+	scnprintf(mirq_data->version_id, 64, "Irq Diag Ver - 1.0");
 	mirq_data->irq_num_statistics_node =
 		kzalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
 	if(!mirq_data->irq_num_statistics_node)
