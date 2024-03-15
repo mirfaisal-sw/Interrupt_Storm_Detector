@@ -1,0 +1,754 @@
+
+
+[  451.742583] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 743
+[  451.742591] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1915
+[  451.748107] For Irq# - 1, IRQ rate - 2 per 500 ms
+[  451.758517] In our workq function: work_func
+[  451.762824] delta: 19530 ns (~ 19 us)
+[  452.230876] my_hrtimer_callback called (-140737327427584).
+[  452.236383] In func - read_irq_interval_cb, line - 93, context = 0
+[  452.242578] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 744
+[  452.242586] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1915
+[  452.248012] For Irq# - 1, IRQ rate - 1 per 500 ms
+[  452.258391] In our workq function: work_func
+[  452.262677] delta: 19230 ns (~ 19 us)
+[  452.730878] my_hrtimer_callback called (-140737327427584).
+[  452.736386] In func - read_irq_interval_cb, line - 93, context = 0
+[  452.742589] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 744
+[  452.742597] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1915
+[  452.748038] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  452.758399] In our workq function: work_func
+[  452.762685] delta: 23310 ns (~ 23 us)
+[  453.230877] my_hrtimer_callback called (-140737327427584).
+[  453.236383] In func - read_irq_interval_cb, line - 93, context = 0
+[  453.242616] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 744
+[  453.242632] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1915
+[  453.248071] For Irq# - 1, IRQ rate - 1 per 500 ms
+[  453.258460] In our workq function: work_func
+[  453.262760] delta: 55925 ns (~ 55 us)
+[  453.730878] my_hrtimer_callback called (-140737327427584).
+[  453.736384] In func - read_irq_interval_cb, line - 93, context = 0
+[  453.742582] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  453.742590] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  453.748035] For Irq# - 1, IRQ rate - 1 per 500 ms
+[  453.758411] In our workq function: work_func
+[  453.762701] delta: 20915 ns (~ 20 us)
+[  454.230878] my_hrtimer_callback called (-140737327427584).
+[  454.236383] In func - read_irq_interval_cb, line - 93, context = 0
+[  454.242583] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  454.242595] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  454.248050] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  454.258416] In our workq function: work_func
+[  454.262700] delta: 20255 ns (~ 20 us)
+[  454.730878] my_hrtimer_callback called (-140737327427584).
+[  454.736387] In func - read_irq_interval_cb, line - 93, context = 0
+[  454.742591] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  454.742600] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  454.748030] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  454.758390] In our workq function: work_func
+[  454.762674] delta: 26015 ns (~ 26 us)
+[  455.230877] my_hrtimer_callback called (-140737327427584).
+[  455.236384] In func - read_irq_interval_cb, line - 93, context = 0
+[  455.242585] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  455.242594] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  455.248036] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  455.258400] In our workq function: work_func
+[  455.262686] delta: 22180 ns (~ 22 us)
+[  455.730877] my_hrtimer_callback called (-140737327427584).
+[  455.736385] In func - read_irq_interval_cb, line - 93, context = 0
+[  455.742580] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  455.742588] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  455.748019] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  455.758387] In our workq function: work_func
+[  455.762673] delta: 20120 ns (~ 20 us)
+[  456.230877] my_hrtimer_callback called (-140737327427584).
+[  456.236385] In func - read_irq_interval_cb, line - 93, context = 0
+[  456.242583] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  456.242592] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  456.248025] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  456.258382] In our workq function: work_func
+[  456.262668] delta: 20350 ns (~ 20 us)
+[  456.730877] my_hrtimer_callback called (-140737327427584).
+[  456.736383] In func - read_irq_interval_cb, line - 93, context = 0
+[  456.742575] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  456.742584] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  456.748024] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  456.758382] In our workq function: work_func
+[  456.762667] delta: 17320 ns (~ 17 us)
+[  457.230877] my_hrtimer_callback called (-140737327427584).
+[  457.236385] In func - read_irq_interval_cb, line - 93, context = 0
+[  457.242581] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  457.242590] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  457.248055] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  457.258416] In our workq function: work_func
+[  457.262701] delta: 20200 ns (~ 20 us)
+
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# [  457.730877] my_hrtimer_callback called (-140737327427584).
+[  457.736385] In func - read_irq_interval_cb, line - 93, context = 0
+[  457.742592] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  457.742600] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  457.748031] For Irq# - 1, IRQ rate - 0 per 500 ms
+[  457.758400] In our workq function: work_func
+[  457.762688] delta: 25990 ns (~ 25 us)
+
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# [  458.230879] my_hrtimer_callback called (-140737327427584).
+[  458.236385] In func - read_irq_interval_cb, line - 93, context = 0
+[  458.242687] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 745
+[  458.242699] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1916
+[  458.248134] For Irq# - 1, IRQ rate - 0 per 500 ms
+
+[  458.258524] In our workq function: work_func
+[  458.262914] delta: 118750 ns (~ 118 us)
+root@am64xx-evm:~# echo off > /proc/irq_diag/irq_diag_cmd[  458.730877] my_hrtimer_callback called (-140737327427584).
+[  458.736386] In func - read_irq_interval_cb, line - 93, context = 0
+[  458.742582] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 746
+[  458.742591] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1917
+[  458.748031] For Irq# - 1, IRQ rate - 3 per 500 ms
+
+[  458.758693] In our workq function: work_func
+[  458.763006] delta: 21135 ns (~ 21 us)
+[  458.773195] DBG: In func - irq_diag_open_cmd
+[  458.777607] DBG: String: off, length - 4
+[  458.781544] DBG: Stopping HR timer used for IRQ rate calculation
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/irq_diag/irq_diag_stat
+[  468.622251] DBG: In func - irq_diag_open_stat
+[  468.626785] DBG: In func - show_irq_stat, line - 473, Version - (efault)
+[  468.633832] DBG: In func - show_irq_stat, line - 473, Version - (efault)
+[  468.641791] DBG: In func - show_irq_stat, line - 473, Version - (efault)
+[  468.649281] DBG: In func - show_irq_stat, line - 473, Version - (efault)
+Irq No. - 1, IRQ count - 2135, IRQ rate - 0
+Irq No. - 1, IRQ count - 2135, IRQ rate - 0
+Irq No. - 1, IRQ count - 2136, IRQ rate - 1
+Irq No. - 1, IRQ count - 2136, IRQ rate - 0
+Irq No. - 1, IRQ count - 2136, IRQ rate - 0
+Irq No. - 1, IRQ count - 2136, IRQ rate - 0
+Irq No. - 1, IRQ count - 2136, IRQ rate - 0
+Irq No. - 1, IRQ count - 2136, IRQ rate - 0
+Irq No. - 1, IRQ count - 2138, IRQ rate - 2
+Irq No. - 1, IRQ count - 2138, IRQ rate - 0
+Irq No. - 1, IRQ count - 2139, IRQ rate - 1
+Irq No. - 1, IRQ count - 2139, IRQ rate - 0
+Irq No. - 1, IRQ count - 2139, IRQ rate - 0
+Irq No. - 1, IRQ count - 2141, IRQ rate - 2
+Irq No. - 1, IRQ count - 2141, IRQ rate - 0
+Irq No. - 1, IRQ count - 2144, IRQ rate - 3
+Irq No. - 1, IRQ count - 2147, IRQ rate - 3
+Irq No. - 1, IRQ count - 2149, IRQ rate - 2
+Irq No. - 1, IRQ count - 2150, IRQ rate - 1
+Irq No. - 1, IRQ count - 2156, IRQ rate - 6
+Irq No. - 1, IRQ count - 2157, IRQ rate - 1
+Irq No. - 1, IRQ count - 2159, IRQ rate - 2
+Irq No. - 1, IRQ count - 2160, IRQ rate - 1
+Irq No. - 1, IRQ count - 2160, IRQ rate - 0
+Irq No. - 1, IRQ count - 2160, IRQ rate - 0
+Irq No. - 1, IRQ count - 2160, IRQ rate - 0
+Irq No. - 1, IRQ count - 2161, IRQ rate - 1
+Irq No. - 1, IRQ count - 2161, IRQ rate - 0
+Irq No. - 1, IRQ count - 2162, IRQ rate - 1
+Irq No. - 1, IRQ count - 2162, IRQ rate - 0
+Irq No. - 1, IRQ count - 2164, IRQ rate - 2
+Irq No. - 1, IRQ count - 2166, IRQ rate - 2
+Irq No. - 1, IRQ count - 2166, IRQ rate - 0
+Irq No. - 1, IRQ count - 2166, IRQ rate - 0
+Irq No. - 1, IRQ count - 2168, IRQ rate - 2
+Irq No. - 1, IRQ count - 2168, IRQ rate - 0
+Irq No. - 1, IRQ count - 2168, IRQ rate - 0
+Irq No. - 1, IRQ count - 2168, IRQ rate - 0
+Irq No. - 1, IRQ count - 2168, IRQ rate - 0
+Irq No. - 1, IRQ count - 2170, IRQ rate - 2
+Irq No. - 1, IRQ count - 2170, IRQ rate - 0
+Irq No. - 1, IRQ count - 2170, IRQ rate - 0
+Irq No. - 1, IRQ count - 2172, IRQ rate - 2
+Irq No. - 1, IRQ count - 2174, IRQ rate - 2
+Irq No. - 1, IRQ count - 2175, IRQ rate - 1
+Irq No. - 1, IRQ count - 2175, IRQ rate - 0
+Irq No. - 1, IRQ count - 2176, IRQ rate - 1
+Irq No. - 1, IRQ count - 2176, IRQ rate - 0
+Irq No. - 1, IRQ count - 2178, IRQ rate - 2
+Irq No. - 1, IRQ count - 2178, IRQ rate - 0
+Irq No. - 1, IRQ count - 2179, IRQ rate - 1
+Irq No. - 1, IRQ count - 2181, IRQ rate - 2
+Irq No. - 1, IRQ count - 2181, IRQ rate - 0
+Irq No. - 1, IRQ count - 2181, IRQ rate - 0
+Irq No. - 1, IRQ count - 2181, IRQ rate - 0
+Irq No. - 1, IRQ count - 2181, IRQ rate - 0
+Irq No. - 1, IRQ count - 2181, IRQ rate - 0
+Irq No. - 1, IRQ count - 2181, IRQ rate - 0
+Irq No. - 1, IRQ count - 2181, IRQ rate - 0
+Irq No. - 1, IRQ count - 2182, IRQ rate - 1
+Irq No. - 1, IRQ count - 2184, IRQ rate - 2
+Irq No. - 1, IRQ count - 2186, IRQ rate - 2
+Irq No. - 1, IRQ count - 2186, IRQ rate - 0
+Irq No. - 1, IRQ count - 2186, IRQ rate - 0
+Irq No. - 1, IRQ count - 2186, IRQ rate - 0
+Irq No. - 1, IRQ count - 2186, IRQ rate - 0
+Irq No. - 1, IRQ count - 2188, IRQ rate - 2
+Irq No. - 1, IRQ count - 2189, IRQ rate - 1
+Irq No. - 1, IRQ count - 2189, IRQ rate - 0
+Irq No. - 1, IRQ count - 2189, IRQ rate - 0
+Irq No. - 1, IRQ count - 2191, IRQ rate - 2
+Irq No. - 1, IRQ count - 2193, IRQ rate - 2
+Irq No. - 1, IRQ count - 2193, IRQ rate - 0
+Irq No. - 1, IRQ count - 2195, IRQ rate - 2
+Irq No. - 1, IRQ count - 2198, IRQ rate - 3
+Irq No. - 1, IRQ count - 2199, IRQ rate - 1
+Irq No. - 1, IRQ count - 2199, IRQ rate - 0
+Irq No. - 1, IRQ count - 2201, IRQ rate - 2
+Irq No. - 1, IRQ count - 2201, IRQ rate - 0
+Irq No. - 1, IRQ count - 2204, IRQ rate - 3
+Irq No. - 1, IRQ count - 2207, IRQ rate - 3
+Irq No. - 1, IRQ count - 2209, IRQ rate - 2
+Irq No. - 1, IRQ count - 2212, IRQ rate - 3
+Irq No. - 1, IRQ count - 2215, IRQ rate - 3
+Irq No. - 1, IRQ count - 2215, IRQ rate - 0
+Irq No. - 1, IRQ count - 2215, IRQ rate - 0
+Irq No. - 1, IRQ count - 2216, IRQ rate - 1
+Irq No. - 1, IRQ count - 2216, IRQ rate - 0
+Irq No. - 1, IRQ count - 2216, IRQ rate - 0
+Irq No. - 1, IRQ count - 2218, IRQ rate - 2
+Irq No. - 1, IRQ count - 2222, IRQ rate - 4
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2222, IRQ rate - 0
+Irq No. - 1, IRQ count - 2225, IRQ rate - 3
+Irq No. - 1, IRQ count - 2227, IRQ rate - 2
+Irq No. - 1, IRQ count - 2229, IRQ rate - 2
+Irq No. - 1, IRQ count - 2231, IRQ rate - 2
+Irq No. - 1, IRQ count - 2234, IRQ rate - 3
+Irq No. - 1, IRQ count - 2234, IRQ rate - 0
+Irq No. - 1, IRQ count - 2236, IRQ rate - 2
+Irq No. - 1, IRQ count - 2238, IRQ rate - 2
+Irq No. - 1, IRQ count - 2238, IRQ rate - 0
+Irq No. - 1, IRQ count - 2238, IRQ rate - 0
+Irq No. - 1, IRQ count - 2240, IRQ rate - 2
+Irq No. - 1, IRQ count - 2244, IRQ rate - 4
+Irq No. - 1, IRQ count - 2244, IRQ rate - 0
+Irq No. - 1, IRQ count - 2244, IRQ rate - 0
+Irq No. - 1, IRQ count - 2246, IRQ rate - 2
+Irq No. - 1, IRQ count - 2248, IRQ rate - 2
+Irq No. - 1, IRQ count - 2249, IRQ rate - 1
+Irq No. - 1, IRQ count - 2251, IRQ rate - 2
+Irq No. - 1, IRQ count - 2253, IRQ rate - 2
+Irq No. - 1, IRQ count - 2255, IRQ rate - 2
+Irq No. - 1, IRQ count - 2257, IRQ rate - 2
+Irq No. - 1, IRQ count - 2259, IRQ rate - 2
+Irq No. - 1, IRQ count - 2261, IRQ rate - 2
+Irq No. - 1, IRQ count - 2264, IRQ rate - 3
+Irq No. - 1, IRQ count - 2264, IRQ rate - 0
+Irq No. - 1, IRQ count - 2264, IRQ rate - 0
+Irq No. - 1, IRQ count - 2264, IRQ rate - 0
+Irq No. - 1, IRQ count - 2264, IRQ rate - 0
+Irq No. - 1, IRQ count - 2265, IRQ rate - 1
+Irq No. - 1, IRQ count - 2265, IRQ rate - 0
+Irq No. - 1, IRQ count - 2266, IRQ rate - 1
+Irq No. - 1, IRQ count - 2266, IRQ rate - 0
+Irq No. - 1, IRQ count - 2268, IRQ rate - 2
+Irq No. - 1, IRQ count - 2268, IRQ rate - 0
+Irq No. - 1, IRQ count - 2270, IRQ rate - 2
+Irq No. - 1, IRQ count - 2270, IRQ rate - 0
+Irq No. - 1, IRQ count - 2270, IRQ rate - 0
+Irq No. - 1, IRQ count - 2270, IRQ rate - 0
+Irq No. - 1, IRQ count - 2272, IRQ rate - 2
+Irq No. - 1, IRQ count - 2272, IRQ rate - 0
+Irq No. - 1, IRQ count - 2272, IRQ rate - 0
+Irq No. - 1, IRQ count - 2274, IRQ rate - 2
+Irq No. - 1, IRQ count - 2275, IRQ rate - 1
+Irq No. - 1, IRQ count - 2303, IRQ rate - 28
+Irq No. - 1, IRQ count - 2306, IRQ rate - 3
+Irq No. - 1, IRQ count - 2308, IRQ rate - 2
+Irq No. - 1, IRQ count - 2310, IRQ rate - 2
+Irq No. - 1, IRQ count - 2310, IRQ rate - 0
+Irq No. - 1, IRQ count - 2313, IRQ rate - 3
+Irq No. - 1, IRQ count - 2317, IRQ rate - 4
+Irq No. - 1, IRQ count - 2319, IRQ rate - 2
+Irq No. - 1, IRQ count - 2321, IRQ rate - 2
+Irq No. - 1, IRQ count - 2323, IRQ rate - 2
+Irq No. - 1, IRQ count - 2325, IRQ rate - 2
+Irq No. - 1, IRQ count - 2328, IRQ rate - 3
+Irq No. - 1, IRQ count - 2330, IRQ rate - 2
+Irq No. - 1, IRQ count - 2333, IRQ rate - 3
+Irq No. - 1, IRQ count - 2337, IRQ rate - 4
+Irq No. - 1, IRQ count - 2339, IRQ rate - 2
+Irq No. - 1, IRQ count - 2341, IRQ rate - 2
+Irq No. - 1, IRQ count - 2343, IRQ rate - 2
+Irq No. - 1, IRQ count - 2345, IRQ rate - 2
+Irq No. - 1, IRQ count - 2345, IRQ rate - 0
+Irq No. - 1, IRQ count - 2348, IRQ rate - 3
+Irq No. - 1, IRQ count - 2348, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 2
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2350, IRQ rate - 0
+Irq No. - 1, IRQ count - 2352, IRQ rate - 2
+Irq No. - 1, IRQ count - 2352, IRQ rate - 0
+Irq No. - 1, IRQ count - 2352, IRQ rate - 0
+Irq No. - 1, IRQ count - 2352, IRQ rate - 0
+Irq No. - 1, IRQ count - 2352, IRQ rate - 0
+Irq No. - 1, IRQ count - 2354, IRQ rate - 2
+Irq No. - 1, IRQ count - 2354, IRQ rate - 0
+Irq No. - 1, IRQ count - 2355, IRQ rate - 1
+Irq No. - 1, IRQ count - 2357, IRQ rate - 2
+Irq No. - 1, IRQ count - 2359, IRQ rate - 2
+Irq No. - 1, IRQ count - 2359, IRQ rate - 0
+Irq No. - 1, IRQ count - 2360, IRQ rate - 1
+Irq No. - 1, IRQ count - 2361, IRQ rate - 1
+Irq No. - 1, IRQ count - 2361, IRQ rate - 0
+Irq No. - 1, IRQ count - 2363, IRQ rate - 2
+Irq No. - 1, IRQ count - 2363, IRQ rate - 0
+Irq No. - 1, IRQ count - 2364, IRQ rate - 1
+Irq No. - 1, IRQ count - 2365, IRQ rate - 1
+Irq No. - 1, IRQ count - 2365, IRQ rate - 0
+Irq No. - 1, IRQ count - 2365, IRQ rate - 0
+Irq No. - 1, IRQ count - 2367, IRQ rate - 2
+Irq No. - 1, IRQ count - 2369, IRQ rate - 2
+Irq No. - 1, IRQ count - 2369, IRQ rate - 0
+Irq No. - 1, IRQ count - 2369, IRQ rate - 0
+Irq No. - 1, IRQ count - 2371, IRQ rate - 2
+Irq No. - 1, IRQ count - 2371, IRQ rate - 0
+Irq No. - 1, IRQ count - 2373, IRQ rate - 2
+Irq No. - 1, IRQ count - 2375, IRQ rate - 2
+Irq No. - 1, IRQ count - 2376, IRQ rate - 1
+Irq No. - 1, IRQ count - 2379, IRQ rate - 3
+Irq No. - 1, IRQ count - 2379, IRQ rate - 0
+Irq No. - 1, IRQ count - 2380, IRQ rate - 1
+Irq No. - 1, IRQ count - 2381, IRQ rate - 1
+Irq No. - 1, IRQ count - 2381, IRQ rate - 0
+Irq No. - 1, IRQ count - 2382, IRQ rate - 1
+Irq No. - 1, IRQ count - 2383, IRQ rate - 1
+Irq No. - 1, IRQ count - 2383, IRQ rate - 0
+Irq No. - 1, IRQ count - 2387, IRQ rate - 4
+Irq No. - 1, IRQ count - 2388, IRQ rate - 1
+Irq No. - 1, IRQ count - 2390, IRQ rate - 2
+Irq No. - 1, IRQ count - 2390, IRQ rate - 0
+Irq No. - 1, IRQ count - 2390, IRQ rate - 0
+Irq No. - 1, IRQ count - 2390, IRQ rate - 0
+Irq No. - 1, IRQ count - 2392, IRQ rate - 2
+Irq No. - 1, IRQ count - 2392, IRQ rate - 0
+Irq No. - 1, IRQ count - 2392, IRQ rate - 0
+Irq No. - 1, IRQ count - 2392, IRQ rate - 0
+Irq No. - 1, IRQ count - 2392, IRQ rate - 0
+Irq No. - 1, IRQ count - 2393, IRQ rate - 1
+Irq No. - 1, IRQ count - 2393, IRQ rate - 0
+Irq No. - 1, IRQ count - 2393, IRQ rate - 0
+Irq No. - 1, IRQ count - 2393, IRQ rate - 0
+Irq No. - 1, IRQ count - 2393, IRQ rate - 0
+Irq No. - 1, IRQ count - 2393, IRQ rate - 0
+Irq No. - 1, IRQ count - 2393, IRQ rate - 0
+Irq No. - 1, IRQ count - 2395, IRQ rate - 2
+Irq No. - 1, IRQ count - 2395, IRQ rate - 0
+Irq No. - 1, IRQ count - 2395, IRQ rate - 0
+Irq No. - 1, IRQ count - 2395, IRQ rate - 0
+Irq No. - 1, IRQ count - 2395, IRQ rate - 0
+Irq No. - 1, IRQ count - 2395, IRQ rate - 0
+Irq No. - 1, IRQ count - 2397, IRQ rate - 2
+Irq No. - 1, IRQ count - 2399, IRQ rate - 2
+Irq No. - 1, IRQ count - 2400, IRQ rate - 1
+Irq No. - 1, IRQ count - 2402, IRQ rate - 2
+Irq No. - 1, IRQ count - 2402, IRQ rate - 0
+Irq No. - 1, IRQ count - 2402, IRQ rate - 0
+Irq No. - 1, IRQ count - 2402, IRQ rate - 0
+Irq No. - 1, IRQ count - 2402, IRQ rate - 0
+Irq No. - 1, IRQ count - 2402, IRQ rate - 0
+Irq No. - 1, IRQ count - 2402, IRQ rate - 0
+Irq No. - 1, IRQ count - 2404, IRQ rate - 2
+Irq No. - 1, IRQ count - 2404, IRQ rate - 0
+Irq No. - 1, IRQ count - 2404, IRQ rate - 0
+Irq No. - 1, IRQ count - 2405, IRQ rate - 1
+Irq No. - 1, IRQ count - 2406, IRQ rate - 1
+Irq No. - 1, IRQ count - 2406, IRQ rate - 0
+Irq No. - 1, IRQ count - 2406, IRQ rate - 0
+Irq No. - 1, IRQ count - 2406, IRQ rate - 0
+Irq No. - 1, IRQ count - 2406, IRQ rate - 0
+Irq No. - 1, IRQ count - 2408, IRQ rate - 2
+Irq No. - 1, IRQ count - 2409, IRQ rate - 1
+Irq No. - 1, IRQ count - 2409, IRQ rate - 0
+Irq No. - 1, IRQ count - 2411, IRQ rate - 2
+Irq No. - 1, IRQ count - 2413, IRQ rate - 2
+Irq No. - 1, IRQ count - 2413, IRQ rate - 0
+Irq No. - 1, IRQ count - 2413, IRQ rate - 0
+Irq No. - 1, IRQ count - 2413, IRQ rate - 0
+Irq No. - 1, IRQ count - 2413, IRQ rate - 0
+Irq No. - 1, IRQ count - 2414, IRQ rate - 1
+Irq No. - 1, IRQ count - 2414, IRQ rate - 0
+Irq No. - 1, IRQ count - 2414, IRQ rate - 0
+Irq No. - 1, IRQ count - 2414, IRQ rate - 0
+Irq No. - 1, IRQ count - 2418, IRQ rate - 4
+Irq No. - 1, IRQ count - 2418, IRQ rate - 0
+Irq No. - 1, IRQ count - 2420, IRQ rate - 2
+Irq No. - 1, IRQ count - 2420, IRQ rate - 0
+Irq No. - 1, IRQ count - 2421, IRQ rate - 1
+Irq No. - 1, IRQ count - 2421, IRQ rate - 0
+Irq No. - 1, IRQ count - 2421, IRQ rate - 0
+Irq No. - 1, IRQ count - 2421, IRQ rate - 0
+Irq No. - 1, IRQ count - 2421, IRQ rate - 0
+Irq No. - 1, IRQ count - 2421, IRQ rate - 0
+Irq No. - 1, IRQ count - 2421, IRQ rate - 0
+Irq No. - 1, IRQ count - 2423, IRQ rate - 2
+Irq No. - 1, IRQ count - 2423, IRQ rate - 0
+Irq No. - 1, IRQ count - 2423, IRQ rate - 0
+Irq No. - 1, IRQ count - 2423, IRQ rate - 0
+Irq No. - 1, IRQ count - 2424, IRQ rate - 1
+Irq No. - 1, IRQ count - 2425, IRQ rate - 1
+Irq No. - 1, IRQ count - 2425, IRQ rate - 0
+Irq No. - 1, IRQ count - 2425, IRQ rate - 0
+Irq No. - 1, IRQ count - 2427, IRQ rate - 2
+Irq No. - 1, IRQ count - 2427, IRQ rate - 0
+Irq No. - 1, IRQ count - 2429, IRQ rate - 2
+Irq No. - 1, IRQ count - 2429, IRQ rate - 0
+Irq No. - 1, IRQ count - 2431, IRQ rate - 2
+Irq No. - 1, IRQ count - 2431, IRQ rate - 0
+Irq No. - 1, IRQ count - 2431, IRQ rate - 0
+Irq No. - 1, IRQ count - 2433, IRQ rate - 2
+Irq No. - 1, IRQ count - 2433, IRQ rate - 0
+Irq No. - 1, IRQ count - 2433, IRQ rate - 0
+Irq No. - 1, IRQ count - 2433, IRQ rate - 0
+Irq No. - 1, IRQ count - 2433, IRQ rate - 0
+Irq No. - 1, IRQ count - 2435, IRQ rate - 2
+Irq No. - 1, IRQ count - 2435, IRQ rate - 0
+Irq No. - 1, IRQ count - 2435, IRQ rate - 0
+Irq No. - 1, IRQ count - 2437, IRQ rate - 2
+Irq No. - 1, IRQ count - 2437, IRQ rate - 0
+Irq No. - 1, IRQ count - 2437, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 1
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2438, IRQ rate - 0
+Irq No. - 1, IRQ count - 2440, IRQ rate - 2
+Irq No. - 1, IRQ count - 2440, IRQ rate - 0
+Irq No. - 1, IRQ count - 2440, IRQ rate - 0
+Irq No. - 1, IRQ count - 2440, IRQ rate - 0
+Irq No. - 1, IRQ count - 2442, IRQ rate - 2
+Irq No. - 1, IRQ count - 2446, IRQ rate - 4
+Irq No. - 1, IRQ count - 2447, IRQ rate - 1
+Irq No. - 1, IRQ count - 2448, IRQ rate - 1
+Irq No. - 1, IRQ count - 2450, IRQ rate - 2
+Irq No. - 1, IRQ count - 2450, IRQ rate - 0
+Irq No. - 1, IRQ count - 2452, IRQ rate - 2
+Irq No. - 1, IRQ count - 2452, IRQ rate - 0
+Irq No. - 1, IRQ count - 2452, IRQ rate - 0
+Irq No. - 1, IRQ count - 2454, IRQ rate - 2
+Irq No. - 1, IRQ count - 2455, IRQ rate - 1
+Irq No. - 1, IRQ count - 2457, IRQ rate - 2
+Irq No. - 1, IRQ count - 2459, IRQ rate - 2
+Irq No. - 1, IRQ count - 2459, IRQ rate - 0
+Irq No. - 1, IRQ count - 2459, IRQ rate - 0
+Irq No. - 1, IRQ count - 2459, IRQ rate - 0
+Irq No. - 1, IRQ count - 2459, IRQ rate - 0
+Irq No. - 1, IRQ count - 2459, IRQ rate - 0
+Irq No. - 1, IRQ count - 2459, IRQ rate - 0
+Irq No. - 1, IRQ count - 2459, IRQ rate - 0
+Irq No. - 1, IRQ count - 2461, IRQ rate - 2
+Irq No. - 1, IRQ count - 2461, IRQ rate - 0
+Irq No. - 1, IRQ count - 2463, IRQ rate - 2
+Irq No. - 1, IRQ count - 2463, IRQ rate - 0
+Irq No. - 1, IRQ count - 2463, IRQ rate - 0
+Irq No. - 1, IRQ count - 2463, IRQ rate - 0
+Irq No. - 1, IRQ count - 2463, IRQ rate - 0
+Irq No. - 1, IRQ count - 2463, IRQ rate - 0
+Irq No. - 1, IRQ count - 2463, IRQ rate - 0
+Irq No. - 1, IRQ count - 2467, IRQ rate - 4
+Irq No. - 1, IRQ count - 2467, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 1
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2468, IRQ rate - 0
+Irq No. - 1, IRQ count - 2469, IRQ rate - 1
+Irq No. - 1, IRQ count - 2469, IRQ rate - 0
+Irq No. - 1, IRQ count - 2469, IRQ rate - 0
+Irq No. - 1, IRQ count - 2469, IRQ rate - 0
+Irq No. - 1, IRQ count - 2469, IRQ rate - 0
+Irq No. - 1, IRQ count - 2469, IRQ rate - 0
+Irq No. - 1, IRQ count - 2469, IRQ rate - 0
+Irq No. - 1, IRQ count - 2471, IRQ rate - 2
+Irq No. - 1, IRQ count - 2471, IRQ rate - 0
+Irq No. - 1, IRQ count - 2472, IRQ rate - 1
+Irq No. - 1, IRQ count - 2473, IRQ rate - 1
+Irq No. - 1, IRQ count - 2473, IRQ rate - 0
+Irq No. - 1, IRQ count - 2475, IRQ rate - 2
+Irq No. - 1, IRQ count - 2475, IRQ rate - 0
+Irq No. - 1, IRQ count - 2477, IRQ rate - 2
+Irq No. - 1, IRQ count - 2477, IRQ rate - 0
+Irq No. - 1, IRQ count - 2477, IRQ rate - 0
+Irq No. - 1, IRQ count - 2478, IRQ rate - 1
+Irq No. - 1, IRQ count - 2479, IRQ rate - 1
+Irq No. - 1, IRQ count - 2481, IRQ rate - 2
+Irq No. - 1, IRQ count - 2482, IRQ rate - 1
+Irq No. - 1, IRQ count - 2484, IRQ rate - 2
+Irq No. - 1, IRQ count - 2484, IRQ rate - 0
+Irq No. - 1, IRQ count - 2487, IRQ rate - 3
+Irq No. - 1, IRQ count - 2488, IRQ rate - 1
+Irq No. - 1, IRQ count - 2491, IRQ rate - 3
+Irq No. - 1, IRQ count - 2491, IRQ rate - 0
+Irq No. - 1, IRQ count - 2491, IRQ rate - 0
+Irq No. - 1, IRQ count - 2491, IRQ rate - 0
+Irq No. - 1, IRQ count - 2491, IRQ rate - 0
+Irq No. - 1, IRQ count - 2491, IRQ rate - 0
+Irq No. - 1, IRQ count - 2493, IRQ rate - 2
+Irq No. - 1, IRQ count - 2493, IRQ rate - 0
+Irq No. - 1, IRQ count - 2494, IRQ rate - 1
+Irq No. - 1, IRQ count - 2494, IRQ rate - 0
+Irq No. - 1, IRQ count - 2494, IRQ rate - 0
+Irq No. - 1, IRQ count - 2494, IRQ rate - 0
+Irq No. - 1, IRQ count - 2494, IRQ rate - 0
+Irq No. - 1, IRQ count - 2494, IRQ rate - 0
+Irq No. - 1, IRQ count - 2495, IRQ rate - 1
+Irq No. - 1, IRQ count - 2495, IRQ rate - 0
+Irq No. - 1, IRQ count - 2496, IRQ rate - 1
+Irq No. - 1, IRQ count - 2497, IRQ rate - 1
+Irq No. - 1, IRQ count - 2497, IRQ rate - 0
+Irq No. - 1, IRQ count - 2499, IRQ rate - 2
+Irq No. - 1, IRQ count - 2501, IRQ rate - 2
+Irq No. - 1, IRQ count - 2502, IRQ rate - 1
+Irq No. - 1, IRQ count - 2502, IRQ rate - 0
+Irq No. - 1, IRQ count - 2502, IRQ rate - 0
+Irq No. - 1, IRQ count - 2502, IRQ rate - 0
+Irq No. - 1, IRQ count - 2502, IRQ rate - 0
+Irq No. - 1, IRQ count - 2503, IRQ rate - 1
+Irq No. - 1, IRQ count - 2504, IRQ rate - 1
+Irq No. - 1, IRQ count - 2504, IRQ rate - 0
+Irq No. - 1, IRQ count - 2504, IRQ rate - 0
+Irq No. - 1, IRQ count - 2506, IRQ rate - 2
+Irq No. - 1, IRQ count - 2506, IRQ rate - 0
+Irq No. - 1, IRQ count - 2506, IRQ rate - 0
+Irq No. - 1, IRQ count - 2509, IRQ rate - 3
+Irq No. - 1, IRQ count - 2509, IRQ rate - 0
+Irq No. - 1, IRQ count - 2509, IRQ rate - 0
+Irq No. - 1, IRQ count - 2511, IRQ rate - 2
+Irq No. - 1, IRQ count - 2511, IRQ rate - 0
+Irq No. - 1, IRQ count - 2511, IRQ rate - 0
+Irq No. - 1, IRQ count - 2513, IRQ rate - 2
+Irq No. - 1, IRQ count - 2513, IRQ rate - 0
+Irq No. - 1, IRQ count - 2513, IRQ rate - 0
+Irq No. - 1, IRQ count - 2513, IRQ rate - 0
+Irq No. - 1, IRQ count - 2515, IRQ rate - 2
+Irq No. - 1, IRQ count - 2515, IRQ rate - 0
+Irq No. - 1, IRQ count - 2515, IRQ rate - 0
+Irq No. - 1, IRQ count - 2515, IRQ rate - 0
+Irq No. - 1, IRQ count - 2517, IRQ rate - 2
+Irq No. - 1, IRQ count - 2521, IRQ rate - 4
+Irq No. - 1, IRQ count - 2524, IRQ rate - 3
+Irq No. - 1, IRQ count - 2526, IRQ rate - 2
+Irq No. - 1, IRQ count - 2527, IRQ rate - 1
+Irq No. - 1, IRQ count - 2528, IRQ rate - 1
+Irq No. - 1, IRQ count - 2530, IRQ rate - 2
+Irq No. - 1, IRQ count - 2530, IRQ rate - 0
+Irq No. - 1, IRQ count - 2530, IRQ rate - 0
+Irq No. - 1, IRQ count - 2530, IRQ rate - 0
+Irq No. - 1, IRQ count - 2531, IRQ rate - 1
+Irq No. - 1, IRQ count - 2533, IRQ rate - 2
+Irq No. - 1, IRQ count - 2534, IRQ rate - 1
+Irq No. - 1, IRQ count - 2534, IRQ rate - 0
+Irq No. - 1, IRQ count - 2535, IRQ rate - 1
+Irq No. - 1, IRQ count - 2535, IRQ rate - 0
+Irq No. - 1, IRQ count - 2535, IRQ rate - 0
+Irq No. - 1, IRQ count - 2536, IRQ rate - 1
+Irq No. - 1, IRQ count - 2539, IRQ rate - 3
+Irq No. - 1, IRQ count - 2541, IRQ rate - 2
+Irq No. - 1, IRQ count - 2541, IRQ rate - 0
+Irq No. - 1, IRQ count - 2544, IRQ rate - 3
+Irq No. - 1, IRQ count - 2545, IRQ rate - 1
+Irq No. - 1, IRQ count - 2547, IRQ rate - 2
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2547, IRQ rate - 0
+Irq No. - 1, IRQ count - 2550, IRQ rate - 3
+Irq No. - 1, IRQ count - 2550, IRQ rate - 0
+Irq No. - 1, IRQ count - 2552, IRQ rate - 2
+Irq No. - 1, IRQ count - 2552, IRQ rate - 0
+Irq No. - 1, IRQ count - 2553, IRQ rate - 1
+Irq No. - 1, IRQ count - 2554, IRQ rate - 1
+Irq No. - 1, IRQ count - 2555, IRQ rate - 1
+Irq No. - 1, IRQ count - 2555, IRQ rate - 0
+Irq No. - 1, IRQ count - 2557, IRQ rate - 2
+Irq No. - 1, IRQ count - 2557, IRQ rate - 0
+Irq No. - 1, IRQ count - 2559, IRQ rate - 2
+Irq No. - 1, IRQ count - 2560, IRQ rate - 1
+Irq No. - 1, IRQ count - 2561, IRQ rate - 1
+Irq No. - 1, IRQ count - 2561, IRQ rate - 0
+Irq No. - 1, IRQ count - 2561, IRQ rate - 0
+Irq No. - 1, IRQ count - 2561, IRQ rate - 0
+Irq No. - 1, IRQ count - 2562, IRQ rate - 1
+Irq No. - 1, IRQ count - 2563, IRQ rate - 1
+Irq No. - 1, IRQ count - 2565, IRQ rate - 2
+Irq No. - 1, IRQ count - 2565, IRQ rate - 0
+Irq No. - 1, IRQ count - 2565, IRQ rate - 0
+Irq No. - 1, IRQ count - 2567, IRQ rate - 2
+Irq No. - 1, IRQ count - 2567, IRQ rate - 0
+Irq No. - 1, IRQ count - 2567, IRQ rate - 0
+Irq No. - 1, IRQ count - 2567, IRQ rate - 0
+Irq No. - 1, IRQ count - 2567, IRQ rate - 0
+Irq No. - 1, IRQ count - 2569, IRQ rate - 2
+Irq No. - 1, IRQ count - 2569, IRQ rate - 0
+Irq No. - 1, IRQ count - 2570, IRQ rate - 1
+Irq No. - 1, IRQ count - 2572, IRQ rate - 2
+Irq No. - 1, IRQ count - 2572, IRQ rate - 0
+Irq No. - 1, IRQ count - 2572, IRQ rate - 0
+Irq No. - 1, IRQ count - 2574, IRQ rate - 2
+Irq No. - 1, IRQ count - 2576, IRQ rate - 2
+Irq No. - 1, IRQ count - 2578, IRQ rate - 2
+Irq No. - 1, IRQ count - 2579, IRQ rate - 1
+Irq No. - 1, IRQ count - 2580, IRQ rate - 1
+Irq No. - 1, IRQ count - 2580, IRQ rate - 0
+Irq No. - 1, IRQ count - 2582, IRQ rate - 2
+Irq No. - 1, IRQ count - 2582, IRQ rate - 0
+Irq No. - 1, IRQ count - 2582, IRQ rate - 0
+Irq No. - 1, IRQ count - 2582, IRQ rate - 0
+Irq No. - 1, IRQ count - 2582, IRQ rate - 0
+Irq No. - 1, IRQ count - 2582, IRQ rate - 0
+Irq No. - 1, IRQ count - 2585, IRQ rate - 3
+Irq No. - 1, IRQ count - 2585, IRQ rate - 0
+Irq No. - 1, IRQ count - 2585, IRQ rate - 0
+Irq No. - 1, IRQ count - 2585, IRQ rate - 0
+Irq No. - 1, IRQ count - 2585, IRQ rate - 0
+Irq No. - 1, IRQ count - 2585, IRQ rate - 0
+Irq No. - 1, IRQ count - 2587, IRQ rate - 2
+Irq No. - 1, IRQ count - 2589, IRQ rate - 2
+Irq No. - 1, IRQ count - 2591, IRQ rate - 2
+Irq No. - 1, IRQ count - 2591, IRQ rate - 0
+Irq No. - 1, IRQ count - 2593, IRQ rate - 2
+Irq No. - 1, IRQ count - 2593, IRQ rate - 0
+Irq No. - 1, IRQ count - 2597, IRQ rate - 4
+Irq No. - 1, IRQ count - 2597, IRQ rate - 0
+Irq No. - 1, IRQ count - 2597, IRQ rate - 0
+Irq No. - 1, IRQ count - 2598, IRQ rate - 1
+Irq No. - 1, IRQ count - 2599, IRQ rate - 1
+Irq No. - 1, IRQ count - 2601, IRQ rate - 2
+Irq No. - 1, IRQ count - 2601, IRQ rate - 0
+Irq No. - 1, IRQ count - 2601, IRQ rate - 0
+Irq No. - 1, IRQ count - 2603, IRQ rate - 2
+Irq No. - 1, IRQ count - 2605, IRQ rate - 2
+Irq No. - 1, IRQ count - 2605, IRQ rate - 0
+Irq No. - 1, IRQ count - 2607, IRQ rate - 2
+Irq No. - 1, IRQ count - 2607, IRQ rate - 0
+Irq No. - 1, IRQ count - 2609, IRQ rate - 2
+Irq No. - 1, IRQ count - 2610, IRQ rate - 1
+Irq No. - 1, IRQ count - 2610, IRQ rate - 0
+Irq No. - 1, IRQ count - 2610, IRQ rate - 0
+Irq No. - 1, IRQ count - 2610, IRQ rate - 0
+Irq No. - 1, IRQ count - 2611, IRQ rate - 1
+Irq No. - 1, IRQ count - 2613, IRQ rate - 2
+Irq No. - 1, IRQ count - 2613, IRQ rate - 0
+Irq No. - 1, IRQ count - 2614, IRQ rate - 1
+Irq No. - 1, IRQ count - 2615, IRQ rate - 1
+Irq No. - 1, IRQ count - 2616, IRQ rate - 1
+Irq No. - 1, IRQ count - 2618, IRQ rate - 2
+Irq No. - 1, IRQ count - 2618, IRQ rate - 0
+Irq No. - 1, IRQ count - 2618, IRQ rate - 0
+Irq No. - 1, IRQ count - 2618, IRQ rate - 0
+Irq No. - 1, IRQ count - 2620, IRQ rate - 2
+Irq No. - 1, IRQ count - 2620, IRQ rate - 0
+Irq No. - 1, IRQ count - 2620, IRQ rate - 0
+Irq No. - 1, IRQ count - 2620, IRQ rate - 0
+Irq No. - 1, IRQ count - 2621, IRQ rate - 1
+Irq No. - 1, IRQ count - 2622, IRQ rate - 1
+Irq No. - 1, IRQ count - 2622, IRQ rate - 0
+Irq No. - 1, IRQ count - 2622, IRQ rate - 0
+Irq No. - 1, IRQ count - 2622, IRQ rate - 0
+Irq No. - 1, IRQ count - 2622, IRQ rate - 0
+Irq No. - 1, IRQ count - 2622, IRQ rate - 0
+Irq No. - 1, IRQ count - 2622, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 2
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2624, IRQ rate - 0
+Irq No. - 1, IRQ count - 2628, IRQ rate - 4
+Irq No. - 1, IRQ count - 2630, IRQ rate - 2
+Irq No. - 1, IRQ count - 2631, IRQ rate - 1
+Irq No. - 1, IRQ count - 2631, IRQ rate - 0
+Irq No. - 1, IRQ count - 2631, IRQ rate - 0
+Irq No. - 1, IRQ count - 2631, IRQ rate - 0
+Irq No. - 1, IRQ count - 2633, IRQ rate - 2
+Irq No. - 1, IRQ count - 2634, IRQ rate - 1
+Irq No. - 1, IRQ count - 2634, IRQ rate - 0
+Irq No. - 1, IRQ count - 2636, IRQ rate - 2
+Irq No. - 1, IRQ count - 2636, IRQ rate - 0
+Irq No. - 1, IRQ count - 2638, IRQ rate - 2
+Irq No. - 1, IRQ count - 2639, IRQ rate - 1
+Irq No. - 1, IRQ count - 2640, IRQ rate - 1
+Irq No. - 1, IRQ count - 2640, IRQ rate - 0
+Irq No. - 1, IRQ count - 2642, IRQ rate - 2
+Irq No. - 1, IRQ count - 2643, IRQ rate - 1
+Irq No. - 1, IRQ count - 2645, IRQ rate - 2
+Irq No. - 1, IRQ count - 2645, IRQ rate - 0
+Irq No. - 1, IRQ count - 2647, IRQ rate - 2
+Irq No. - 1, IRQ count - 2647, IRQ rate - 0
+Irq No. - 1, IRQ count - 2647, IRQ rate - 0
+Irq No. - 1, IRQ count - 2648, IRQ rate - 1
+Irq No. - 1, IRQ count - 2648, IRQ rate - 0
+Irq No. - 1, IRQ count - 2648, IRQ rate - 0
+Irq No. - 1, IRQ count - 2648, IRQ rate - 0
+Irq No. - 1, IRQ count - 2650, IRQ rate - 2
+Irq No. - 1, IRQ count - 2650, IRQ rate - 0
+Irq No. - 1, IRQ count - 2652, IRQ rate - 2
+Irq No. - 1, IRQ count - 2652, IRQ rate - 0
+Irq No. - 1, IRQ count - 2652, IRQ rate - 0
+Irq No. - 1, IRQ count - 2652, IRQ rate - 0
+Irq No. - 1, IRQ count - 2652, IRQ rate - 0
+Irq No. - 1, IRQ count - 2654, IRQ rate - 2
+Irq No. - 1, IRQ count - 2654, IRQ rate - 0
+Irq No. - 1, IRQ count - 2654, IRQ rate - 0
+Irq No. - 1, IRQ count - 2654, IRQ rate - 0
+Irq No. - 1, IRQ count - 2654, IRQ rate - 0
+Irq No. - 1, IRQ count - 2656, IRQ rate - 2
+Irq No. - 1, IRQ count - 2656, IRQ rate - 0
+Irq No. - 1, IRQ count - 2656, IRQ rate - 0
+Irq No. - 1, IRQ count - 2656, IRQ rate - 0
+Irq No. - 1, IRQ count - 2656, IRQ rate - 0
+Irq No. - 1, IRQ count - 2658, IRQ rate - 2
+Irq No. - 1, IRQ count - 2659, IRQ rate - 1
+Irq No. - 1, IRQ count - 2659, IRQ rate - 0
+Irq No. - 1, IRQ count - 2660, IRQ rate - 1
+Irq No. - 1, IRQ count - 2661, IRQ rate - 1
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2661, IRQ rate - 0
+Irq No. - 1, IRQ count - 2664, IRQ rate - 3
