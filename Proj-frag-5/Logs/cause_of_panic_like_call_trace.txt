@@ -1,0 +1,114 @@
+
+
+
+aarch64-none-linux-gnu-objdump -D vmlinux | grep remove_proc_entry
+
+ffff800008104a2c:	9408cae5 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008104a3c:	9408cae1 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008104a4c:	9408cadd 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008104a5c:	9408cad9 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008104a6c:	9408cad5 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008104a7c:	9408cad1 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008104a8c:	9408cacd 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008104aac:	9408cac5 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000083375c0 <remove_proc_entry>:
+ffff800008337610:	35000780 	cbnz	w0, ffff800008337700 <remove_proc_entry+0x140>
+ffff800008337638:	b4000400 	cbz	x0, ffff8000083376b8 <remove_proc_entry+0xf8>
+ffff800008337640:	37000300 	tbnz	w0, #0, ffff8000083376a0 <remove_proc_entry+0xe0>
+ffff80000833765c:	54000081 	b.ne	ffff80000833766c <remove_proc_entry+0xac>  // b.any
+ffff800008337688:	b4000060 	cbz	x0, ffff800008337694 <remove_proc_entry+0xd4>
+ffff800008337690:	540003e1 	b.ne	ffff80000833770c <remove_proc_entry+0x14c>  // b.any
+ffff80000833769c:	1400000e 	b	ffff8000083376d4 <remove_proc_entry+0x114>
+ffff8000083376e8:	540003a1 	b.ne	ffff80000833775c <remove_proc_entry+0x19c>  // b.any
+ffff800008337708:	17fffff3 	b	ffff8000083376d4 <remove_proc_entry+0x114>
+ffff800008337758:	17ffffcf 	b	ffff800008337694 <remove_proc_entry+0xd4>
+ffff80000833a6c8:	97fff3be 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008340220:	97ffdce8 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000083a41f4:	97fe4cf3 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000083c370c:	97fdcfad 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000083c371c:	97fdcfa9 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000087074dc:	97f0c039 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000087074e8:	97f0c036 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000087074fc:	97f0c031 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff800008707514:	97f0c02b 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000087078d4:	97f0bf3b 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000087078e4:	97f0bf37 	bl	ffff8000083375c0 <remove_proc_entry>
+ffff8000087078fc:	97f0bf31 	bl	ffff8000083375c0 <remove_proc_entry>
+
+
+
+remove_proc_entry+0x110: - 
+==============================
+ffff8000083375c0 + 0x110 = FFFF8000083376D0
+
+# aarch64-none-linux-gnu-addr2line -f -e vmlinux FFFF8000083376D0
+
+remove_proc_entry
+
+/home/mir/My_Workspace/TMDS64EVM/TMDS64EVM_SDK_Install/SDK_Install_Path/board-support/ti-linux-kernel-6.1.46+gitAUTOINC+247b2535b2-g247b2535b2/fs/proc/generic.c:712 (discriminator 1)
+
+irq_detector_probe+0x134: - 
+=============================
+# aarch64-none-linux-gnu-objdump -D vmlinux | grep irq_detector_probe
+
+ffff800008e25a90 <irq_detector_probe>:
+ffff800008e25aa4:	54000a20 	b.eq	ffff800008e25be8 <irq_detector_probe+0x158>  // b.none
+ffff800008e25ac0:	b4000aa0 	cbz	x0, ffff800008e25c14 <irq_detector_probe+0x184>
+ffff800008e25aec:	b4000940 	cbz	x0, ffff800008e25c14 <irq_detector_probe+0x184>
+ffff800008e25b64:	b40004c0 	cbz	x0, ffff800008e25bfc <irq_detector_probe+0x16c>
+ffff800008e25b7c:	b4000260 	cbz	x0, ffff800008e25bc8 <irq_detector_probe+0x138>
+ffff800008e25ba8:	14000002 	b	ffff800008e25bb0 <irq_detector_probe+0x120>
+ffff800008e25bc4:	35ffff54 	cbnz	w20, ffff800008e25bac <irq_detector_probe+0x11c>
+ffff800008e25be4:	14000002 	b	ffff800008e25bec <irq_detector_probe+0x15c>
+ffff800008e25c1c:	17fffff4 	b	ffff800008e25bec <irq_detector_probe+0x15c>
+
+
+
+ffff800008e25a90 + 0x134 = FFFF800008E25BC4
+
+aarch64-none-linux-gnu-addr2line -f -e vmlinux FFFF800008E25BC4
+
+create_proc_entry
+
+/home/mir/My_Workspace/TMDS64EVM/TMDS64EVM_SDK_Install/SDK_Install_Path/board-support/ti-linux-kernel-6.1.46+gitAUTOINC+247b2535b2-g247b2535b2/drivers/irq_detector/irq_detector.c:594
+
+
+Cause of function call trace: -
+============================================
+Cause of function call trace is not panic, but it is occuring due to WARN()  in "/fs/proc/generic.c:712".
+
+remove_proc_entry: - 
+
+void remove_proc_entry(const char *name, struct proc_dir_entry *parent)
+{
+	//....
+	
+	write_unlock(&proc_subdir_lock);
+	if (!de) {
+====>	WARN(1, "name '%s'\n", name);
+		return;
+	}
+	
+	//....
+}
+
+Proof: - 
+--------
+
+===>[    1.213467] name 'irq_diag_stat'
+[    1.216796] WARNING: CPU: 1 PID: 1 at fs/proc/generic.c:712 remove_proc_entry+0x110/0x1a0
+[    1.225173] Modules linked in:
+[    1.228297] CPU: 1 PID: 1 Comm: swapper/0 Not tainted 6.1.46Mirf-dirty #23
+[    1.235321] Hardware name: Texas Instruments AM642 EVM (DT)
+[    1.241012] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.248126] pc : remove_proc_entry+0x110/0x1a0
+
+//....
+
+===> [    1.414468] name 'irq_diag_cmd'
+[    1.417700] WARNING: CPU: 1 PID: 1 at fs/proc/generic.c:712 remove_proc_entry+0x110/0x1a0
+[    1.426065] Modules linked in:
+[    1.429181] CPU: 1 PID: 1 Comm: swapper/0 Tainted: G        W          6.1.46Mirf-dirty #23
+[    1.437716] Hardware name: Texas Instruments AM642 EVM (DT)
+[    1.443402] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.450514] pc : remove_proc_entry+0x110/0x1a0

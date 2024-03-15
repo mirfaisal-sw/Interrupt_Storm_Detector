@@ -1,0 +1,81 @@
+
+
+[    1.208663] ------------[ cut here ]------------
+[    1.213467] name 'irq_diag_stat'
+[    1.216796] WARNING: CPU: 1 PID: 1 at fs/proc/generic.c:712 remove_proc_entry+0x110/0x1a0
+[    1.225173] Modules linked in:
+[    1.228297] CPU: 1 PID: 1 Comm: swapper/0 Not tainted 6.1.46Mirf-dirty #23
+[    1.235321] Hardware name: Texas Instruments AM642 EVM (DT)
+[    1.241012] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.248126] pc : remove_proc_entry+0x110/0x1a0
+[    1.252666] lr : remove_proc_entry+0x110/0x1a0
+[    1.257206] sp : ffff80000a5ebb50
+[    1.260584] x29: ffff80000a5ebb50 x28: 0000000000000000 x27: ffff800009a100c8
+[    1.267882] x26: ffff800009af6060 x25: ffff800009af6078 x24: 0000000000000000
+[    1.275178] x23: ffff80000a5b3c18 x22: ffff80000a225c80 x21: ffff80000997a0c8
+[    1.282472] x20: ffff80000a5824e8 x19: 0000000000000000 x18: ffffffffffffffff
+[    1.289766] x17: 000000000000001c x16: 000000008389d623 x15: ffff80008a5eb837
+[    1.297062] x14: 0000000000000000 x13: ffff80000a1a3a38 x12: 00000000000002d6
+[    1.304356] x11: 00000000000000f2 x10: ffff80000a1fba38 x9 : ffff80000a1a3a38
+[    1.311652] x8 : 00000000ffffefff x7 : ffff80000a1fba38 x6 : 0000000000000000
+[    1.318946] x5 : 000000000000bff4 x4 : 0000000000000000 x3 : 0000000000000000
+[    1.326241] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000000d0000
+[    1.333536] Call trace:
+[    1.336028]  remove_proc_entry+0x110/0x1a0
+[    1.340214]  irq_detector_probe+0x134/0x190
+[    1.344490]  platform_probe+0x68/0xe0
+[    1.348232]  really_probe+0xbc/0x2dc
+[    1.351886]  __driver_probe_device+0x78/0x114
+[    1.356337]  driver_probe_device+0xd8/0x15c
+[    1.360611]  __driver_attach+0x94/0x19c
+[    1.364530]  bus_for_each_dev+0x70/0xd0
+[    1.368447]  driver_attach+0x24/0x30
+[    1.372100]  bus_add_driver+0x154/0x20c
+[    1.376018]  driver_register+0x78/0x130
+[    1.379937]  __platform_driver_register+0x28/0x34
+[    1.384741]  irq_detector_driver_init+0x1c/0x28
+[    1.389375]  do_one_initcall+0x50/0x1d0
+[    1.393295]  kernel_init_freeable+0x218/0x284
+[    1.397750]  kernel_init+0x24/0x12c
+[    1.401314]  ret_from_fork+0x10/0x20
+[    1.404966] ---[ end trace 0000000000000000 ]---
+[    1.409745] ------------[ cut here ]------------
+[    1.414468] name 'irq_diag_cmd'
+[    1.417700] WARNING: CPU: 1 PID: 1 at fs/proc/generic.c:712 remove_proc_entry+0x110/0x1a0
+[    1.426065] Modules linked in:
+[    1.429181] CPU: 1 PID: 1 Comm: swapper/0 Tainted: G        W          6.1.46Mirf-dirty #23
+[    1.437716] Hardware name: Texas Instruments AM642 EVM (DT)
+[    1.443402] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.450514] pc : remove_proc_entry+0x110/0x1a0
+[    1.455055] lr : remove_proc_entry+0x110/0x1a0
+[    1.459596] sp : ffff80000a5ebb50
+[    1.462975] x29: ffff80000a5ebb50 x28: 0000000000000000 x27: ffff800009a100c8
+[    1.470271] x26: ffff800009af6060 x25: ffff800009af6078 x24: 0000000000000000
+[    1.477567] x23: ffff80000a5b3c18 x22: ffff80000a225c80 x21: ffff80000997a0b8
+[    1.484863] x20: ffff80000a5824e8 x19: 0000000000000000 x18: ffffffffffffffff
+[    1.492159] x17: 000000000000001c x16: 000000008389d623 x15: ffff80008a5eb837
+[    1.499456] x14: 0000000000000000 x13: ffff80000a1a3a38 x12: 000000000000034b
+[    1.506751] x11: 0000000000000119 x10: ffff80000a1fba38 x9 : ffff80000a1a3a38
+[    1.514047] x8 : 00000000ffffefff x7 : ffff80000a1fba38 x6 : 0000000000000000
+[    1.521342] x5 : 000000000000bff4 x4 : 0000000000000000 x3 : 0000000000000000
+[    1.528638] x2 : 0000000000000000 x1 : 0000000000000000 x0 : ffff0000000d0000
+[    1.535931] Call trace:
+[    1.538422]  remove_proc_entry+0x110/0x1a0
+[    1.542607]  irq_detector_probe+0x134/0x190
+[    1.546881]  platform_probe+0x68/0xe0
+[    1.550619]  really_probe+0xbc/0x2dc
+[    1.554272]  __driver_probe_device+0x78/0x114
+[    1.558724]  driver_probe_device+0xd8/0x15c
+[    1.562996]  __driver_attach+0x94/0x19c
+[    1.566914]  bus_for_each_dev+0x70/0xd0
+[    1.570831]  driver_attach+0x24/0x30
+[    1.574483]  bus_add_driver+0x154/0x20c
+[    1.578400]  driver_register+0x78/0x130
+[    1.582319]  __platform_driver_register+0x28/0x34
+[    1.587124]  irq_detector_driver_init+0x1c/0x28
+[    1.591754]  do_one_initcall+0x50/0x1d0
+[    1.595670]  kernel_init_freeable+0x218/0x284
+[    1.600123]  kernel_init+0x24/0x12c
+[    1.603687]  ret_from_fork+0x10/0x20
+[    1.607338] ---[ end trace 0000000000000000 ]---
+[    1.612085] DBG: In function - irq_detector_probe, Line - 680
