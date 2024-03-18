@@ -1,0 +1,22 @@
+
+
+I. Commands to operate IRQ Detector: -
+----------------------------------------
+
+1. Files and folders: -
+
+	cd /proc/irq_diag
+	ls
+	irq_diag_cmd
+	irq_diag_stat
+
+2. Start: - 
+	echo on > /proc/irq_diag/irq_diag_cmd
+
+	Stop: - 
+	echo off > /proc/irq_diag/irq_diag_cmd
+
+	Read data: - 
+	cat /proc/irq_diag/irq_diag_stat
+
+	dmesg -n 1

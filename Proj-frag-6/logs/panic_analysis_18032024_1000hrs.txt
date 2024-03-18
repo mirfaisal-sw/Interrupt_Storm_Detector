@@ -1,0 +1,65 @@
+
+Panic call trace :-
+=========================
+root@am64xx-evm:~# echo on > /proc/irq_diag/irq_diag_cmd
+[   98.968797] DBG: In func - irq_diag_open_cmd
+[   98.973250] DBG: String: on, length - 3
+[   98.977121] Starting timer to fire in 500ms (4294917001)
+root@am64xx-evm:~# [   99.482485] my_hrtimer_callback called (-140737327427584).
+[   99.487991] In func - read_irq_interval_cb, line - 97, context = 0
+[   99.494604] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 469
+[   99.494624] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1371
+[   99.500103] In our workq function: work_func
+[   99.509874] delta: 25215 ns (~ 25 us)
+[   99.982484] my_hrtimer_callback called (-140737327427584).
+[   99.987991] In func - read_irq_interval_cb, line - 97, context = 0
+[   99.994203] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 469
+[   99.994213] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 1371
+[   99.999673] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+[  100.013967] Mem abort info:
+[  100.016781]   ESR = 0x0000000096000045
+[  100.020543]   EC = 0x25: DABT (current EL), IL = 32 bits
+[  100.025859]   SET = 0, FnV = 0
+[  100.028921]   EA = 0, S1PTW = 0
+[  100.032057]   FSC = 0x05: level 1 translation fault
+[  100.036933] Data abort info:
+[  100.039805]   ISV = 0, ISS = 0x00000045
+[  100.043647]   CM = 0, WnR = 1
+[  100.046626] user pgtable: 4k pages, 48-bit VAs, pgdp=000000008642c000
+[  100.053068] [0000000000000000] pgd=0800000086512003, p4d=0800000086512003, pud=0000000000000000
+[  100.061790] Internal error: Oops: 0000000096000045 [#1] PREEMPT SMP
+[  100.068052] Modules linked in:
+[  100.071103] CPU: 1 PID: 20 Comm: kworker/1:0 Tainted: G        W          6.1.46Mirf-dirty #36
+[  100.079700] Hardware name: Texas Instruments AM642 EVM (DT)
+[  100.085261] Workqueue: events work_func
+[  100.089105] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  100.096054] pc : work_func+0x18c/0x300
+[  100.099797] lr : work_func+0x12c/0x300
+[  100.103540] sp : ffff80000a6d3d50
+[  100.106844] x29: ffff80000a6d3d50 x28: ffff800009979fd8 x27: ffff80000a189a48
+[  100.113974] x26: ffff80000a213000 x25: 0000000000000731 x24: ffff80000a18d870
+[  100.121103] x23: ffff80000a189ca0 x22: ffff80000a5c4918 x21: ffff0000003869a0
+[  100.128231] x20: ffff000000386880 x19: 0000000000000001 x18: ffffffffffffffff
+[  100.135359] x17: 0000000000000000 x16: 0000000000000000 x15: ffff80008a6d3a47
+[  100.142487] x14: 0000000000000000 x13: ffff80000a1a3a38 x12: 0000000000000597
+[  100.149614] x11: 00000000000001dd x10: ffff80000a1fe6f0 x9 : ffff80000a1a3a38
+[  100.156742] x8 : 00000000ffffefff x7 : ffff80000a1fba38 x6 : 0000000000002cb8
+[  100.163870] x5 : 0000000000000001 x4 : ffff000000386978 x3 : ffff000007b86a00
+[  100.170998] x2 : ffff000007a21198 x1 : 0000000000000000 x0 : ffff000007a21180
+[  100.178126] Call trace:
+[  100.180565]  work_func+0x18c/0x300
+[  100.183962]  process_one_work+0x1d0/0x320
+[  100.187969]  worker_thread+0x14c/0x444
+[  100.191712]  kthread+0x10c/0x110
+[  100.194934]  ret_from_fork+0x10/0x20
+[  100.198510] Code: f9401001 f9001003 91006002 a9000462 (f9000023)
+[  100.204590] ---[ end trace 0000000000000000 ]---
+
+
+PANIC - 
+
+ aarch64-none-linux-gnu-addr2line -f -e vmlinux FFFF800008E25E6C
+
+__list_add
+
+/home/mir/My_Workspace/TMDS64EVM/TMDS64EVM_SDK_Install/SDK_Install_Path/board-support/ti-linux-kernel-6.1.46+gitAUTOINC+247b2535b2-g247b2535b2/./include/linux/list.h:75

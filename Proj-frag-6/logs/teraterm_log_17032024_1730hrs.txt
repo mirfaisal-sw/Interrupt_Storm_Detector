@@ -1,0 +1,50 @@
+
+
+
+[   53.810034] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 2216
+[   53.815469] For Irq# - 1, IRQ rate - 2 per 500 ms
+[   53.825830] In our workq function: work_func
+[   53.830113] delta: 32245 ns (~ 32 us)
+
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# [   54.298309] my_hrtimer_callback called (-140737327427584).
+[   54.303816] In func - read_irq_interval_cb, line - 95, context = 0
+[   54.310026] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 487
+
+[   54.310034] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 2216
+[   54.315500] For Irq# - 1, IRQ rate - 0 per 500 ms
+[   54.326172] In our workq function: work_func
+[   54.330503] delta: 33385 ns (~ 33 us)
+root@am64xx-evm:~# echo off > /proc/irq_diag/irq_diag_cmd[   54.798308] my_hrtimer_callback called (-140737327427584).
+[   54.803814] In func - read_irq_interval_cb, line - 95, context = 0
+[   54.810021] MIR: CPU no - 0, IRQ no. - 1, IRQ count - 488
+[   54.810029] MIR: CPU no - 1, IRQ no. - 1, IRQ count - 2216
+[   54.815463] For Irq# - 1, IRQ rate - 1 per 500 ms
+[   54.825853] In our workq function: work_func
+[   54.830150] delta: 27055 ns (~ 27 us)
+
+[   54.880560] DBG: In func - irq_diag_open_cmd
+[   54.884976] DBG: String: off, length - 4
+[   54.888922] DBG: Stopping HR timer used for IRQ rate calculation
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/irq_diag/irq_diag_stat
+[   63.925819] DBG: In func - irq_diag_open_stat, id - 55
+[   63.931145] DBG: In func - show_irq_stat, line - 476, Version - Irq Diag Ver - 1.0, Id - 55
+Irq No. - 1, IRQ count - 2693, IRQ rate - 0
+Irq No. - 1, IRQ count - 2695, IRQ rate - 2
+Irq No. - 1, IRQ count - 2695, IRQ rate - 0
+Irq No. - 1, IRQ count - 2695, IRQ rate - 0
+Irq No. - 1, IRQ count - 2695, IRQ rate - 0
+Irq No. - 1, IRQ count - 2695, IRQ rate - 0
+Irq No. - 1, IRQ count - 2695, IRQ rate - 0
+Irq No. - 1, IRQ count - 2697, IRQ rate - 2
+Irq No. - 1, IRQ count - 2697, IRQ rate - 0
+Irq No. - 1, IRQ count - 2697, IRQ rate - 0
+Irq No. - 1, IRQ count - 2697, IRQ rate - 0
+Irq No. - 1, IRQ count - 2697, IRQ rate - 0
+Irq No. - 1, IRQ count - 2699, IRQ rate - 2
+Irq No. - 1, IRQ count - 2701, IRQ rate - 2
+Irq No. - 1, IRQ count - 2703, IRQ rate - 2
+Irq No. - 1, IRQ count - 2703, IRQ rate - 0

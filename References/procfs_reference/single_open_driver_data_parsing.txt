@@ -1,0 +1,98 @@
+
+
+static inline void *__PDE_DATA(const struct inode *inode)
+{
+	return PDE(inode)->data;
+}
+
+/drivers/nubus/proc.c
+=======================
+
+static int nubus_proc_rsrc_show(struct seq_file *m, void *v)
+{
+	struct inode *inode = m->private;
+	struct nubus_proc_pde_data *pde_data;
+
+	pde_data = PDE_DATA(inode);
+	if (!pde_data)
+		return 0;
+
+	if (pde_data->res_size > m->size)
+		return -EFBIG;
+
+	if (pde_data->res_size) {
+		int lanes = (int)proc_get_parent_data(inode);
+		struct nubus_dirent ent;
+
+		if (!lanes)
+			return 0;
+
+		ent.mask = lanes;
+		ent.base = pde_data->res_ptr;
+		ent.data = 0;
+		nubus_seq_write_rsrc_mem(m, &ent, pde_data->res_size);
+	} else {
+		unsigned int data = (unsigned int)pde_data->res_ptr;
+
+		seq_putc(m, data >> 16);
+		seq_putc(m, data >> 8);
+		seq_putc(m, data >> 0);
+	}
+	return 0;
+}
+
+
+int single_open(struct file *file, int (*show)(struct seq_file *, void *),
+		void *data)
+{
+	struct seq_operations *op = kmalloc(sizeof(*op), GFP_KERNEL_ACCOUNT);
+	int res = -ENOMEM;
+
+	if (op) {
+		op->start = single_start;
+		op->next = single_next;
+		op->stop = single_stop;
+		op->show = show;
+		res = seq_open(file, op);
+		if (!res)
+			((struct seq_file *)file->private_data)->private = data;
+		else
+			kfree(op);
+	}
+	return res;
+}
+
+
+Example 2: - 
+----------------
+static int
+xprt_info_open(struct inode *inode, struct file *filp)
+{
+	int ret;
+	struct rpc_xprt *xprt = inode->i_private;
+
+	ret = single_open(filp, xprt_info_show, xprt);
+
+	if (!ret) {
+		if (!xprt_get(xprt)) {
+			single_release(inode, filp);
+			ret = -EINVAL;
+		}
+	}
+	return ret;
+}
+
+static int
+xprt_info_show(struct seq_file *f, void *v)
+{
+	struct rpc_xprt *xprt = f->private;
+
+	seq_printf(f, "netid: %s\n", xprt->address_strings[RPC_DISPLAY_NETID]);
+	seq_printf(f, "addr:  %s\n", xprt->address_strings[RPC_DISPLAY_ADDR]);
+	seq_printf(f, "port:  %s\n", xprt->address_strings[RPC_DISPLAY_PORT]);
+	seq_printf(f, "state: 0x%lx\n", xprt->state);
+	return 0;
+}
+
+struct rpc_xprt *xprt = 
+
