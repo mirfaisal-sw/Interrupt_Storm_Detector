@@ -2,8 +2,6 @@
  *
  *
  */
-//Reference:  - https://elixir.bootlin.com/linux/v5.15.70/source/arch/powerpc/kernel/rtas_flash.c#L654
-
 #include <linux/kernel_stat.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
@@ -116,7 +114,7 @@ static void work_func(struct work_struct *work)
 	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
 	struct irq_num_statistics_list *node_linked_list;
 	int irq, ret = 0;
-	int cpu_i;//, irq_cnt_per_sample = 0;
+	int cpu_i;
 	int tot_irq_count_per_sample = 0;
 	struct irq_num_heads_list *ptr;
 
@@ -143,12 +141,6 @@ static void work_func(struct work_struct *work)
 		//3. 
 		//****************************************//
 
-		/*For debugging purpose let us first concentrate on 
-		 * only one IRQ
-		 */
-		//if(priv->desc->irq_data.irq != DEBUG_IRQ_NUM_UNDER_TEST)
-			//continue;
-
 			/*Iterate over all CPUs*/
 			for_each_online_cpu(cpu_i) {
 		
@@ -174,6 +166,9 @@ static void work_func(struct work_struct *work)
 			}
 
 			node_linked_list = kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+			if(!node_linked_list) {
+				goto out;
+			}
 
 			/*Fill the node of list*/
 			node_linked_list->irq_num = priv->desc->irq_data.irq;
@@ -185,6 +180,10 @@ static void work_func(struct work_struct *work)
 
 			list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
+				/*TODO: - Check whether it is able to access list of heads*/
+				/*second change : 
+				 * if(ptr->irq_num == node_linked_list->irq_num)
+				*/
 				if(ptr->irq_num == priv->desc->irq_data.irq)
 					list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
 
@@ -666,6 +665,9 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 
 		/*Store IRQ number as Key for a node*/
 		pirq_data->irq_num_heads->irq_num = pirq_data->desc->irq_data.irq;
+
+		/*Added on 18th March at 1630hrs */
+		INIT_LIST_HEAD(&pirq_data->irq_num_heads->list_of_node);
 			
 		list_add_tail(&pirq_data->irq_num_heads->list_of_heads,
 				&pirq_data->irq_num_list_head);
