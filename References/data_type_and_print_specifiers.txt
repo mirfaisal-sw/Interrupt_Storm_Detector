@@ -1,0 +1,15 @@
+
+
+
+
+	1) Print specifier: -
+   
+   unsigned long ---> %ld
+   unsigned int ---> %udl
+   
+   u32 ---> %u
+   u64 ---> %lld, %llu
+   
+   int ---> %d
+
+   size_t = long unsigned int ---> %ld

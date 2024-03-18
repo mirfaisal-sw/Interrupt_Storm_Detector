@@ -1,0 +1,14 @@
+
+
+Reference URLs: -
+====================
+	1. https://stackoverflow.com/questions/22803469/uevent-sent-from-kernel-to-user-space-udev
+	
+	2. https://kernelnewbies.kernelnewbies.narkive.com/3GFDai0i/kobject-uevent-usage
+	
+	3. https://kernelnewbies.kernelnewbies.narkive.com/3GFDai0i/kobject-uevent-usage
+	
+	4. https://stackoverflow.com/questions/48766482/how-to-capture-kobject-uevent-using-c-program
+	
+	
+	
