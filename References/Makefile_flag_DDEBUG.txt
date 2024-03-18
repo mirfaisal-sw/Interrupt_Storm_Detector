@@ -1,0 +1,29 @@
+
+
+Example 1: 
+===============
+Mkaefile: - 
+	ccflags-$(CONFIG_IRQ_DETECTOR_DEBUG)    += -DDEBUG
+	
+driver.c: - 
+	#ifdef DEBUG
+		
+		/* print debugging information*/
+		
+	#endif 
+	
+==> Set "CONFIG_IRQ_DETECTOR_DEBUG=y" in defconfig or config.fragment file.	
+	
+
+Example 2: 
+===============
+Mkaefile: - 
+	
+	ccflags-y += -DTC9562MAC_WITHOUT_PHY
+
+
+driver.c: - 
+	#ifdef TC9562_UNSUPPORTED_UNTESTED_FEATUR
+		
+		/* code here*/
+	#endif 

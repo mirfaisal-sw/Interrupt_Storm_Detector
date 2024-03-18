@@ -1,0 +1,20 @@
+
+
+
+
+1. Implement folder "irq_diag_param/" and populate various files - irq_storm_threshol, irq_rate_mon_sampling_rate.
+
+2. Implement array of Linked List.
+		https://stackoverflow.com/questions/26807284/c-linux-built-in-linked-list-in-kernel-data-structures-usage
+
+3. Implement IRQ timestamping of only one IRQ number.
+
+4. Implement User dev rule to catch kobject events to notify Interrupt storm.
+
+5. Enrich Kobject and add multiple config macros.
+
+
+
+6. Explore: - 
+
+ccflags-$(CONFIG_PCI_DEBUG)     += -DDEBUG
