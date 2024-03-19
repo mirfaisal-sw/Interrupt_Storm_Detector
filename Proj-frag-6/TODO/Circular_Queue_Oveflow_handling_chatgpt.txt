@@ -1,0 +1,90 @@
+
+Code to implement circular queue using list in Linux Kernel with overflow
+=========================================================================================================
+To implement a circular queue with overflow handling in the Linux Kernel using a list, you need to modify the enqueue
+operation to handle the case when the queue is full. One common approach is to overwrite the oldest element when the 
+queue is full. 
+
+
+[4:47 pm, 19/03/2024] MIR: #include <linux/module.h>
+#include <linux/kernel.h>
+#include <linux/init.h>
+#include <linux/list.h>
+#include <linux/slab.h>
+
+#define QUEUE_SIZE 10
+
+struct queue_node {
+    int data;
+    struct list_head list;
+};
+
+struct circular_queue {
+    struct list_head head;
+    int size;
+};
+
+static struct circular_queue my_queue;
+
+void init_queue(struct circular_queue *queue) {
+    INIT_LIST_HEAD(&queue->head);
+    queue->size = 0;
+}
+
+void enqueue(struct circular_queue *queue, int data) {
+
+    if (queue->size >= QUEUE_SIZE) {
+        // Queue is full, remove the oldest element
+        struct queue_node *oldest_node = list_first_entry(&queue->head, struct queue_node, list);
+        list_del(&oldest_node->list);
+        kfree(oldest_node);
+        queue->size--;
+    }
+
+    struct queue_node *new_node = kmalloc(sizeof(struct queue_node), GFP_KERNEL);
+    if (!new_node) {
+        printk(KERN_ERR "Failed to allocate memory for new node.\n");
+        return;
+    }
+
+    new_node->data = data;
+    list_add_tail(&new_node->list, &queue->head);
+    queue->size++;
+}
+
+int dequeue(struct circular_queue *queue) {
+    if (list_empty(&queue->head)) {
+        printk(KERN_WARNING "Queue is empty. Cannot dequeue.\n");
+        return -1; // Return a sentinel value to indicate an empty queue
+    }
+
+    struct queue_node *node = list_first_entry(&queue->head, struct queue_node, list);
+    int data = node->data;
+    list_del(&node->list);
+    kfree(node);
+    queue->size--;
+    return data;
+}
+
+static int __init circular_queue_init(void) {
+    printk(KERN_INFO "Initializing Circular Queue Module\n");
+    init_queue(&my_queue);
+    return 0;
+}
+
+static void __exit circular_queue_exit(void) {
+    printk(KERN_INFO "Exiting Circular Queue Module\n");
+}
+
+module_init(circular_queue_init);
+module_exit(circular_queue_exit);
+
+MODULE_LICENSE("GPL");
+MODULE_AUTHOR("Your Name");
+MODULE_DESCRIPTION("Circular Queue Kernel Module");
+
+In this implementation:
+
+The enqueue function checks if the queue is full. If it is, it removes the oldest element (the one at the head of the queue) before adding the new element.
+If memory allocation fails when creating a new node, an error message is printed, and no new node is added to the queue.
+This code demonstrates a circular queue implementation with overflow handling using a doubly linked list in the Linux Kernel. Make sure to test it thoroughly and handle edge cases appropriately.

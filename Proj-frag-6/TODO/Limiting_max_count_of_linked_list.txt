@@ -1,0 +1,43 @@
+
+
+
+
+
+
+while (imxdmac->descs_allocated < IMXDMA_MAX_CHAN_DESCRIPTORS) {
+		struct imxdma_desc *desc;
+
+		desc = kzalloc(sizeof(*desc), GFP_KERNEL);
+		if (!desc)
+			break;
+		dma_async_tx_descriptor_init(&desc->desc, chan);
+		desc->desc.tx_submit = imxdma_tx_submit;
+		/* txd.flags will be overwritten in prep funcs */
+		desc->desc.flags = DMA_CTRL_ACK;
+		desc->status = DMA_COMPLETE;
+
+		list_add_tail(&desc->node, &imxdmac->ld_free);
+		imxdmac->descs_allocated++;
+	}
+
+	if (!imxdmac->descs_allocated)
+		return -ENOMEM;
+		
+}
+
+Deleting the linked list: -
+---------------------------------
+static int iio_map_array_unregister_locked(struct iio_dev *indio_dev)
+{
+	int ret = -ENODEV;
+	struct iio_map_internal *mapi, *next;
+
+	list_for_each_entry_safe(mapi, next, &iio_map_list, l) {
+		if (indio_dev == mapi->indio_dev) {
+			list_del(&mapi->l);
+			kfree(mapi);
+			ret = 0;
+		}
+	}
+	return ret;
+}

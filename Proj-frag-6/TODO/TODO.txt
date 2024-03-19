@@ -18,3 +18,15 @@
 6. Explore: - 
 
 ccflags-$(CONFIG_PCI_DEBUG)     += -DDEBUG
+
+7. Remove created linked list.
+
+8. Figure out how to specify maximum linked list size or check to make it a circular linked list.
+
+9. Format how to tabulate data while reading from procfs.
+
+10. Find out whther INIT_LIST_HEAD() is required before every call to list_add_tail().
+
+Example: - 
+	INIT_LIST_HEAD(&d->list);
+	list_add_tail(&d->list, &oct->ctrl_req_wait_list);

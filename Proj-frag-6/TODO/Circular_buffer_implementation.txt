@@ -1,0 +1,52 @@
+
+
+Code extracts: -
+====================
+
+1.) Ref-1
+File - https://elixir.bootlin.com/linux/latest/source/drivers/net/ethernet/netronome/nfp/flower/metadata.c#L43
+
+static int nfp_release_stats_entry(struct nfp_app *app, u32 stats_context_id)
+{
+	struct nfp_flower_priv *priv = app->priv;
+	struct circ_buf *ring;
+
+	ring = &priv->stats_ids.free_list;
+	/* Check if buffer is full, stats_ring_size must be power of 2 */
+	if (!CIRC_SPACE(ring->head, ring->tail, priv->stats_ring_size))
+		return -ENOBUFS;
+
+	/* Each increment of head represents size of NFP_FL_STATS_ELEM_RS */
+	memcpy(&ring->buf[ring->head * NFP_FL_STATS_ELEM_RS],
+	       &stats_context_id, NFP_FL_STATS_ELEM_RS);
+	ring->head = (ring->head + 1) & (priv->stats_ring_size - 1);
+
+	return 0;
+}
+
+
+2.) Ref -2 , Book - Billimoria (Ch - 5)
+https://subscription.packtpub.com/book/cloud-and-networking/9781789953435/5/ch05lvl1sec24/using-the-kernel-memory-ring-buffer
+
+Using the kernel memory ring buffer
+The kernel log buffer is simply a memory buffer within a kernel address space where the printk output is saved (logged). More technically, it's the global __log_buf[] variable. Its definition in the kernel source is as follows:
+
+kernel/printk/printk.c:
+#define __LOG_BUF_LEN (1 << CONFIG_LOG_BUF_SHIFT)
+static char __log_buf[__LOG_BUF_LEN] __aligned(LOG_ALIGN);
+It's architected as a ring buffer; it has a finite size (__LOG_BUF_LEN bytes), and once it's full, it gets overwritten from byte zero. Hence, it's called a "ring" or circular, buffer). Here, we can see that the size is based on the Kconfig variable CONFIG_LOG_BUF_SHIFT (1 << n in C implies 2^n). This value is shown and can be overridden as part of the kernel (menu)config here: General Setup > Kernel log buffer size.
+
+It's an integer value with a range of 12 - 25 (we can always search init/Kconfig...
+
+3.) https://elixir.bootlin.com/linux/latest/source/include/linux/circ_buf.h#L9
+File - include/linux/circ_buf.h
+
+struct circ_buf {
+	char *buf;
+	int head;
+	int tail;
+};
+
+
+4.) KFIFO: -
+https://github.com/firmianay/Life-long-Learner/blob/master/linux-kernel-development/chapter-6.md

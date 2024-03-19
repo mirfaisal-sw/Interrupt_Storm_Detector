@@ -782,7 +782,6 @@ static int devicemodel_resume(struct device *dev)
 	pr_info("devicemodel example resume\n");
 
 	/* Your device resume code */
-
 	return 0;
 }
 
