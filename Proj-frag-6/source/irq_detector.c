@@ -155,9 +155,9 @@ static void work_func(struct work_struct *work)
 				if (priv->desc->kstat_irqs) {
 			
 					//Irq No - desc_node->irq_data.irq
-					pr_alert("MIR: CPU no - %d, IRQ no. - %d, IRQ count - %u", 
-						cpu_i, priv->desc->irq_data.irq,
-						*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i));
+					//pr_alert("MIR: CPU no - %d, IRQ no. - %d, IRQ count - %u", 
+					//	cpu_i, priv->desc->irq_data.irq,
+					//	*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i));
 					
 					priv->irq_num_statistics_node->irq_count_per_cpu[cpu_i] =
 								*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
@@ -185,12 +185,15 @@ static void work_func(struct work_struct *work)
 
 			list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
-				if(ptr->irq_num == priv->desc->irq_data.irq)
+				pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
+				if(ptr->irq_num == node_linked_list->irq_num) {
 					list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
+					break;
+				}
 
 			}/*list_for_each_entry*/
 
-			pr_alert("For Irq# - %d, IRQ rate - %d per %d ms\n",
+			pr_debug("For Irq# - %d, IRQ rate - %d per %d ms\n",
 					node_linked_list->irq_num,
 					node_linked_list->irq_rate, SAMPLING_INTERVAL);
 		} 
@@ -506,11 +509,12 @@ static int show_irq_stat(struct seq_file *seq, void *pdata)
 
 	list_for_each_entry(ptr_irq_num_head, &mirq_data->irq_num_list_head, list_of_heads) {
 
-		list_for_each_entry(tmp, &ptr_irq_num_head->list_of_heads, list_node) {
+		list_for_each_entry(tmp, &ptr_irq_num_head->list_of_node, list_node) {
 			seq_printf(seq, "Irq No. - %d, IRQ count - %d, IRQ rate - %d\n",
                                tmp->irq_num, tmp->irq_count, tmp->irq_rate);
-
+			
         	}
+		seq_printf(seq,"\n\n\n\n");
 	}
 	return 0;
 }
@@ -666,10 +670,13 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 
 		/*Store IRQ number as Key for a node*/
 		pirq_data->irq_num_heads->irq_num = pirq_data->desc->irq_data.irq;
-			
+
+		/*Added on 18th March at 1630hrs */
+		INIT_LIST_HEAD(&pirq_data->irq_num_heads->list_of_node);
+
 		list_add_tail(&pirq_data->irq_num_heads->list_of_heads,
 				&pirq_data->irq_num_list_head);
-		}        
+		}
     }
 	
 	/*Verify created list of heads for each

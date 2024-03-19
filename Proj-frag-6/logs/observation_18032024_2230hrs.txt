@@ -1,0 +1,211 @@
+
+# cat /proc/irq_diag_irq_diag_stat
+
+Irq No. - 1, IRQ count - 0, IRQ rate - 0
+Irq No. - 2, IRQ count - 0, IRQ rate - 0
+Irq No. - 3, IRQ count - 0, IRQ rate - 0
+Irq No. - 6, IRQ count - 0, IRQ rate - 0
+Irq No. - 7, IRQ count - 0, IRQ rate - 0
+Irq No. - 8, IRQ count - 0, IRQ rate - 0
+Irq No. - 9, IRQ count - 0, IRQ rate - 0
+Irq No. - 10, IRQ count - 0, IRQ rate - 0
+Irq No. - 11, IRQ count - 0, IRQ rate - 0
+Irq No. - 12, IRQ count - 0, IRQ rate - 0
+Irq No. - 13, IRQ count - 0, IRQ rate - 0
+Irq No. - 14, IRQ count - 0, IRQ rate - 0
+Irq No. - 15, IRQ count - 0, IRQ rate - 0
+Irq No. - 16, IRQ count - 0, IRQ rate - 0
+Irq No. - 17, IRQ count - 0, IRQ rate - 0
+Irq No. - 18, IRQ count - 0, IRQ rate - 0
+Irq No. - 19, IRQ count - 0, IRQ rate - 0
+Irq No. - 20, IRQ count - 0, IRQ rate - 0
+Irq No. - 21, IRQ count - 0, IRQ rate - 0
+Irq No. - 22, IRQ count - 0, IRQ rate - 0
+Irq No. - 23, IRQ count - 0, IRQ rate - 0
+Irq No. - 24, IRQ count - 0, IRQ rate - 0
+Irq No. - 25, IRQ count - 0, IRQ rate - 0
+Irq No. - 26, IRQ count - 0, IRQ rate - 0
+Irq No. - 27, IRQ count - 0, IRQ rate - 0
+Irq No. - 28, IRQ count - 0, IRQ rate - 0
+Irq No. - 29, IRQ count - 0, IRQ rate - 0
+Irq No. - 30, IRQ count - 0, IRQ rate - 0
+Irq No. - 31, IRQ count - 0, IRQ rate - 0
+Irq No. - 32, IRQ count - 0, IRQ rate - 0
+Irq No. - 33, IRQ count - 0, IRQ rate - 0
+Irq No. - 34, IRQ count - 0, IRQ rate - 0
+Irq No. - 35, IRQ count - 0, IRQ rate - 0
+Irq No. - 36, IRQ count - 0, IRQ rate - 0
+Irq No. - 37, IRQ count - 0, IRQ rate - 0
+Irq No. - 38, IRQ count - 0, IRQ rate - 0
+Irq No. - 39, IRQ count - 0, IRQ rate - 0
+Irq No. - 40, IRQ count - 0, IRQ rate - 0
+Irq No. - 41, IRQ count - 0, IRQ rate - 0
+Irq No. - 42, IRQ count - 0, IRQ rate - 0
+Irq No. - 43, IRQ count - 0, IRQ rate - 0
+Irq No. - 44, IRQ count - 0, IRQ rate - 0
+Irq No. - 45, IRQ count - 0, IRQ rate - 0
+Irq No. - 46, IRQ count - 0, IRQ rate - 0
+Irq No. - 47, IRQ count - 0, IRQ rate - 0
+Irq No. - 48, IRQ count - 0, IRQ rate - 0
+Irq No. - 49, IRQ count - 0, IRQ rate - 0
+Irq No. - 50, IRQ count - 0, IRQ rate - 0
+Irq No. - 51, IRQ count - 0, IRQ rate - 0
+Irq No. - 52, IRQ count - 0, IRQ rate - 0
+Irq No. - 53, IRQ count - 0, IRQ rate - 0
+Irq No. - 54, IRQ count - 0, IRQ rate - 0
+Irq No. - 55, IRQ count - 0, IRQ rate - 0
+Irq No. - 56, IRQ count - 0, IRQ rate - 0
+Irq No. - 57, IRQ count - 0, IRQ rate - 0
+Irq No. - 58, IRQ count - 0, IRQ rate - 0
+Irq No. - 59, IRQ count - 0, IRQ rate - 0
+Irq No. - 60, IRQ count - 0, IRQ rate - 0
+Irq No. - 61, IRQ count - 0, IRQ rate - 0
+Irq No. - 62, IRQ count - 0, IRQ rate - 0
+Irq No. - 63, IRQ count - 0, IRQ rate - 0
+Irq No. - 64, IRQ count - 0, IRQ rate - 0
+Irq No. - 65, IRQ count - 0, IRQ rate - 0
+Irq No. - 66, IRQ count - 0, IRQ rate - 0
+Irq No. - 67, IRQ count - 0, IRQ rate - 0
+Irq No. - 68, IRQ count - 0, IRQ rate - 0
+Irq No. - 69, IRQ count - 0, IRQ rate - 0
+Irq No. - 70, IRQ count - 0, IRQ rate - 0
+Irq No. - 71, IRQ count - 0, IRQ rate - 0
+Irq No. - 72, IRQ count - 0, IRQ rate - 0
+Irq No. - 73, IRQ count - 0, IRQ rate - 0
+Irq No. - 74, IRQ count - 0, IRQ rate - 0
+Irq No. - 75, IRQ count - 0, IRQ rate - 0
+Irq No. - 76, IRQ count - 0, IRQ rate - 0
+Irq No. - 77, IRQ count - 0, IRQ rate - 0
+Irq No. - 78, IRQ count - 0, IRQ rate - 0
+Irq No. - 79, IRQ count - 0, IRQ rate - 0
+Irq No. - 80, IRQ count - 0, IRQ rate - 0
+Irq No. - 81, IRQ count - 0, IRQ rate - 0
+Irq No. - 82, IRQ count - 0, IRQ rate - 0
+Irq No. - 83, IRQ count - 0, IRQ rate - 0
+Irq No. - 84, IRQ count - 0, IRQ rate - 0
+Irq No. - 85, IRQ count - 0, IRQ rate - 0
+Irq No. - 86, IRQ count - 0, IRQ rate - 0
+Irq No. - 87, IRQ count - 0, IRQ rate - 0
+Irq No. - 88, IRQ count - 0, IRQ rate - 0
+Irq No. - 89, IRQ count - 0, IRQ rate - 0
+Irq No. - 90, IRQ count - 0, IRQ rate - 0
+Irq No. - 91, IRQ count - 0, IRQ rate - 0
+Irq No. - 92, IRQ count - 0, IRQ rate - 0
+Irq No. - 93, IRQ count - 0, IRQ rate - 0
+Irq No. - 94, IRQ count - 0, IRQ rate - 0
+Irq No. - 95, IRQ count - 0, IRQ rate - 0
+Irq No. - 96, IRQ count - 0, IRQ rate - 0
+Irq No. - 97, IRQ count - 0, IRQ rate - 0
+Irq No. - 98, IRQ count - 0, IRQ rate - 0
+Irq No. - 99, IRQ count - 0, IRQ rate - 0
+Irq No. - 100, IRQ count - 0, IRQ rate - 0
+Irq No. - 101, IRQ count - 0, IRQ rate - 0
+Irq No. - 102, IRQ count - 0, IRQ rate - 0
+Irq No. - 103, IRQ count - 0, IRQ rate - 0
+Irq No. - 104, IRQ count - 0, IRQ rate - 0
+Irq No. - 105, IRQ count - 0, IRQ rate - 0
+Irq No. - 106, IRQ count - 0, IRQ rate - 0
+Irq No. - 107, IRQ count - 0, IRQ rate - 0
+Irq No. - 108, IRQ count - 0, IRQ rate - 0
+Irq No. - 109, IRQ count - 0, IRQ rate - 0
+Irq No. - 110, IRQ count - 0, IRQ rate - 0
+Irq No. - 111, IRQ count - 0, IRQ rate - 0
+Irq No. - 112, IRQ count - 0, IRQ rate - 0
+Irq No. - 113, IRQ count - 0, IRQ rate - 0
+Irq No. - 114, IRQ count - 0, IRQ rate - 0
+Irq No. - 115, IRQ count - 0, IRQ rate - 0
+Irq No. - 116, IRQ count - 0, IRQ rate - 0
+Irq No. - 117, IRQ count - 0, IRQ rate - 0
+Irq No. - 118, IRQ count - 0, IRQ rate - 0
+Irq No. - 119, IRQ count - 0, IRQ rate - 0
+Irq No. - 120, IRQ count - 0, IRQ rate - 0
+Irq No. - 121, IRQ count - 0, IRQ rate - 0
+Irq No. - 122, IRQ count - 0, IRQ rate - 0
+Irq No. - 123, IRQ count - 0, IRQ rate - 0
+Irq No. - 124, IRQ count - 0, IRQ rate - 0
+Irq No. - 125, IRQ count - 0, IRQ rate - 0
+Irq No. - 126, IRQ count - 0, IRQ rate - 0
+Irq No. - 127, IRQ count - 0, IRQ rate - 0
+Irq No. - 128, IRQ count - 0, IRQ rate - 0
+Irq No. - 129, IRQ count - 0, IRQ rate - 0
+Irq No. - 130, IRQ count - 0, IRQ rate - 0
+Irq No. - 131, IRQ count - 0, IRQ rate - 0
+Irq No. - 132, IRQ count - 0, IRQ rate - 0
+Irq No. - 133, IRQ count - 0, IRQ rate - 0
+
+
+
+# Print on console: -
+-----------------------
+
+[  155.216899] SHOW_DELTA(): *invalid* earlier > later? (check order of params)
+[  155.224170] For Irq# - 1, IRQ rate - -60201 per 500 ms
+[  155.229376] For Irq# - 2, IRQ rate - 14885 per 500 ms
+[  155.234549] For Irq# - 3, IRQ rate - 0 per 500 ms
+[  155.239302] For Irq# - 4, IRQ rate - 0 per 500 ms
+[  155.244077] For Irq# - 5, IRQ rate - 0 per 500 ms
+[  155.248811] For Irq# - 6, IRQ rate - 2 per 500 ms
+[  155.253555] For Irq# - 7, IRQ rate - 0 per 500 ms
+[  155.258283] For Irq# - 8, IRQ rate - 0 per 500 ms
+[  155.263027] For Irq# - 9, IRQ rate - 0 per 500 ms
+[  155.267751] For Irq# - 10, IRQ rate - 0 per 500 ms
+[  155.272582] For Irq# - 11, IRQ rate - 36674 per 500 ms
+[  155.277741] For Irq# - 12, IRQ rate - 0 per 500 ms
+[  155.282566] For Irq# - 13, IRQ rate - 0 per 500 ms
+[  155.287379] For Irq# - 14, IRQ rate - 0 per 500 ms
+[  155.292207] For Irq# - 15, IRQ rate - 0 per 500 ms
+[  155.297032] For Irq# - 16, IRQ rate - 0 per 500 ms
+[  155.301871] For Irq# - 17, IRQ rate - 0 per 500 ms
+[  155.306687] For Irq# - 18, IRQ rate - 419 per 500 ms
+[  155.311698] For Irq# - 19, IRQ rate - 950 per 500 ms
+[  155.316685] For Irq# - 20, IRQ rate - 1702 per 500 ms
+[  155.321769] For Irq# - 21, IRQ rate - 0 per 500 ms
+[  155.326582] For Irq# - 22, IRQ rate - 0 per 500 ms
+[  155.331411] For Irq# - 23, IRQ rate - 0 per 500 ms
+[  155.336226] For Irq# - 24, IRQ rate - 0 per 500 ms
+[  155.341055] For Irq# - 25, IRQ rate - 0 per 500 ms
+[  155.345887] For Irq# - 26, IRQ rate - 0 per 500 ms
+[  155.350725] For Irq# - 27, IRQ rate - 0 per 500 ms
+[  155.355540] For Irq# - 28, IRQ rate - 0 per 500 ms
+[  155.360381] For Irq# - 29, IRQ rate - 0 per 500 ms
+[  155.365194] For Irq# - 30, IRQ rate - 0 per 500 ms
+[  155.370020] For Irq# - 31, IRQ rate - 0 per 500 ms
+[  155.374834] For Irq# - 32, IRQ rate - 0 per 500 ms
+[  155.379669] For Irq# - 33, IRQ rate - 0 per 500 ms
+[  155.384482] For Irq# - 34, IRQ rate - 0 per 500 ms
+[  155.389326] For Irq# - 35, IRQ rate - 0 per 500 ms
+[  155.394190] For Irq# - 36, IRQ rate - 0 per 500 ms
+[  155.399035] For Irq# - 37, IRQ rate - 0 per 500 ms
+[  155.403878] For Irq# - 38, IRQ rate - 0 per 500 ms
+[  155.408691] For Irq# - 39, IRQ rate - 0 per 500 ms
+[  155.413516] For Irq# - 40, IRQ rate - 0 per 500 ms
+[  155.418330] For Irq# - 41, IRQ rate - 0 per 500 ms
+[  155.423175] For Irq# - 42, IRQ rate - 0 per 500 ms
+[  155.427992] For Irq# - 43, IRQ rate - 0 per 500 ms
+[  155.432820] For Irq# - 44, IRQ rate - 0 per 500 ms
+[  155.437636] For Irq# - 45, IRQ rate - 0 per 500 ms
+[  155.442467] For Irq# - 46, IRQ rate - 0 per 500 ms
+[  155.447277] For Irq# - 47, IRQ rate - 0 per 500 ms
+[  155.452107] For Irq# - 48, IRQ rate - 0 per 500 ms
+[  155.456944] For Irq# - 49, IRQ rate - 0 per 500 ms
+[  155.461790] For Irq# - 50, IRQ rate - 0 per 500 ms
+[  155.466604] For Irq# - 51, IRQ rate - 0 per 500 ms
+[  155.471439] For Irq# - 52, IRQ rate - 0 per 500 ms
+[  155.476250] For Irq# - 53, IRQ rate - 0 per 500 ms
+[  155.481097] For Irq# - 54, IRQ rate - 0 per 500 ms
+[  155.485913] For Irq# - 55, IRQ rate - 0 per 500 ms
+[  155.490743] For Irq# - 56, IRQ rate - 0 per 500 ms
+[  155.495557] For Irq# - 57, IRQ rate - 0 per 500 ms
+[  155.500390] For Irq# - 58, IRQ rate - 0 per 500 ms
+[  155.505202] For Irq# - 59, IRQ rate - 0 per 500 ms
+[  155.510026] For Irq# - 60, IRQ rate - 7 per 500 ms
+[  155.514838] For Irq# - 61, IRQ rate - 0 per 500 ms
+[  155.519669] For Irq# - 62, IRQ rate - 0 per 500 ms
+[  155.524480] For Irq# - 63, IRQ rate - 0 per 500 ms
+[  155.529312] For Irq# - 64, IRQ rate - 0 per 500 ms
+[  155.534125] For Irq# - 65, IRQ rate - 0 per 500 ms
+[  155.538954] For Irq# - 66, IRQ rate - 0 per 500 ms
+[  155.543785] For Irq# - 67, IRQ rate - 0 per 500 ms
+[  155.548617] For Irq# - 68, IRQ rate - 0 per 500 ms
+[  155.553454] For Irq# - 69, IRQ rate - 0 per 500 ms
+[  155.558282] For Irq# - 70, IRQ rate - 0 per 500 ms
