@@ -35,9 +35,6 @@ struct irq_num_heads_list {
 	 */ 
 	struct list_head	list_of_heads;
 	int			irq_num;
-        int			irq_count_per_cpu[MAX_CPU];
-        int			irq_prev_count;
-        int 			irq_count;
 	int			max_irq_rate;
 	/*To make linked list of IRQ statistics for each 
 	 * IRQ number.
@@ -52,6 +49,8 @@ struct irq_num_statistics_list {
 
         struct list_head	list_node;
         int 			irq_num;
+	int			irq_count_per_cpu[MAX_CPU];
+	int			irq_prev_count;
         int 			irq_count;
         int			irq_rate;
 	unsigned long		last_irq_timestamp;

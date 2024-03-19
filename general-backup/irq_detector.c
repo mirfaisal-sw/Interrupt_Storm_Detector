@@ -75,7 +75,7 @@ struct irq_detector_data {
 	struct irq_num_heads_list	*irq_num_heads;
 	bool				irq_num_head_list_created;
 	/*For debugging single irq num stat*/
-	//struct irq_num_statistics_list         *irq_num_statistics_node;
+	struct irq_num_statistics_list         *irq_num_statistics_node;
 	struct work_struct          	work;
 };
 
@@ -120,7 +120,6 @@ static void work_func(struct work_struct *work)
 
 	t2 = ktime_get_real_ns();
 
-	/*Create list of heads of all IRQ numbers only once.*/
 	if(priv->irq_num_head_list_created == 0) {
 
 		priv->irq_num_head_list_created = 1;
@@ -140,43 +139,50 @@ static void work_func(struct work_struct *work)
 		//1. Find online CPUs
 		//2. Find IRQ count for each CPU
 		//3. 
-		//****************************************//			
+		//****************************************//
+
+			/*Iterate over all CPUs*/
+			for_each_online_cpu(cpu_i) {
+		
+				if (priv->desc->kstat_irqs) {
+			
+					//Irq No - desc_node->irq_data.irq
+					//pr_alert("MIR: CPU no - %d, IRQ no. - %d, IRQ count - %u", 
+					//	cpu_i, priv->desc->irq_data.irq,
+					//	*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i));
+					
+					priv->irq_num_statistics_node->irq_count_per_cpu[cpu_i] =
+								*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
+					tot_irq_count_per_sample += *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i);
+				}			
+			}
+
+			priv->irq_num_statistics_node->irq_count = tot_irq_count_per_sample;
+
+			if (priv->irq_num_statistics_node->irq_prev_count == 0) {
+				priv->irq_num_statistics_node->irq_prev_count =
+					tot_irq_count_per_sample;
+				goto out;	
+			}
+
+			node_linked_list = kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+			if(!node_linked_list) {
+				goto out;
+			}
+
+			/*Fill the node of list*/
+			node_linked_list->irq_num = priv->desc->irq_data.irq;
+			node_linked_list->irq_count = priv->irq_num_statistics_node->irq_count;	
+			node_linked_list->irq_rate =
+				(priv->irq_num_statistics_node->irq_count - priv->irq_num_statistics_node->irq_prev_count);
+
+			priv->irq_num_statistics_node->irq_prev_count = tot_irq_count_per_sample;
+
 			list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
 				pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
-				
-				if(ptr->irq_num == priv->desc->irq_data.irq) {
-
-					/*Iterate over all CPUs*/
-					for_each_online_cpu(cpu_i) {
-		
-						if (priv->desc->kstat_irqs) {
-							ptr->irq_count_per_cpu[cpu_i] = *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
-							tot_irq_count_per_sample += *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i);
-						}			
-					}
-
-					ptr->irq_count = tot_irq_count_per_sample;
-
-					if (ptr->irq_prev_count == 0) {
-						ptr->irq_prev_count = tot_irq_count_per_sample;
-						goto out;	
-					}
-
-					node_linked_list = kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
-					if(!node_linked_list) {
-						goto out;
-					}
-
-					/*Fill the node of list*/
-					node_linked_list->irq_num = ptr->irq_num;
-					node_linked_list->irq_count = ptr->irq_count;	
-					node_linked_list->irq_rate = (node_linked_list->irq_count - ptr->irq_prev_count);
-
+				if(ptr->irq_num == node_linked_list->irq_num) {
 					list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
-
-					ptr->irq_prev_count = tot_irq_count_per_sample;
-
 					break;
 				}
 
@@ -187,6 +193,10 @@ static void work_func(struct work_struct *work)
 					node_linked_list->irq_rate, SAMPLING_INTERVAL);
 		} 
 	}/*for_each_irq_desc()*/
+
+	//TODO
+	//Calculate total irqs occurred in one Sampling interval to 
+	//calculate IRQ rate
 
 out:
 	pr_alert("In our workq function: %s\n", __func__);
@@ -293,6 +303,10 @@ static void log_irq_timestamp(void)
 
 static int show_irq_cmd(struct seq_file *seq, void *pdata)
 {
+//	seq_puts(seq, "Open Boottime\n");
+//	seq_printf(seq, "Base(0x%lx) Size(0x%lx)\n", timedata.phys_addr,
+//		 timedata.size);
+
 	unsigned long phys_addr = 0x100;
 	unsigned long size = 0x30;
 	struct irq_detector_data *pirq_data = pdata;
@@ -665,8 +679,10 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 	 */	
 #ifdef DEBUG	
 	list_for_each_entry(ptr, &pirq_data->irq_num_list_head, list_of_heads) {
+		
 		/*for debugging only*/
-		pr_alert("In func - %s, IRQ# - %d\n", __func__, ptr->irq_num);	
+		pr_alert("In func - %s, IRQ# - %d\n", __func__, ptr->irq_num);
+		
 	}
 #endif
 
@@ -691,10 +707,10 @@ static int irq_detector_probe(struct platform_device *pdev)
                 return -ENOMEM;
 	scnprintf(mirq_data->version_id, 64, "Irq Diag Ver - 1.0");
 	mirq_data->id = 55;
-	//mirq_data->irq_num_statistics_node =
-	//	kzalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
-	//if(!mirq_data->irq_num_statistics_node)
-	//	return -ENOMEM;
+	mirq_data->irq_num_statistics_node =
+		kzalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+	if(!mirq_data->irq_num_statistics_node)
+		return -ENOMEM;
 
 	//mirq_data->irq_timestamp = jiffies;
 
@@ -713,6 +729,10 @@ static int irq_detector_probe(struct platform_device *pdev)
 	INIT_WORK(&mirq_data->work, work_func);
 
 	platform_set_drvdata(pdev, mirq_data);
+
+	//procfs_test_buffer = kmalloc(MAX_SIZE, GFP_KERNEL);
+	//if (!procfs_test_buffer)
+	//	return -ENOMEM;
 
 	ret = create_proc_entry(mirq_data);
 	if(ret < 0) {
@@ -741,11 +761,11 @@ probe_fail:
 
 static int irq_detector_remove(struct platform_device *pdev)
 {
-    struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
-    int ret = 0;
+        struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
+        int ret = 0;
 
 	/* Wait for any pending work (queue) to finish*/
-    if (cancel_work_sync(&mirq_data->work))
+    	if (cancel_work_sync(&mirq_data->work))
 		pr_info("yes, there was indeed some pending work; now done...\n");
 	
 	hrtimer_cancel(&mirq_data->mhr_timer);
@@ -754,10 +774,11 @@ static int irq_detector_remove(struct platform_device *pdev)
 
 	delete_proc_entry(mirq_data);
 
-	/*TODO: Delete all linked lists*/
-
 	if(mirq_data)
 		kfree(mirq_data);
+
+	//if (timedata.virt_addr)
+	//	vunmap(timedata.virt_addr);
 
 	platform_set_drvdata(pdev, NULL);
 
