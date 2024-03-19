@@ -2,8 +2,6 @@
  *
  *
  */
-//Reference:  - https://elixir.bootlin.com/linux/v5.15.70/source/arch/powerpc/kernel/rtas_flash.c#L654
-
 #include <linux/kernel_stat.h>
 #include <linux/init.h>
 #include <linux/kernel.h>
@@ -116,7 +114,7 @@ static void work_func(struct work_struct *work)
 	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
 	struct irq_num_statistics_list *node_linked_list;
 	int irq, ret = 0;
-	int cpu_i;//, irq_cnt_per_sample = 0;
+	int cpu_i;
 	int tot_irq_count_per_sample = 0;
 	struct irq_num_heads_list *ptr;
 
@@ -143,12 +141,6 @@ static void work_func(struct work_struct *work)
 		//3. 
 		//****************************************//
 
-		/*For debugging purpose let us first concentrate on 
-		 * only one IRQ
-		 */
-		//if(priv->desc->irq_data.irq != DEBUG_IRQ_NUM_UNDER_TEST)
-			//continue;
-
 			/*Iterate over all CPUs*/
 			for_each_online_cpu(cpu_i) {
 		
@@ -174,6 +166,9 @@ static void work_func(struct work_struct *work)
 			}
 
 			node_linked_list = kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+			if(!node_linked_list) {
+				goto out;
+			}
 
 			/*Fill the node of list*/
 			node_linked_list->irq_num = priv->desc->irq_data.irq;
