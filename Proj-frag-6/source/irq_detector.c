@@ -113,8 +113,8 @@ static void work_func(struct work_struct *work)
 {
 	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
 	struct irq_num_statistics_list *node_linked_list;
-	int irq, ret = 0;
-	int cpu_i;
+	int irq;
+	int ret, cpu_i;
 	int tot_irq_count_per_sample = 0;
 	struct irq_num_heads_list *ptr;
 
@@ -161,7 +161,8 @@ static void work_func(struct work_struct *work)
 						goto out;	
 					}
 
-					node_linked_list = kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+					node_linked_list =
+						kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
 					if(!node_linked_list) {
 						goto out;
 					}
@@ -169,7 +170,8 @@ static void work_func(struct work_struct *work)
 					/*Fill the node of list*/
 					node_linked_list->irq_num = ptr->irq_num;
 					node_linked_list->irq_count = ptr->irq_count;	
-					node_linked_list->irq_rate = (node_linked_list->irq_count - ptr->irq_prev_count);
+					node_linked_list->irq_rate =
+								(node_linked_list->irq_count - ptr->irq_prev_count);
 
 					list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
 
@@ -236,7 +238,6 @@ int thread_function(void *pv)
 #endif
     return 0;
 }
-
 #endif
 
 #if 0
@@ -263,7 +264,6 @@ static int start_irq_rate_calc(struct irq_detector_data *mirq_data)
 	}
 
 	/* ktime_set(TIMEOUT_SEC, TIMEOUT_NSEC)*/
-	//ktime = ktime_set(0, MS_TO_NS(delay_in_ms) );
 	ktime = ktime_set(0, MS_TO_NS(SAMPLING_INTERVAL));
 
 	pr_info("Starting timer to fire in %ldms (%ld)\n", \
@@ -281,13 +281,6 @@ static void stop_irq_rate_calc(struct irq_detector_data *mirq_data)
 
 	hrtimer_cancel(&mirq_data->mhr_timer);
 }
-
-#if 0
-static void log_irq_timestamp(void)
-{
-
-}
-#endif
 
 static int show_irq_cmd(struct seq_file *seq, void *pdata)
 {
@@ -387,8 +380,6 @@ static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
 
 	temp_buf[count-1] = '\0';
 
-	//irq_cnt = kstat_irqs_cpu(152, 0);
-	//struct irq_desc *desc = irq_data_to_desc(152);
 	ret = count;
 	pr_alert("DBG: String: %s, length - %d\n", temp_buf, count);
 
@@ -439,8 +430,6 @@ static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf,
 	bytes = min(len_str, length);
 
 	pstr = str;
-
-	//kstat_irqs_cpu(irq, cpu);
 
 	if(bytes) {
 
@@ -568,7 +557,6 @@ static const struct irq_diag_file irq_diag_files[] = {
 	/*{
 
 	},*/
-
 };
 
 static int create_proc_entry(struct irq_detector_data *mirq_data)
@@ -616,8 +604,8 @@ static void delete_proc_entry(struct irq_detector_data *mirq_data)
 	int i;
 	struct irq_diag_file *f;
 
-//	if(mirq_data == NULL)
-//		return;
+	if(mirq_data == NULL)
+		return;
 
 //	remove_proc_entry("irq_storm_stat", mirq_data->proc_dir);
 	for (i = 0; i < ARRAY_SIZE(irq_diag_files); i++) {
@@ -649,7 +637,6 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 		/*Store IRQ number as Key for a node*/
 		pirq_data->irq_num_heads->irq_num = pirq_data->desc->irq_data.irq;
 
-		/*Added on 18th March at 1630hrs */
 		INIT_LIST_HEAD(&pirq_data->irq_num_heads->list_of_node);
 
 		list_add_tail(&pirq_data->irq_num_heads->list_of_heads,

@@ -1,0 +1,54 @@
+
+
+Irq No. - 73, IRQ count - 34716, IRQ rate - 28
+Irq No. - 73, IRQ count - 34748, IRQ rate - 32
+Irq No. - 73, IRQ count - 34769, IRQ rate - 21
+Irq No. - 73, IRQ count - 34792, IRQ rate - 23
+Irq No. - 73, IRQ count - 34826, IRQ rate - 34
+Irq No. - 73, IRQ count - 34847, IRQ rate - 21
+Irq No. - 73, IRQ count - 73059, IRQ rate - 38212
+Irq No. - 73, IRQ count - 73089, IRQ rate - 30
+Irq No. - 73, IRQ count - 73114, IRQ rate - 25
+Irq No. - 73, IRQ count - 73146, IRQ rate - 32
+Irq No. - 73, IRQ count - 73171, IRQ rate - 25
+Irq No. - 73, IRQ count - 73191, IRQ rate - 20
+Irq No. - 73, IRQ count - 73224, IRQ rate - 33
+Irq No. - 73, IRQ count - 73241, IRQ rate - 17
+Irq No. - 73, IRQ count - 73269, IRQ rate - 28
+Irq No. - 73, IRQ count - 73291, IRQ rate - 22
+Irq No. - 73, IRQ count - 73309, IRQ rate - 18
+Irq No. - 73, IRQ count - 73339, IRQ rate - 30
+Irq No. - 73, IRQ count - 73364, IRQ rate - 25
+Irq No. - 73, IRQ count - 73389, IRQ rate - 25
+Irq No. - 73, IRQ count - 73429, IRQ rate - 40
+Irq No. - 73, IRQ count - 73447, IRQ rate - 18
+
+
+Irq No. - 72, IRQ count - 34414, IRQ rate - 34
+Irq No. - 72, IRQ count - 34436, IRQ rate - 22
+Irq No. - 72, IRQ count - 34463, IRQ rate - 27
+Irq No. - 72, IRQ count - 34495, IRQ rate - 32
+Irq No. - 72, IRQ count - 34517, IRQ rate - 22
+Irq No. - 72, IRQ count - 34554, IRQ rate - 37
+Irq No. - 72, IRQ count - 34587, IRQ rate - 33
+Irq No. - 72, IRQ count - 34628, IRQ rate - 41
+Irq No. - 72, IRQ count - 34688, IRQ rate - 60
+Irq No. - 72, IRQ count - 34716, IRQ rate - 28
+Irq No. - 72, IRQ count - 34748, IRQ rate - 32
+Irq No. - 72, IRQ count - 34769, IRQ rate - 21
+Irq No. - 72, IRQ count - 34792, IRQ rate - 23
+Irq No. - 72, IRQ count - 34826, IRQ rate - 34
+Irq No. - 72, IRQ count - 34847, IRQ rate - 21
+Irq No. - 72, IRQ count - 73059, IRQ rate - 38212
+Irq No. - 72, IRQ count - 73089, IRQ rate - 30
+Irq No. - 72, IRQ count - 73114, IRQ rate - 25
+Irq No. - 72, IRQ count - 73146, IRQ rate - 32
+Irq No. - 72, IRQ count - 73171, IRQ rate - 25
+Irq No. - 72, IRQ count - 73191, IRQ rate - 20
+Irq No. - 72, IRQ count - 73224, IRQ rate - 33
+Irq No. - 72, IRQ count - 73241, IRQ rate - 17
+Irq No. - 72, IRQ count - 73269, IRQ rate - 28
+Irq No. - 72, IRQ count - 73291, IRQ rate - 22
+Irq No. - 72, IRQ count - 73309, IRQ rate - 18
+Irq No. - 72, IRQ count - 73339, IRQ rate - 30
+Irq No. - 72, IRQ count - 73364, IRQ rate - 25
