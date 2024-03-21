@@ -16,6 +16,7 @@
 #include <linux/irq.h>
 #include <linux/irqnr.h>
 #include <linux/irqdesc.h>
+//#include <irq/internals.h>
 #include <linux/of.h>
 #include <linux/kthread.h>
 #include <linux/sched.h>  
@@ -115,11 +116,11 @@ static void work_func(struct work_struct *work)
 	struct irq_num_statistics_list *node_linked_list;
 	int irq;
 	int ret, cpu_i;
-	int tot_irq_count_per_sample = 0;
+	int tot_irq_cnt = 0;
 	struct irq_num_heads_list *ptr;
 
 	t2 = ktime_get_real_ns();
-
+	pr_alert("nr_irqs - %d\n",  nr_irqs);
 	/*Create list of heads of all IRQ numbers only once.*/
 	if(priv->irq_num_head_list_created == 0) {
 
@@ -134,58 +135,63 @@ static void work_func(struct work_struct *work)
 	/*Iterate through all IRQ descriptors*/
 	for_each_irq_desc(irq, priv->desc) {
 
-		if(priv->desc) {
-	
-		//******************TODO******************//
-		//1. Find online CPUs
-		//2. Find IRQ count for each CPU
-		//****************************************//			
-			list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
+		if(!priv->desc)
+			continue;
 
-				pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
-				
-				if(ptr->irq_num == priv->desc->irq_data.irq) {
-					if (desc->kstat_irqs) {
-						for_each_online_cpu(cpu_i) {
-								if (priv->desc->kstat_irqs) {
-								ptr->irq_count_per_cpu[cpu_i] = *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
-								tot_irq_count_per_sample += *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i);
-							}			
-						}
-					}
+		if(!priv->desc->action) //|| irq_desc_is_chained(priv->desc))
+			continue;
 
-					ptr->irq_count = tot_irq_count_per_sample;
+		/*Scan IRQ descriptors and fill liked list for each IRQ#*/
+		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
-					if (ptr->irq_prev_count == 0) {
-						ptr->irq_prev_count = tot_irq_count_per_sample;
-						goto out;	
-					}
-
-					node_linked_list =
-						kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
-					if(!node_linked_list) {
-						goto out;
-					}
-
-					/*Fill the node of list*/
-					node_linked_list->irq_num = ptr->irq_num;
-					node_linked_list->irq_count = ptr->irq_count;	
-					node_linked_list->irq_rate =
-								(node_linked_list->irq_count - ptr->irq_prev_count);
-
-					list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
-
-					ptr->irq_prev_count = tot_irq_count_per_sample;
-
-					break;
+			pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
+			
+			if((ptr->irq_num == priv->desc->irq_data.irq) && priv->desc->kstat_irqs) {
+				/*Calculate total irq count*/
+				for_each_online_cpu(cpu_i) {
+					if (priv->desc->kstat_irqs) {
+						ptr->irq_count_per_cpu[cpu_i] =
+							*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
+						tot_irq_cnt +=
+							*per_cpu_ptr(priv->desc->kstat_irqs, cpu_i);
+					}			
 				}
 
-			}/*list_for_each_entry*/
+			if(!tot_irq_cnt)
+				break;
 
-			pr_debug("For Irq# - %d, IRQ rate - %d per %d ms\n",
-					node_linked_list->irq_num,
-					node_linked_list->irq_rate, SAMPLING_INTERVAL);
-		} 
+			ptr->irq_count = tot_irq_cnt;
+			if (ptr->irq_prev_count == 0) {
+				ptr->irq_prev_count = tot_irq_cnt;
+				goto out;	
+			}
+			
+			/*TODO: Add a mechanism to add node only if irq occured on this line*/
+			//..
+			
+			node_linked_list =
+				kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
+			if(!node_linked_list) {
+				goto out;
+			}
+
+			/*Fill the node of list*/
+			node_linked_list->irq_num = ptr->irq_num;
+			node_linked_list->irq_count = ptr->irq_count;	
+			node_linked_list->irq_rate =
+						(node_linked_list->irq_count - ptr->irq_prev_count);
+
+			list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
+
+			ptr->irq_prev_count = tot_irq_cnt;
+			tot_irq_cnt = 0;
+			break;
+			}/*if ptr->irq_num == */
+		}/*list_for_each_entry*/
+
+		pr_debug("For Irq# - %d, IRQ rate - %d per %d ms\n",
+			node_linked_list->irq_num,
+			node_linked_list->irq_rate, SAMPLING_INTERVAL);
 	}/*for_each_irq_desc()*/
 
 out:
@@ -446,7 +452,8 @@ static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf,
 		} else {
 
 			*offset += bytes;
-			pr_info("DBG: length - %d, bytes - %lu, *offset - %llu\n", length, bytes, *offset);
+			pr_info("DBG: length - %d, bytes - %lu, *offset - %llu\n",
+								length, bytes, *offset);
 		}
 	}
 
@@ -478,10 +485,11 @@ static int show_irq_stat(struct seq_file *seq, void *pdata)
 	list_for_each_entry(ptr_irq_num_head, &mirq_data->irq_num_list_head, list_of_heads) {
 
 		list_for_each_entry(tmp, &ptr_irq_num_head->list_of_node, list_node) {
-			seq_printf(seq, "Irq No. - %d, IRQ count - %d, IRQ rate - %d\n",
-                               tmp->irq_num, tmp->irq_count, tmp->irq_rate);
+			if(ptr_irq_num_head->irq_num == tmp->irq_num)
+				seq_printf(seq, "MIrq No. - %d, IRQ count - %d, IRQ rate - %d\n",
+				tmp->irq_num, tmp->irq_count, tmp->irq_rate);
 		}
-		seq_printf(seq,"\n\n\n\n");
+		seq_printf(seq,"\n\n");
 	}
 	return 0;
 }
@@ -627,8 +635,8 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 	/*Iterate through all IRQ descriptors*/
 	for_each_irq_desc(irq, pirq_data->desc) {
 
-	if(pirq_data->desc) {
-		
+		if(!pirq_data->desc)
+			continue;
 		pirq_data->irq_num_heads =
 				kzalloc(sizeof(struct irq_num_heads_list),GFP_KERNEL);
 		if(!pirq_data->irq_num_heads)
@@ -641,8 +649,7 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 
 		list_add_tail(&pirq_data->irq_num_heads->list_of_heads,
 				&pirq_data->irq_num_list_head);
-		}
-    }
+    	}
 	
 	/*Verify created list of heads for each
 	 * available IRQ numbers.
