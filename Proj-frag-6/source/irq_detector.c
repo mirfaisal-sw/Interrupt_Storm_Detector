@@ -139,21 +139,19 @@ static void work_func(struct work_struct *work)
 		//******************TODO******************//
 		//1. Find online CPUs
 		//2. Find IRQ count for each CPU
-		//3. 
 		//****************************************//			
 			list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
 				pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
 				
 				if(ptr->irq_num == priv->desc->irq_data.irq) {
-
-					/*Iterate over all CPUs*/
-					for_each_online_cpu(cpu_i) {
-		
-						if (priv->desc->kstat_irqs) {
-							ptr->irq_count_per_cpu[cpu_i] = *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
-							tot_irq_count_per_sample += *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i);
-						}			
+					if (desc->kstat_irqs) {
+						for_each_online_cpu(cpu_i) {
+								if (priv->desc->kstat_irqs) {
+								ptr->irq_count_per_cpu[cpu_i] = *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i); 				
+								tot_irq_count_per_sample += *per_cpu_ptr(priv->desc->kstat_irqs, cpu_i);
+							}			
+						}
 					}
 
 					ptr->irq_count = tot_irq_count_per_sample;
@@ -493,8 +491,7 @@ static int show_irq_stat(struct seq_file *seq, void *pdata)
 		list_for_each_entry(tmp, &ptr_irq_num_head->list_of_node, list_node) {
 			seq_printf(seq, "Irq No. - %d, IRQ count - %d, IRQ rate - %d\n",
                                tmp->irq_num, tmp->irq_count, tmp->irq_rate);
-			
-        	}
+		}
 		seq_printf(seq,"\n\n\n\n");
 	}
 	return 0;
