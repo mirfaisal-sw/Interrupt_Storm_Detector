@@ -55,18 +55,17 @@ struct irq_detector_data {
 	uint8_t 			id;
 	struct platform_device		*pdev;
 	struct mutex			mutex_lock;
+	spinlock_t			spin_lock;
 	struct proc_dir_entry		*proc_dir;
 	struct irq_diag_file		*mproc_files;
+	struct proc_dir_entry		*proc_subdir;
+	struct irq_diag_file		*mproc_param_files;
 	unsigned long			irq_interval_threshold_us;
 	atomic_t 			inst_irq_rate;
 	void				*virt_addr;
 	phys_addr_t			phys_addr;
 	int				irq;
 	struct irq_desc 		*desc;
-	//int 				irq_count;
-	//int 				prev_irq_count;
-	//unsigned long               	irq_timestamp;
-	//unsigned long               	last_irq_timestamp;
 	struct hrtimer 			mhr_timer;
 	struct task_struct		*irq_poll_thread;
 	/* Head for list of IRQ numbers and there is an
@@ -75,9 +74,9 @@ struct irq_detector_data {
 	struct list_head		irq_num_list_head;
 	struct irq_num_heads_list	*irq_num_heads;
 	bool				irq_num_head_list_created;
-	/*For debugging single irq num stat*/
-	//struct irq_num_statistics_list         *irq_num_statistics_node;
-	struct work_struct          	work;
+	struct work_struct          	scan_work;
+	struct work_struct		notify_work;
+	unsigned int			status_flag;
 };
 
 int create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data);
@@ -97,7 +96,7 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
 		__func__, __LINE__, check_context);
 
 	/* Now 'schedule' our workqueue function to run */
-	if (!schedule_work(&priv->work))
+	if (!schedule_work(&priv->scan_work))
 		pr_notice("our work's already on the kernel-global workqueue!\n");
 
 	t1 = ktime_get_real_ns();
@@ -108,19 +107,20 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
 }
 
 /*
- * work_func() - our workqueue callback function!
+ * iirq_scan_work() - our workqueue callback function!
  */
-static void work_func(struct work_struct *work)
+static void irq_scan_work(struct work_struct *work)
 {
-	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, work);
+	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, scan_work);
 	struct irq_num_statistics_list *node_linked_list;
+	struct irq_num_statistics_list *oldest_node;
 	int irq;
 	int ret, cpu_i;
 	int tot_irq_cnt = 0;
 	struct irq_num_heads_list *ptr;
 
 	t2 = ktime_get_real_ns();
-	pr_alert("nr_irqs - %d\n",  nr_irqs);
+
 	/*Create list of heads of all IRQ numbers only once.*/
 	if(priv->irq_num_head_list_created == 0) {
 
@@ -165,7 +165,15 @@ static void work_func(struct work_struct *work)
 				ptr->irq_prev_count = tot_irq_cnt;
 				goto out;	
 			}
-			
+		
+			if(ptr->cir_queue_size >= MAX_CIRCULAR_QUEUE_SIZE) {
+				oldest_node = list_first_entry(&ptr->list_of_node,
+						struct irq_num_statistics_list, list_node);
+				list_del(&oldest_node->list_node);
+				kfree(oldest_node);
+				ptr->cir_queue_size--;
+			}
+					
 			/*TODO: Add a mechanism to add node only if irq occured on this line*/
 			//..
 			
@@ -180,10 +188,11 @@ static void work_func(struct work_struct *work)
 			node_linked_list->irq_count = ptr->irq_count;	
 			node_linked_list->irq_rate =
 						(node_linked_list->irq_count - ptr->irq_prev_count);
-
+			node_linked_list->irq_timestamp = jiffies;
 			list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
 
 			ptr->irq_prev_count = tot_irq_cnt;
+			ptr->cir_queue_size++;
 			tot_irq_cnt = 0;
 			break;
 			}/*if ptr->irq_num == */
@@ -199,7 +208,36 @@ out:
 	SHOW_DELTA(t2, t1);
 }
 
-#if 0
+static void uevent_notify_work(struct work_struct *work)
+{
+	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, notify_work);
+	struct platform_device *plat_dev = priv->pdev;
+	int idx = 0;
+	char *envp[3];
+	unsigned long flags;
+
+	spin_lock_irqsave(&priv->lock, flags);
+	/*Fill environment data to send to user space */
+	switch(priv->status_flag) {
+	case 1:
+		envp[idx++] = "ERROR_EVENT=IRQ_STORM";
+		break;
+	case 2: 
+		envp[idx++] = "ERROR_EVENT=XYZ_ERROR";
+		break;
+	deafult: 
+		break;
+	}
+
+	if (idx > 0) {
+		envp[idx++] = NULL;
+		kobject_uevent_env(&plat_dev->dev.kobj, KOBJ_CHANGE, envp);
+	}
+
+	spin_unlock_irqrestore(&priv->lock, flags);
+}
+
+#if 1
 /*Thread*/
 int thread_function(void *pv)
 {
@@ -213,48 +251,21 @@ int thread_function(void *pv)
 	}
 #if 1
 	while(!kthread_should_stop()) {
-	//pr_alert("In IRQ Poll Thread Function %d\n", i++);
-	//msleep(1000);
-//	for_each_irq_desc(irq, irq_desc_node) {
-
-		if(cnt % 10000) {
-			cnt++;
-			pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
-		}
-
+	pr_alert("In IRQ Poll Thread Function %d\n", i++);
+	msleep(1000);
 #if 0
-		//pr_alert("IRQ name - %s\n", irq_desc_node->name);
-		if(irq_desc_node && !(irq_desc_node->irq_count % 1000)) { //1000 -> 5 for debugging
-
-			if(time_before(jiffies, 
-				mirq_data->last_irq_timestamp + HZ/10)) {
-				pr_alert(" Interrupt storm detected");
-			}
-			//pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
-			mirq_data->last_irq_timestamp = jiffies;
-                }
+	if(irq_desc_node && !(irq_desc_node->irq_count % 1000)) { //1000 -> 5 for debugging
+		if(time_before(jiffies, 
+			mirq_data->last_irq_timestamp + HZ/10)) {
+			pr_alert(" Interrupt storm detected");
+		}
+		//pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
+		mirq_data->last_irq_timestamp = jiffies;
+	}
 #endif
-  //      }
-
-	/*if( ) {
-
-	}*/
-
     }
 #endif
     return 0;
-}
-#endif
-
-#if 0
-/*Read Irq data*/
-static void read_irq_data(void)
-{
-	for_each_irq_desc(irq, irq_desc_node) {
-		pr_alert("irq_detect: Linux Irq No. - %d, Hw Irq No. - %lu, Last unhandled - %lu\n",
-			irq_desc_node->irq_data.irq, irq_desc_node->irq_data.hwirq,
-			irq_desc_node->last_unhandled);
-	}
 }
 #endif
 
@@ -478,19 +489,31 @@ static int show_irq_stat(struct seq_file *seq, void *pdata)
 
 	struct irq_num_heads_list *ptr_irq_num_head;
 	struct irq_num_statistics_list *tmp;
+	bool header = 1;
 
 	pr_alert("DBG: In func - %s, line - %d, Version - %s, Id - %d\n",
 			__func__, __LINE__, mirq_data->version_id, mirq_data->id);
 
 	list_for_each_entry(ptr_irq_num_head, &mirq_data->irq_num_list_head, list_of_heads) {
-
 		list_for_each_entry(tmp, &ptr_irq_num_head->list_of_node, list_node) {
+
+			if(header) {
+				header = 0;
+				seq_printf(seq, "IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms\n");
+				seq_printf(seq, "-------------------------------------------------------------------\n");
+			}
+
 			if(ptr_irq_num_head->irq_num == tmp->irq_num)
-				seq_printf(seq, "MIrq No. - %d, IRQ count - %d, IRQ rate - %d\n",
-				tmp->irq_num, tmp->irq_count, tmp->irq_rate);
+				seq_printf(seq, "%4d %20u %20d %20d\n", tmp->irq_num,
+							jiffies_to_msecs(tmp->irq_timestamp), 
+							tmp->irq_count, tmp->irq_rate);
 		}
-		seq_printf(seq,"\n\n");
+
+		header = 1;
+		if(ptr_irq_num_head->irq_num == tmp->irq_num)
+			seq_printf(seq,"\n\n");
 	}
+
 	return 0;
 }
 
@@ -535,6 +558,122 @@ static ssize_t irq_diag_read_stat(struct file *filep, char __user *user_buf,
 	return bytes;
 }
 
+static int show_irq_threshold(struct seq_file *seq, void *pdata)
+{
+	return 0;
+}
+
+static int irq_diag_open_threshold(struct inode *inode, struct file *file)
+{
+        struct irq_detector_data *mirq_data;
+        int ret;
+
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
+        mirq_data = pde_data(inode);
+#else
+        mirq_data = PDEV_DATA(inode);
+#endif
+        /*Print is working, to debug pass of data*/
+        pr_alert("DBG: In func - %s, id - %d\n", __func__, mirq_data->id);
+
+        ret = single_open(file, show_irq_threshold, mirq_data);
+
+        return ret;
+}
+
+static int irq_diag_release_threshold(struct inode *inode, struct file *file)
+{
+        int res = single_release(inode, file);
+
+        return res;
+}
+
+static ssize_t irq_diag_write_threshold(struct file *filep, const char __user *buf,
+      size_t count, loff_t *off)
+{
+        int ret = count;
+
+        return ret;
+}
+
+static int show_irq_interval(struct seq_file *seq, void *pdata)
+{
+
+	return 0;
+}
+
+static int irq_diag_open_interval(struct inode *inode, struct file *file)
+{
+        struct irq_detector_data *mirq_data;
+        int ret;
+
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
+        mirq_data = pde_data(inode);
+#else
+        mirq_data = PDEV_DATA(inode);
+#endif
+        /*Print is working, to debug pass of data*/
+        pr_alert("DBG: In func - %s, id - %d\n", __func__, mirq_data->id);
+
+        ret = single_open(file, show_irq_interval, mirq_data);
+
+        return ret;
+}
+
+static int irq_diag_release_interval(struct inode *inode, struct file *file)
+{
+        int res = single_release(inode, file);
+
+        return res;
+}
+
+static ssize_t irq_diag_write_interval(struct file *filep, const char __user *buf,
+      size_t count, loff_t *off)
+{
+        int ret = count;
+
+        return ret;
+}
+
+static int show_irq_cirq_nodes(struct seq_file *seq, void *pdata)
+{
+
+        return 0;
+}
+
+static int irq_diag_open_cirq_nodes(struct inode *inode, struct file *file)
+{
+        struct irq_detector_data *mirq_data;
+        int ret;
+
+#if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
+        mirq_data = pde_data(inode);
+#else
+        mirq_data = PDEV_DATA(inode);
+#endif
+        /*Print is working, to debug pass of data*/
+        pr_alert("DBG: In func - %s, id - %d\n", __func__, mirq_data->id);
+
+        ret = single_open(file, show_irq_cirq_nodes, mirq_data);
+
+        return ret;
+}
+
+static int irq_diag_release_cirq_nodes(struct inode *inode, struct file *file)
+{
+        int res = single_release(inode, file);
+
+        return res;
+}
+
+static ssize_t irq_diag_write_cirq_nodes(struct file *filep, const char __user *buf,
+      size_t count, loff_t *off)
+{
+        int ret = count;
+
+        return ret;
+}
+
 static const struct irq_diag_file irq_diag_files[] = {
 	{
 		.filename	= "irq_diag_cmd",
@@ -554,7 +693,7 @@ static const struct irq_diag_file irq_diag_files[] = {
 		.status		= NULL,
 		.ops.proc_open  = irq_diag_open_stat,
 #ifndef CONFIG_SEQ_READ
-		.ops.proc_read	= irq_diag_read_stat,
+		.ops.proc_read	= irq_diag_read_cmd,
 #else
 		.ops.proc_read  = seq_read,
 #endif
@@ -562,14 +701,55 @@ static const struct irq_diag_file irq_diag_files[] = {
 		.ops.proc_release = irq_diag_release_stat,
 		.ops.proc_lseek	= default_llseek,
 	},
-	/*{
+};
 
-	},*/
+static const struct irq_diag_file irq_diag_param_files[] = {
+	{
+		.filename       = "IRQ_STORM_THRESHOLD",
+                .status         = NULL,
+                .ops.proc_open  = irq_diag_open_threshold,
+#ifndef CONFIG_SEQ_READ
+                .ops.proc_read  = irq_diag_read_cmd,
+#else
+                .ops.proc_read  = seq_read,
+#endif
+                .ops.proc_write = irq_diag_write_threshold,
+                .ops.proc_release = irq_diag_release_threshold,
+                .ops.proc_lseek = default_llseek,
+	},
+
+	{
+                .filename       = "SAMPLING_INTERVAL",
+                .status         = NULL,
+                .ops.proc_open  = irq_diag_open_interval,
+#ifndef CONFIG_SEQ_READ
+                .ops.proc_read  = irq_diag_read_cmd,
+#else
+                .ops.proc_read  = seq_read,
+#endif
+                .ops.proc_write = irq_diag_write_interval,
+                .ops.proc_release = irq_diag_release_interval,
+                .ops.proc_lseek = default_llseek,
+        },
+
+	{
+                .filename       = "CIRCULAR_QUEUE_NODES",
+                .status         = NULL,
+                .ops.proc_open  = irq_diag_open_cirq_nodes,
+#ifndef CONFIG_SEQ_READ
+                .ops.proc_read  = irq_diag_read_cmd,
+#else
+                .ops.proc_read  = seq_read,
+#endif
+                .ops.proc_write = irq_diag_write_cirq_nodes,
+                .ops.proc_release = irq_diag_release_cirq_nodes,
+                .ops.proc_lseek = default_llseek,
+        },
 };
 
 static int create_proc_entry(struct irq_detector_data *mirq_data)
 {
-	int i;
+	int i, j;
 	struct irq_diag_file *f;
 
 	if(mirq_data == NULL)
@@ -589,15 +769,25 @@ static int create_proc_entry(struct irq_detector_data *mirq_data)
 			goto enomem;
 	}
 
-#if 0
-	scnprintf(mirq_data->name, 20, "irq_storm_stat");
-	mirq_data->proc_file = proc_create(mirq_data->name, 
-			S_IWUSR | S_IRUSR, mirq_data->proc_dir, &procfs_test_pops);
-        if (!mirq_data->proc_file) {
+	mirq_data->proc_subdir = proc_mkdir("irq_diag_param", mirq_data->proc_dir);
+        if(!mirq_data->proc_subdir) {
+                pr_err("DBG: Error creating proc directory\n");
                 return -ENOMEM;
+        }
+
+        for (j = 0; j < ARRAY_SIZE(irq_diag_param_files); j++) {
+                f = &mirq_data->mproc_param_files[j];
+
+                if (!proc_create_data(f->filename, S_IWUSR | S_IRUSR, 
+                                        mirq_data->proc_subdir, &f->ops, mirq_data))
+                        goto enomem_subdir;
+        }	
+enomem_subdir:
+	while (--j >= 0) {
+		f = &mirq_data->mproc_param_files[j];
+		remove_proc_entry(f->filename, NULL);
 	}
-#endif
-	
+
 enomem:
 	while (--i >= 0) {
 		f = &mirq_data->mproc_files[i];
@@ -623,6 +813,9 @@ static void delete_proc_entry(struct irq_detector_data *mirq_data)
 	}
 
 	remove_proc_entry("irq_diag", NULL);
+
+	/*TODO*/
+	/*Remove param files and subdir*/
 }
 
 int
@@ -644,7 +837,7 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 
 		/*Store IRQ number as Key for a node*/
 		pirq_data->irq_num_heads->irq_num = pirq_data->desc->irq_data.irq;
-
+		pirq_data->irq_num_heads->cir_queue_size = 0;
 		INIT_LIST_HEAD(&pirq_data->irq_num_heads->list_of_node);
 
 		list_add_tail(&pirq_data->irq_num_heads->list_of_heads,
@@ -682,28 +875,24 @@ static int irq_detector_probe(struct platform_device *pdev)
                 return -ENOMEM;
 	scnprintf(mirq_data->version_id, 64, "Irq Diag Ver - 1.0");
 	mirq_data->id = 55;
-	//mirq_data->irq_num_statistics_node =
-	//	kzalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
-	//if(!mirq_data->irq_num_statistics_node)
-	//	return -ENOMEM;
-
-	//mirq_data->irq_timestamp = jiffies;
 
 	mirq_data->mproc_files = irq_diag_files;
+	mirq_data->mproc_param_files = irq_diag_param_files;
 
 	hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
 	mirq_data->mhr_timer.function = &read_irq_interval_cb;
 	mirq_data->irq_num_head_list_created = 0;
-	/*16-03-2024*/
-	//INIT_LIST_HEAD(&mirq_data->irq_num_statistics_node->list);
+	
 	INIT_LIST_HEAD(&mirq_data->irq_num_list_head);
 	
-	//create_list_of_all_irq_numbers(mirq_data);
+	/* Initialize irq scan workqueue */
+	INIT_WORK(&mirq_data->scan_work, irq_scan_work);
 
-	/* Initialize our workqueue */
-	INIT_WORK(&mirq_data->work, work_func);
+	/*Initialize uevent notify workqueue*/
+	INIT_WORK(&mirq_data->notify_work, uevent_notify_work);
 
 	platform_set_drvdata(pdev, mirq_data);
+	/* */
 
 	ret = create_proc_entry(mirq_data);
 	if(ret < 0) {
@@ -711,7 +900,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 		goto probe_fail;
 	}
 
-#if 0
+#if 1
 	mirq_data->irq_poll_thread = kthread_create(thread_function, 
 					mirq_data, "Irq Poll Thread");
 	if (IS_ERR(mirq_data->irq_poll_thread))
@@ -721,6 +910,7 @@ static int irq_detector_probe(struct platform_device *pdev)
             wake_up_process(mirq_data->irq_poll_thread);
         } else {
             pr_err("Cannot create kthread\n");
+
             goto probe_fail;
         }
 #endif
@@ -736,7 +926,7 @@ static int irq_detector_remove(struct platform_device *pdev)
     int ret = 0;
 
 	/* Wait for any pending work (queue) to finish*/
-    if (cancel_work_sync(&mirq_data->work))
+    if (cancel_work_sync(&mirq_data->scan_work))
 		pr_info("yes, there was indeed some pending work; now done...\n");
 	
 	hrtimer_cancel(&mirq_data->mhr_timer);

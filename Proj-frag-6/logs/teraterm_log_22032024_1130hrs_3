@@ -1,0 +1,742 @@
+þ
+U-Boot SPL 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+Resetting on cold boot to workaround ErrataID:i2331
+Please resend tiboot3.bin in case of UART/DFU boot
+resetting ...
+
+U-Boot SPL 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+SPL initial stack usage: 13376 bytes
+Trying to boot from MMC2
+Authentication passed
+Authentication passed
+Authentication passed
+Authentication passed
+Loading Environment from MMC... *** Warning - No MMC card found, using default environment
+
+Starting ATF on ARM64 core...
+
+NOTICE:  BL31: v2.8(release):v2.8-226-g2fcd408bb3-dirty
+NOTICE:  BL31: Built : 00:42:57, Jan 13 2023
+I/TC: 
+I/TC: OP-TEE version: 3.20.0 (gcc version 11.3.0 (GCC)) #1 Fri Jan 20 15:42:54 UTC 2023 aarch64
+I/TC: WARNING: This OP-TEE configuration might be insecure!
+I/TC: WARNING: Please check https://optee.readthedocs.io/en/latest/architecture/porting_guidelines.html
+I/TC: Primary CPU initializing
+I/TC: SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+I/TC: HUK Initialized
+I/TC: Activated SA2UL device
+I/TC: Enabled firewalls for SA2UL TRNG device
+I/TC: SA2UL TRNG initialized
+I/TC: SA2UL Drivers initialized
+I/TC: Primary CPU switching to normal world boot
+
+U-Boot SPL 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+Trying to boot from MMC2
+Authentication passed
+Authentication passed
+
+
+U-Boot 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+
+SoC:   AM64X SR2.0 HS-FS
+Model: Texas Instruments AM642 EVM
+Board: AM64-EVM rev C
+DRAM:  2 GiB
+Core:  59 devices, 29 uclasses, devicetree: separate
+MMC:   mmc@fa10000: 0, mmc@fa00000: 1
+Loading Environment from MMC... *** Warning - bad CRC, using default environment
+
+In:    serial@2800000
+Out:   serial@2800000
+Err:   serial@2800000
+Unidentified board claims AM64-EVM in eeprom header
+Net:   eth0: ethernet@8000000port@1
+Hit any key to stop autoboot:  2  1  0 
+switch to partitions #0, OK
+mmc1 is current device
+SD/MMC found on device 1
+Failed to load 'boot.scr'
+574 bytes read in 30 ms (18.6 KiB/s)
+Loaded env from uEnv.txt
+Importing environment from mmc1 ...
+38994432 bytes read in 1644 ms (22.6 MiB/s)
+59145 bytes read in 35 ms (1.6 MiB/s)
+Working FDT set to 88000000
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+Working FDT set to 88000000
+   Loading Device Tree to 000000008feee000, end 000000008fffffff ... OK
+Working FDT set to 8feee000
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 6.1.46Mirf-dirty (root@mir-VirtualBox) (aarch64-none-linux-gnu-gcc (Arm GNU Toolchain 11.3.Rel1) 11.3.1 20220712, GNU ld (Arm GNU Toolchain 11.3.Rel1) 2.38.20220708) #54 SMP PREEMPT Fri Mar 22 10:54:07 IST 2024
+[    0.000000] Machine model: Texas Instruments AM642 EVM
+[    0.000000] earlycon: ns16550a0 at MMIO32 0x0000000002800000 (options '')
+[    0.000000] printk: bootconsole [ns16550a0] enabled
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a0000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a0100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a1000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a1100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a2000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a2000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a2100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a2100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a3000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a3100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node m4f-dma-memory@a4000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node m4f-memory@a4100000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xffbf5a00-0xffbf7fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x000000009e7fffff]
+[    0.000000]   node   0: [mem 0x000000009e800000-0x00000000a57fffff]
+[    0.000000]   node   0: [mem 0x00000000a5800000-0x00000000ffffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000] cma: Reserved 32 MiB at 0x00000000fba00000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 20 pages/cpu s44968 r8192 d28760 u81920
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 root=PARTUUID=717e1cd2-02 rw rootfstype=ext4 rootwait
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 1870716K/2097152K available (16896K kernel code, 3776K rwdata, 9680K rodata, 7616K init, 625K bss, 193668K reserved, 32768K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=2.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x0000000001840000
+[    0.000000] ITS [mem 0x01820000-0x0182ffff]
+[    0.000000] GIC: enabling workaround for ITS: Socionext Synquacer pre-ITS
+[    0.000000] ITS@0x0000000001820000: Devices Table too large, reduce ids 20->19
+[    0.000000] ITS@0x0000000001820000: allocated 524288 Devices @80800000 (flat, esz 8, psz 64K, shr 0)
+[    0.000000] ITS: using cache flushing for cmd queue
+[    0.000000] GICv3: using LPI property table @0x0000000080030000
+[    0.000000] GIC: using cache flushing for LPI property table
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000080040000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 200.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x3ffffffffffffff max_cycles: 0x2e2049d3e8, max_idle_ns: 440795210634 ns
+[    0.000001] sched_clock: 58 bits at 200MHz, resolution 5ns, wraps every 4398046511102ns
+[    0.010163] Console: colour dummy device 80x25
+[    0.014817] Calibrating delay loop (skipped), value calculated using timer frequency.. 400.00 BogoMIPS (lpj=800000)
+[    0.025502] pid_max: default: 32768 minimum: 301
+[    0.030288] LSM: Security Framework initializing
+[    0.035141] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.042724] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.052828] cblist_init_generic: Setting adjustable number of callback queues.
+[    0.060303] cblist_init_generic: Setting shift to 1 and lim to 1.
+[    0.066616] cblist_init_generic: Setting adjustable number of callback queues.
+[    0.074012] cblist_init_generic: Setting shift to 1 and lim to 1.
+[    0.080461] rcu: Hierarchical SRCU implementation.
+[    0.085372] rcu: 	Max phase no-delay instances is 1000.
+[    0.091041] Platform MSI: msi-controller@1820000 domain created
+[    0.097455] PCI/MSI: /bus@f4000/interrupt-controller@1800000/msi-controller@1820000 domain created
+[    0.106801] fsl-mc MSI: msi-controller@1820000 domain created
+[    0.115452] EFI services will not be available.
+[    0.120472] smp: Bringing up secondary CPUs ...
+I/TC: Secondary CPU 1 initializing
+I/TC: Secondary CPU 1 switching to normal world boot
+[    0.134147] Detected VIPT I-cache on CPU1
+[    0.134288] GICv3: CPU1: found redistributor 1 region 0:0x0000000001860000
+[    0.134308] GICv3: CPU1: using allocated LPI pending table @0x0000000080050000
+[    0.134370] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.134505] smp: Brought up 1 node, 2 CPUs
+[    0.163890] SMP: Total of 2 processors activated.
+[    0.168703] CPU features: detected: 32-bit EL0 Support
+[    0.173971] CPU features: detected: 32-bit EL1 Support
+[    0.179229] CPU features: detected: CRC32 instructions
+[    0.184555] CPU: All CPU(s) started at EL2
+[    0.188773] alternatives: applying system-wide alternatives
+[    0.196976] devtmpfs: initialized
+[    0.210600] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.220623] futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.229008] pinctrl core: initialized pinctrl subsystem
+[    0.237198] DMI not present or invalid.
+[    0.242048] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.249534] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.256996] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.265113] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.273320] audit: initializing netlink subsys (disabled)
+[    0.279242] audit: type=2000 audit(0.172:1): state=initialized audit_enabled=0 res=1
+[    0.281025] thermal_sys: Registered thermal governor 'step_wise'
+[    0.287218] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.293720] cpuidle: using governor menu
+[    0.304770] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.311802] ASID allocator initialised with 65536 entries
+[    0.319677] Serial: AMBA PL011 UART driver
+[    0.353478] KASLR disabled due to lack of seed
+[    0.368658] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.375633] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.382042] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.388980] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.395386] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.402321] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.408724] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.415658] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.424579] ACPI: Interpreter disabled.
+[    0.430910] k3-chipinfo 43000014.chipid: Family:AM64X rev:SR2.0 JTAGID[0x1bb3802f] Detected
+[    0.441907] iommu: Default domain type: Translated 
+[    0.446925] iommu: DMA domain TLB invalidation policy: strict mode 
+[    0.453717] SCSI subsystem initialized
+[    0.458144] usbcore: registered new interface driver usbfs
+[    0.463815] usbcore: registered new interface driver hub
+[    0.469276] usbcore: registered new device driver usb
+[    0.475943] pps_core: LinuxPPS API ver. 1 registered
+[    0.481044] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.490397] PTP clock support registered
+[    0.494584] EDAC MC: Ver: 3.0.0
+[    0.500146] omap-mailbox 29020000.mailbox: omap mailbox rev 0x66fc9100
+[    0.507184] omap-mailbox 29040000.mailbox: omap mailbox rev 0x66fc9100
+[    0.514056] omap-mailbox 29060000.mailbox: omap mailbox rev 0x66fc9100
+[    0.522028] FPGA manager framework
+[    0.525665] Advanced Linux Sound Architecture Driver Initialized.
+[    0.533113] vgaarb: loaded
+[    0.536522] clocksource: Switched to clocksource arch_sys_counter
+[    0.543130] VFS: Disk quotas dquot_6.6.0
+[    0.547212] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.554463] pnp: PnP ACPI: disabled
+[    0.565398] NET: Registered PF_INET protocol family
+[    0.570740] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.580464] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.589332] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.597285] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.605513] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.613547] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.620533] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.627458] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.635019] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.641456] RPC: Registered named UNIX socket transport module.
+[    0.647568] RPC: Registered udp transport module.
+[    0.652376] RPC: Registered tcp transport module.
+[    0.657185] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.663778] NET: Registered PF_XDP protocol family
+[    0.668722] PCI: CLS 0 bytes, default 64
+[    0.673925] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.683068] kvm [1]: IPA Size Limit: 40 bits
+[    0.689450] kvm [1]: vgic-v2@100020000
+[    0.693316] kvm [1]: GIC system register CPU interface enabled
+[    0.699387] kvm [1]: vgic interrupt IRQ9
+[    0.703461] kvm [1]: Hyp mode initialized successfully
+[    0.710423] Initialise system trusted keyrings
+[    0.715405] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.729578] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.736459] NFS: Registering the id_resolver key type
+[    0.741737] Key type id_resolver registered
+[    0.746015] Key type id_legacy registered
+[    0.750203] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.757059] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.764897] 9p: Installing v9fs 9p2000 file system support
+[    0.813959] Key type asymmetric registered
+[    0.818173] Asymmetric key parser 'x509' registered
+[    0.823229] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 244)
+[    0.831068] io scheduler mq-deadline registered
+[    0.835739] io scheduler kyber registered
+[    0.850878] pinctrl-single 4084000.pinctrl: 33 pins, size 132
+[    0.857517] pinctrl-single f4000.pinctrl: 180 pins, size 720
+[    0.864674] pinctrl-single a40000.pinctrl: 512 pins, size 2048
+[    0.881189] EINJ: ACPI disabled.
+[    0.917399] Serial: 8250/16550 driver, 12 ports, IRQ sharing enabled
+[    0.930844] SuperH (H)SCI(F) driver initialized
+[    0.936590] msm_serial: driver initialized
+[    0.950818] loop: module loaded
+[    0.956734] megasas: 07.719.03.00-rc1
+[    0.971829] tun: Universal TUN/TAP device driver, 1.6
+[    0.978883] thunder_xcv, ver 1.0
+[    0.982304] thunder_bgx, ver 1.0
+[    0.985652] nicpf, ver 1.0
+[    0.991137] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    0.998579] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.004150] hclge is initializing
+[    1.007578] e1000: Intel(R) PRO/1000 Network Driver
+[    1.012568] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.018487] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.023562] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.029656] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.035175] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.040916] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.047326] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.054206] sky2: driver version 1.30
+[    1.060485] VFIO - User Level meta-driver version: 0.3
+[    1.070187] usbcore: registered new interface driver usb-storage
+[    1.082238] i2c_dev: i2c /dev entries driver
+[    1.101186] sdhci: Secure Digital Host Controller Interface driver
+[    1.107550] sdhci: Copyright(c) Pierre Ossman
+[    1.113695] Synopsys Designware Multimedia Card Interface Driver
+[    1.122047] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.132020] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.141391] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    1.149258] usbcore: registered new interface driver usbhid
+[    1.154997] usbhid: USB HID core driver
+[    1.169315] optee: probing for conduit method.
+I/TC: Reserved shared memory is enabled
+I/TC: Dynamic shared memory is enabled
+I/TC: Normal World virtualization support is disabled
+I/TC: Asynchronous notifications are disabled
+[    1.173936] optee: revision 3.20 (8e74d476)
+[    1.190663] optee: dynamic shared memory is enabled
+[    1.200446] optee: initialized driver
+[    1.207831] Unable to handle kernel NULL pointer dereference at virtual address 00000000000000e0
+[    1.216892] Mem abort info:
+[    1.219742]   ESR = 0x0000000096000004
+[    1.223577]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    1.229009]   SET = 0, FnV = 0
+[    1.232123]   EA = 0, S1PTW = 0
+[    1.235334]   FSC = 0x04: level 0 translation fault
+[    1.240327] Data abort info:
+[    1.243269]   ISV = 0, ISS = 0x00000004
+[    1.247188]   CM = 0, WnR = 0
+[    1.250242] [00000000000000e0] user address but active_mm is swapper
+[    1.256739] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+[    1.263141] Modules linked in:
+[    1.266264] CPU: 1 PID: 1 Comm: swapper/0 Not tainted 6.1.46Mirf-dirty #54
+[    1.273290] Hardware name: Texas Instruments AM642 EVM (DT)
+[    1.278978] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.286092] pc : irq_detector_probe+0x128/0x1f0
+[    1.290732] lr : irq_detector_probe+0x10c/0x1f0
+[    1.295359] sp : ffff80000a5ebba0
+[    1.298737] x29: ffff80000a5ebba0 x28: 0000000000000000 x27: ffff800009a100c8
+[    1.306034] x26: ffff800009af6060 x25: ffff800009af6078 x24: 0000000000000000
+[    1.313330] x23: ffff80000a5b3c18 x22: ffff8000094d6e10 x21: ffff000000386880
+[    1.320627] x20: ffff000000c07010 x19: ffff000000c07010 x18: ffffffffffffffff
+[    1.327923] x17: 000000000000001c x16: 000000003610488c x15: ffff00000121910a
+[    1.335217] x14: ffffffffffffffff x13: 006c61767265746e x12: 695f676e696c706d
+[    1.342512] x11: 00000012efe2eaf0 x10: 00000000000d3e50 x9 : 0000000000000000
+[    1.349807] x8 : ffff000000fd8600 x7 : 0000000000000000 x6 : 0000000000000000
+[    1.357100] x5 : 0800000000000000 x4 : ffff000000386880 x3 : 00000000000000f0
+[    1.364396] x2 : ffff000000fd8540 x1 : 0000000000000180 x0 : 0000000000000000
+[    1.371692] Call trace:
+[    1.374184]  irq_detector_probe+0x128/0x1f0
+[    1.378457]  platform_probe+0x68/0xe0
+[    1.382197]  really_probe+0xbc/0x2dc
+[    1.385849]  __driver_probe_device+0x78/0x114
+[    1.390300]  driver_probe_device+0xd8/0x15c
+[    1.394571]  __driver_attach+0x94/0x19c
+[    1.398490]  bus_for_each_dev+0x70/0xd0
+[    1.402407]  driver_attach+0x24/0x30
+[    1.406059]  bus_add_driver+0x154/0x20c
+[    1.409977]  driver_register+0x78/0x130
+[    1.413895]  __platform_driver_register+0x28/0x34
+[    1.418697]  irq_detector_driver_init+0x1c/0x28
+[    1.423329]  do_one_initcall+0x50/0x1d0
+[    1.427247]  kernel_init_freeable+0x218/0x284
+[    1.431700]  kernel_init+0x24/0x12c
+[    1.435267]  ret_from_fork+0x10/0x20
+[    1.438923] Code: f94046a0 aa1503e4 52803001 9103c003 (f9407000) 
+[    1.445148] ---[ end trace 0000000000000000 ]---
+[    1.449918] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
+[    1.457740] SMP: stopping secondary CPUs
+[    1.461749] Kernel Offset: disabled
+[    1.465306] CPU features: 0x00000,00800084,0000421b
+[    1.470285] Memory Limit: none
+[    1.473402] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---
+ü
+U-Boot SPL 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+Resetting on cold boot to workaround ErrataID:i2331
+Please resend tiboot3.bin in case of UART/DFU boot
+resetting ...
+
+U-Boot SPL 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+SPL initial stack usage: 13376 bytes
+Trying to boot from MMC2
+Authentication passed
+Authentication passed
+Authentication passed
+Authentication passed
+Loading Environment from MMC... *** Warning - No MMC card found, using default environment
+
+Starting ATF on ARM64 core...
+
+NOTICE:  BL31: v2.8(release):v2.8-226-g2fcd408bb3-dirty
+NOTICE:  BL31: Built : 00:42:57, Jan 13 2023
+I/TC: 
+I/TC: OP-TEE version: 3.20.0 (gcc version 11.3.0 (GCC)) #1 Fri Jan 20 15:42:54 UTC 2023 aarch64
+I/TC: WARNING: This OP-TEE configuration might be insecure!
+I/TC: WARNING: Please check https://optee.readthedocs.io/en/latest/architecture/porting_guidelines.html
+I/TC: Primary CPU initializing
+I/TC: SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+I/TC: HUK Initialized
+I/TC: Activated SA2UL device
+I/TC: Enabled firewalls for SA2UL TRNG device
+I/TC: SA2UL TRNG initialized
+I/TC: SA2UL Drivers initialized
+I/TC: Primary CPU switching to normal world boot
+
+U-Boot SPL 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+SYSFW ABI: 3.1 (firmware rev 0x0009 '9.0.5--v09.00.05 (Kool Koala)')
+Trying to boot from MMC2
+Authentication passed
+Authentication passed
+
+
+U-Boot 2023.04-g24098ea90d (Jul 06 2023 - 12:59:40 +0000)
+
+SoC:   AM64X SR2.0 HS-FS
+Model: Texas Instruments AM642 EVM
+Board: AM64-EVM rev C
+DRAM:  2 GiB
+Core:  59 devices, 29 uclasses, devicetree: separate
+MMC:   mmc@fa10000: 0, mmc@fa00000: 1
+Loading Environment from MMC... *** Warning - bad CRC, using default environment
+
+In:    serial@2800000
+Out:   serial@2800000
+Err:   serial@2800000
+Unidentified board claims AM64-EVM in eeprom header
+Net:   eth0: ethernet@8000000port@1
+Hit any key to stop autoboot:  2  1  0 
+switch to partitions #0, OK
+mmc1 is current device
+SD/MMC found on device 1
+Failed to load 'boot.scr'
+574 bytes read in 29 ms (18.6 KiB/s)
+Loaded env from uEnv.txt
+Importing environment from mmc1 ...
+38994432 bytes read in 1646 ms (22.6 MiB/s)
+59145 bytes read in 35 ms (1.6 MiB/s)
+Working FDT set to 88000000
+## Flattened Device Tree blob at 88000000
+   Booting using the fdt blob at 0x88000000
+Working FDT set to 88000000
+   Loading Device Tree to 000000008feee000, end 000000008fffffff ... OK
+Working FDT set to 8feee000
+
+Starting kernel ...
+
+[    0.000000] Booting Linux on physical CPU 0x0000000000 [0x410fd034]
+[    0.000000] Linux version 6.1.46Mirf-dirty (root@mir-VirtualBox) (aarch64-none-linux-gnu-gcc (Arm GNU Toolchain 11.3.Rel1) 11.3.1 20220712, GNU ld (Arm GNU Toolchain 11.3.Rel1) 2.38.20220708) #55 SMP PREEMPT Fri Mar 22 11:07:10 IST 2024
+[    0.000000] Machine model: Texas Instruments AM642 EVM
+[    0.000000] earlycon: ns16550a0 at MMIO32 0x0000000002800000 (options '')
+[    0.000000] printk: bootconsole [ns16550a0] enabled
+[    0.000000] efi: UEFI not found.
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a0000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a0100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a0100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a1000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a1100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a1100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a2000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a2000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a2100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a2100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-dma-memory@a3000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a3100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node r5f-memory@a3100000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4000000, size 1 MiB
+[    0.000000] OF: reserved mem: initialized node m4f-dma-memory@a4000000, compatible id shared-dma-pool
+[    0.000000] Reserved memory: created DMA memory pool at 0x00000000a4100000, size 15 MiB
+[    0.000000] OF: reserved mem: initialized node m4f-memory@a4100000, compatible id shared-dma-pool
+[    0.000000] NUMA: No NUMA configuration found
+[    0.000000] NUMA: Faking a node at [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000] NUMA: NODE_DATA [mem 0xffbf5a00-0xffbf7fff]
+[    0.000000] Zone ranges:
+[    0.000000]   DMA      [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000]   DMA32    empty
+[    0.000000]   Normal   empty
+[    0.000000] Movable zone start for each node
+[    0.000000] Early memory node ranges
+[    0.000000]   node   0: [mem 0x0000000080000000-0x000000009e7fffff]
+[    0.000000]   node   0: [mem 0x000000009e800000-0x00000000a57fffff]
+[    0.000000]   node   0: [mem 0x00000000a5800000-0x00000000ffffffff]
+[    0.000000] Initmem setup node 0 [mem 0x0000000080000000-0x00000000ffffffff]
+[    0.000000] cma: Reserved 32 MiB at 0x00000000fba00000
+[    0.000000] psci: probing for conduit method from DT.
+[    0.000000] psci: PSCIv1.1 detected in firmware.
+[    0.000000] psci: Using standard PSCI v0.2 function IDs
+[    0.000000] psci: Trusted OS migration not required
+[    0.000000] psci: SMC Calling Convention v1.2
+[    0.000000] percpu: Embedded 20 pages/cpu s44968 r8192 d28760 u81920
+[    0.000000] Detected VIPT I-cache on CPU0
+[    0.000000] CPU features: detected: GIC system register CPU interface
+[    0.000000] CPU features: detected: ARM erratum 845719
+[    0.000000] alternatives: applying boot alternatives
+[    0.000000] Fallback order for Node 0: 0 
+[    0.000000] Built 1 zonelists, mobility grouping on.  Total pages: 516096
+[    0.000000] Policy zone: DMA
+[    0.000000] Kernel command line: console=ttyS2,115200n8 earlycon=ns16550a,mmio32,0x02800000 root=PARTUUID=717e1cd2-02 rw rootfstype=ext4 rootwait
+[    0.000000] Dentry cache hash table entries: 262144 (order: 9, 2097152 bytes, linear)
+[    0.000000] Inode-cache hash table entries: 131072 (order: 8, 1048576 bytes, linear)
+[    0.000000] mem auto-init: stack:off, heap alloc:off, heap free:off
+[    0.000000] Memory: 1870716K/2097152K available (16896K kernel code, 3776K rwdata, 9680K rodata, 7616K init, 625K bss, 193668K reserved, 32768K cma-reserved)
+[    0.000000] SLUB: HWalign=64, Order=0-3, MinObjects=0, CPUs=2, Nodes=1
+[    0.000000] rcu: Preemptible hierarchical RCU implementation.
+[    0.000000] rcu: 	RCU event tracing is enabled.
+[    0.000000] rcu: 	RCU restricting CPUs from NR_CPUS=256 to nr_cpu_ids=2.
+[    0.000000] 	Trampoline variant of Tasks RCU enabled.
+[    0.000000] 	Tracing variant of Tasks RCU enabled.
+[    0.000000] rcu: RCU calculated value of scheduler-enlistment delay is 25 jiffies.
+[    0.000000] rcu: Adjusting geometry for rcu_fanout_leaf=16, nr_cpu_ids=2
+[    0.000000] NR_IRQS: 64, nr_irqs: 64, preallocated irqs: 0
+[    0.000000] GICv3: GIC: Using split EOI/Deactivate mode
+[    0.000000] GICv3: 256 SPIs implemented
+[    0.000000] GICv3: 0 Extended SPIs implemented
+[    0.000000] Root IRQ handler: gic_handle_irq
+[    0.000000] GICv3: GICv3 features: 16 PPIs
+[    0.000000] GICv3: CPU0: found redistributor 0 region 0:0x0000000001840000
+[    0.000000] ITS [mem 0x01820000-0x0182ffff]
+[    0.000000] GIC: enabling workaround for ITS: Socionext Synquacer pre-ITS
+[    0.000000] ITS@0x0000000001820000: Devices Table too large, reduce ids 20->19
+[    0.000000] ITS@0x0000000001820000: allocated 524288 Devices @80800000 (flat, esz 8, psz 64K, shr 0)
+[    0.000000] ITS: using cache flushing for cmd queue
+[    0.000000] GICv3: using LPI property table @0x0000000080030000
+[    0.000000] GIC: using cache flushing for LPI property table
+[    0.000000] GICv3: CPU0: using allocated LPI pending table @0x0000000080040000
+[    0.000000] rcu: srcu_init: Setting srcu_struct sizes based on contention.
+[    0.000000] arch_timer: cp15 timer(s) running at 200.00MHz (phys).
+[    0.000000] clocksource: arch_sys_counter: mask: 0x3ffffffffffffff max_cycles: 0x2e2049d3e8, max_idle_ns: 440795210634 ns
+[    0.000001] sched_clock: 58 bits at 200MHz, resolution 5ns, wraps every 4398046511102ns
+[    0.010156] Console: colour dummy device 80x25
+[    0.014810] Calibrating delay loop (skipped), value calculated using timer frequency.. 400.00 BogoMIPS (lpj=800000)
+[    0.025494] pid_max: default: 32768 minimum: 301
+[    0.030279] LSM: Security Framework initializing
+[    0.035138] Mount-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.042721] Mountpoint-cache hash table entries: 4096 (order: 3, 32768 bytes, linear)
+[    0.052811] cblist_init_generic: Setting adjustable number of callback queues.
+[    0.060287] cblist_init_generic: Setting shift to 1 and lim to 1.
+[    0.066601] cblist_init_generic: Setting adjustable number of callback queues.
+[    0.073995] cblist_init_generic: Setting shift to 1 and lim to 1.
+[    0.080444] rcu: Hierarchical SRCU implementation.
+[    0.085357] rcu: 	Max phase no-delay instances is 1000.
+[    0.091027] Platform MSI: msi-controller@1820000 domain created
+[    0.097429] PCI/MSI: /bus@f4000/interrupt-controller@1800000/msi-controller@1820000 domain created
+[    0.106776] fsl-mc MSI: msi-controller@1820000 domain created
+[    0.115417] EFI services will not be available.
+[    0.120441] smp: Bringing up secondary CPUs ...
+I/TC: Secondary CPU 1 initializing
+I/TC: Secondary CPU 1 switching to normal world boot
+[    0.134138] Detected VIPT I-cache on CPU1
+[    0.134279] GICv3: CPU1: found redistributor 1 region 0:0x0000000001860000
+[    0.134299] GICv3: CPU1: using allocated LPI pending table @0x0000000080050000
+[    0.134362] CPU1: Booted secondary processor 0x0000000001 [0x410fd034]
+[    0.134496] smp: Brought up 1 node, 2 CPUs
+[    0.163883] SMP: Total of 2 processors activated.
+[    0.168695] CPU features: detected: 32-bit EL0 Support
+[    0.173963] CPU features: detected: 32-bit EL1 Support
+[    0.179220] CPU features: detected: CRC32 instructions
+[    0.184548] CPU: All CPU(s) started at EL2
+[    0.188767] alternatives: applying system-wide alternatives
+[    0.196942] devtmpfs: initialized
+[    0.210581] clocksource: jiffies: mask: 0xffffffff max_cycles: 0xffffffff, max_idle_ns: 7645041785100000 ns
+[    0.220607] futex hash table entries: 512 (order: 3, 32768 bytes, linear)
+[    0.228984] pinctrl core: initialized pinctrl subsystem
+[    0.237178] DMI not present or invalid.
+[    0.242031] NET: Registered PF_NETLINK/PF_ROUTE protocol family
+[    0.249516] DMA: preallocated 256 KiB GFP_KERNEL pool for atomic allocations
+[    0.256982] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA pool for atomic allocations
+[    0.265106] DMA: preallocated 256 KiB GFP_KERNEL|GFP_DMA32 pool for atomic allocations
+[    0.273315] audit: initializing netlink subsys (disabled)
+[    0.279235] audit: type=2000 audit(0.172:1): state=initialized audit_enabled=0 res=1
+[    0.280995] thermal_sys: Registered thermal governor 'step_wise'
+[    0.287206] thermal_sys: Registered thermal governor 'power_allocator'
+[    0.293702] cpuidle: using governor menu
+[    0.304755] hw-breakpoint: found 6 breakpoint and 4 watchpoint registers.
+[    0.311785] ASID allocator initialised with 65536 entries
+[    0.319647] Serial: AMBA PL011 UART driver
+[    0.353528] KASLR disabled due to lack of seed
+[    0.368715] HugeTLB: registered 1.00 GiB page size, pre-allocated 0 pages
+[    0.375694] HugeTLB: 0 KiB vmemmap can be freed for a 1.00 GiB page
+[    0.382103] HugeTLB: registered 32.0 MiB page size, pre-allocated 0 pages
+[    0.389039] HugeTLB: 0 KiB vmemmap can be freed for a 32.0 MiB page
+[    0.395444] HugeTLB: registered 2.00 MiB page size, pre-allocated 0 pages
+[    0.402379] HugeTLB: 0 KiB vmemmap can be freed for a 2.00 MiB page
+[    0.408784] HugeTLB: registered 64.0 KiB page size, pre-allocated 0 pages
+[    0.415718] HugeTLB: 0 KiB vmemmap can be freed for a 64.0 KiB page
+[    0.424614] ACPI: Interpreter disabled.
+[    0.430947] k3-chipinfo 43000014.chipid: Family:AM64X rev:SR2.0 JTAGID[0x1bb3802f] Detected
+[    0.441962] iommu: Default domain type: Translated 
+[    0.446980] iommu: DMA domain TLB invalidation policy: strict mode 
+[    0.453771] SCSI subsystem initialized
+[    0.458198] usbcore: registered new interface driver usbfs
+[    0.463869] usbcore: registered new interface driver hub
+[    0.469334] usbcore: registered new device driver usb
+[    0.476007] pps_core: LinuxPPS API ver. 1 registered
+[    0.481110] pps_core: Software ver. 5.3.6 - Copyright 2005-2007 Rodolfo Giometti <giometti@linux.it>
+[    0.490461] PTP clock support registered
+[    0.494648] EDAC MC: Ver: 3.0.0
+[    0.500209] omap-mailbox 29020000.mailbox: omap mailbox rev 0x66fc9100
+[    0.507249] omap-mailbox 29040000.mailbox: omap mailbox rev 0x66fc9100
+[    0.514125] omap-mailbox 29060000.mailbox: omap mailbox rev 0x66fc9100
+[    0.522076] FPGA manager framework
+[    0.525711] Advanced Linux Sound Architecture Driver Initialized.
+[    0.533170] vgaarb: loaded
+[    0.536564] clocksource: Switched to clocksource arch_sys_counter
+[    0.543149] VFS: Disk quotas dquot_6.6.0
+[    0.547229] VFS: Dquot-cache hash table entries: 512 (order 0, 4096 bytes)
+[    0.554475] pnp: PnP ACPI: disabled
+[    0.565417] NET: Registered PF_INET protocol family
+[    0.570755] IP idents hash table entries: 32768 (order: 6, 262144 bytes, linear)
+[    0.580482] tcp_listen_portaddr_hash hash table entries: 1024 (order: 2, 16384 bytes, linear)
+[    0.589347] Table-perturb hash table entries: 65536 (order: 6, 262144 bytes, linear)
+[    0.597299] TCP established hash table entries: 16384 (order: 5, 131072 bytes, linear)
+[    0.605528] TCP bind hash table entries: 16384 (order: 7, 524288 bytes, linear)
+[    0.613559] TCP: Hash tables configured (established 16384 bind 16384)
+[    0.620520] UDP hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.627464] UDP-Lite hash table entries: 1024 (order: 3, 32768 bytes, linear)
+[    0.635022] NET: Registered PF_UNIX/PF_LOCAL protocol family
+[    0.641455] RPC: Registered named UNIX socket transport module.
+[    0.647569] RPC: Registered udp transport module.
+[    0.652380] RPC: Registered tcp transport module.
+[    0.657188] RPC: Registered tcp NFSv4.1 backchannel transport module.
+[    0.663782] NET: Registered PF_XDP protocol family
+[    0.668722] PCI: CLS 0 bytes, default 64
+[    0.673925] hw perfevents: enabled with armv8_cortex_a53 PMU driver, 7 counters available
+[    0.683064] kvm [1]: IPA Size Limit: 40 bits
+[    0.689445] kvm [1]: vgic-v2@100020000
+[    0.693312] kvm [1]: GIC system register CPU interface enabled
+[    0.699375] kvm [1]: vgic interrupt IRQ9
+[    0.703451] kvm [1]: Hyp mode initialized successfully
+[    0.710421] Initialise system trusted keyrings
+[    0.715427] workingset: timestamp_bits=42 max_order=19 bucket_order=0
+[    0.729581] squashfs: version 4.0 (2009/01/31) Phillip Lougher
+[    0.736457] NFS: Registering the id_resolver key type
+[    0.741727] Key type id_resolver registered
+[    0.746006] Key type id_legacy registered
+[    0.750192] nfs4filelayout_init: NFSv4 File Layout Driver Registering...
+[    0.757046] nfs4flexfilelayout_init: NFSv4 Flexfile Layout Driver Registering...
+[    0.764884] 9p: Installing v9fs 9p2000 file system support
+[    0.813864] Key type asymmetric registered
+[    0.818081] Asymmetric key parser 'x509' registered
+[    0.823139] Block layer SCSI generic (bsg) driver version 0.4 loaded (major 244)
+[    0.830974] io scheduler mq-deadline registered
+[    0.835646] io scheduler kyber registered
+[    0.850789] pinctrl-single 4084000.pinctrl: 33 pins, size 132
+[    0.857349] pinctrl-single f4000.pinctrl: 180 pins, size 720
+[    0.864438] pinctrl-single a40000.pinctrl: 512 pins, size 2048
+[    0.881021] EINJ: ACPI disabled.
+[    0.917160] Serial: 8250/16550 driver, 12 ports, IRQ sharing enabled
+[    0.930652] SuperH (H)SCI(F) driver initialized
+[    0.936325] msm_serial: driver initialized
+[    0.950676] loop: module loaded
+[    0.956510] megasas: 07.719.03.00-rc1
+[    0.971612] tun: Universal TUN/TAP device driver, 1.6
+[    0.978651] thunder_xcv, ver 1.0
+[    0.982072] thunder_bgx, ver 1.0
+[    0.985422] nicpf, ver 1.0
+[    0.990933] hns3: Hisilicon Ethernet Network Driver for Hip08 Family - version
+[    0.998366] hns3: Copyright (c) 2017 Huawei Corporation.
+[    1.003945] hclge is initializing
+[    1.007375] e1000: Intel(R) PRO/1000 Network Driver
+[    1.012362] e1000: Copyright (c) 1999-2006 Intel Corporation.
+[    1.018280] e1000e: Intel(R) PRO/1000 Network Driver
+[    1.023356] e1000e: Copyright(c) 1999 - 2015 Intel Corporation.
+[    1.029452] igb: Intel(R) Gigabit Ethernet Network Driver
+[    1.034972] igb: Copyright (c) 2007-2014 Intel Corporation.
+[    1.040712] igbvf: Intel(R) Gigabit Virtual Function Network Driver
+[    1.047120] igbvf: Copyright (c) 2009 - 2012 Intel Corporation.
+[    1.053999] sky2: driver version 1.30
+[    1.060235] VFIO - User Level meta-driver version: 0.3
+[    1.069911] usbcore: registered new interface driver usb-storage
+[    1.081990] i2c_dev: i2c /dev entries driver
+[    1.101024] sdhci: Secure Digital Host Controller Interface driver
+[    1.107385] sdhci: Copyright(c) Pierre Ossman
+[    1.113545] Synopsys Designware Multimedia Card Interface Driver
+[    1.121873] sdhci-pltfm: SDHCI platform and OF driver helper
+[    1.131855] ledtrig-cpu: registered to indicate activity on CPUs
+[    1.141208] SMCCC: SOC_ID: ARCH_SOC_ID not implemented, skipping ....
+[    1.149067] usbcore: registered new interface driver usbhid
+[    1.154799] usbhid: USB HID core driver
+[    1.169094] optee: probing for conduit method.
+I/TC: Reserved shared memory is enabled
+I/TC: Dynamic shared memory is enabled
+I/TC: Normal World virtualization support is disabled
+I/TC: Asynchronous notifications are disabled
+[    1.173715] optee: revision 3.20 (8e74d476)
+[    1.190495] optee: dynamic shared memory is enabled
+[    1.200281] optee: initialized driver
+[    1.207650] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+[    1.216712] Mem abort info:
+[    1.219560]   ESR = 0x0000000096000004
+[    1.223394]   EC = 0x25: DABT (current EL), IL = 32 bits
+[    1.228826]   SET = 0, FnV = 0
+[    1.231939]   EA = 0, S1PTW = 0
+[    1.235148]   FSC = 0x04: level 0 translation fault
+[    1.240140] Data abort info:
+[    1.243083]   ISV = 0, ISS = 0x00000004
+[    1.247002]   CM = 0, WnR = 0
+[    1.250057] [0000000000000000] user address but active_mm is swapper
+[    1.256554] Internal error: Oops: 0000000096000004 [#1] PREEMPT SMP
+[    1.262955] Modules linked in:
+[    1.266078] CPU: 1 PID: 1 Comm: swapper/0 Not tainted 6.1.46Mirf-dirty #55
+[    1.273103] Hardware name: Texas Instruments AM642 EVM (DT)
+[    1.278793] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[    1.285907] pc : irq_detector_probe+0x124/0x1f0
+[    1.290546] lr : irq_detector_probe+0x10c/0x1f0
+[    1.295171] sp : ffff80000a5ebba0
+[    1.298551] x29: ffff80000a5ebba0 x28: 0000000000000000 x27: ffff800009a100c8
+[    1.305848] x26: ffff800009af6060 x25: ffff800009af6078 x24: 0000000000000000
+[    1.313142] x23: ffff80000a5b3c18 x22: ffff8000094d6e10 x21: ffff000000386880
+[    1.320436] x20: ffff000000c07010 x19: ffff000000c07010 x18: ffffffffffffffff
+[    1.327731] x17: 000000000000001c x16: 000000000ac7b5ce x15: ffff00000121910a
+[    1.335027] x14: ffffffffffffffff x13: 006c61767265746e x12: 695f676e696c706d
+[    1.342325] x11: 000000126f351c90 x10: 00000000000d3e50 x9 : 0000000000000000
+[    1.349619] x8 : ffff000000fd8600 x7 : 0000000000000000 x6 : 0000000000000000
+[    1.356913] x5 : 0800000000000000 x4 : ffff000000386880 x3 : 0000000000000000
+[    1.364207] x2 : ffff000000fd8540 x1 : 0000000000000180 x0 : ffff000000fd8540
+[    1.371506] Call trace:
+[    1.373998]  irq_detector_probe+0x124/0x1f0
+[    1.378270]  platform_probe+0x68/0xe0
+[    1.382011]  really_probe+0xbc/0x2dc
+[    1.385664]  __driver_probe_device+0x78/0x114
+[    1.390116]  driver_probe_device+0xd8/0x15c
+[    1.394390]  __driver_attach+0x94/0x19c
+[    1.398309]  bus_for_each_dev+0x70/0xd0
+[    1.402226]  driver_attach+0x24/0x30
+[    1.405877]  bus_add_driver+0x154/0x20c
+[    1.409796]  driver_register+0x78/0x130
+[    1.413714]  __platform_driver_register+0x28/0x34
+[    1.418515]  irq_detector_driver_init+0x1c/0x28
+[    1.423147]  do_one_initcall+0x50/0x1d0
+[    1.427065]  kernel_init_freeable+0x218/0x284
+[    1.431519]  kernel_init+0x24/0x12c
+[    1.435086]  ret_from_fork+0x10/0x20
+[    1.438741] Code: b4000580 f94046a3 aa1503e4 52803001 (f8410460) 
+[    1.444966] ---[ end trace 0000000000000000 ]---
+[    1.449734] Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b
+[    1.457556] SMP: stopping secondary CPUs
+[    1.461566] Kernel Offset: disabled
+[    1.465122] CPU features: 0x00000,00800084,0000421b
+[    1.470102] Memory Limit: none
+[    1.473218] ---[ end Kernel panic - not syncing: Attempted to kill init! exitcode=0x0000000b ]---

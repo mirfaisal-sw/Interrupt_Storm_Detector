@@ -6,7 +6,7 @@ operation to handle the case when the queue is full. One common approach is to o
 queue is full. 
 
 
-[4:47 pm, 19/03/2024] MIR: #include <linux/module.h>
+#include <linux/module.h>
 #include <linux/kernel.h>
 #include <linux/init.h>
 #include <linux/list.h>
@@ -85,6 +85,8 @@ MODULE_DESCRIPTION("Circular Queue Kernel Module");
 
 In this implementation:
 
-The enqueue function checks if the queue is full. If it is, it removes the oldest element (the one at the head of the queue) before adding the new element.
+The enqueue function checks if the queue is full. If it is, it removes the oldest element (the one at the head of the queue)
+before adding the new element.
 If memory allocation fails when creating a new node, an error message is printed, and no new node is added to the queue.
-This code demonstrates a circular queue implementation with overflow handling using a doubly linked list in the Linux Kernel. Make sure to test it thoroughly and handle edge cases appropriately.
+This code demonstrates a circular queue implementation with overflow handling using a doubly linked list in the Linux Kernel.
+Make sure to test it thoroughly and handle edge cases appropriately.

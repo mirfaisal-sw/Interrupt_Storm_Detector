@@ -1,0 +1,28 @@
+
+
+
+1. Registered as platform driver: -
+=====================================
+
+# cd /sys/devices/platform/irq_detector/
+
+# ls
+driver
+driver_override
+modalias
+of_node
+power
+subsystem
+uevent
+
+# cat uevent
+DRIVER=irq_detector
+OF_NAME=irq_detector
+OF_FULLNAME=/irq_detector
+OF_COMPATIBLE_0=mirfaisal,irq_detector
+OF_COMPATIBLE_N=1
+MODALIAS=of:Nirq_detectorT(null)Cmirfaisal,irq_detector
+
+
+
+

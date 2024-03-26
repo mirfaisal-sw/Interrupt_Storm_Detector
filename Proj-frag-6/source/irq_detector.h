@@ -6,7 +6,10 @@
 #include <linux/list.h>
 
 #define DEBUG_IRQ_NUM_UNDER_TEST		1U
-#define MAX_CPU		8U
+#define MAX_CPU					8U
+
+//TODO: This param will be configurable.
+#define MAX_CIRCULAR_QUEUE_SIZE			128U
 
 #define SHOW_DELTA(later, earlier)      do {    \
         if (time_after((unsigned long)later, (unsigned long)earlier)) { \
@@ -39,6 +42,7 @@ struct irq_num_heads_list {
         int			irq_prev_count;
         int 			irq_count;
 	int			max_irq_rate;
+	int 			cir_queue_size;
 	/*To make linked list of IRQ statistics for each 
 	 * IRQ number.
 	 */

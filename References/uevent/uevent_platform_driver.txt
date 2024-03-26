@@ -1,0 +1,29 @@
+
+I.
+====
+URL: - https://unix.stackexchange.com/questions/658101/generating-userspace-events-from-kernel-platform-drivers
+======
+
+static irqreturn_t imx_snvs_pwrkey_interrupt (int irq, void *dev_id)
+{
+    ...
+
+    struct platform_device *pdev = dev_id;
+    int err = 0;
+
+    ...
+
+    /* Sysfs notify: I chose "change" as the event type */
+    err = kobject_uevent(&(pdev->dev.kobj), KOBJ_CHANGE);
+    pr_err("%s :: kobject_uevent = %d\n", __FUNCTION__, err);
+
+    return IRQ_HANDLED
+}
+
+II.
+====
+https://mjmwired.net/kernel/Documentation/driver-model/platform.txt
+
+III.
+====
+

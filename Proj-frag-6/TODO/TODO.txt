@@ -1,32 +1,23 @@
 
 
-
+TODO till March- 31st 2024: - 
+===============================
 
 1. Implement folder "irq_diag_param/" and populate various files - irq_storm_threshol, irq_rate_mon_sampling_rate.
 
-2. Implement array of Linked List.
-		https://stackoverflow.com/questions/26807284/c-linux-built-in-linked-list-in-kernel-data-structures-usage
+2. Implement IRQ timestamping of only one IRQ number.
 
-3. Implement IRQ timestamping of only one IRQ number.
+3. Implement User dev rule to catch kobject events to notify Interrupt storm.
 
-4. Implement User dev rule to catch kobject events to notify Interrupt storm.
+4. Enrich Kconfig and add multiple config macros.
 
-5. Enrich Kobject and add multiple config macros.
+5. Remove created linked list.
 
+6. Add mutexes for different places.
 
-
-6. Explore: - 
+7. Explore and ccflags- as below: - 
 
 ccflags-$(CONFIG_PCI_DEBUG)     += -DDEBUG
 
-7. Remove created linked list.
 
-8. Figure out how to specify maximum linked list size or check to make it a circular linked list.
 
-9. Format how to tabulate data while reading from procfs.
-
-10. Find out whther INIT_LIST_HEAD() is required before every call to list_add_tail().
-
-Example: - 
-	INIT_LIST_HEAD(&d->list);
-	list_add_tail(&d->list, &oct->ctrl_req_wait_list);
