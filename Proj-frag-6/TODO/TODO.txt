@@ -4,6 +4,7 @@ TODO till March- 31st 2024: -
 ===============================
 
 1. Implement folder "irq_diag_param/" and populate various files - irq_storm_threshol, irq_rate_mon_sampling_rate.
+	==> Done
 
 2. Implement IRQ timestamping of only one IRQ number.
 
@@ -11,7 +12,7 @@ TODO till March- 31st 2024: -
 
 4. Enrich Kconfig and add multiple config macros.
 
-5. Remove created linked list.
+5. Remove created linked list using list_del() and kfree() APIs.
 
 6. Add mutexes for different places.
 
