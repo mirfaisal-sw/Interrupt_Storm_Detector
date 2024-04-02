@@ -1,30 +1,5 @@
 
 
-   15.037136] am65-cpsw-nuss 8000000.ethernet eth1: Link is Up - 1Gbps/Full - flow control rx/tx
-
- _____                    _____           _         _
-|  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
-|     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
-|__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
-              |___|                    |___|
-
-Arago Project am64xx-evm -
-
-Arago 2023.04 am64xx-evm -
-
-am64xx-evm login: root
-[   39.137143] audit: type=1334 audit(1651318365.468:6): prog-id=9 op=LOAD
-[   39.144864] audit: type=1334 audit(1651318365.476:7): prog-id=10 op=LOAD
-
-[   39.591066] audit: type=1006 audit(1651318365.920:8): pid=523 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
-[   39.603516] audit: type=1300 audit(1651318365.920:8): arch=c00000b7 syscall=64 success=yes exit=1 a0=8 a1=ffffc1c3ef98 a2=1 a3=ffffa7e96020 items=0 ppid=1 pid=523 auid=0 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=1 comm="(systemd)" exe="/lib/systemd/systemd" key=(null)
-[   39.630105] audit: type=1327 audit(1651318365.920:8): proctitle="(systemd)"
-[   39.654322] audit: type=1334 audit(1651318365.984:9): prog-id=11 op=LOAD
-[   39.661187] audit: type=1300 audit(1651318365.984:9): arch=c00000b7 syscall=280 success=yes exit=8 a0=5 a1=ffffe242d0c0 a2=78 a3=0 items=0 ppid=1 pid=523 auid=0 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=1 comm="systemd" exe="/lib/systemd/systemd" key=(null)
-[   39.686591] audit: type=1327 audit(1651318365.984:9): proctitle="(systemd)"
-[   39.693751] audit: type=1334 audit(1651318365.984:10): prog-id=11 op=UNLOAD
-[   39.700890] audit: type=1334 audit(1651318365.984:11): prog-id=12 op=LOAD
-root@am64xx-evm:~#
 root@am64xx-evm:~#
 root@am64xx-evm:~#
 root@am64xx-evm:~#

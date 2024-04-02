@@ -24,6 +24,7 @@ II.
 ====
 https://mjmwired.net/kernel/Documentation/driver-model/platform.txt
 
-III.
-====
 
+III. Reference code
+====
+URL: https://android.googlesource.com/kernel/msm/+/android-msm-mako-3.4-jb-mr1/drivers/usb/gadget/android.c

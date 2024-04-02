@@ -89,7 +89,7 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
 	struct irq_detector_data *priv =
 		container_of(hrtimer, struct irq_detector_data, mhr_timer);
 
-	pr_info( "my_hrtimer_callback called (%ld).\n");
+	pr_debug( "my_hrtimer_callback called.\n");
 	
 	check_context = in_interrupt();	
 	pr_alert("In func - %s, line - %d, context = %d\n",
@@ -111,7 +111,8 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
  */
 static void irq_scan_work(struct work_struct *work)
 {
-	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, scan_work);
+	struct irq_detector_data *priv = container_of(work,
+				struct irq_detector_data, scan_work);
 	struct irq_num_statistics_list *node_linked_list;
 	struct irq_num_statistics_list *oldest_node;
 	int irq;
@@ -141,7 +142,9 @@ static void irq_scan_work(struct work_struct *work)
 		if(!priv->desc->action) //|| irq_desc_is_chained(priv->desc))
 			continue;
 
-		mutex_lock_interruptible(&priv->mlock);
+		if(mutex_lock_interruptible(&priv->mlock))
+			return;
+
 		/*Scan list of IRQ numbers and fill liked list for each IRQ#*/
 		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
@@ -205,9 +208,8 @@ static void irq_scan_work(struct work_struct *work)
 
 		mutex_unlock(&priv->mlock);
 
-		pr_debug("For Irq# - %d, IRQ rate - %d per %d ms\n",
-			node_linked_list->irq_num,
-			node_linked_list->irq_rate, SAMPLING_INTERVAL);
+		pr_debug("For Irq# - %d, IRQ rate - %d per %ld ms\n",
+			node_linked_list->irq_num, node_linked_list->irq_rate, SAMPLING_INTERVAL);
 	}/*for_each_irq_desc()*/
 
 out:
@@ -215,6 +217,9 @@ out:
 	SHOW_DELTA(t2, t1);
 }
 
+/*
+ * uevent_notify_work() - workqueue for user space notify work.
+ */
 static void uevent_notify_work(struct work_struct *work)
 {
 	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, notify_work);
@@ -232,7 +237,7 @@ static void uevent_notify_work(struct work_struct *work)
 	case 2: 
 		envp[idx++] = "ERROR_EVENT=XYZ_ERROR";
 		break;
-	deafult: 
+	default: 
 		break;
 	}
 
@@ -244,13 +249,11 @@ static void uevent_notify_work(struct work_struct *work)
 	spin_unlock_irqrestore(&priv->slock, flags);
 }
 
-#if 1
-/*Thread*/
-int thread_function(void *pv)
+int monitor_irq_storm_thread(void *pv)
 {
 	int i=0;
 	int irq;
-	unsigned long temp_timestamp;
+	//unsigned long temp_timestamp;
 	struct irq_detector_data *priv = pv;
 	struct irq_num_heads_list *ptr;
 
@@ -266,13 +269,17 @@ int thread_function(void *pv)
 			continue;
 
 		pr_alert("IRQ name - %s\n", irq_desc_node->name);
-		mutex_lock_interruptible(&priv->mlock);
+		if(mutex_lock_interruptible(&priv->mlock))
+			return -1;
 	
 		/*Scan list of IRQ numbers to read IRQ rate*/
 		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 	
-		if(ptr->max_irq_rate > 10) //Change this param as 10 using some CONFIG macro*/
-			pr_alert("IRQ# - %d, IRQ rate - %d\n");
+		if(ptr->max_irq_rate > 10) {//Change this param as 10 using some CONFIG macro*/
+			pr_alert("IRQ# - %d, IRQ rate - %d\n", ptr->irq_num, ptr->max_irq_rate);
+			priv->status_flag = 1;
+			schedule_work(&priv->notify_work);
+		}
 	
 		}
 	
@@ -281,7 +288,6 @@ int thread_function(void *pv)
     }
     return 0;
 }
-#endif
 
 static int start_irq_rate_calc(struct irq_detector_data *mirq_data)
 {
@@ -344,9 +350,9 @@ static int irq_diag_open_cmd(struct inode *inode, struct file *file)
 	int ret;
 
 #if(LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
-	mirq_data = pde_data(inode);
+	mirq_data = (struct irq_detector_data *)pde_data(inode);
 #else
-	mirq_data = PDEV_DATA(inode);
+	mirq_data = (struct irq_detector_data *)PDE_DATA(inode);
 #endif
 
 	pr_alert("DBG: In func - %s\n", __func__);
@@ -385,9 +391,8 @@ static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
       size_t count, loff_t *off)
 {
 	int ret;
-	unsigned long n;
 	unsigned int irq_cnt = 0;
-
+	char *temp_buf;
 	struct irq_detector_data *mirq_data;
 
 #if(LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
@@ -396,7 +401,7 @@ static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
         mirq_data = PDE_DATA(file_inode(filep));
 #endif
 
-	char *temp_buf = kzalloc(32, GFP_USER);
+	temp_buf = kzalloc(32, GFP_USER);
 
 	if (!temp_buf)
 		return -ENOMEM;
@@ -412,7 +417,7 @@ static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
 	temp_buf[count-1] = '\0';
 
 	ret = count;
-	pr_alert("DBG: String: %s, length - %d\n", temp_buf, count);
+	pr_alert("DBG: String: %s, length - %ld\n", temp_buf, count);
 
 	if(!strcmp(temp_buf, "on")) { /*Start IRQ scanning*/
 #if 0
@@ -441,6 +446,7 @@ out:
 	return ret;
 }
 
+#ifndef CONFIG_SEQ_READ
 static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf, 
 		size_t length, loff_t *offset)
 {
@@ -458,7 +464,7 @@ static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf,
 #else
         mirq_data = PDE_DATA(file_inode(filep));
 #endif
-	bytes = min(len_str, length);
+	bytes = min((size_t)len_str, length);
 
 	pstr = str;
 
@@ -474,27 +480,17 @@ static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf,
 			return -EFAULT;
 		} else {
 			*offset += bytes;
-			pr_info("DBG: length - %d, bytes - %lu, *offset - %llu\n",
+			pr_info("DBG: length - %ld, bytes - %lu, *offset - %llu\n",
 								length, bytes, *offset);
 		}
 	}
 
-#if 0
-	if (*offset >= len || copy_to_user(buf, s, len)) {
-		pr_info("copy_to_user failed\n");
-		ret = 0;
-	} else {
-		pr_info("procfile read %s\n",
-				filep->f_path.dentry->d_name.name);
-		*offset += len;
-	}
-#endif
 	return bytes;
 }
+#endif
 
 static int show_irq_stat(struct seq_file *seq, void *pdata)
 {
-	struct list_head *ptr;
 	/*single_open() function assigns seq_file->private by user data*/
 	struct irq_detector_data *mirq_data = seq->private;
 
@@ -534,9 +530,9 @@ static int irq_diag_open_stat(struct inode *inode, struct file *file)
 	int ret;
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
-	mirq_data = pde_data(inode);
+	mirq_data = (struct irq_detector_data *)pde_data(inode);
 #else
-	mirq_data = PDEV_DATA(inode);
+	mirq_data = (struct irq_detector_data *)PDE_DATA(inode);
 #endif
 	/*Print is working, to debug pass of data*/
 	pr_alert("DBG: In func - %s, id - %d\n", __func__, mirq_data->id);
@@ -561,14 +557,6 @@ static ssize_t irq_diag_write_stat(struct file *filep, const char __user *buf,
 	return ret;
 }
 
-static ssize_t irq_diag_read_stat(struct file *filep, char __user *user_buf,
-                size_t count, loff_t *offset)
-{
-	ssize_t bytes = count;
-	
-	return bytes;
-}
-
 static int show_irq_threshold(struct seq_file *seq, void *pdata)
 {
 	return 0;
@@ -580,9 +568,9 @@ static int irq_diag_open_threshold(struct inode *inode, struct file *file)
         int ret;
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
-        mirq_data = pde_data(inode);
+        mirq_data = (struct irq_detector_data *)pde_data(inode);
 #else
-        mirq_data = PDEV_DATA(inode);
+        mirq_data = (struct irq_detector_data *)PDE_DATA(inode);
 #endif
         /*Print is working, to debug pass of data*/
         pr_alert("DBG: In func - %s, id - %d\n", __func__, mirq_data->id);
@@ -619,9 +607,9 @@ static int irq_diag_open_interval(struct inode *inode, struct file *file)
         int ret;
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
-        mirq_data = pde_data(inode);
+        mirq_data = (struct irq_detector_data *)pde_data(inode);
 #else
-        mirq_data = PDEV_DATA(inode);
+        mirq_data = (struct irq_detector_data *)PDE_DATA(inode);
 #endif
         /*Print is working, to debug pass of data*/
         pr_alert("DBG: In func - %s, id - %d\n", __func__, mirq_data->id);
@@ -658,9 +646,9 @@ static int irq_diag_open_cirq_nodes(struct inode *inode, struct file *file)
         int ret;
 
 #if (LINUX_VERSION_CODE >= KERNEL_VERSION(5,17,0))
-        mirq_data = pde_data(inode);
+        mirq_data = (struct irq_detector_data *)pde_data(inode);
 #else
-        mirq_data = PDEV_DATA(inode);
+        mirq_data = (struct irq_detector_data *)PDE_DATA(inode);
 #endif
         /*Print is working, to debug pass of data*/
         pr_alert("DBG: In func - %s, id - %d\n", __func__, mirq_data->id);
@@ -832,9 +820,7 @@ static void delete_proc_entry(struct irq_detector_data *mirq_data)
 int
 create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 {
-	struct irq_num_heads_list *ptr;
 	int irq;
-	int index = 0;
 	
 	/*Iterate through all IRQ descriptors*/
 	for_each_irq_desc(irq, pirq_data->desc) {
@@ -877,6 +863,8 @@ static int irq_detector_probe(struct platform_device *pdev)
 	struct device_node *np;
 	int ret = 0;
 
+	pr_alert("DBG: In function - %s, Line - %d\n", __func__, __LINE__);
+
 	if(dev == NULL) {
 		ret = -EINVAL;
 		goto probe_fail;
@@ -889,8 +877,8 @@ static int irq_detector_probe(struct platform_device *pdev)
 	scnprintf(mirq_data->version_id, 64, "Irq Diag Ver - 1.0");
 	mirq_data->id = 55;
 
-	mirq_data->mproc_files = irq_diag_files;
-	mirq_data->mproc_param_files = irq_diag_param_files;
+	mirq_data->mproc_files = (struct irq_diag_file *)irq_diag_files;
+	mirq_data->mproc_param_files = (struct irq_diag_file *)irq_diag_param_files;
 
 	hrtimer_init(&mirq_data->mhr_timer, CLOCK_MONOTONIC, HRTIMER_MODE_REL);
 	mirq_data->mhr_timer.function = &read_irq_interval_cb;
@@ -916,7 +904,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 	mutex_init(&mirq_data->mlock);
 	spin_lock_init(&mirq_data->slock);
 #if 1
-	mirq_data->irq_poll_thread = kthread_create(thread_function, 
+	mirq_data->irq_poll_thread = kthread_create(monitor_irq_storm_thread, 
 					mirq_data, "Irq Poll Thread");
 	if (IS_ERR(mirq_data->irq_poll_thread))
 		return PTR_ERR(mirq_data->irq_poll_thread);
