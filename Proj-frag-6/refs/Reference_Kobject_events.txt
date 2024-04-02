@@ -6,9 +6,46 @@ Reference URLs: -
 	
 	2. https://kernelnewbies.kernelnewbies.narkive.com/3GFDai0i/kobject-uevent-usage
 	
-	3. https://kernelnewbies.kernelnewbies.narkive.com/3GFDai0i/kobject-uevent-usage
-	
-	4. https://stackoverflow.com/questions/48766482/how-to-capture-kobject-uevent-using-c-program
+	3. https://stackoverflow.com/questions/48766482/how-to-capture-kobject-uevent-using-c-program
 	
 	
+	File: - /drivers/net/wireless/ath/wil6210/interrupt.c
+	-------------------------------------------------------
 	
+	static void wil_notify_fw_error(struct wil6210_priv *wil)
+	{
+		struct device *dev = &wil->main_ndev->dev;
+		char *envp[3] = {
+			[0] = "SOURCE=wil6210",
+			[1] = "EVENT=FW_ERROR",
+			[2] = NULL,
+		};
+		wil_err(wil, "Notify about firmware error\n");
+		kobject_uevent_env(&dev->kobj, KOBJ_CHANGE, envp);
+	}
+
+
+	static irqreturn_t wil6210_irq_misc_thread(int irq, void *cookie)
+	{
+		struct wil6210_priv *wil = cookie;
+		u32 isr = wil->isr_misc;
+
+		trace_wil6210_irq_misc_thread(isr);
+		wil_dbg_irq(wil, "Thread ISR MISC 0x%08x\n", isr);
+
+		if (isr & ISR_MISC_FW_ERROR) {
+			wil->recovery_state = fw_recovery_pending;
+			wil_fw_core_dump(wil);
+			wil_notify_fw_error(wil);
+			isr &= ~ISR_MISC_FW_ERROR;
+			if (wil->platform_ops.notify) {
+				wil_err(wil, "notify platform driver about FW crash");
+				wil->platform_ops.notify(wil->platform_handle,
+							 WIL_PLATFORM_EVT_FW_CRASH);
+			} else {
+				wil_fw_error_recovery(wil);
+			}
+		}
+		
+		//....
+	}

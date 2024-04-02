@@ -1,0 +1,7 @@
+
+Ex -1:
+---------
+list_for_each_entry_safe(pwrst, tmp, &pwrst_list, node) {
+		list_del(&pwrst->node);
+		kfree(pwrst);
+	}

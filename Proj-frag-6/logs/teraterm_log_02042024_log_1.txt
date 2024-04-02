@@ -1,0 +1,493 @@
+
+
+   15.037136] am65-cpsw-nuss 8000000.ethernet eth1: Link is Up - 1Gbps/Full - flow control rx/tx
+
+ _____                    _____           _         _
+|  _  |___ ___ ___ ___   |  _  |___ ___  |_|___ ___| |_
+|     |  _| .'| . | . |  |   __|  _| . | | | -_|  _|  _|
+|__|__|_| |__,|_  |___|  |__|  |_| |___|_| |___|___|_|
+              |___|                    |___|
+
+Arago Project am64xx-evm -
+
+Arago 2023.04 am64xx-evm -
+
+am64xx-evm login: root
+[   39.137143] audit: type=1334 audit(1651318365.468:6): prog-id=9 op=LOAD
+[   39.144864] audit: type=1334 audit(1651318365.476:7): prog-id=10 op=LOAD
+
+[   39.591066] audit: type=1006 audit(1651318365.920:8): pid=523 uid=0 old-auid=4294967295 auid=0 tty=(none) old-ses=4294967295 ses=1 res=1
+[   39.603516] audit: type=1300 audit(1651318365.920:8): arch=c00000b7 syscall=64 success=yes exit=1 a0=8 a1=ffffc1c3ef98 a2=1 a3=ffffa7e96020 items=0 ppid=1 pid=523 auid=0 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=1 comm="(systemd)" exe="/lib/systemd/systemd" key=(null)
+[   39.630105] audit: type=1327 audit(1651318365.920:8): proctitle="(systemd)"
+[   39.654322] audit: type=1334 audit(1651318365.984:9): prog-id=11 op=LOAD
+[   39.661187] audit: type=1300 audit(1651318365.984:9): arch=c00000b7 syscall=280 success=yes exit=8 a0=5 a1=ffffe242d0c0 a2=78 a3=0 items=0 ppid=1 pid=523 auid=0 uid=0 gid=0 euid=0 suid=0 fsuid=0 egid=0 sgid=0 fsgid=0 tty=(none) ses=1 comm="systemd" exe="/lib/systemd/systemd" key=(null)
+[   39.686591] audit: type=1327 audit(1651318365.984:9): proctitle="(systemd)"
+[   39.693751] audit: type=1334 audit(1651318365.984:10): prog-id=11 op=UNLOAD
+[   39.700890] audit: type=1334 audit(1651318365.984:11): prog-id=12 op=LOAD
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# echo on > /proc/irq_diag/irq_diag_cmd
+[   53.980754] DBG: In func - irq_diag_open_cmd
+[   53.985223] DBG: String: on, length - 3
+[   53.989099] Starting timer to fire in 500ms (4294905754)
+root@am64xx-evm:~# [   54.494448] my_hrtimer_callback called (-140737327423488).
+[   54.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   54.506598] In our workq function: irq_scan_work
+[   54.511272] delta: 45435 ns (~ 45 us)
+[   54.994447] my_hrtimer_callback called (-140737327423488).
+[   54.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[   55.494444] my_hrtimer_callback called (-140737327423488).
+[   55.499949] In func - read_irq_interval_cb, line - 95, context = 0
+[   55.994446] my_hrtimer_callback called (-140737327423488).
+[   55.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[   56.006121] our work's already on the kernel-global workqueue!
+[   56.494449] my_hrtimer_callback called (-140737327423488).
+[   56.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   56.506121] our work's already on the kernel-global workqueue!
+[   56.994446] my_hrtimer_callback called (-140737327423488).
+[   56.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   57.006121] our work's already on the kernel-global workqueue!
+[   57.494447] my_hrtimer_callback called (-140737327423488).
+[   57.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   57.506121] our work's already on the kernel-global workqueue!
+[   57.994446] my_hrtimer_callback called (-140737327423488).
+[   57.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   58.006124] our work's already on the kernel-global workqueue!
+[   58.494447] my_hrtimer_callback called (-140737327423488).
+[   58.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   58.506120] our work's already on the kernel-global workqueue!
+[   58.994448] my_hrtimer_callback called (-140737327423488).
+[   58.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   59.006124] our work's already on the kernel-global workqueue!
+[   59.494447] my_hrtimer_callback called (-140737327423488).
+[   59.499951] In func - read_irq_interval_cb, line - 95, context = 0
+[   59.506120] our work's already on the kernel-global workqueue!
+[   59.994446] my_hrtimer_callback called (-140737327423488).
+[   59.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[   60.006122] our work's already on the kernel-global workqueue!
+[   60.494447] my_hrtimer_callback called (-140737327423488).
+[   60.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   60.506123] our work's already on the kernel-global workqueue!
+[   60.994449] my_hrtimer_callback called (-140737327423488).
+[   60.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   61.006125] our work's already on the kernel-global workqueue!
+[   61.494452] my_hrtimer_callback called (-140737327423488).
+[   61.499963] In func - read_irq_interval_cb, line - 95, context = 0
+[   61.506132] our work's already on the kernel-global workqueue!
+[   61.994449] my_hrtimer_callback called (-140737327423488).
+[   61.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[   62.006125] our work's already on the kernel-global workqueue!
+
+root@am64xx-evm:~#
+root@am64xx-evm:~# [   62.494447] my_hrtimer_callback called (-140737327423488).
+[   62.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   62.506123] our work's already on the kernel-global workqueue!
+dme[   62.994443] my_hrtimer_callback called (-140737327423488).
+[   62.999948] In func - read_irq_interval_cb, line - 95, context = 0
+[   63.006116] our work's already on the kernel-global workqueue!
+sg [   63.494449] my_hrtimer_callback called (-140737327423488).
+[   63.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   63.506124] our work's already on the kernel-global workqueue!
+-[   63.994448] my_hrtimer_callback called (-140737327423488).
+[   63.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[   64.006121] our work's already on the kernel-global workqueue!
+n [   64.494447] my_hrtimer_callback called (-140737327423488).
+[   64.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   64.506122] our work's already on the kernel-global workqueue!
+[   64.994447] my_hrtimer_callback called (-140737327423488).
+[   64.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   65.006123] our work's already on the kernel-global workqueue!
+[   65.494446] my_hrtimer_callback called (-140737327423488).
+[   65.499951] In func - read_irq_interval_cb, line - 95, context = 0
+[   65.506119] our work's already on the kernel-global workqueue!
+[   65.994450] my_hrtimer_callback called (-140737327423488).
+[   65.999958] In func - read_irq_interval_cb, line - 95, context = 0
+[   66.006127] our work's already on the kernel-global workqueue!
+^C
+root@am64xx-evm:~# [   66.494448] my_hrtimer_callback called (-140737327423488).
+[   66.499955] In func - read_irq_interval_cb, line - 95, context = 0
+[   66.506123] our work's already on the kernel-global workqueue!
+[   66.994448] my_hrtimer_callback called (-140737327423488).
+[   66.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[   67.006125] our work's already on the kernel-global workqueue!
+[   67.494458] my_hrtimer_callback called (-140737327423488).
+[   67.499962] In func - read_irq_interval_cb, line - 95, context = 0
+[   67.506131] our work's already on the kernel-global workqueue!
+[   67.994449] my_hrtimer_callback called (-140737327423488).
+[   67.999957] In func - read_irq_interval_cb, line - 95, context = 0
+[   68.006127] our work's already on the kernel-global workqueue!
+[   68.494446] my_hrtimer_callback called (-140737327423488).
+[   68.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   68.506122] our work's already on the kernel-global workqueue!
+[   68.994449] my_hrtimer_callback called (-140737327423488).
+[   68.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[   69.006124] our work's already on the kernel-global workqueue!
+[   69.494447] my_hrtimer_callback called (-140737327423488).
+[   69.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   69.506122] our work's already on the kernel-global workqueue!
+[   69.994448] my_hrtimer_callback called (-140737327423488).
+[   69.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   70.006122] our work's already on the kernel-global workqueue!
+[   70.494446] my_hrtimer_callback called (-140737327423488).
+[   70.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   70.506121] our work's already on the kernel-global workqueue!
+[   70.994448] my_hrtimer_callback called (-140737327423488).
+[   70.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[   71.006124] our work's already on the kernel-global workqueue!
+[   71.494447] my_hrtimer_callback called (-140737327423488).
+[   71.499950] In func - read_irq_interval_cb, line - 95, context = 0
+[   71.506119] our work's already on the kernel-global workqueue!
+[   71.994449] my_hrtimer_callback called (-140737327423488).
+[   71.999958] In func - read_irq_interval_cb, line - 95, context = 0
+[   72.006126] our work's already on the kernel-global workqueue!
+[   72.494447] my_hrtimer_callback called (-140737327423488).
+[   72.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   72.506121] our work's already on the kernel-global workqueue!
+[   72.994447] my_hrtimer_callback called (-140737327423488).
+[   72.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[   73.006122] our work's already on the kernel-global workqueue!
+[   73.494448] my_hrtimer_callback called (-140737327423488).
+[   73.499956] In func - read_irq_interval_cb, line - 95, context = 0
+[   73.506125] our work's already on the kernel-global workqueue!
+[   73.994445] my_hrtimer_callback called (-140737327423488).
+[   73.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[   74.006120] our work's already on the kernel-global workqueue!
+[   74.494447] my_hrtimer_callback called (-140737327423488).
+[   74.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   74.506120] our work's already on the kernel-global workqueue!
+[   74.994447] my_hrtimer_callback called (-140737327423488).
+[   74.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[   75.006121] our work's already on the kernel-global workqueue!
+[   75.494447] my_hrtimer_callback called (-140737327423488).
+[   75.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   75.506122] our work's already on the kernel-global workqueue!
+[   75.994447] my_hrtimer_callback called (-140737327423488).
+[   75.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[   76.006121] our work's already on the kernel-global workqueue!
+[   76.494447] my_hrtimer_callback called (-140737327423488).
+[   76.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   76.506123] our work's already on the kernel-global workqueue!
+[   76.994447] my_hrtimer_callback called (-140737327423488).
+[   76.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   77.006122] our work's already on the kernel-global workqueue!
+[   77.494447] my_hrtimer_callback called (-140737327423488).
+[   77.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   77.506123] our work's already on the kernel-global workqueue!
+[   77.994447] my_hrtimer_callback called (-140737327423488).
+[   77.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   78.006123] our work's already on the kernel-global workqueue!
+[   78.494447] my_hrtimer_callback called (-140737327423488).
+[   78.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   78.506119] our work's already on the kernel-global workqueue!
+[   78.994448] my_hrtimer_callback called (-140737327423488).
+[   78.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   79.006122] our work's already on the kernel-global workqueue!
+[   79.494447] my_hrtimer_callback called (-140737327423488).
+[   79.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   79.506121] our work's already on the kernel-global workqueue!
+[   79.994444] my_hrtimer_callback called (-140737327423488).
+[   79.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[   80.006120] our work's already on the kernel-global workqueue!
+[   80.494448] my_hrtimer_callback called (-140737327423488).
+[   80.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   80.506123] our work's already on the kernel-global workqueue!
+[   80.994445] my_hrtimer_callback called (-140737327423488).
+[   80.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[   81.006121] our work's already on the kernel-global workqueue!
+[   81.494447] my_hrtimer_callback called (-140737327423488).
+[   81.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   81.506119] our work's already on the kernel-global workqueue!
+[   81.994445] my_hrtimer_callback called (-140737327423488).
+[   81.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[   82.006122] our work's already on the kernel-global workqueue!
+[   82.494449] my_hrtimer_callback called (-140737327423488).
+[   82.499955] In func - read_irq_interval_cb, line - 95, context = 0
+[   82.506124] our work's already on the kernel-global workqueue!
+[   82.994446] my_hrtimer_callback called (-140737327423488).
+[   82.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   83.006123] our work's already on the kernel-global workqueue!
+[   83.494448] my_hrtimer_callback called (-140737327423488).
+[   83.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   83.506123] our work's already on the kernel-global workqueue!
+[   83.994447] my_hrtimer_callback called (-140737327423488).
+[   83.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   84.006122] our work's already on the kernel-global workqueue!
+[   84.494447] my_hrtimer_callback called (-140737327423488).
+[   84.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   84.506120] our work's already on the kernel-global workqueue!
+[   84.994446] my_hrtimer_callback called (-140737327423488).
+[   84.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[   85.006121] our work's already on the kernel-global workqueue!
+[   85.494446] my_hrtimer_callback called (-140737327423488).
+[   85.499950] In func - read_irq_interval_cb, line - 95, context = 0
+[   85.506118] our work's already on the kernel-global workqueue!
+[   85.994448] my_hrtimer_callback called (-140737327423488).
+[   85.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   86.006123] our work's already on the kernel-global workqueue!
+[   86.494448] my_hrtimer_callback called (-140737327423488).
+[   86.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   86.506120] our work's already on the kernel-global workqueue!
+[   86.994448] my_hrtimer_callback called (-140737327423488).
+[   86.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   87.006123] our work's already on the kernel-global workqueue!
+[   87.494447] my_hrtimer_callback called (-140737327423488).
+[   87.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   87.506121] our work's already on the kernel-global workqueue!
+[   87.994447] my_hrtimer_callback called (-140737327423488).
+[   87.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   88.006123] our work's already on the kernel-global workqueue!
+[   88.494446] my_hrtimer_callback called (-140737327423488).
+[   88.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   88.506120] our work's already on the kernel-global workqueue!
+[   88.994443] my_hrtimer_callback called (-140737327423488).
+[   88.999949] In func - read_irq_interval_cb, line - 95, context = 0
+[   89.006118] our work's already on the kernel-global workqueue!
+[   89.494448] my_hrtimer_callback called (-140737327423488).
+[   89.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   89.506120] our work's already on the kernel-global workqueue!
+[   89.994447] my_hrtimer_callback called (-140737327423488).
+[   89.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   90.006123] our work's already on the kernel-global workqueue!
+[   90.494448] my_hrtimer_callback called (-140737327423488).
+[   90.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   90.506122] our work's already on the kernel-global workqueue!
+[   90.994449] my_hrtimer_callback called (-140737327423488).
+[   90.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   91.006124] our work's already on the kernel-global workqueue!
+[   91.494447] my_hrtimer_callback called (-140737327423488).
+[   91.499955] In func - read_irq_interval_cb, line - 95, context = 0
+[   91.506123] our work's already on the kernel-global workqueue!
+[   91.994448] my_hrtimer_callback called (-140737327423488).
+[   91.999957] In func - read_irq_interval_cb, line - 95, context = 0
+[   92.006125] our work's already on the kernel-global workqueue!
+[   92.494446] my_hrtimer_callback called (-140737327423488).
+[   92.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[   92.506121] our work's already on the kernel-global workqueue!
+[   92.994448] my_hrtimer_callback called (-140737327423488).
+[   92.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   93.006123] our work's already on the kernel-global workqueue!
+[   93.494446] my_hrtimer_callback called (-140737327423488).
+[   93.499948] In func - read_irq_interval_cb, line - 95, context = 0
+[   93.506117] our work's already on the kernel-global workqueue!
+[   93.994448] my_hrtimer_callback called (-140737327423488).
+[   93.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   94.006122] our work's already on the kernel-global workqueue!
+[   94.494446] my_hrtimer_callback called (-140737327423488).
+[   94.499949] In func - read_irq_interval_cb, line - 95, context = 0
+[   94.506115] our work's already on the kernel-global workqueue!
+[   94.994448] my_hrtimer_callback called (-140737327423488).
+[   94.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   95.006121] our work's already on the kernel-global workqueue!
+[   95.494442] my_hrtimer_callback called (-140737327423488).
+[   95.499941] In func - read_irq_interval_cb, line - 95, context = 0
+[   95.506109] our work's already on the kernel-global workqueue!
+[   95.994448] my_hrtimer_callback called (-140737327423488).
+[   95.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   96.006123] our work's already on the kernel-global workqueue!
+[   96.494446] my_hrtimer_callback called (-140737327423488).
+[   96.499950] In func - read_irq_interval_cb, line - 95, context = 0
+[   96.506118] our work's already on the kernel-global workqueue!
+[   96.994447] my_hrtimer_callback called (-140737327423488).
+[   96.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[   97.006122] our work's already on the kernel-global workqueue!
+[   97.494448] my_hrtimer_callback called (-140737327423488).
+[   97.499955] In func - read_irq_interval_cb, line - 95, context = 0
+[   97.506123] our work's already on the kernel-global workqueue!
+[   97.994447] my_hrtimer_callback called (-140737327423488).
+[   97.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   98.006125] our work's already on the kernel-global workqueue!
+[   98.494448] my_hrtimer_callback called (-140737327423488).
+[   98.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[   98.506121] our work's already on the kernel-global workqueue!
+[   98.994446] my_hrtimer_callback called (-140737327423488).
+[   98.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[   99.006124] our work's already on the kernel-global workqueue!
+[   99.494447] my_hrtimer_callback called (-140737327423488).
+[   99.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[   99.506123] our work's already on the kernel-global workqueue!
+[   99.994446] my_hrtimer_callback called (-140737327423488).
+[   99.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[  100.006120] our work's already on the kernel-global workqueue!
+[  100.494442] my_hrtimer_callback called (-140737327423488).
+[  100.499948] In func - read_irq_interval_cb, line - 95, context = 0
+[  100.506116] our work's already on the kernel-global workqueue!
+[  100.994446] my_hrtimer_callback called (-140737327423488).
+[  100.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[  101.006121] our work's already on the kernel-global workqueue!
+[  101.494445] my_hrtimer_callback called (-140737327423488).
+[  101.499951] In func - read_irq_interval_cb, line - 95, context = 0
+[  101.506120] our work's already on the kernel-global workqueue!
+[  101.994447] my_hrtimer_callback called (-140737327423488).
+[  101.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[  102.006122] our work's already on the kernel-global workqueue!
+[  102.494443] my_hrtimer_callback called (-140737327423488).
+[  102.499948] In func - read_irq_interval_cb, line - 95, context = 0
+[  102.506117] our work's already on the kernel-global workqueue!
+[  102.994447] my_hrtimer_callback called (-140737327423488).
+[  102.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  103.006122] our work's already on the kernel-global workqueue!
+[  103.494444] my_hrtimer_callback called (-140737327423488).
+[  103.499949] In func - read_irq_interval_cb, line - 95, context = 0
+[  103.506117] our work's already on the kernel-global workqueue!
+[  103.994446] my_hrtimer_callback called (-140737327423488).
+[  103.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  104.006123] our work's already on the kernel-global workqueue!
+[  104.494448] my_hrtimer_callback called (-140737327423488).
+[  104.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[  104.506120] our work's already on the kernel-global workqueue!
+[  104.994449] my_hrtimer_callback called (-140737327423488).
+[  104.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[  105.006124] our work's already on the kernel-global workqueue!
+[  105.494444] my_hrtimer_callback called (-140737327423488).
+[  105.499951] In func - read_irq_interval_cb, line - 95, context = 0
+[  105.506120] our work's already on the kernel-global workqueue!
+[  105.994451] my_hrtimer_callback called (-140737327423488).
+[  105.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[  106.006125] our work's already on the kernel-global workqueue!
+[  106.494444] my_hrtimer_callback called (-140737327423488).
+[  106.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[  106.506121] our work's already on the kernel-global workqueue!
+[  106.994448] my_hrtimer_callback called (-140737327423488).
+[  106.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[  107.006121] our work's already on the kernel-global workqueue!
+[  107.494445] my_hrtimer_callback called (-140737327423488).
+[  107.499951] In func - read_irq_interval_cb, line - 95, context = 0
+[  107.506121] our work's already on the kernel-global workqueue!
+[  107.994448] my_hrtimer_callback called (-140737327423488).
+[  107.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  108.006123] our work's already on the kernel-global workqueue!
+[  108.494447] my_hrtimer_callback called (-140737327423488).
+[  108.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[  108.506121] our work's already on the kernel-global workqueue!
+[  108.994444] my_hrtimer_callback called (-140737327423488).
+[  108.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[  109.006122] our work's already on the kernel-global workqueue!
+[  109.494447] my_hrtimer_callback called (-140737327423488).
+[  109.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[  109.506121] our work's already on the kernel-global workqueue!
+[  109.994448] my_hrtimer_callback called (-140737327423488).
+[  109.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[  110.006125] our work's already on the kernel-global workqueue!
+[  110.494443] my_hrtimer_callback called (-140737327423488).
+[  110.499949] In func - read_irq_interval_cb, line - 95, context = 0
+[  110.506116] our work's already on the kernel-global workqueue!
+[  110.994449] my_hrtimer_callback called (-140737327423488).
+[  110.999957] In func - read_irq_interval_cb, line - 95, context = 0
+[  111.006126] our work's already on the kernel-global workqueue!
+[  111.494447] my_hrtimer_callback called (-140737327423488).
+[  111.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[  111.506121] our work's already on the kernel-global workqueue!
+[  111.994448] my_hrtimer_callback called (-140737327423488).
+[  111.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[  112.006125] our work's already on the kernel-global workqueue!
+[  112.494445] my_hrtimer_callback called (-140737327423488).
+[  112.499951] In func - read_irq_interval_cb, line - 95, context = 0
+[  112.506121] our work's already on the kernel-global workqueue!
+[  112.994447] my_hrtimer_callback called (-140737327423488).
+[  112.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[  113.006124] our work's already on the kernel-global workqueue!
+[  113.494445] my_hrtimer_callback called (-140737327423488).
+[  113.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[  113.506121] our work's already on the kernel-global workqueue!
+[  113.994448] my_hrtimer_callback called (-140737327423488).
+[  113.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[  114.006124] our work's already on the kernel-global workqueue!
+[  114.494445] my_hrtimer_callback called (-140737327423488).
+[  114.499951] In func - read_irq_interval_cb, line - 95, context = 0
+[  114.506120] our work's already on the kernel-global workqueue!
+[  114.994449] my_hrtimer_callback called (-140737327423488).
+[  114.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[  115.006124] our work's already on the kernel-global workqueue!
+[  115.494444] my_hrtimer_callback called (-140737327423488).
+[  115.499950] In func - read_irq_interval_cb, line - 95, context = 0
+[  115.506119] our work's already on the kernel-global workqueue!
+[  115.994449] my_hrtimer_callback called (-140737327423488).
+[  115.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  116.006123] our work's already on the kernel-global workqueue!
+[  116.494446] my_hrtimer_callback called (-140737327423488).
+[  116.499949] In func - read_irq_interval_cb, line - 95, context = 0
+[  116.506118] our work's already on the kernel-global workqueue!
+[  116.994448] my_hrtimer_callback called (-140737327423488).
+[  116.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[  117.006123] our work's already on the kernel-global workqueue!
+[  117.494446] my_hrtimer_callback called (-140737327423488).
+[  117.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[  117.506121] our work's already on the kernel-global workqueue!
+[  117.994447] my_hrtimer_callback called (-140737327423488).
+[  117.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  118.006123] our work's already on the kernel-global workqueue!
+[  118.494446] my_hrtimer_callback called (-140737327423488).
+[  118.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[  118.506121] our work's already on the kernel-global workqueue!
+[  118.994447] my_hrtimer_callback called (-140737327423488).
+[  118.999951] In func - read_irq_interval_cb, line - 95, context = 0
+[  119.006120] our work's already on the kernel-global workqueue!
+[  119.494446] my_hrtimer_callback called (-140737327423488).
+[  119.499950] In func - read_irq_interval_cb, line - 95, context = 0
+[  119.506119] our work's already on the kernel-global workqueue!
+[  119.994446] my_hrtimer_callback called (-140737327423488).
+[  119.999953] In func - read_irq_interval_cb, line - 95, context = 0
+[  120.006122] our work's already on the kernel-global workqueue!
+[  120.494447] my_hrtimer_callback called (-140737327423488).
+[  120.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[  120.506121] our work's already on the kernel-global workqueue!
+[  120.994448] my_hrtimer_callback called (-140737327423488).
+[  120.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  121.006123] our work's already on the kernel-global workqueue!
+[  121.494445] my_hrtimer_callback called (-140737327423488).
+[  121.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[  121.506120] our work's already on the kernel-global workqueue!
+[  121.994449] my_hrtimer_callback called (-140737327423488).
+[  121.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[  122.006123] our work's already on the kernel-global workqueue!
+[  122.494446] my_hrtimer_callback called (-140737327423488).
+[  122.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[  122.506121] our work's already on the kernel-global workqueue!
+[  122.994446] my_hrtimer_callback called (-140737327423488).
+[  122.999952] In func - read_irq_interval_cb, line - 95, context = 0
+[  123.006121] our work's already on the kernel-global workqueue!
+[  123.494447] my_hrtimer_callback called (-140737327423488).
+[  123.499953] In func - read_irq_interval_cb, line - 95, context = 0
+[  123.506123] our work's already on the kernel-global workqueue!
+[  123.994449] my_hrtimer_callback called (-140737327423488).
+[  123.999956] In func - read_irq_interval_cb, line - 95, context = 0
+[  124.006124] our work's already on the kernel-global workqueue!
+[  124.494448] my_hrtimer_callback called (-140737327423488).
+[  124.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[  124.506122] our work's already on the kernel-global workqueue!
+[  124.994446] my_hrtimer_callback called (-140737327423488).
+[  124.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  125.006122] our work's already on the kernel-global workqueue!
+[  125.494448] my_hrtimer_callback called (-140737327423488).
+[  125.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[  125.506122] our work's already on the kernel-global workqueue!
+[  125.994448] my_hrtimer_callback called (-140737327423488).
+[  125.999954] In func - read_irq_interval_cb, line - 95, context = 0
+[  126.006123] our work's already on the kernel-global workqueue!
+[  126.494447] my_hrtimer_callback called (-140737327423488).
+[  126.499952] In func - read_irq_interval_cb, line - 95, context = 0
+[  126.506121] our work's already on the kernel-global workqueue!
+
+root@am64xx-evm:~# [  126.994447] my_hrtimer_callback called (-140737327423488).
+[  126.999955] In func - read_irq_interval_cb, line - 95, context = 0
+[  127.006123] our work's already on the kernel-global workqueue!
+
+root@am64xx-evm:~# echo off > /proc/irq_diag/irq_diag_cmd[  127.494448] my_hrtimer_callback called (-140737327423488).
+[  127.499954] In func - read_irq_interval_cb, line - 95, context = 0
+[  127.506123] our work's already on the kernel-global workqueue!
+
+[  127.732681] DBG: In func - irq_diag_open_cmd
+[  127.737100] DBG: String: off, length - 4
+[  127.741048] DBG: Stopping HR timer used for IRQ rate calculation
+root@am64xx-evm:~#
+root@am64xx-evm:~#
+root@am64xx-evm:~# cat /proc/irq_diag/irq_diag_stat
+[  136.905981] DBG: In func - irq_diag_open_stat, id - 55
+[  136.911308] DBG: In func - show_irq_stat, line - 505, Version - Irq Diag Ver - 1.0, Id - 55
+root@am64xx-evm:~# cat /proc/irq_diag/irq_diag_stat
+[  145.857635] DBG: In func - irq_diag_open_stat, id - 55
+[  145.862962] DBG: In func - show_irq_stat, line - 505, Version - Irq Diag Ver - 1.0, Id - 55
+root@am64xx-evm:~#
+root@am64xx-evm:~#
