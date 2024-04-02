@@ -54,8 +54,8 @@ struct irq_detector_data {
 	char				version_id[64];
 	uint8_t 			id;
 	struct platform_device		*pdev;
-	struct mutex			mutex_lock;
-	spinlock_t			spin_lock;
+	struct mutex			mlock;
+	spinlock_t			slock;
 	struct proc_dir_entry		*proc_dir;
 	struct irq_diag_file		*mproc_files;
 	struct proc_dir_entry		*proc_subdir;
@@ -141,7 +141,8 @@ static void irq_scan_work(struct work_struct *work)
 		if(!priv->desc->action) //|| irq_desc_is_chained(priv->desc))
 			continue;
 
-		/*Scan IRQ descriptors and fill liked list for each IRQ#*/
+		mutex_lock_interruptible(&priv->mlock);
+		/*Scan list of IRQ numbers and fill liked list for each IRQ#*/
 		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
 			pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
@@ -191,12 +192,18 @@ static void irq_scan_work(struct work_struct *work)
 			node_linked_list->irq_timestamp = jiffies;
 			list_add_tail(&node_linked_list->list_node, &ptr->list_of_node);
 
+			/*Fill max irq rate in each nodes of list of IRQ numbers*/
+			if(ptr->max_irq_rate < node_linked_list->irq_rate)
+				ptr->max_irq_rate = node_linked_list->irq_rate;
+
 			ptr->irq_prev_count = tot_irq_cnt;
 			ptr->cir_queue_size++;
 			tot_irq_cnt = 0;
 			break;
 			}/*if ptr->irq_num == */
 		}/*list_for_each_entry*/
+
+		mutex_unlock(&priv->mlock);
 
 		pr_debug("For Irq# - %d, IRQ rate - %d per %d ms\n",
 			node_linked_list->irq_num,
@@ -216,7 +223,7 @@ static void uevent_notify_work(struct work_struct *work)
 	char *envp[3];
 	unsigned long flags;
 
-	spin_lock_irqsave(&priv->lock, flags);
+	spin_lock_irqsave(&priv->slock, flags);
 	/*Fill environment data to send to user space */
 	switch(priv->status_flag) {
 	case 1:
@@ -234,7 +241,7 @@ static void uevent_notify_work(struct work_struct *work)
 		kobject_uevent_env(&plat_dev->dev.kobj, KOBJ_CHANGE, envp);
 	}
 
-	spin_unlock_irqrestore(&priv->lock, flags);
+	spin_unlock_irqrestore(&priv->slock, flags);
 }
 
 #if 1
@@ -242,29 +249,36 @@ static void uevent_notify_work(struct work_struct *work)
 int thread_function(void *pv)
 {
 	int i=0;
+	int irq;
 	unsigned long temp_timestamp;
-	struct irq_detector_data *mirq_data = pv;
+	struct irq_detector_data *priv = pv;
+	struct irq_num_heads_list *ptr;
 
-	for_each_irq_desc(irq, irq_desc_node) {
-
-                pr_alert("IRQ name - %s\n", irq_desc_node->name);
-	}
-#if 1
 	while(!kthread_should_stop()) {
 	pr_alert("In IRQ Poll Thread Function %d\n", i++);
-	msleep(1000);
-#if 0
-	if(irq_desc_node && !(irq_desc_node->irq_count % 1000)) { //1000 -> 5 for debugging
-		if(time_before(jiffies, 
-			mirq_data->last_irq_timestamp + HZ/10)) {
-			pr_alert(" Interrupt storm detected");
+
+	for_each_irq_desc(irq, priv->desc) {
+
+		if(!priv->desc)
+			continue;
+
+		if(!priv->desc->action) //|| irq_desc_is_chained(priv->desc))
+			continue;
+
+		pr_alert("IRQ name - %s\n", irq_desc_node->name);
+		mutex_lock_interruptible(&priv->mlock);
+	
+		/*Scan list of IRQ numbers to read IRQ rate*/
+		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
+	
+		if(ptr->max_irq_rate > 10) //Change this param as 10 using some CONFIG macro*/
+			pr_alert("IRQ# - %d, IRQ rate - %d\n");
+	
 		}
-		//pr_alert("DBG: In func - %s, Line - %d\n", __func__, __LINE__);
-		mirq_data->last_irq_timestamp = jiffies;
+	
+		mutex_unlock(&priv->mlock);
 	}
-#endif
     }
-#endif
     return 0;
 }
 #endif
@@ -457,11 +471,8 @@ static ssize_t irq_diag_read_cmd(struct file *filep, char __user *user_buf,
 
 		ret = copy_to_user(user_buf, pstr, bytes);
 		if(ret) {
-
 			return -EFAULT;
-
 		} else {
-
 			*offset += bytes;
 			pr_info("DBG: length - %d, bytes - %lu, *offset - %llu\n",
 								length, bytes, *offset);
@@ -488,14 +499,14 @@ static int show_irq_stat(struct seq_file *seq, void *pdata)
 	struct irq_detector_data *mirq_data = seq->private;
 
 	struct irq_num_heads_list *ptr_irq_num_head;
-	struct irq_num_statistics_list *tmp;
+	struct irq_num_statistics_list *pos, *tmp;
 	bool header = 1;
 
 	pr_alert("DBG: In func - %s, line - %d, Version - %s, Id - %d\n",
 			__func__, __LINE__, mirq_data->version_id, mirq_data->id);
 
 	list_for_each_entry(ptr_irq_num_head, &mirq_data->irq_num_list_head, list_of_heads) {
-		list_for_each_entry(tmp, &ptr_irq_num_head->list_of_node, list_node) {
+		list_for_each_entry_safe(pos, tmp, &ptr_irq_num_head->list_of_node, list_node) {
 
 			if(header) {
 				header = 0;
@@ -503,14 +514,14 @@ static int show_irq_stat(struct seq_file *seq, void *pdata)
 				seq_printf(seq, "-------------------------------------------------------------------\n");
 			}
 
-			if(ptr_irq_num_head->irq_num == tmp->irq_num)
-				seq_printf(seq, "%4d %20u %20d %20d\n", tmp->irq_num,
-							jiffies_to_msecs(tmp->irq_timestamp), 
-							tmp->irq_count, tmp->irq_rate);
+			if(ptr_irq_num_head->irq_num == pos->irq_num)
+				seq_printf(seq, "%4d %20u %20d %20d\n", pos->irq_num,
+							jiffies_to_msecs(pos->irq_timestamp), 
+							pos->irq_count, pos->irq_rate);
 		}
 
 		header = 1;
-		if(ptr_irq_num_head->irq_num == tmp->irq_num)
+		if(ptr_irq_num_head->irq_num == pos->irq_num)
 			seq_printf(seq,"\n\n");
 	}
 
@@ -838,6 +849,8 @@ create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data)
 		/*Store IRQ number as Key for a node*/
 		pirq_data->irq_num_heads->irq_num = pirq_data->desc->irq_data.irq;
 		pirq_data->irq_num_heads->cir_queue_size = 0;
+		pirq_data->irq_num_heads->max_irq_rate = 0;
+
 		INIT_LIST_HEAD(&pirq_data->irq_num_heads->list_of_node);
 
 		list_add_tail(&pirq_data->irq_num_heads->list_of_heads,
@@ -900,6 +913,8 @@ static int irq_detector_probe(struct platform_device *pdev)
 		goto probe_fail;
 	}
 
+	mutex_init(&mirq_data->mlock);
+	spin_lock_init(&mirq_data->slock);
 #if 1
 	mirq_data->irq_poll_thread = kthread_create(thread_function, 
 					mirq_data, "Irq Poll Thread");
