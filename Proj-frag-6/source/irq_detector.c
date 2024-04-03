@@ -103,7 +103,13 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
 
 	return HRTIMER_RESTART;
 }
-
+#if 0
+static void irq_mon_thread_wake(struct irq_detector_data *priv)
+{
+	if(priv->irq_poll_thread)
+		wake_up_process(priv->irq_poll_thread);
+}
+#endif
 /*
  * iirq_scan_work() - our workqueue callback function!
  */
@@ -129,6 +135,8 @@ static void irq_scan_work(struct work_struct *work)
         		pr_err("create list of heads of all IRQ nos. failed\n");
         		goto out;
 		}
+
+		//irq_mon_thread_wake(priv);
 	}
 
 	/*Iterate through all IRQ descriptors*/
@@ -140,14 +148,14 @@ static void irq_scan_work(struct work_struct *work)
 		if(!priv->desc->action) //|| irq_desc_is_chained(priv->desc))
 			continue;
 
-		if(mutex_lock_interruptible(&priv->mlock))
-			return;
-
 		/*Scan list of IRQ numbers and fill liked list for each IRQ#*/
 		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
 			pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
 			
+			//if(mutex_lock_interruptible(&priv->mlock))
+			//	return;
+
 			if((ptr->irq_num == priv->desc->irq_data.irq) && priv->desc->kstat_irqs) {
 				/*Calculate total irq count*/
 				for_each_online_cpu(cpu_i) {
@@ -200,11 +208,12 @@ static void irq_scan_work(struct work_struct *work)
 			ptr->irq_prev_count = tot_irq_cnt;
 			ptr->cir_queue_size++;
 			tot_irq_cnt = 0;
+
+			//mutex_unlock(&priv->mlock);
 			break;
+
 			}/*if ptr->irq_num == */
 		}/*list_for_each_entry*/
-
-		mutex_unlock(&priv->mlock);
 
 		pr_debug("For Irq# - %d, IRQ rate - %d per %ld ms\n",
 			node_linked_list->irq_num, node_linked_list->irq_rate, SAMPLING_INTERVAL);
@@ -266,22 +275,21 @@ int monitor_irq_storm_thread(void *pv)
 		if(!priv->desc->action) //|| irq_desc_is_chained(priv->desc))
 			continue;
 
-		//pr_alert("IRQ name - %s\n", priv->desc->name);
-		if(mutex_lock_interruptible(&priv->mlock))
-			return -1;
-	
 		/*Scan list of IRQ numbers to read IRQ rate*/
 		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 	
-		if(ptr->max_irq_rate > 10) {//Change this param as 10 using some CONFIG macro*/
-			pr_alert("IRQ# - %d, IRQ rate - %d\n", ptr->irq_num, ptr->max_irq_rate);
+		if(mutex_lock_interruptible(&priv->mlock))
+			return -1;
+
+		if(ptr->max_irq_rate > 100) {//Change this param as 10 using some CONFIG macro*/
+			//pr_alert("IRQ# - %d, IRQ rate - %d\n", ptr->irq_num, ptr->max_irq_rate);
 			priv->status_flag = 1;
 			schedule_work(&priv->notify_work);
 		}
 	
-		}
-	
 		mutex_unlock(&priv->mlock);
+
+		}
 	}
     }
     return 0;
@@ -419,16 +427,10 @@ static ssize_t irq_diag_write_cmd(struct file *filep, const char __user *buf,
 	pr_alert("DBG: String: %s, length - %ld\n", temp_buf, count);
 
 	if(!strcmp(temp_buf, "on")) { /*Start IRQ scanning*/
-#if 0
-		ret = create_list_of_all_irq_numbers(mirq_data);
-		if(ret < 0) {
-			pr_err("creat list of heads of all IRQ nos. failed\n");
-			goto out;
-		}
-#endif
 
 		start_irq_rate_calc(mirq_data);
 	} else if (!strcmp(temp_buf, "off")) { /*Stop IRQ scanning*/
+
 		stop_irq_rate_calc(mirq_data);
 	} else if ((*temp_buf > 0) && (*temp_buf <= 65535)) {
 

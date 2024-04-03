@@ -1,0 +1,224 @@
+
+Interrupts in SYS: -
+------------------
+root@idcevo-hv-v920:~# cat /proc/interrupts
+           CPU0       CPU1       CPU2
+ 11:       2232       2619       2046     GICv3  27 Level     arch_timer
+ 14:         87          0          0     GICv3 4096 Edge      VLX-vsmq_sysconf_handler, VLX-vsmq_sysconf_handler, VLX-vsmq_sysconf_handler, VLX-vsmq_sysconf_handler, VLX-vsmq_sysconf_handler, VLX-vsmq_sysconf_handler, VLX-virtio_bus_sysconf_hdl, VLX-_vrpc_sysconf_handler, VLX-sysconf_event, VLX-ufs_vlink_sysconf_hdl, VLX-sxgmac_vlink_sysconf_handler, VLX-vevdev_sysconf_hdl, VLX-vdelay_sysconf_hdl, VLX-ex_sysconf_hdl, VLX-_panic_trigger_sysconf, VLX-_s2mpu_irq_hdl, VLX-evt_stat_dev_sysconf_hdl, VLX-evtlog_sysconf_hdl, VLX-vfocus_sysconf_hdl, VLX-__vabox_sysconf_handler, VLX-vdpu_sysconf_hdl, VLX-vdpu_sysconf_hdl, VLX-vdpu_sysconf_hdl, VLX-vdpu_sysconf_hdl, VLX-vdpu_sysconf_hdl, VLX-vmq_sysconf_hdl, VLX-vmq_sysconf_hdl, VLX-vmq_sysconf_hdl
+ 15:          0          0          0     GICv3  23 Level     arm-pmu
+ 16:          0          0          0     GICv3 950 Level     10180000.dma
+ 17:          0          0          0     GICv3 948 Level     101a0000.dma
+ 18:          0          0          0     GICv3 947 Level     101b0000.dma
+ 19:          0          0          0     GICv3 944 Level     101e0000.dma
+ 30:          0          0          0     GICv3 474 Level     16040000.pinctrl
+ 31:          0          0          0     GICv3 488 Level     16450000.pinctrl
+ 32:          0          0          0     GICv3 634 Level     16c10000.pinctrl
+ 33:          0          0          0     GICv3 635 Level     16d20000.pinctrl
+ 34:          2          0          0     GICv3 785 Level     10830000.pinctrl
+ 35:          2          0          0     GICv3 813 Level     10c30000.pinctrl
+ 36:          0          0          0     GICv3 985 Level     10060000.watchdog_cl0
+ 37:          0          0          0     GICv3 984 Level     10070000.watchdog_cl1
+ 40:          0          0          0     GICv3  66 Level     11900000.acpm_ipc
+ 41:          3          0          0     GICv3  67 Level     11930000.exynos-adv_tracer
+ 42:          0          0          0     GICv3 102 Level     Uncorrectable errors Cache(L3) tag RAMs or SCU snoop filter RAMs
+ 43:          0          0          0     GICv3 103 Level     Core0, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 44:          0          0          0     GICv3 104 Level     Core1, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 45:          0          0          0     GICv3 105 Level     Core2, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 46:          0          0          0     GICv3 106 Level     Core3, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 47:          0          0          0     GICv3 116 Level     Uncorrectable errors Cache(L3) tag RAMs or SCU snoop filter RAMs
+ 48:          0          0          0     GICv3 117 Level     Core4, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 49:          0          0          0     GICv3 118 Level     Core5, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 50:          0          0          0     GICv3 119 Level     Core6, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 51:          0          0          0     GICv3 120 Level     Core7, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 52:          0          0          0     GICv3 129 Level     Uncorrectable errors Cache(L3) tag RAMs or SCU snoop filter RAMs
+ 53:          0          0          0     GICv3 130 Level     Core8, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 54:          0          0          0     GICv3 131 Level     Core9, Uncorrectable errors in the L1 tag or dirty RAMs, or in the L2 tag RAMs
+ 55:          0          0          0     GICv3 161 Level     D_DNC
+ 56:          0          0          0     GICv3 767 Level     D_NOCL0
+ 57:          0          0          0     GICv3 768 Level     P_NOCL0
+ 58:          0          0          0     GICv3 777 Level     D_NOCL1
+ 59:          0          0          0     GICv3 778 Level     P_NOCL1
+ 60:          0          0          0     GICv3 783 Level     D_NOCL2
+ 61:          0          0          0     GICv3 784 Level     P_NOCL2
+ 62:        394          0          0     GICv3 796 Level     10880000.uart
+ 63:        446          0          0     GICv3 798 Level     108a0000.uart
+ 64:          0          0          0     GICv3 819 Level     spi-exynosauto
+ 65:          0          0          0     GICv3 827 Level     exynosauto-spi-slave
+ 66:          0          0          0     GICv3 833 Level     spi-exynosauto
+ 67:          0          0          0     GICv3 825 Level     10ce0000.hsi2c
+ 68:          0          0          0     GICv3 983 Level     100a0000.CPUCL0, 100a0000.CPUCL1
+ 69:          0          0          0     GICv3 982 Level     100b0000.G3D
+ 70:          0          0          0     GICv3 981 Level     100c0000.NPU
+ 71:          0          0          0     GICv3 301 Level     18040000.sysmmu
+ 72:          0          0          0     GICv3 302 Level     18040000.sysmmu
+ 73:          0          0          0     GICv3 364 Level     18440000.sysmmu
+ 74:          0          0          0     GICv3 365 Level     18440000.sysmmu
+ 75:          0          0          0     GICv3 427 Level     18840000.sysmmu
+ 76:          0          0          0     GICv3 428 Level     18840000.sysmmu
+ 77:          0          0          0     GICv3  95 Level     1a600000.sysmmu
+ 78:          0          0          0     GICv3  96 Level     1a600000.sysmmu
+ 79:          0          0          0     GICv3 681 Level     1a8b0000.sysmmu
+ 80:          0          0          0     GICv3 682 Level     1a8b0000.sysmmu
+ 81:          0          0          0     GICv3 687 Level     19c70000.sysmmu
+ 82:          0          0          0     GICv3 688 Level     19c70000.sysmmu
+ 83:          0          0          0     GICv3 694 Level     19e70000.sysmmu
+ 84:          0          0          0     GICv3 695 Level     19e70000.sysmmu
+ 85:          0          0          0     GICv3 673 Level     19190000.sysmmu
+ 86:          0          0          0     GICv3 674 Level     19190000.sysmmu
+ 87:          0          0          0     GICv3  48 Level     194e0000.sysmmu
+ 88:          0          0          0     GICv3  49 Level     194e0000.sysmmu
+ 89:          0          0          0     GICv3 916 Level     19390000.sysmmu
+ 90:          0          0          0     GICv3 917 Level     19390000.sysmmu
+ 91:          0          0          0     GICv3 153 Level     1b540000.sysmmu
+ 92:          0          0          0     GICv3 154 Level     1b540000.sysmmu
+ 93:          0          0          0     GICv3 157 Level     1b570000.sysmmu
+ 94:          0          0          0     GICv3 158 Level     1b570000.sysmmu
+ 95:          0          0          0     GICv3 871 Level     19b30000.sysmmu
+ 96:          0          0          0     GICv3 872 Level     19b30000.sysmmu
+ 97:          0          0          0     GICv3 484 Level     16100000.sysmmu
+ 98:          0          0          0     GICv3 485 Level     16100000.sysmmu
+ 99:          0          0          0     GICv3 637 Level     16b20000.sysmmu
+100:          0          0          0     GICv3 638 Level     16b20000.sysmmu
+101:          0          0          0     GICv3 641 Level     16b50000.sysmmu
+102:          0          0          0     GICv3 642 Level     16b50000.sysmmu
+104:          0          0          0     GICv3 678 Level     1a830000.scaler
+105:       3298          0          0     GICv3 645 Level     ufshcd, ufshcd
+106:          0          0          0     GICv3 646 Level     ufshcd
+107:          0          0          0     GICv3 653 Level     ufshcd
+108:          0          0          0     GICv3 531 Level     eth0:mac
+113:          0          0          0     GICv3 546 Level     eth0:rxdma-0(rxq-0)
+125:          0          0          0     GICv3 558 Level     eth0:rxdma-12(rxq-1)
+126:          0          0          0     GICv3 559 Level     eth0:rxdma-13(rxq-2)
+127:          0          0          0     GICv3 560 Level     eth0:rxdma-14(rxq-3)
+128:          0          0          0     GICv3 561 Level     eth0:rxdma-15(rxq-4)
+129:          0          0          0     GICv3 564 Level     eth0:txdma-0(txq-0)
+141:          0          0          0     GICv3 576 Level     eth0:txdma-12(txq-1)
+142:          0          0          0     GICv3 577 Level     eth0:txdma-13(txq-2)
+143:          0          0          0     GICv3 578 Level     eth0:txdma-14(txq-3)
+144:          0          0          0     GICv3 579 Level     eth0:txdma-15(txq-4)
+149:         17          0          0     GICv3 257 Edge      srpmb
+150:          0          0          0     GICv3 241 Level     platform:18040000.sysmmu--platform:18304000.dpp
+151:          0          0          0     GICv3 272 Level     platform:18040000.sysmmu--platform:18304000.dpp
+152:          0          0          0     GICv3 266 Level     platform:18040000.sysmmu--platform:18305000.dpp
+153:          0          0          0     GICv3 292 Level     platform:18040000.sysmmu--platform:18305000.dpp
+154:          0          0          0     GICv3 268 Level
+155:          0          0          0     GICv3 294 Level
+156:          0          0          0     GICv3 270 Level     supplier:platform:18440000.sysmmu
+157:          0          0          0     GICv3 194 Level     DPUB0_DECON0
+158:          0          0          0     GICv3 188 Level     DPUB0_DECON0
+159:          0          0          0     GICv3 182 Level     DPUB0_DECON0
+162:          0          0          0     GICv3 233 Level     17c90000.dsi
+163:          0          0          0     GICv3 309 Level
+164:          0          0          0     GICv3 335 Level
+165:          0          0          0     GICv3 317 Level     18505000.dpp
+166:          0          0          0     GICv3 343 Level     18505000.dpp
+167:          0          0          0     GICv3 319 Level     18700000.dpp
+168:          0          0          0     GICv3 345 Level     18700000.dpp
+169:          0          0          0     GICv3 321 Level     18704000.dpp
+170:          0          0          0     GICv3 347 Level     18704000.dpp
+171:          0          0          0     GICv3 329 Level
+172:          0          0          0     GICv3 355 Level
+173:          0          0          0     GICv3 331 Level     supplier:platform:18840000.sysmmu
+174:          0          0          0     GICv3 357 Level     supplier:platform:18840000.sysmmu
+175:          0          0          0     GICv3 333 Level     platform:18840000.sysmmu--platform:18908000.dpp
+176:          0          0          0     GICv3 195 Level     DPUB1_DECON0
+177:          0          0          0     GICv3 189 Level     DPUB1_DECON0
+178:          0          0          0     GICv3 183 Level     DPUB1_DECON0
+181:          0          0          0     GICv3 219 Level     DPUB1_DECON1
+182:          0          0          0     GICv3 213 Level     DPUB1_DECON1
+183:          0          0          0     GICv3 207 Level     DPUB1_DECON1
+186:          0          0          0     GICv3 372 Level
+187:          0          0          0     GICv3 398 Level
+188:          0          0          0     GICv3 380 Level
+189:          0          0          0     GICv3 406 Level
+190:          0          0          0     GICv3 382 Level     platform:18840000.sysmmu--platform:18b00000.dpp
+191:          0          0          0     GICv3 408 Level     platform:18840000.sysmmu--platform:18b00000.dpp
+192:          0          0          0     GICv3 384 Level     platform:18840000.sysmmu--platform:18b04000.dpp
+193:          0          0          0     GICv3 410 Level     platform:18840000.sysmmu--platform:18b04000.dpp
+194:          0          0          0     GICv3 392 Level     platform:18840000.sysmmu--platform:18b05000.dpp
+195:          0          0          0     GICv3 418 Level     platform:18840000.sysmmu--platform:18b05000.dpp
+196:          0          0          0     GICv3 394 Level
+197:          0          0          0     GICv3 420 Level
+198:          0          0          0     GICv3 396 Level     ØA8
+Àÿÿÿ
+199:          0          0          0     GICv3 196 Level     DPUB2_DECON0
+200:          0          0          0     GICv3 190 Level     DPUB2_DECON0
+201:          0          0          0     GICv3 184 Level     DPUB2_DECON0
+204:          0          0          0     GICv3 220 Level     DPUB2_DECON1
+205:          0          0          0     GICv3 214 Level     DPUB2_DECON1
+206:          0          0          0     GICv3 208 Level     DPUB2_DECON1
+209:         72          0          0     GICv3 168 Level     18c90000.dp_tx
+210:          0          0          0     GICv3 4098 Edge      VLX-evtlog_notification_hdl
+211:          1          0          0     GICv3 4112 Edge      VLX-vsmq_rx_handler
+212:          4          0          0     GICv3 4113 Edge      VLX-vsmq_rx_handler
+213:          1          0          0     GICv3 4114 Edge      VLX-vsmq_rx_handler
+214:          0          0          0     GICv3  65 Level     s2vps02-master-irq
+220:          0          0          0  s2vps02-master     Edge      safety_fault
+223:          0          0          0  s2vps02-master     Edge      rtc-alarm0
+230:        477          0          0     GICv3 4105 Edge      VLX-virtio_bus_irq
+231:          0          0          0     GICv3 4106 Edge      VLX-virtio_bus_irq
+232:          0          0          0     GICv3 4107 Edge      VLX-virtio_bus_irq
+233:          0          0          0     GICv3 4108 Edge      VLX-virtio_bus_irq
+234:          0          0          0     GICv3 4109 Edge      VLX-virtio_bus_irq
+235:          0          0          0     GICv3 4110 Edge      VLX-virtio_bus_irq
+236:          0          0          0     GICv3 4115 Edge      VLX-_vrpc_xirq_handler
+237:          0          0          0     GICv3 4099 Edge      VLX-evtlog_notification_hdl
+238:          0          0          0     GICv3 4116 Edge      VLX-_vrpc_xirq_handler
+239:          0          0          0     GICv3 4100 Edge      VLX-evtlog_notification_hdl
+240:          0          0          0     GICv3 4117 Edge      VLX-_vrpc_xirq_handler
+241:          0          0          0     GICv3 4101 Edge      VLX-evtlog_notification_hdl
+242:          0          0          0     GICv3 4118 Edge      VLX-_vrpc_xirq_handler
+243:          0          0          0     GICv3 4102 Edge      VLX-evtlog_notification_hdl
+244:          1          0          0     GICv3 4119 Edge      VLX-_vrpc_xirq_handler
+245:          0          0          0     GICv3 4103 Edge      VLX-evtlog_notification_hdl
+246:          0          0          0     GICv3 4120 Edge      VLX-_vrpc_xirq_handler
+247:          0          0          0     GICv3 4104 Edge      VLX-evtlog_notification_hdl
+248:        131          0          0     GICv3 4121 Edge      VLX-_vrpc_xirq_handler
+249:          0          0          0     GICv3 4122 Edge      VLX-_vrpc_xirq_handler
+250:          0          0          0     GICv3 4123 Edge      VLX-_vrpc_xirq_handler
+251:          0          0          0     GICv3 4124 Edge      VLX-_vrpc_xirq_handler
+252:          0          0          0     GICv3 4125 Edge      VLX-_vrpc_xirq_handler
+253:          0          0          0     GICv3 4126 Edge      VLX-_vrpc_xirq_handler
+254:          0          0          0     GICv3 4127 Edge      VLX-_vrpc_xirq_handler
+255:          1          0          0     GICv3 4111 Edge      VLX-svec_xirq_hdl
+256:          0          0          0     GICv3 4128 Edge      VLX-_vrpc_xirq_handler
+257:          0          0          0     GICv3 4129 Edge      VLX-_vrpc_xirq_handler
+258:          1          0          0     GICv3 4130 Edge      VLX-_vrpc_xirq_handler
+259:          0          0          0     GICv3 4131 Edge      VLX-_vrpc_xirq_handler
+260:          0          0          0      gpp3   2 Edge      inap565t_link_irq
+261:          2          0          0      gpp3   4 Edge      inap565t_mb0_irq
+262:          2          0          0      gpp7   5 Edge      inap597t_link_irq
+263:          0          0          0      gpa1   1 Edge      18c90000.dp_tx
+264:          0          0          0     GICv3 4137 Edge      VLX-sxgmac_vlink_xirq_handler
+270:          6          0          0     GICv3 4143 Edge      VLX-veth_rx_xirq
+271:          0          0          0     GICv3 4144 Edge      VLX-veth_tx_ready_xirq
+272:          3          0          0     GICv3 4145 Edge      VLX-veth_do_rx_sysconf
+273:          3          0          0     GICv3 4146 Edge      VLX-veth_do_tx_sysconf
+275:          0          0          0     GICv3 4132 Edge      VLX-vdpu_irq_hdl
+278:          0          0          0     GICv3 4133 Edge      VLX-vdpu_irq_hdl
+279:          0          0          0     GICv3 4134 Edge      VLX-vdpu_irq_hdl
+282:          0          0          0     GICv3 4135 Edge      VLX-vdpu_irq_hdl
+283:          0          0          0     GICv3 4136 Edge      VLX-vdpu_irq_hdl
+289:          0          0          0     GICv3 4097 Edge      VLX-evtlog_notification_hdl
+290:          3          0          0     GICv3 4157 Edge      VLX-svec_sysconf_hdl
+291:          0          0          0     GICv3 4158 Edge      VLX-vmq_tx_hdl
+292:          0          0          0     GICv3 4159 Edge      VLX-vmq_rx_hdl
+293:          0          0          0     GICv3 4160 Edge      VLX-vmq_tx_hdl
+294:          0          0          0     GICv3 4161 Edge      VLX-vmq_rx_hdl
+295:          0          0          0     GICv3 4162 Edge      VLX-vmq_tx_hdl
+296:          0          0          0     GICv3 4163 Edge      VLX-vmq_rx_hdl
+297:          0          0          0     GICv3 4164 Edge      VLX-__vabox_xirq_reg_handler
+298:          0          0          0     GICv3 4165 Edge      VLX-__vabox_xirq_handler
+299:         13          0          0     GICv3 928 Edge      tzirq
+301:          1          0          0      gpa0   0 Edge      gpio-keys: KEY_WAKEUP
+IPI0:       482       1247        966       Rescheduling interrupts
+IPI1:      1802       2298       2814       Function call interrupts
+IPI2:         0          0          0       CPU stop interrupts
+IPI3:         0          0          0       CPU stop (for crash dump) interrupts
+IPI4:         0          0          0       Timer broadcast interrupts
+IPI5:         0          0          0       IRQ work interrupts
+IPI6:         0          0          0       CPU wake-up interrupts
+Err:          0
+
+Interrupts in Android: -
+-------------------------

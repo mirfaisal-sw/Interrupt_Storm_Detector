@@ -20,5 +20,10 @@ TODO till March- 31st 2024: -
 
 ccflags-$(CONFIG_PCI_DEBUG)     += -DDEBUG
 
+8. Add dts property to add different IRQ numbers to be monitored: -
 
+	Example: -
+	 cnt = of_property_read_variable_u32_array(np, "sxgmac,rx-vlan-ids",
+                                                  sxgmac->vids, 0,
+                                                  SXGMAC_MAX_RX_VLAN_ID);
 

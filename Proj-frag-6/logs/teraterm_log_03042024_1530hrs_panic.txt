@@ -1,0 +1,1478 @@
+
+
+root@idcevo-hv-v920:~# echo on > /proc/irq_diag/irq_diag_cmd
+[  186.139905][  T476] DBG: In func - irq_diag_open_cmd
+[  186.140157][  T476] DBG: String: on, length - 3
+root@idcevo-hv-v920:~# [  186.640334][    C2] In func - read_irq_interval_cb, line - 93, context = 0
+[  186.641210][  T173] In our workq function: irq_scan_work
+[  187.140335][    C2] In func - read_irq_interval_cb, line - 93, context = 0
+[  187.140640][  T173] In our workq function: irq_scan_work
+[  187.640334][    C2] In func - read_irq_interval_cb, line - 93, context = 0
+[  187.640622][  T173] In our workq function: irq_scan_work
+[  187.640625][  T167] IRQ# - 2, IRQ rate - 46
+[  187.642005][   T82] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000030
+[  187.643351][   T82] Mem abort info:
+[  187.643454][   T82]   ESR = 0x96000005
+[  187.644111][  T167] IRQ# - 2, IRQ rate - 46
+[  187.644569][   T82]   EC = 0x25: DABT (current EL), IL = 32 bits
+[  187.644715][  T167] IRQ# - 2, IRQ rate - 46
+[  187.645870][   T82]   SET = 0, FnV = 0
+[  187.645993][  T167] IRQ# - 2, IRQ rate - 46
+[  187.646093][   T82]   EA = 0, S1PTW = 0
+[  187.665706][  T167] IRQ# - 2, IRQ rate - 46
+[  187.665794][   T82]   FSC = 0x05: level 1 translation fault
+[  187.665918][  T167] IRQ# - 2, IRQ rate - 46
+[  187.667076][   T82] Data abort info:
+[  187.667197][  T167] IRQ# - 2, IRQ rate - 46
+[  187.686736][   T82]   ISV = 0, ISS = 0x00000005
+[  187.686740][   T82]   CM = 0, WnR = 0
+[  187.686743][   T82] user pgtable: 4k pages, 39-bit VAs, pgdp=000000088feef000
+[  187.686747][   T82] [0000000000000030] pgd=0000000000000000, p4d=0000000000000000, pud=0000000000000000
+[  187.686756][   T82] Internal error(SYS OS): Oops: 96000005 [#1] PREEMPT SMP
+[  187.686790][   T82] debug-snapshot dss: core register saved(CPU:1)
+[  187.686945][  T167] IRQ# - 2, IRQ rate - 46
+[  187.687009][   T82] debug-snapshot dss: ECC error check erridr_el1.NUM = [0x2]
+[  187.687013][   T82] debug-snapshot dss: ERRSELR_EL1.SEL = 0, NOT Error, ERXSTATUS_EL1 = [0x0]
+  1
+   Br8o7ad.c688163][  T167] IRQ# - 2, IRQ rate - 46
+[  187.688325][   T82] debug-snapshot dss: ERRSELR_EL1.SEL = 1, NOT Error, ERXSTATUS_EL1 = [0x0]
+[  187.708080][  T167] IRQ# - 2, IRQ rate - 46
+ast[   me1ss8ag7e.709257][   T82] debug-snapshot dss: context saved(CPU:1)
+[  187.709435][  T167] IRQ# - 2, IRQ rate - 46
+[  187.729006][   T82] item - log_kevents is disabled
+[  187.729011][   T82]
+[  187.729011][   T82] PC:
+[  187.729014][   T82] 6e7c : ******** ******** ******** ******** ******** ******** ******** ********
+ f[r o m1 s8ys7t.729026][   T82] 6e9c : ********
+[  187.730529][  T167] IRQ# - 2, IRQ rate - 46
+[  187.750017][   T82]  ******** ******** ******** ******** ******** ******** ********
+em[d- j ou1r8na7.750026][   T82] 6ebc : ******** ******** ******** ******** ******** ********
+[  187.751440][  T167] IRQ# - 2, IRQ rate - 46
+[  187.770969][   T82]  ******** ********
+[  187.770974][   T82] 6edc : ******** ******** ******** ******** ******** ******** ******** ********
+[  187.770984][   T82] 6efc : ******** ******** ******** ******** ******** ******** ******** ********
+-d@idcevo-hv-[v 920  (T1hu 820722.-0747-1197][  T81 167:74]5 :2I8 RUTQC#):
+2
+:k,e rnIelR[Q31 5rate - 4]6
+S [ [ 1 8 7.16886775.67][7  2 T2825]1 I]n[te r na lT e8rr2or]( SY
+* OS)[:  O op1s8: 796.070070025 2[5#41]] [P R EE T82] 6f1c :M *PT* *SM*P*
+*
+ *
+ *B*r*oa*d*ca*s*t *me ss*a*ge* f*r*om* *sy*st em*d*-j*ou*r*na*l*d@*id c*evo*-*hv*-*v9*2*0*  *******(*T hu* *20*22*-0*4-*28* *17 :4*5*:2*8* U*T*C)*:*
+
+
+iser n el1[837.772264]1[5] :  [  T 18827.]68 6679f0]3[ c   T8:2 ] *de*b*ug*-s*na*ps*ho*t  d*s*s:* *co*re* *re*g
+8 ter saved(C[PU :1 )1
+.773691][
+1T
+i6B7ro]a dcIaRstQ #me ssa-g e 2f,r oIm RsQy straemtde- jo-u rna4l6d@
+*dce[v o-h v-1v897.7932022][0  ( T huT 280222]- 04 -2*8 *17*:4*5:*28* *UT*C) :
+*
+Ek*er*ne*l*[3 15*]*: *[*  *18*7.6*8*83 25*][ * * T*8*2]* ** **eb*u*g-*s*na*ps*ho t* d*s*s:* *ER*RS*E*LR_
+*L1.SEL = 1[,  N O187.793210T ][ E rr orT, 8E2R]X ST6AfTU5S_EcL1  :=  [0*x*0]*
+*
+**
+@i r*oa*dc*as*t* *me*ss*a ge* f*r*om* *sys*te*md*-j o******rn*al*d
+Q dce[vo - hv1-8v972.0 7(T9hu4 2509225-0]4[-2 8  1T7:1465:728] U TCI)R:
+
+5] er2ne,l IRQ rate -[ 4361
+* : [  18[7. 70 912587]7[.  8 1T4822]1 6de]bu[g- s na psTho8t2 d]ss :  co*nt*e*xt* s*a*ve*d(*CP U:*1)*
+*
+*** ******** ********
+[  187.814223][   T82]
+[  187.814223][   T82] LR:
+[  187.814226][   T82] d094 : ******** ********
+[  187.814365][  T167] IRQ# - 2, IRQ rate - 46
+[  187.815448][   T82]  ******** ******** ******** ********
+[  187.818975][  T167] IRQ# - 2, IRQ rate - 46
+[  187.836350][   T82]  ******** ********
+[  187.836354][   T82] d0b4 : ******** ******** ******** ******** ******** ******** ******** ********
+[  187.836364][   T82] d0d4 :
+[  187.857117][  T167] IRQ# - 2, IRQ rate - 46
+[  187.857252][   T82]  ********
+[  187.859882][  T167] IRQ# - 2, IRQ rate - 46
+[  187.879607][   T82]  ******** ******** ******** ******** ******** ******** ********
+[  187.879616][   T82] d0f4 : ******** ******** ******** ********
+[  187.880923][  T167] IRQ# - 2, IRQ rate - 46
+[  187.901783][   T82]  ******** ******** ******** ********
+[  187.901790][   T82] d114 : ********
+[  187.908236][  T328] [DIAG:COM] hyp-threshold detected: [186.000--187.000][P1] HYP: 15, VM2: 84, VM3:  0
+[  187.922659][  T167] IRQ# - 2, IRQ rate - 46
+[  187.942300][   T82]  ******** ******** ******** ******** ******** ******** ********
+[  187.943629][  T167] IRQ# - 2, IRQ rate - 46
+[  187.943753][   T82]
+[  187.943883][  T167] IRQ# - 2, IRQ rate - 46
+[  187.963405][   T82] d134 : ******** ******** ******** ******** ******** ******** ******** ********
+[  187.963415][   T82] d154 : ******** ******** ******** ******** ******** ******** ******** ********
+[  187.963425][   T82] d174 :
+[  187.963584][  T167] IRQ# - 2, IRQ rate - 46
+[  187.964698][   T82]  ******** ******** ******** ******** ******** ******** ********
+[  187.964818][  T167] IRQ# - 2, IRQ rate - 46
+[  187.966057][   T82]  ********
+[  187.985620][  T167] IRQ# - 2, IRQ rate - 46
+[  187.985714][   T82]
+[  187.985803][  T167] IRQ# - 2, IRQ rate - 46
+[  187.986924][   T82]
+[  187.986924][   T82] SP: 0xffffffc0127dbc60:
+[  188.006630][  T167] IRQ# - 2, IRQ rate - 46
+[  188.007779][   T82] bc60 :
+[  188.007900][  T167] IRQ# - 2, IRQ rate - 46
+[  188.008049][   T82]  ******** ******** ******** ******** ******** ******** ******** ********
+[  188.027606][  T167] IRQ# - 2, IRQ rate - 46
+[  188.028871][   T82]
+[  188.028874][   T82] bc80 : ******** ********
+[  188.028998][  T167] IRQ# - 2, IRQ rate - 46
+[  188.030211][   T82]  ********
+[  188.049824][  T167] IRQ# - 2, IRQ rate - 46
+[  188.049873][   T82]  ********
+[  188.049993][  T167] IRQ# - 2, IRQ rate - 46
+[  188.051245][   T82]  ********
+[  188.070934][  T167] IRQ# - 2, IRQ rate - 46
+[  188.070998][   T82]  ********
+[  188.072129][  T167] IRQ# - 2, IRQ rate - 46
+[  188.072334][   T82]  ********
+[  188.091895][  T167] IRQ# - 2, IRQ rate - 46
+[  188.091965][   T82]  ********
+[  188.092095][  T167] IRQ# - 2, IRQ rate - 46
+[  188.093148][   T82]
+[  188.093268][  T167] IRQ# - 2, IRQ rate - 46
+[  188.112857][   T82] bca0 : ******** ******** ******** ******** ******** ******** ******** ********
+[  188.112992][  T167] IRQ# - 2, IRQ rate - 46
+[  188.114064][   T82]
+[  188.114190][  T167] IRQ# - 2, IRQ rate - 46
+[  188.115417][   T82] bcc0 :
+[  188.135017][  T167] IRQ# - 2, IRQ rate - 46
+[  188.135059][   T82]  ********
+[  188.135182][  T167] IRQ# - 2, IRQ rate - 46
+[  188.136298][   T82]  ******** ******** ******** ******** ******** ******** ********
+[  188.136395][  T167] IRQ# - 2, IRQ rate - 46
+[  188.155907][   T82]
+[  188.155910][   T82] bce0 : ******** ********
+[  188.155913][    C2] In func - read_irq_interval_cb, line - 93, context = 0
+[  188.155914][   T82]  ******** ******** ******** ******** ******** ********
+[  188.155922][   T82] bd00 :
+[  188.156046][  T173] In our workq function: irq_scan_work
+[  188.156125][   T82]  ********
+[  188.156818][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156833][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156844][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156855][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156866][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156876][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156887][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156897][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156908][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156919][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156929][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156939][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156950][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156960][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156970][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156981][  T167] IRQ# - 2, IRQ rate - 46
+[  188.156991][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157001][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157012][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157022][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157032][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157043][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157053][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157063][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157074][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157085][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157095][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157105][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157116][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157126][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157137][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157147][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157158][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157168][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157180][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157190][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157201][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157211][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157217][  T173] delta: 94765 ns
+[  188.157222][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157232][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157243][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157253][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157264][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157274][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157284][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157295][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157305][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157315][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157326][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157334][   T82]  ********
+[  188.157336][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157347][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157358][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157368][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157378][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157389][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157399][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157409][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157416][  T173]  (~ 94 us
+[  188.157420][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157430][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157441][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157451][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157461][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157472][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157482][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157493][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157503][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157514][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157524][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157535][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157545][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157555][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157567][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157577][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157587][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157598][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157608][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157619][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157629][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157639][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157650][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157661][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157671][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157682][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157692][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157702][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157713][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157723][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157733][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157744][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157754][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157765][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157776][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157786][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157796][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157806][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157816][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157827][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157837][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157847][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157858][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157869][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157879][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157890][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157900][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157910][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157921][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157931][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157942][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157952][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157962][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157973][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157983][  T167] IRQ# - 2, IRQ rate - 46
+[  188.157994][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158004][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158014][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158025][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158035][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158046][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158056][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158067][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158077][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158088][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158098][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158109][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158119][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158129][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158140][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158150][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158160][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158171][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158181][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158191][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158202][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158212][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158223][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158233][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158526][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158540][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158552][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158564][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158577][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158587][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158598][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158609][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158619][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158629][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158640][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158650][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158660][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158671][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158681][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158691][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158702][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158712][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158723][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158733][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158743][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158753][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158764][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158774][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158784][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158795][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158805][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158815][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158826][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158836][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158846][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158857][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158867][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158877][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158888][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158898][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158908][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158919][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158929][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158939][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158950][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158960][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158970][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158981][  T167] IRQ# - 2, IRQ rate - 46
+[  188.158991][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159002][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159012][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159022][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159032][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159043][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159053][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159064][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159074][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159084][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159094][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159105][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159116][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159127][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159137][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159147][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159158][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159168][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159179][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159189][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159199][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159210][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159220][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159231][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159241][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159251][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159262][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159272][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159282][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159293][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159303][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159313][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159324][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159334][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159344][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159354][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159365][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159375][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159385][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159396][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159406][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159416][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159427][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159437][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159447][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159457][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159468][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159478][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159488][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159498][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159509][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159519][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159530][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159540][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159550][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159561][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159571][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159581][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159591][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159602][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159612][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159622][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159632][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159643][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159653][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159663][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159673][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159684][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159694][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159704][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159715][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159725][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159735][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159746][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159756][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159766][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159776][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159787][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159797][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159807][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159818][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159828][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159838][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159848][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159859][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159869][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159879][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159890][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159900][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159910][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159921][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159931][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159941][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159951][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159961][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159972][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159982][  T167] IRQ# - 2, IRQ rate - 46
+[  188.159992][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168034][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168057][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168068][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168078][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168089][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168099][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168110][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168120][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168131][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168141][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168152][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168162][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168172][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168183][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168193][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168204][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168214][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168225][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168236][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168246][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168256][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168267][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168277][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168288][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168298][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168309][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168320][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168330][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168340][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168351][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168361][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168371][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168382][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168392][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168403][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168413][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168424][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168435][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168445][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168456][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168466][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168477][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168487][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168497][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168508][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168518][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168529][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168539][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168550][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168560][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168613][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168636][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168653][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168664][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168675][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168685][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168695][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168706][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168716][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168726][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168736][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168747][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168757][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168767][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168778][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168788][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168798][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168809][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168819][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168829][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168840][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168850][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168860][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168871][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168881][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168891][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168901][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168912][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168922][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168932][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168943][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168953][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168963][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168974][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168984][  T167] IRQ# - 2, IRQ rate - 46
+[  188.168994][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169005][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169015][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169025][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169035][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169046][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169056][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169066][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169077][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169087][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169098][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169108][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169119][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169129][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169139][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169150][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169160][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169171][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169181][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169191][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169201][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169211][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169222][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169232][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169242][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169252][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169263][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169273][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169283][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169294][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169304][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169314][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169324][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169335][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169345][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169355][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169365][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169376][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169386][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169396][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169407][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169417][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169427][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169437][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169447][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169458][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169468][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169478][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169488][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169499][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169509][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169519][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169529][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169540][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169552][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169562][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169572][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169583][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169593][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169604][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169615][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169625][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169635][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169646][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169656][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169666][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169676][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169687][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169697][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169707][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169717][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169728][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169738][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169748][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169759][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169769][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169779][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169789][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169800][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169810][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169820][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169831][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169841][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169851][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169861][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169872][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169882][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169892][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169902][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169913][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169923][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169933][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169943][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169954][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169964][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169974][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169984][  T167] IRQ# - 2, IRQ rate - 46
+[  188.169995][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170005][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170016][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170026][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170036][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170046][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170057][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170067][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170077][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170088][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170098][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170108][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170119][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170129][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170139][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170149][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170160][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170170][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170180][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170191][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170201][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170212][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170222][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170233][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170244][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170254][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170264][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170274][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170285][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170295][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170305][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170316][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170326][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170336][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170347][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170357][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170367][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170377][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170387][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170398][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170408][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170418][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170428][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170438][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170449][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170459][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170469][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170479][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170489][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170499][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170509][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170519][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170529][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170540][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170550][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170560][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170571][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170581][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170591][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170601][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170611][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170621][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170631][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170642][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170652][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170662][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170672][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170683][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170693][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170703][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170713][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170723][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170733][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170743][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170753][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170764][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170774][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170784][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170794][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170804][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170814][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170824][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170834][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170844][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170854][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170864][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170875][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170885][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170895][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170905][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170916][  T167] IRQ# - 2, IRQ rate - 46
+[  188.170926][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171062][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171074][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171084][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171095][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171105][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171115][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171125][  T167] IRQ# - 2, IRQ rate - 46
+[  188.171136][  T167] IRQ# - 2, IRQ rate - 46
+1 HYP:[+188305 ms] [00190606 ms] System-wide panic initiated from VM2.
+[  190.607914][    C0] Kernel panic - not syncing: System wide panic initiated.
+4 3 0:[  190.609149][    C0] CPU: 0 PID: 0 Comm: swapper/0 Tainted: G        W   E     5.15.74-android13-8-g12c2db8fe0b5-dirty #1
+4 3 0:[  190.610443][    C0] Hardware name: BMW IDCEvo (v720-EVT2 SP25-B505-C1) Android IVI VM (DT)
+4 3 0:[  190.630078][    C0] Call trace(AND OS):
+4 3 0:[  190.630183][    C0]  dump_backtrace+0x0/0x1d4
+4 3 0:[  190.649761][    C0]  show_stack+0x1c/0x2c
+4 3 0:[  190.649872][    C0]  dump_stack_lvl+0x68/0x84
+4 3 0:[  190.651000][    C0]  dump_stack+0x1c/0x40
+4 3 0:[  190.651110][    C0]  panic+0x164/0x3a8
+4 3 0:[  190.651213][    C0]  _panic_trigger_sysconf+0xc0/0xf80 [vlx_panic_trigger_module]
+4 3 0:[  190.670835][    C0]  nk_xirq_handler+0x1c/0x30 [vlx_hyp_module]
+4 3 0:[  190.672010][    C0]  __handle_irq_event_percpu+0xb4/0x27c
+4 3 0:[  190.672158][    C0]  handle_irq_event+0x64/0x174
+4 3 0:[  190.691757][    C0]  handle_fasteoi_irq+0x110/0x210
+4 3 0:[  190.691891][    C0]  handle_domain_irq+0x78/0xbc
+4 3 0:[  190.693021][    C0]  gic_handle_irq+0x58/0x124
+4 3 0:[  190.693143][    C0]  call_on_irq_stack+0x40/0x70
+4 3 0:[  190.712751][    C0]  do_interrupt_handler+0x40/0x58
+4 3 0:[  190.712883][    C0]  el1_interrupt+0x34/0x60
+4 3 0:[  190.714004][    C0]  el1h_64_irq_handler+0x1c/0x2c
+4 3 0:[  190.714134][    C0]  el1h_64_irq+0x7c/0x80
+4 3 0:[  190.733646][    C0]  arch_local_irq_enable+0xc/0x18
+4 3 0:[  190.733780][    C0]  default_idle_call+0x3c/0x14c
+4 3 0:[  190.734912][    C0]  do_idle+0x100/0x298
+4 3 0:[  190.735021][    C0]  cpu_startup_entry+0x28/0x2c
+4 3 0:[  190.735148][    C0]  rest_init+0xe4/0xf8
+4 3 0:[  190.754726][    C0]  arch_call_rest_init+0x14/0x24
+4 3 0:[  190.754859][    C0]  start_kernel+0x3c4/0x4dc
+4 3 0:[  190.755983][    C0]  __primary_switched+0xc4/0xcc
+4 3 0:[  190.756118][    C2] debug-snapshot dss: core register saved(CPU:2)
+6 3 2:[  190.775695][    C2] debug-snapshot dss: ECC error check erridr_el1.NUM = [0x2]
+6 3 2:[  190.776899][    C2] debug-snapshot dss: ERRSELR_EL1.SEL = 0, NOT Error, ERXSTATUS_EL1 = [0x0]
+4 3 0:[  190.777126][    C2] debug-snapshot dss: ERRSELR_EL1.SEL = 1, NOT Error, ERXSTATUS_EL1 = [0x0]
+6 3 2:[  190.796833][    C2] debug-snapshot dss: context saved(CPU:2)
+6 3 2:[  190.797989][    C2] CPU: 2 PID: 0 Comm: swapper/2 Tainted: G        W   E     5.15.74-android13-8-g12c2db8fe0b5-dirty #1
+4 3 0:[  190.799284][    C2] Hardware name: BMW IDCEvo (v720-EVT2 SP25-B505-C1) Android IVI VM (DT)
+6 3 2:[  190.838389][    C2] Call trace(AND OS):
+6 3 2:[  190.838493][    C2]  dump_backtrace+0x0/0x1d4
+6 3 2:[  190.839618][    C2]  show_stack+0x1c/0x2c
+6 3 2:[  190.839728][    C2]  dump_stack_lvl+0x68/0x84
+6 3 2:[  190.840853][    C2]  dump_stack+0x1c/0x40
+6 3 2:[  190.840964][    C2]  dbg_snapshot_save_context+0x2b0/0x2bc [dss]
+4 3 0:[  190.841145][    C2]  dbg_snapshot_ipi_stop+0x28/0x38 [dss]
+6 3 2:[  190.860694][    C2]  __traceiter_android_vh_ipi_stop+0x34/0x54
+6 3 2:[  190.860851][    C2]  do_handle_IPI+0x184/0x1a4
+4 3 0:[  190.861979][    C2]  ipi_handler+0x20/0x34
+6 3 2:[  190.881563][    C2]  handle_percpu_devid_irq+0x88/0x21c
+6 3 2:[  190.881706][    C2]  handle_domain_irq+0x78/0xbc
+6 3 2:[  190.882836][    C2]  gic_handle_irq+0x58/0x124
+4 3 0:[  190.882958][    C2]  call_on_irq_stack+0x40/0x70
+6 3 2:[  190.902485][    C2]  do_interrupt_handler+0x40/0x58
+6 3 2:[  190.902618][    C2]  el1_interrupt+0x34/0x60
+6 3 2:[  190.903739][    C2]  el1h_64_irq_handler+0x1c/0x2c
+4 3 0:[  190.903869][    C2]  el1h_64_irq+0x7c/0x80
+6 3 2:[  190.923383][    C2]  arch_local_irq_enable+0xc/0x18
+6 3 2:[  190.923517][    C2]  default_idle_call+0x3c/0x14c
+6 3 2:[  190.924649][    C2]  do_idle+0x100/0x298
+6 3 2:[  190.924757][    C2]  cpu_startup_entry+0x28/0x2c
+4 3 0:[  190.924885][    C2]  secondary_start_kernel+0x194/0x1cc
+6 3 2:[  190.944490][    C2]  __secondary_switched+0x98/0x9c
+5 3 1:[  190.944625][    C1] debug-snapshot dss: core register saved(CPU:1)
+4 3 0:[  190.945816][    C1] debug-snapshot dss: ECC error check erridr_el1.NUM = [0x2]
+5 3 1:[  190.965452][    C1] debug-snapshot dss: ERRSELR_EL1.SEL = 0, NOT Error, ERXSTATUS_EL1 = [0x0]
+5 3 1:[  190.966683][    C1] debug-snapshot dss: ERRSELR_EL1.SEL = 1, NOT Error, ERXSTATUS_EL1 = [0x0]
+4 3 0:[  190.967916][    C1] debug-snapshot dss: context saved(CPU:1)
+5 3 1:[  190.987531][    C1] CPU: 1 PID: 188 Comm: kworker/u12:8 Tainted: G        W   E     5.15.74-android13-8-g12c2db8fe0b5-dirty #1
+4 3 0:[  190.988842][    C1] Hardware name: BMW IDCEvo (v720-EVT2 SP25-B505-C1) Android IVI VM (DT)
+5 3 1:[  191.008509][    C1] Workqueue: events_unbound deferred_probe_work_func
+5 3 1:[  191.009694][    C1] Call trace(AND OS):
+4 3 0:[  191.009801][    C1]  dump_backtrace+0x0/0x1d4
+5 3 1:[  191.029403][    C1]  show_stack+0x1c/0x2c
+5 3 1:[  191.029515][    C1]  dump_stack_lvl+0x68/0x84
+5 3 1:[  191.030641][    C1]  dump_stack+0x1c/0x40
+5 3 1:[  191.030753][    C1]  dbg_snapshot_save_context+0x2b0/0x2bc [dss]
+4 3 0:[  191.030931][    C1]  dbg_snapshot_ipi_stop+0x28/0x38 [dss]
+5 3 1:[  191.050514][    C1]  __traceiter_android_vh_ipi_stop+0x34/0x54
+5 3 1:[  191.050671][    C1]  do_handle_IPI+0x184/0x1a4
+4 3 0:[  191.051798][    C1]  ipi_handler+0x20/0x34
+5 3 1:[  191.071385][    C1]  handle_percpu_devid_irq+0x88/0x21c
+5 3 1:[  191.071529][    C1]  handle_domain_irq+0x78/0xbc
+5 3 1:[  191.072660][    C1]  gic_handle_irq+0x58/0x124
+4 3 0:[  191.072783][    C1]  call_on_irq_stack+0x40/0x70
+5 3 1:[  191.092307][    C1]  do_interrupt_handler+0x40/0x58
+5 3 1:[  191.092442][    C1]  el1_interrupt+0x34/0x60
+5 3 1:[  191.093564][    C1]  el1h_64_irq_handler+0x1c/0x2c
+5 3 1:[  191.093695][    C1]  el1h_64_irq+0x7c/0x80
+4 3 0:[  191.093808][    C1]  arch_counter_get_cntvct+0x18/0x20
+5 3 1:[  191.113404][    C1]  sgpu_mpt_deinit+0x54/0xbc [sgpu]
+5 3 1:[  191.113646][    C1]  sgpu_kms_probe+0x2e8/0x304 [sgpu]
+4 3 0:[  191.114871][    C1]  platform_probe+0xb0/0xd8
+5 3 1:[  191.134465][    C1]  really_probe+0xc8/0x2fc
+5 3 1:[  191.134584][    C1]  __driver_probe_device+0xbc/0xe8
+5 3 1:[  191.135724][    C1]  driver_probe_device+0x4c/0x160
+5 3 1:[  191.135858][    C1]  __device_attach_driver+0x120/0x14c
+4 3 0:[  191.136001][    C1]  bus_for_each_drv+0x88/0xd8
+5 3 1:[  191.155547][    C1]  __device_attach+0xd4/0x1a4
+5 3 1:[  191.155672][    C1]  device_initial_probe+0x18/0x28
+5 3 1:[  191.156810][    C1]  bus_probe_device+0x38/0xa0
+4 3 0:[  191.156934][    C1]  deferred_probe_work_func+0x80/0xe0
+5 3 1:[  191.176477][    C1]  process_one_work+0x1ac/0x394
+5 3 1:[  191.176606][    C1]  worker_thread+0x274/0x468
+5 3 1:[  191.177732][    C1]  kthread+0x154/0x328
+4 3 0:[  191.177841][    C1]  ret_from_fork+0x10/0x20
+7 3 3:[  191.197363][    C3] debug-snapshot dss: core register saved(CPU:3)
+7 3 3:[  191.197541][    C3] debug-snapshot dss: ECC error check erridr_el1.NUM = [0x2]
+4 3 0:[  191.198738][    C3] debug-snapshot dss: ERRSELR_EL1.SEL = 0, NOT Error, ERXSTATUS_EL1 = [0x0]
+7 3 3:[  191.218380][    C3] debug-snapshot dss: ERRSELR_EL1.SEL = 1, NOT Error, ERXSTATUS_EL1 = [0x0]
+7 3 3:[  191.219611][    C3] debug-snapshot dss: context saved(CPU:3)
+4 3 0:[  191.219765][    C3] CPU: 3 PID: 0 Comm: swapper/3 Tainted: G        W   E     5.15.74-android13-8-g12c2db8fe0b5-dirty #1
+7 3 3:[  191.239525][    C3] Hardware name: BMW IDCEvo (v720-EVT2 SP25-B505-C1) Android IVI VM (DT)
+4 3 0:[  191.240752][    C3] Call trace(AND OS):
+7 3 3:[  191.260334][    C3]  dump_backtrace+0x0/0x1d4
+7 3 3:[  191.260456][    C3]  show_stack+0x1c/0x2c
+7 3 3:[  191.260566][    C3]  dump_stack_lvl+0x68/0x84
+4 3 0:[  191.261691][    C3]  dump_stack+0x1c/0x40
+7 3 3:[  191.281247][    C3]  dbg_snapshot_save_context+0x2b0/0x2bc [dss]
+7 3 3:[  191.281424][    C3]  dbg_snapshot_ipi_stop+0x28/0x38 [dss]
+7 3 3:[  191.282589][    C3]  __traceiter_android_vh_ipi_stop+0x34/0x54
+4 3 0:[  191.282747][    C3]  do_handle_IPI+0x184/0x1a4
+7 3 3:[  191.302339][    C3]  ipi_handler+0x20/0x34
+7 3 3:[  191.302452][    C3]  handle_percpu_devid_irq+0x88/0x21c
+7 3 3:[  191.303599][    C3]  handle_domain_irq+0x78/0xbc
+4 3 0:[  191.303724][    C3]  gic_handle_irq+0x58/0x124
+7 3 3:[  191.323248][    C3]  call_on_irq_stack+0x40/0x70
+7 3 3:[  191.323374][    C3]  do_interrupt_handler+0x40/0x58
+7 3 3:[  191.324511][    C3]  el1_interrupt+0x34/0x60
+4 3 0:[  191.324628][    C3]  el1h_64_irq_handler+0x1c/0x2c
+7 3 3:[  191.344166][    C3]  el1h_64_irq+0x7c/0x80
+7 3 3:[  191.344278][    C3]  arch_local_irq_enable+0xc/0x18
+7 3 3:[  191.345416][    C3]  default_idle_call+0x3c/0x14c
+4 3 0:[  191.345545][    C3]  do_idle+0x100/0x298
+7 3 3:[  191.365053][    C3]  cpu_startup_entry+0x28/0x2c
+7 3 3:[  191.365180][    C3]  secondary_start_kernel+0x194/0x1cc
+7 3 3:[  191.366326][    C3]  __secondary_switched+0x98/0x9c
+4 3 0:[  191.366466][    C4] debug-snapshot dss: core register saved(CPU:4)
+3 3 4:[  191.386110][    C4] debug-snapshot dss: ECC error check erridr_el1.NUM = [0x2]
+3 3 4:[  191.387316][    C4] debug-snapshot dss: ERRSELR_EL1.SEL = 0, NOT Error, ERXSTATUS_EL1 = [0x0]
+4 3 0:[  191.387549][    C4] debug-snapshot dss: ERRSELR_EL1.SEL = 1, NOT Error, ERXSTATUS_EL1 = [0x0]
+3 3 4:[  191.407244][    C4] debug-snapshot dss: context saved(CPU:4)
+3 3 4:[  191.408402][    C4] CPU: 4 PID: 0 Comm: swapper/4 Tainted: G        W   E     5.15.74-android13-8-g12c2db8fe0b5-dirty #1
+4 3 0:[  191.409699][    C4] Hardware name: BMW IDCEvo (v720-EVT2 SP25-B505-C1) Android IVI VM (DT)
+3 3 4:[  191.429360][    C4] Call trace(AND OS):
+4 3 0:[  191.429465][    C4]  dump_backtrace+0x0/0x1d4
+3 3 4:[  191.449042][    C4]  show_stack+0x1c/0x2c
+3 3 4:[  191.449152][    C4]  dump_stack_lvl+0x68/0x84
+3 3 4:[  191.450279][    C4]  dump_stack+0x1c/0x40
+3 3 4:[  191.450389][    C4]  dbg_snapshot_save_context+0x2b0/0x2bc [dss]
+4 3 0:[  191.450570][    C4]  dbg_snapshot_ipi_stop+0x28/0x38 [dss]
+3 3 4:[  191.470151][    C4]  __traceiter_android_vh_ipi_stop+0x34/0x54
+3 3 4:[  191.470309][    C4]  do_handle_IPI+0x184/0x1a4
+4 3 0:[  191.471436][    C4]  ipi_handler+0x20/0x34
+3 3 4:[  191.491024][    C4]  handle_percpu_devid_irq+0x88/0x21c
+3 3 4:[  191.491167][    C4]  handle_domain_irq+0x78/0xbc
+3 3 4:[  191.492297][    C4]  gic_handle_irq+0x58/0x124
+4 3 0:[  191.492419][    C4]  call_on_irq_stack+0x40/0x70
+3 3 4:[  191.511945][    C4]  do_interrupt_handler+0x40/0x58
+3 3 4:[  191.512079][    C4]  el1_interrupt+0x34/0x60
+3 3 4:[  191.513200][    C4]  el1h_64_irq_handler+0x1c/0x2c
+4 3 0:[  191.513329][    C4]  el1h_64_irq+0x7c/0x80
+3 3 4:[  191.532841][    C4]  arch_local_irq_enable+0xc/0x18
+3 3 4:[  191.532976][    C4]  default_idle_call+0x3c/0x14c
+3 3 4:[  191.534108][    C4]  do_idle+0x100/0x298
+3 3 4:[  191.534217][    C4]  cpu_startup_entry+0x28/0x2c
+4 3 0:[  191.534344][    C4]  secondary_start_kernel+0x194/0x1cc
+3 3 4:[  191.553952][    C4]  __secondary_switched+0x98/0x9c
+4 3 0:[  191.554090][    C0] Kernel Offset: disabled
+4 3 0:[  191.555214][    C0] CPU features: 0x0,00000381,23300e42
+4 3 0:[  191.555358][    C0] Memory Limit: none
+4 3 0:[  191.574914][    C0] hardlockup_watchdog_panic_handler: disable hardlockup-watchdog
+4 3 0:[  191.575117][    C0] hardlockup_watchdog_panic_handler: stop hrtimer for cpu0
+4 3 0:[  191.576410][    C0] hardlockup_watchdog_panic_handler: stop hrtimer for cpu1
+4 3 0:[  191.596010][    C0] hardlockup_watchdog_panic_handler: stop hrtimer for cpu2
+4 3 0:[  191.597303][    C0] hardlockup_watchdog_panic_handler: stop hrtimer for cpu3
+4 3 0:[  191.597593][    C0] hardlockup_watchdog_panic_handler: stop hrtimer for cpu4
+4 3 0:[  191.617262][    C0] --------------------------------------------------------------------------
+4 3 0:[  191.618495][    C0]   Exynos Early Lockup Detector Information(AND OS)
+4 3 0:[  191.618495][    C0]
+4 3 0:[  191.638202][    C0]   vCPU pCPU NUM TIME             VALUE             NS EL VMID       PC
+4 3 0:[  191.638202][    C0]
+4 3 0:[  191.639486][    C0]      0    4   1 000164001504259  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.659233][    C0]      0    4   2 000164001533686  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.660510][    C0]      0    4   3 000168001450979  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  191.681320][    C0]      0    4   4 000168001466786  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.682594][    C0]      0    4   5 000168001483635  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.702260][    C0]      0    4   6 000168001503349  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.703532][    C0]      0    4   7 000168001533271  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.723256][    C0]      0    4   8 000172001449939  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  191.725622][    C0]      0    4   9 000172001466788  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.745287][    C0]      0    4  10 000172001484158  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.746559][    C0]      0    4  11 000172001504080  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.766284][    C0]      0    4  12 000172001535955  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.767558][    C0]      0    4  13 000176001450774  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  191.788372][    C0]      0    4  14 000176001466920  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.808100][    C0]      0    4  15 000176001483430  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.809373][    C0]      0    4  16 000176001504290  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.829093][    C0]      0    4  17 000176001533821  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.830367][    C0]      0    4  18 000180001450802  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  191.851183][    C0]      0    4  19 000180001466791  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.852456][    C0]      0    4  20 000180001483328  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.872120][    C0]      0    4  21 000180001504395  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.873392][    C0]      0    4  22 000180001532807  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.893116][    C0]      0    4  23 000184001450647  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  191.895482][    C0]      0    4  24 000184001466975  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.915150][    C0]      0    4  25 000184001483199  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.916422][    C0]      0    4  26 000184001504475  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.936144][    C0]      0    4  27 000184001533668  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.937417][    C0]      0    4  28 000188001450623  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  191.958234][    C0]      0    4  29 000188001466534  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.977963][    C0]      0    4  30 000188001483305  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.979237][    C0]      0    4  31 000188001503904  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  191.998959][    C0]      0    4  32 000188001534112  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.000233][    C0] --------------------------------------------------------------------------
+4 3 0:[  192.019915][    C0]      1    5   1 000164001507253  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.021238][    C0]      1    5   2 000164001537384  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.040995][    C0]      1    5   3 000168001454625  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.043324][    C0]      1    5   4 000168001469807  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.064162][    C0]      1    5   5 000168001486812  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.065486][    C0]      1    5   6 000168001506370  0x000000000000000  1  1    3 0xffffffc008b9c340(arch_counter_get_cntvct+0x0/0x20)
+4 3 0:[  192.104674][    C0]      1    5   7 000168001536943  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.107000][    C0]      1    5   8 000172001452960  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.108324][    C0]      1    5   9 000172001469835  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.129133][    C0]      1    5  10 000172001487179  0x000000000000000  1  1    3 0xffffffc008b9c340(arch_counter_get_cntvct+0x0/0x20)
+4 3 0:[  192.130457][    C0]      1    5  11 000172001507100  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.150207][    C0]      1    5  12 000172001539626  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.169993][    C0]      1    5  13 000176001454576  0x000000000000000  1  1    3 0xffffffc00871fec0(__const_udelay+0x88/0xb8)
+4 3 0:[  192.171300][    C0]      1    5  14 000176001469967  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.192116][    C0]      1    5  15 000176001486581  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.193440][    C0]      1    5  16 000176001507362  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.232632][    C0]      1    5  17 000176001537336  0x000000000000000  1  1    3 0xffffffc008b9c340(arch_counter_get_cntvct+0x0/0x20)
+4 3 0:[  192.234961][    C0]      1    5  18 000180001454526  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.236283][    C0]      1    5  19 000180001469838  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.257093][    C0]      1    5  20 000180001486505  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.258418][    C0]      1    5  21 000180001507416  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.278165][    C0]      1    5  22 000180001536479  0x000000000000000  1  1    3 0xffffffc00871fec0(__const_udelay+0x88/0xb8)
+4 3 0:[  192.297935][    C0]      1    5  23 000184001454527  0x000000000000000  1  1    3 0xffffffc008b9c340(arch_counter_get_cntvct+0x0/0x20)
+4 3 0:[  192.299261][    C0]      1    5  24 000184001470074  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.320077][    C0]      1    5  25 000184001486194  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.321401][    C0]      1    5  26 000184001507470  0x000000000000000  1  1    3 0xffffffc008b9c340(arch_counter_get_cntvct+0x0/0x20)
+4 3 0:[  192.341152][    C0]      1    5  27 000184001537288  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.360937][    C0]      1    5  28 000188001453748  0x000000000000000  1  1    3 0xffffffc008b9c340(arch_counter_get_cntvct+0x0/0x20)
+4 3 0:[  192.363264][    C0]      1    5  29 000188001469555  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.384101][    C0]      1    5  30 000188001486508  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.385424][    C0]      1    5  31 000188001506951  0x000000000000000  1  1    3 0xffffffc008b9c348(arch_counter_get_cntvct+0x8/0x20)
+4 3 0:[  192.405172][    C0]      1    5  32 000188001537784  0x000000000000000  1  1    3 0xffffffc008b9c340(arch_counter_get_cntvct+0x0/0x20)
+4 3 0:[  192.424962][    C0] --------------------------------------------------------------------------
+4 3 0:[  192.426197][    C0]      2    6   1 000164001509181  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.445906][    C0]      2    6   2 000164001539779  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.447181][    C0]      2    6   3 000168001456734  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.466899][    C0]      2    6   4 000168001471864  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.468174][    C0]      2    6   5 000168001488765  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.488992][    C0]      2    6   6 000168001508323  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.490268][    C0]      2    6   7 000168001539208  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.510014][    C0]      2    6   8 000172001455043  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.511287][    C0]      2    6   9 000172001471788  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.531009][    C0]      2    6  10 000172001489158  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.533379][    C0]      2    6  11 000172001509054  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.553125][    C0]      2    6  12 000172001542074  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.554399][    C0]      2    6  13 000176001456659  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.574121][    C0]      2    6  14 000176001471920  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.575394][    C0]      2    6  15 000176001488560  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.596212][    C0]      2    6  16 000176001509316  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.615941][    C0]      2    6  17 000176001539784  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.617215][    C0]      2    6  18 000180001456661  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.636935][    C0]      2    6  19 000180001471765  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.638211][    C0]      2    6  20 000180001488562  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.659022][    C0]      2    6  21 000180001509395  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.660297][    C0]      2    6  22 000180001538718  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.679961][    C0]      2    6  23 000184001456611  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.681234][    C0]      2    6  24 000184001472001  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.700958][    C0]      2    6  25 000184001488147  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.703326][    C0]      2    6  26 000184001509397  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.723075][    C0]      2    6  27 000184001539501  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.724348][    C0]      2    6  28 000188001455831  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.744070][    C0]      2    6  29 000188001471534  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.745343][    C0]      2    6  30 000188001488643  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.766159][    C0]      2    6  31 000188001508878  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.785889][    C0]      2    6  32 000188001540050  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.787164][    C0] --------------------------------------------------------------------------
+4 3 0:[  192.806845][    C0]      3    7   1 000164001511186  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.808209][    C0]      3    7   2 000164001542332  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.827878][    C0]      3    7   3 000168001458896  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.829152][    C0]      3    7   4 000168001473870  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.848875][    C0]      3    7   5 000168001490719  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.850149][    C0]      3    7   6 000168001510328  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.870964][    C0]      3    7   7 000168001541708  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.872239][    C0]      3    7   8 000172001457126  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.891988][    C0]      3    7   9 000172001473793  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.893261][    C0]      3    7  10 000172001491111  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.912982][    C0]      3    7  11 000172001511059  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.915348][    C0]      3    7  12 000172001544418  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.954455][    C0]      3    7  13 000176001458821  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.955729][    C0]      3    7  14 000176001473925  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.957002][    C0]      3    7  15 000176001490514  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.958275][    C0]      3    7  16 000176001511425  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  192.998490][    C0]      3    7  17 000176001542336  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  192.999766][    C0]      3    7  18 000180001458979  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.000034][    C0]      3    7  19 000180001473796  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.019777][    C0]      3    7  20 000180001490515  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.021053][    C0]      3    7  21 000180001511401  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.041864][    C0]      3    7  22 000180001541010  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.043140][    C0]      3    7  23 000184001458798  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.062885][    C0]      3    7  24 000184001474579  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.064159][    C0]      3    7  25 000184001490100  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.083884][    C0]      3    7  26 000184001511376  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.086252][    C0]      3    7  27 000184001541584  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.125442][    C0]      3    7  28 000188001457810  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.126716][    C0]      3    7  29 000188001473487  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.127989][    C0]      3    7  30 000188001490597  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.129263][    C0]      3    7  31 000188001510857  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.150035][    C0]      3    7  32 000188001542393  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.169765][    C0] --------------------------------------------------------------------------
+4 3 0:[  193.170997][    C0]      4    3   1 000164001513139  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.190673][    C0]      4    3   2 000164001544623  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.193040][    C0]      4    3   3 000168001461031  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.212705][    C0]      4    3   4 000168001475953  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.213979][    C0]      4    3   5 000168001492724  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.233699][    C0]      4    3   6 000168001512255  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.234974][    C0]      4    3   7 000168001543844  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.255790][    C0]      4    3   8 000172001459106  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.257067][    C0]      4    3   9 000172001475772  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.276814][    C0]      4    3  10 000172001493090  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.278087][    C0]      4    3  11 000172001513012  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.297811][    C0]      4    3  12 000172001546918  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.300179][    C0]      4    3  13 000176001460956  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.339369][    C0]      4    3  14 000176001475904  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.340641][    C0]      4    3  15 000176001492519  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.341914][    C0]      4    3  16 000176001513378  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.343188][    C0]      4    3  17 000176001544836  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.363965][    C0]      4    3  18 000180001461140  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.383691][    C0]      4    3  19 000180001475828  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.384965][    C0]      4    3  20 000180001492598  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.404683][    C0]      4    3  21 000180001513354  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.405957][    C0]      4    3  22 000180001543302  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.426775][    C0]      4    3  23 000184001460959  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.428052][    C0]      4    3  24 000184001476611  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.447803][    C0]      4    3  25 000184001492079  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.449075][    C0]      4    3  26 000184001513303  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.468794][    C0]      4    3  27 000184001543720  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.471162][    C0]      4    3  28 000188001459945  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.490911][    C0]      4    3  29 000188001475518  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.492185][    C0]      4    3  30 000188001492628  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.511909][    C0]      4    3  31 000188001512784  0x000000000000000  1  2    0 0x00000000800aa8a8(0x800aa8a8)
+4 3 0:[  193.513184][    C0]      4    3  32 000188001544685  0x000000000000000  1  1    3 0xffffffc001109340(ehld_event_update_allcpu+0x238/0x30c [exynos_ehld])
+4 3 0:[  193.533996][    C0] --------------------------------------------------------------------------
+4 3 0:[  193.553785][    C0] exynos-coresight coresight@1f000000: vCPU[0], pCPU[4] saved pc value
+4 3 0:[  193.555008][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL1, 0xffffffc0016dbe64 : exynos_cs_dump_pmu_snapshots+0x1d8/0x688 [exynos_coresight]
+4 3 0:[  193.556383][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL1, 0xffffffc0016dbe64 : exynos_cs_dump_pmu_snapshots+0x1d8/0x688 [exynos_coresight]
+4 3 0:[  193.596643][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL1, 0xffffffc0016dbe64 : exynos_cs_dump_pmu_snapshots+0x1d8/0x688 [exynos_coresight]
+4 3 0:[  193.598013][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL1, 0xffffffc0016dbe64 : exynos_cs_dump_pmu_snapshots+0x1d8/0x688 [exynos_coresight]
+4 3 0:[  193.599383][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL1, 0xffffffc0016dbe64 : exynos_cs_dump_pmu_snapshots+0x1d8/0x688 [exynos_coresight]
+4 3 0:[  193.639673][    C0] exynos-coresight coresight@1f000000: vCPU[1], pCPU[5] saved pc value
+4 3 0:[  193.639888][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800be07c
+4 3 0:[  193.641120][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bec00
+4 3 0:[  193.660818][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bf404
+4 3 0:[  193.662048][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bf404
+4 3 0:[  193.663278][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800be080
+4 3 0:[  193.682938][    C0] exynos-coresight coresight@1f000000: vCPU[2], pCPU[6] saved pc value
+4 3 0:[  193.684157][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bf404
+4 3 0:[  193.703850][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800be07c
+4 3 0:[  193.705079][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800b93a8
+4 3 0:[  193.706308][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800be080
+4 3 0:[  193.725965][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL1, 0xffffffc00802d6a8 : do_handle_IPI+0xe4/0x1a4
+4 3 0:[  193.727257][    C0] exynos-coresight coresight@1f000000: vCPU[3], pCPU[7] saved pc value
+4 3 0:[  193.746948][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bf404
+4 3 0:[  193.748177][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bf404
+4 3 0:[  193.767868][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800be080
+4 3 0:[  193.769097][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bf460
+4 3 0:[  193.788777][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL1, 0xffffffc00802d6a8 : do_handle_IPI+0xe4/0x1a4
+4 3 0:[  193.790070][    C0] exynos-coresight coresight@1f000000: vCPU[4], pCPU[3] saved pc value
+4 3 0:[  193.791290][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800be07c
+4 3 0:[  193.810983][    C0] exynos-coresight coresight@1f000000:      VMID:3, EL2, 0xc0000000800be0c0 : 0xc0000000800be0c0
+4 3 0:[  193.812260][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bec00
+4 3 0:[  193.831891][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800947a0
+4 3 0:[  193.833123][    C0] exynos-coresight coresight@1f000000:      VMID:0, EL2, 0xc0000000800bf404
+4 3 0:[  193.852806][    C0] Collection probing can't be stopped (size=-2)
+4 3 0:[  193.853974][    C0] system-wide panic already initiated by VM2
+4 3 0:[  193.854131][    C0] item - log_kevents is disabled
+4 3 0:[  193.873738][    C0] debug-snapshot dss:                Module Name             Loaded Address
+4 3 0:[  193.873910][    C0] debug-snapshot dss: -------------------------------------------------------
+4 3 0:[  193.875145][    C0] debug-snapshot dss:                  rse_machine_pcm - 0xffffffc002484000
+4 3 0:[  193.894791][    C0] debug-snapshot dss:                 rse_platform_pcm - 0xffffffc00256e000
+4 3 0:[  193.896020][    C0] debug-snapshot dss:                  pdk_machine_pcm - 0xffffffc00247d000
+4 3 0:[  193.915700][    C0] debug-snapshot dss:                 pdk_platform_pcm - 0xffffffc0025c4000
+4 3 0:[  193.916929][    C0] debug-snapshot dss:            ea_harman_1ms_dai_pcm - 0xffffffc0025cb000
+4 3 0:[  193.918159][    C0] debug-snapshot dss:                ea_harman_dai_pcm - 0xffffffc002194000
+4 3 0:[  193.937817][    C0] debug-snapshot dss:                      dspipc_misc - 0xffffffc00259d000
+4 3 0:[  193.939046][    C0] debug-snapshot dss:                     harman_mcipc - 0xffffffc0025d7000
+4 3 0:[  193.958726][    C0] debug-snapshot dss:               harman_abox_driver - 0xffffffc0011a4000
+4 3 0:[  193.959954][    C0] debug-snapshot dss:      exynosautov920_sadk_machine - 0xffffffc0025b1000
+4 3 0:[  193.979634][    C0] debug-snapshot dss:     exynosautov920_dummy_machine - 0xffffffc0025a5000
+4 3 0:[  193.980864][    C0] debug-snapshot dss:        snd_soc_samsung_abox_core - 0xffffffc0024d9000
+4 3 0:[  193.982094][    C0] debug-snapshot dss:       vmw_vsock_virtio_transport - 0xffffffc00218d000
+4 3 0:[  194.001752][    C0] debug-snapshot dss:                  snd_soc_s3c_dma - 0xffffffc001f7b000
+4 3 0:[  194.002982][    C0] debug-snapshot dss:            snd_soc_tlv320adcx140 - 0xffffffc00217f000
+4 3 0:[  194.022662][    C0] debug-snapshot dss:                  snd_soc_tas6424 - 0xffffffc002178000
+4 3 0:[  194.023892][    C0] debug-snapshot dss:         snd_soc_tca6416a_tas6424 - 0xffffffc0011e3000
+4 3 0:[  194.025123][    C0] debug-snapshot dss:               snd_soc_hdmi_codec - 0xffffffc001b41000
+4 3 0:[  194.044780][    C0] debug-snapshot dss:                            optee - 0xffffffc002472000
+4 3 0:[  194.046009][    C0] debug-snapshot dss:                          pnc_ree - 0xffffffc002462000
+4 3 0:[  194.065694][    C0] debug-snapshot dss:                            hwmon - 0xffffffc001b49000
+4 3 0:[  194.066923][    C0] debug-snapshot dss:                  harman_eavb_mac - 0xffffffc00244b000
+4 3 0:[  194.086602][    C0] debug-snapshot dss:                         npu_v910 - 0xffffffc0021d3000
+4 3 0:[  194.087831][    C0] debug-snapshot dss:                  inv_mpu_iio_spi - 0xffffffc0021ce000
+4 3 0:[  194.089061][    C0] debug-snapshot dss:                      inv_mpu_iio - 0xffffffc0021b8000
+4 3 0:[  194.108716][    C0] debug-snapshot dss:    industrialio_triggered_buffer - 0xffffffc0021b3000
+4 3 0:[  194.109945][    C0] debug-snapshot dss:                        kfifo_buf - 0xffffffc0021ae000
+4 3 0:[  194.129625][    C0] debug-snapshot dss:                  vbufq_fe_module - 0xffffffc0021a7000
+4 3 0:[  194.130853][    C0] debug-snapshot dss:                mali_arbif_module - 0xffffffc001ebe000
+4 3 0:[  194.150536][    C0] debug-snapshot dss:             mali_arbif_fe_module - 0xffffffc001d76000
+4 3 0:[  194.151765][    C0] debug-snapshot dss:             vgpu_arb_comm_module - 0xffffffc001d64000
+4 3 0:[  194.152995][    C0] debug-snapshot dss:                     vmbox_module - 0xffffffc0017e9000
+4 3 0:[  194.172651][    C0] debug-snapshot dss:                      vsmq_module - 0xffffffc001e9e000
+4 3 0:[  194.173880][    C0] debug-snapshot dss:                     vabox_module - 0xffffffc00219e000
+4 3 0:[  194.193560][    C0] debug-snapshot dss:                 vwatchdog_module - 0xffffffc001e97000
+4 3 0:[  194.194790][    C0] debug-snapshot dss:                   vg2d_fe_module - 0xffffffc001e90000
+4 3 0:[  194.196020][    C0] debug-snapshot dss:                   vnpu_fe_module - 0xffffffc001b5f000
+4 3 0:[  194.215680][    C0] debug-snapshot dss:                              npu - 0xffffffc001fdb000
+4 3 0:[  194.216909][    C0] debug-snapshot dss:                vvideo2_fe_module - 0xffffffc001fbd000
+4 3 0:[  194.236589][    C0] debug-snapshot dss:           vlx_clk_ctrl_fe_module - 0xffffffc001fb6000
+4 3 0:[  194.237818][    C0] debug-snapshot dss:       vlx_clk_ctrl_common_module - 0xffffffc001fb1000
+4 3 0:[  194.257499][    C0] debug-snapshot dss:            vlx_clk_docile_module - 0xffffffc001fab000
+4 3 0:[  194.258730][    C0] debug-snapshot dss:                  vlx_prop_module - 0xffffffc001fa6000
+4 3 0:[  194.259961][    C0] debug-snapshot dss:                  vlx_svec_module - 0xffffffc001f9c000
+4 3 0:[  194.279615][    C0] debug-snapshot dss:             vlx_last_kmsg_module - 0xffffffc001f96000
+4 3 0:[  194.280846][    C0] debug-snapshot dss:                   vlx_log_module - 0xffffffc001f90000
+4 3 0:[  194.300526][    C0] debug-snapshot dss:               vlx_history_module - 0xffffffc001f8a000
+4 3 0:[  194.301756][    C0] debug-snapshot dss:                     vinfo_module - 0xffffffc001f85000
+4 3 0:[  194.302986][    C0] debug-snapshot dss:         vlx_panic_trigger_module - 0xffffffc001f80000
+4 3 0:[  194.322643][    C0] debug-snapshot dss:              vlx_vdmaheap_module - 0xffffffc001f5a000
+4 3 0:[  194.323874][    C0] debug-snapshot dss:                    vbpipe_module - 0xffffffc001f4d000
+4 3 0:[  194.343554][    C0] debug-snapshot dss:                  vlx_vipc_module - 0xffffffc001f44000
+4 3 0:[  194.344784][    C0] debug-snapshot dss:                     veth2_module - 0xffffffc001f39000
+4 3 0:[  194.364461][    C0] debug-snapshot dss:               vthermal_fe_module - 0xffffffc001f34000
+4 3 0:[  194.365689][    C0] debug-snapshot dss:            vdma_engine_fe_module - 0xffffffc001f24000
+4 3 0:[  194.366920][    C0] debug-snapshot dss:                   vi2c_fe_module - 0xffffffc001f1e000
+4 3 0:[  194.386578][    C0] debug-snapshot dss:                   vlx_vmq_module - 0xffffffc001f0f000
+4 3 0:[  194.387807][    C0] debug-snapshot dss:                   vrtc_fe_module - 0xffffffc001f0a000
+4 3 0:[  194.407488][    C0] debug-snapshot dss:                      vrpc_module - 0xffffffc001d0d000
+4 3 0:[  194.408717][    C0] debug-snapshot dss:                 vevdev_fe_module - 0xffffffc001f00000
+4 3 0:[  194.428397][    C0] debug-snapshot dss:                  nkregion_module - 0xffffffc001efb000
+4 3 0:[  194.429626][    C0] debug-snapshot dss:                       log_tracer - 0xffffffc001ef6000
+4 3 0:[  194.430857][    C0] debug-snapshot dss:               vdriver_lib_module - 0xffffffc001ef1000
+4 3 0:[  194.450515][    C0] debug-snapshot dss:                      exynos_acme - 0xffffffc001eeb000
+4 3 0:[  194.451746][    C0] debug-snapshot dss:                      s3c2410_wdt - 0xffffffc001ee2000
+4 3 0:[  194.471424][    C0] debug-snapshot dss:          exynosauto_v920_thermal - 0xffffffc001edc000
+4 3 0:[  194.472655][    C0] debug-snapshot dss:                   exynos_thermal - 0xffffffc001ed5000
+4 3 0:[  194.473886][    C0] debug-snapshot dss:               syscon_reboot_mode - 0xffffffc001ed0000
+4 3 0:[  194.493542][    C0] debug-snapshot dss:                      reboot_mode - 0xffffffc001ecb000
+4 3 0:[  194.494772][    C0] debug-snapshot dss:                    exynos_reboot - 0xffffffc001ec6000
+4 3 0:[  194.514451][    C0] debug-snapshot dss:                           scaler - 0xffffffc001ea6000
+4 3 0:[  194.515681][    C0] debug-snapshot dss:                       exynos_mfc - 0xffffffc001da4000
+4 3 0:[  194.535360][    C0] debug-snapshot dss:                exynos_i3c_master - 0xffffffc001d9c000
+4 3 0:[  194.536590][    C0] debug-snapshot dss:                          i2c_dev - 0xffffffc001d94000
+4 3 0:[  194.537820][    C0] debug-snapshot dss:                     acpm_mfd_bus - 0xffffffc001d8f000
+4 3 0:[  194.557477][    C0] debug-snapshot dss:                   i2c_exynosauto - 0xffffffc001d88000
+4 3 0:[  194.558707][    C0] debug-snapshot dss:                      rtc_s2vps02 - 0xffffffc001d82000
+4 3 0:[  194.578388][    C0] debug-snapshot dss:                      rtc_s2vps01 - 0xffffffc001d7c000
+4 3 0:[  194.579617][    C0] debug-snapshot dss:              dwc3_exynosauto_usb - 0xffffffc001d6b000
+4 3 0:[  194.599298][    C0] debug-snapshot dss:                       virtio_net - 0xffffffc001d55000
+4 3 0:[  194.600527][    C0] debug-snapshot dss:                     net_failover - 0xffffffc001c0c000
+4 3 0:[  194.601756][    C0] debug-snapshot dss:                         failover - 0xffffffc0016d5000
+4 3 0:[  194.621416][    C0] debug-snapshot dss:                           sxgmac - 0xffffffc001bfc000
+4 3 0:[  194.622644][    C0] debug-snapshot dss:                  stmma) 0                0 ffffff880601b640 *  irq/97-16100000
+[  190.608460][   T82]      153                0                0       3988806709 S(   1) 0                0 ffffff8809038040 *  irq/98-16100000
+[  190.608464][   T82]      154                0                0       3989061918 S(   1) 0                0 ffffff880903b640 *  irq/99-16b20000
+[  190.608468][   T82]      155                0                0       3989208872 S(   1) 0                0 ffffff8809039240 *  irq/100-16b2000
+[  190.608472][   T82]      156                0                0       3989450695 S(   1) 0                0 ffffff880903ec40 *  irq/101-16b5000
+[  190.608476][   T82]      157                0                0       3989598117 S(   1) 0                0 ffffff880903a440 *  irq/102-16b5000
+[  190.608480][   T82]      158                0        342991304     189907089153 S(   1) 0                0 ffffff880903da40 *  irq/63-108a0000
+[  190.608484][   T82]      159                0                0       3990272178 S(   1) 0                0 ffffff880903c840 *  irq/260-inap565
+[  190.608489][   T82]      160                0                0       3990401111 S(   1) 0                0 ffffff88096ada40 *  inap565t_link_r
+[  190.608492][   T82]      161                0         43915233     190106228716 S(   1) 2                0 ffffff88096ac840 *        fs3ipc_tx
+[  190.608497][   T82]      162                0          3936743       4119961351 I(1026) 0                0 ffffff88096a8040 *     kworker/u6:2
+[  190.608500][   T82]      163                0                0       3993109732 S(   1) 0                0 ffffff88096ab640 *  irq/261-inap565
+[  190.608505][   T82]      164                0                0       3996940275 S(   1) 2                0 ffffff88096a9240 *  irq/262-inap597
+[  190.608509][   T82]      165                0                0       3996034225 S(   1) 1                0 ffffff88096aec40 *  inap_link_recov
+[  190.608513][   T82]      166                0                0       3996093183 S(   1) 1                0 ffffff88096aa440 *  print_apix_regs
+[  190.608517][   T82]      167                0       1761241415     190243794618 R(   0) 0                0 ffffff8805e1c840 *  Irq Poll Thread
+[  190.608521][   T82]      168                0                0       4037553682 S(   1) 1                0 ffffff8805e18040 *  irq/157-DPUB0_D
+[  190.608525][   T82]      169                0                0       4038389125 I(1026) 2                0 ffffff8805e1b640 *      kworker/2:2
+[  190.608529][   T82]      170                0                0       4038253264 S(   1) 1                0 ffffff8805e19240 *  irq/176-DPUB1_D
+[  190.608533][   T82]      171                0                0       4038374594 I(1026) 2                0 ffffff8805e1ec40 *      kworker/2:3
+[  190.608537][   T82]      172                0                0       4038853759 S(   1) 1                0 ffffff8805e1a440 *  irq/181-DPUB1_D
+[  190.608541][   T82]      173                0         23933750     189978169703 I(1026) 2                0 ffffff8805e1da40 *      kworker/2:4
+[  190.608546][   T82]      174                0                0       4039046078 S(   1) 2                0 ffffff8805e29240 *  irq/199-DPUB2_D
+[  190.608550][   T82]      175                0                0       4039677899 S(   1) 2                0 ffffff8805e2ec40 *  irq/204-DPUB2_D
+[  190.608554][   T82]      176                0                0       4041015686 S(   1) 2                0 ffffff8805e2a440 *  irq/162-17c9000
+[  190.608558][   T82]      177                0                0       4048297873 S(   1) 2                0 ffffff8805e2da40 *  irq/263-18c9000
+[  190.608562][   T82]      178                0          3976431       4307290717 S(   1) 0                0 ffffff8805e2c840 *  irq/209-18c9000
+[  190.608566][   T82]      179                0                0       4048621675 I(1026) 2                0 ffffff8805e28040 *   18c90000.dp_tx
+[  190.608570][   T82]      180                0                0       4048697950 I(1026) 2                0 ffffff8805e2b640 *   18c90000.dp_tx
+[  190.608574][   T82]      181                0                0       4073402586 S(   1) 2                0 ffffff8805e35a40 *      card0-crtc0
+[  190.608578][   T82]      182                0                0       4073486101 S(   1) 2                0 ffffff8805e34840 *      card0-crtc1
+[  190.608582][   T82]      183                0                0       4073547221 S(   1) 2                0 ffffff8805e30040 *      card0-crtc2
+[  190.608585][   T82]      184                0                0       4073607637 S(   1) 2                0 ffffff8805e33640 *      card0-crtc3
+[  190.608589][   T82]      185                0                0       4073670111 S(   1) 2                0 ffffff8805e31240 *      card0-crtc4
+[  190.608593][   T82]      186                0                0       4079227794 S(   1) 2                0 ffffff8805e36c40 *      card1-crtc0
+[  190.608597][   T82]      187                0                0       4076977021 S(   1) 0                0 ffffff8805e32440 *      card1-crtc1
+[  190.608602][   T82]      188                0                0       4079414278 S(   1) 2                0 ffffff8809bbb640 *      card1-crtc2
+[  190.608606][   T82]      189                0                0       4077121448 S(   1) 0                0 ffffff8809bb9240 *      card1-crtc3
+[  190.608609][   T82]      190                0                0       4079551649 S(   1) 2                0 ffffff8809bbec40 *      card1-crtc4
+[  190.608613][   T82]      191                0                0       4082260997 S(   1) 1                0 ffffff8809bba440 *      card2-crtc0
+[  190.608617][   T82]      192                0                0       4082332377 S(   1) 1                0 ffffff8809bbda40 *      card2-crtc1
+[  190.608621][   T82]      193                0                0       4082397559 S(   1) 1                0 ffffff8809bbc840 *      card2-crtc2
+[  190.608625][   T82]      194                0                0       4082467039 S(   1) 1                0 ffffff8809bb8040 *      card2-crtc3
+[  190.608629][   T82]      195                0                0       4082539929 S(   1) 1                0 ffffff8809db8040 *      card2-crtc4
+[  190.608633][   T82]      196                0                0       4088111500 S(   1) 0                0 ffffff8809dbb640 *  dmabuf-deferred
+[  190.608637][   T82]      197                0                0       4093003054 S(   1) 1                0 ffffff8809db9240 *        scsi_eh_0
+[  190.608641][   T82]      198                0                0       4093103133 I(1026) 1                0 ffffff8809dbec40 *       scsi_tmf_0
+[  190.608645][   T82]      199                0                0       4094375398 I(1026) 1                0 ffffff8809dba440 *      ufs_eh_wq_0
+[  190.608649][   T82]      200                0                0       6382916468 I(1026) 2                0 ffffff8809dbda40 *     kworker/u7:0
+[  190.608653][   T82]      201                0                0       4097502767 I(1026) 1                0 ffffff8809dbc840 *     kworker/u7:1
+[  190.608658][   T82]      202                0                0       4096192402 I(1026) 1                0 ffffff880a0ab640 *         srpmb_wq
+[  190.608662][   T82]      203                0                0       4098697741 I(1026) 1                0 ffffff880a0a9240 *  sxgmac_status_u
+[  190.608666][   T82]      204                0                0       4098806385 I(1026) 1                0 ffffff880a0aec40 *  sxgmac_sfi_moni
+[  190.608670][   T82]      205                0                0       4098550633 I(1026) 2                0 ffffff880a0aa440 *  sxgmac_dsp_moni
+[  190.608674][   T82]      206                0                0       4098796908 I(1026) 2                0 ffffff880a0ada40 *        stmmac_wq
+[  190.608678][   T82]      207                0         83092923     187428560484 D(   2) 2                0 ffffff880a0ac840 *     kworker/u6:3
+[  190.608682][   T82] Call trace(SYS OS):
+[  190.608684][   T82]  __switch_to+0xf8/0x150
+[  190.608689][   T82]  __schedule+0x34c/0x984
+[  190.608693][   T82]  schedule+0x74/0x140
+[  190.608697][   T82]  schedule_timeout+0xa0/0x1d0
+[  190.608702][   T82]  msleep+0x48/0x60
+[  190.608707][   T82]  sxgmac_status_update_task+0x4c/0x64
+[  190.608712][   T82]  process_one_work+0x1e8/0x4b0
+[  190.608716][   T82]  worker_thread+0x78/0x44c
+[  190.608719][   T82]  kthread+0x164/0x170
+[  190.608724][   T82]  ret_from_fork+0x10/0x20
+[  190.608727][   T82]      208                0                0       4124287875 I(1026) 1                0 ffffff880a0a8040 *     kworker/u6:4
+[  190.608731][   T82]      209                0         27982397     190106218612 I(1026) 2                0 ffffff880a372440 *     kworker/u6:5
+[  190.608736][   T82]      210                0          3971901     187190831620 D(   2) 0                0 ffffff880a375a40 *     kworker/u6:6
+[  190.608739][   T82] Call trace(SYS OS):
+[  190.608742][   T82]  __switch_to+0xf8/0x150
+[  190.608746][   T82]  __schedule+0x34c/0x984
+[  190.608750][   T82]  schedule+0x74/0x140
+[  190.608754][   T82]  schedule_timeout+0xa0/0x1d0
+[  190.608759][   T82]  msleep+0x48/0x60
+[  190.608763][   T82]  sxgmac_dsp_monitor_task+0x88/0x164
+[  190.608767][   T82]  process_one_work+0x1e8/0x4b0
+[  190.608771][   T82]  worker_thread+0x78/0x44c
+[  190.608775][   T82]  kthread+0x164/0x170
+[  190.608779][   T82]  ret_from_fork+0x10/0x20
+[  190.608783][   T82]      211                0                0       4109349932 I(1026) 0                0 ffffff880a374840 *     kworker/u6:7
+[  190.608787][   T82]      212                0                0     169701135480 I(1026) 1                0 ffffff880a370040 *      kworker/1:3
+[  190.608792][   T82]      213                0                0       4109351000 I(1026) 0                0 ffffff880a373640 *     kworker/u6:8
+[  190.608796][   T82]      214                0          7286903     186743206519 I(1026) 0                0 ffffff880a371240 *     kworker/0:1H
+[  190.608800][   T82]      215                0          3853490      81918624136 I(1026) 1                0 ffffff880a376c40 *     kworker/1:1H
+[  190.608804][   T82]      216                0                0       4133280015 I(1026) 1                0 ffffff880a808040 *   dm_bufio_cache
+[  190.608808][   T82]      219                0                0       4128242527 S(   1) 0                0 ffffff880a80ec40 *           vevent
+[  190.608812][   T82]      220                0                0       4134873340 S(   1) 2                0 ffffff880a80a440 *  vrtc,12-3-serve
+[  190.608816][   T82]      221                0                0       4134986960 S(   1) 2                0 ffffff880a80da40 *  vthermal,11-3-s
+[  190.608820][   T82]      222                0                0       4135083392 S(   1) 2                0 ffffff880a80c840 *  vthermal,10-3-s
+[  190.608825][   T82]      223                0                0       4135168443 S(   1) 2                0 ffffff880a823640 *  vthermal,9-3-se
+[  190.608829][   T82]      224                0                0       4135247844 S(   1) 2                0 ffffff880a821240 *  vthermal,8-3-se
+[  190.608833][   T82]      225                0                0       4135322063 S(   1) 2                0 ffffff880a826c40 *  vthermal,7-3-se
+[  190.608837][   T82]      226                0                0       4152624737 S(   1) 2                0 ffffff880a822440 *  vdmaheap,15-3-s
+[  190.608841][   T82]      228                0                0       4139678650 I(1026) 2                0 ffffff880a824840 *  s2mpu_sysconf_w
+[  190.608845][   T82]      234                0                0       4146082186 I(1026) 2                0 ffffff880a834840 *       vdpu_irqwq
+[  190.608849][   T82]      235                0                0       4146347499 I(1026) 2                0 ffffff880a830040 *       vdpu_irqwq
+[  190.608853][   T82]      236                0                0       4146586899 I(1026) 2                0 ffffff880a833640 *       vdpu_irqwq
+[  190.608858][   T82]      237                0                0       4146835570 I(1026) 2                0 ffffff880a831240 *       vdpu_irqwq
+[  190.608862][   T82]      238                0                0       4147139164 I(1026) 2                0 ffffff880a809240 *       vdpu_irqwq
+[  190.608866][   T82]      239                0                0       4147503930 I(1026) 2                0 ffffff880bd3da40 *           smc_wq
+[  190.608870][   T82]      240                0                0       4144112005 I(1026) 0                0 ffffff880bd3c840 *              mld
+[  190.608875][   T82]      241                0                0       4144112005 I(1026) 0                0 ffffff880bd38040 *    ipv6_addrconf
+[  190.608879][   T82]      242                0       1457423098      65775219102 S(   1) 1                0 ffffff880bd3b640 *         kmemleak
+[  190.608883][   T82]      243                0         54699608     187584788097 S(   1) 0                0 ffffff880bd39240 *  irq/62-10880000
+[  190.608887][   T82]      244                0                0     145547931782 S(   1) 0                0 ffffff880bd3ec40 *     jbd2/sdd21-8
+[  190.608892][   T82]      245                0                0       4188603019 I(1026) 1                0 ffffff880bd3a440 *  ext4-rsv-conver
+[  190.608896][   T82]      264                0          7951640     185128025081 S(   1) 1       7f807ee1ac ffffff880ab0c840 *          rpcbind
+[  190.608900][   T82]      267        793209319       2002954901     190422118367 R(   0) 2       7f85d08044 ffffff880ab0da40 *  systemd-journal
+[  190.608904][   T82] Call trace(SYS OS):
+[  190.608906][   T82]  __switch_to+0xf8/0x150
+[  190.608910][   T82]  __schedule+0x34c/0x984
+[  190.608915][   T82]  schedule+0x74/0x140
+[  190.608919][   T82]  schedule_hrtimeout_range_clock+0x1dc/0x1f4
+[  190.608922][   T82]  schedule_hrtimeout_range+0x1c/0x2c
+[  190.608926][   T82]  do_epoll_wait+0x7b8/0x8c4
+[  190.608932][   T82]  do_compat_epoll_pwait.part.0+0x1c/0xa0
+[  190.608937][   T82]  __arm64_sys_epoll_pwait+0x78/0x120
+[  190.608941][   T82]  invoke_syscall+0x50/0x120
+[  190.608946][   T82]  el0_svc_common.constprop.0+0xdc/0x100
+[  190.608950][   T82]  do_el0_svc+0x30/0xa0
+[  190.608955][   T82]  el0_svc+0x28/0x80
+[  190.608958][   T82]  el0t_64_sync_handler+0xa4/0x130
+[  190.608962][   T82]  el0t_64_sync+0x1a4/0x1a8
+[  190.608966][   T82]      272                0          3867526       5270495733 S(   1) 2       7faab74350 ffffff88102bb640 *  vinputsimulator
+[  190.608971][   T82]      285        115651692        290291026     186969140816 S(   1) 0       7f963a7fec ffffff880ab0a440 *    systemd-udevd
+[  190.608975][   T82]      287                0          3992552     187094863575 I(1026) 0                0 ffffff880ab08040 *      kworker/0:2
+[  190.608980][   T82]      290         11502995         58660031       8321327397 S(   1) 1       7f963a7fec ffffff880e9ea440 *    systemd-udevd
+[  190.608984][   T82]      291         22927895         41845802       8321192605 S(   1) 1       7f963a7fec ffffff880e9eec40 *    systemd-udevd
+[  190.608989][   T82]      292          7737608         42103645       8319563205 S(   1) 1       7f963a7fec ffffff880e9e9240 *    systemd-udevd
+[  190.608993][   T82]      293         26751408         27210131       8277233925 S(   1) 0       7f963a7fec ffffff880e9eb640 *    systemd-udevd
+[  190.608997][   T82]      294         38977677        150910577       8283125045 S(   1) 0       7f963a7fec ffffff880e9e8040 *    systemd-udevd
+[  190.609001][   T82]      295         22738938         54547861       8274956087 S(   1) 0       7f963a7fec ffffff880e9eda40 *    systemd-udevd
+[  190.609005][   T82]      296                0         42435360       8281595800 S(   1) 0       7f963a7fec ffffff880e9ec840 *    systemd-udevd
+[  190.609009][   T82]      297          3905860         66756457       8365753852 S(   1) 1       7f963a7fec ffffff880a825a40 *    systemd-udevd
+[  190.609013][   T82]      298          7940884         27135701       8282190722 S(   1) 0       7f963a7fec ffffff88102ba440 *    systemd-udevd
+[  190.609017][   T82]      299         15708983         54478672       8331047292 S(   1) 1       7f963a7fec ffffff88102bec40 *    systemd-udevd
+[  190.609021][   T82]      300         30547033         58158802       8320106408 S(   1) 1       7f963a7fec ffffff88102bda40 *    systemd-udevd
+[  190.609025][   T82]      301         27316562         75592159       8271279835 S(   1) 0       7f963a7fec ffffff88102b8040 *    systemd-udevd
+[  190.609030][   T82]      302         11617136         38960992       8320987371 S(   1) 1       7f963a7fec ffffff88102bc840 *    systemd-udevd
+[  190.609034][   T82]      303          3799427         58297232       8284341035 S(   1) 0       7f963a7fec ffffff880ab0b640 *    systemd-udevd
+[  190.609038][   T82]      304         19384663        166250989       8313540880 S(   1) 0       7f963a7fec ffffff880ab09240 *    systemd-udevd
+[  190.609042][   T82]      308         42790281         74610573     173021296451 S(   1) 0       7fb2768044 ffffff8810a01240 *  systemd-timesyn
+[  190.609046][   T82]      311                0         31346300     173154896779 S(   1) 1       7fb2769efc ffffff8810a00040         sd-resolve
+[  190.609051][   T82]      315          3802631         47204038     190421825762 R(   0) 2       7fb05391cc ffffff8810a05a40 *            klogd
+[  190.609055][   T82] Call trace(SYS OS):
+[  190.609057][   T82]  __switch_to+0xf8/0x150
+[  190.609061][   T82]  __schedule+0x34c/0x984
+[  190.609066][   T82]  schedule+0x74/0x140
+[  190.609070][   T82]  syslog_print+0x100/0x3e0
+[  190.609074][   T82]  do_syslog.part.0+0x178/0x3b4
+[  190.609079][   T82]  __arm64_sys_syslog+0x4c/0x6c
+[  190.609083][   T82]  invoke_syscall+0x50/0x120
+[  190.609087][   T82]  el0_svc_common.constprop.0+0xdc/0x100
+[  190.609092][   T82]  do_el0_svc+0x30/0xa0
+[  190.609096][   T82]  el0_svc+0x28/0x80
+[  190.609099][   T82]  el0t_64_sync_handler+0xa4/0x130
+[  190.609103][   T82]  el0t_64_sync+0x1a4/0x1a8
+[  190.609107][   T82]      317                0                0      81841805913 S(   1) 0       7fb0cda1b4 ffffff880ab0ec40 *          syslogd
+[  190.609111][   T82]      318         30783539         77631463     187166805611 S(   1) 2       7f963a7fec ffffff88102b9240 *    systemd-udevd
+[  190.609116][   T82]      320        146080347         35345418      81838222113 S(   1) 0       7f80147fec ffffff8811b36c40 *      dbus-daemon
+[  190.609120][   T82]      323                0          3980833       6228219252 S(   1) 1       7faaa6ccb8 ffffff8811b34840 *     diag-monitor
+[  190.609124][   T82]      328        207842028        375456825     189771703613 S(   1) 2       7faaaa4394 ffffff8811b32440       diag-monitor
+[  190.609128][   T82]      324          3987136                0     190159104600 S(   1) 2       7fbdd8e1f4 ffffff8811b30040 *       dlt-system
+[  190.609133][   T82]      327                0                0     190289178499 S(   1) 2       7fbdd64394 ffffff8810a06c40    dlt_housekeeper
+[  190.609137][   T82]      329                0                0       6228471726 S(   1) 1       7fbdd2ccb8 ffffff8817fe0040      dlt_segmented
+[  190.609141][   T82]      325         91838382        259504771     190203246808 S(   1) 2       7fabe1e1ac ffffff8811b33640 *       dlt-daemon
+[  190.609145][   T82]      326                0         11114845      10239441879 S(   1) 0       7fa430ccb8 ffffff8810a04840 *        DltBridge
+[  190.609150][   T82]      337                0          4000000     190326048369 S(   1) 2       7fa436e1f4 ffffff8811b19240    dlt_housekeeper
+[  190.609154][   T82]      339                0                0       6284311957 S(   1) 1       7fa430ccb8 ffffff8811b1a440      dlt_segmented
+[  190.609159][   T82]      456                0                0      10277557100 S(   1) 1       7fa430ccb8 ffffff8818baa440          DltBridge
+[  190.609163][   T82]      457          4000000          3991118     190409932768 S(   1) 2       7fa4344394 ffffff8818ba8040          DltBridge
+[  190.609167][   T82]      458          7994635        465811304     190433538470 S(   1) 2       7fa4344394 ffffff8818bab640          DltBridge
+[  190.609171][   T82]      459          3972137         11938673     190423483601 S(   1) 2       7fa436a1fc ffffff8818ba9240          DltBridge
+[  190.609175][   T82]      460         39946563        115907007     190435295969 S(   1) 2       7fa4344394 ffffff8818bac840          DltBridge
+[  190.609180][   T82]      461                0                0     189792771163 S(   1) 2       7fa436a1fc ffffff8818baec40          DltBridge
+[  190.609184][   T82]      333                0         11794452      11464981857 S(   1) 0       7fb2320050 ffffff8817fe6c40 *       pnc-syslog
+[  190.609188][   T82]      335         47134169         62089589     169516794007 S(   1) 0       7faeaa8044 ffffff8817fe5a40 *   systemd-logind
+[  190.609192][   T82]      336         11594790        136619741       8355642654 S(   1) 1       7f963a7fec ffffff8817fe4840 *    systemd-udevd
+[  190.609196][   T82]      340                0                0       6312238029 S(   1) 1       7fa9380050 ffffff8811b1da40 *  vbufq-be.wq.3/0
+[  190.609200][   T82]      343                0                0       6314279746 S(   1) 1       7fa9380050 ffffff8811b1b640        VNPU-BE.th0
+[  190.609204][   T82]      344                0          3943334       6314374615 S(   1) 1       7fa9380050 ffffff8811b35a40     vvideo2-be.th0
+[  190.609209][   T82]      346                0                0       6314370371 S(   1) 1       7fa9380050 ffffff8810a03640        vgki-helper
+[  190.609213][   T82]      347                0                0       6314389121 S(   1) 1       7fa9380050 ffffff881a30ec40        vgki-helper
+[  190.609218][   T82]      338         19663724         90326741       8305137598 S(   1) 0       7f963a7fec ffffff8811b1ec40 *    systemd-udevd
+[  190.609222][   T82]      342          3970338         34291799       8281435644 S(   1) 0       7f963a7fec ffffff8811b1c840 *    systemd-udevd
+[  190.609226][   T82]      345                0                0       6318709694 S(   1) 1                0 ffffff8811b31240 *         vbufq-be
+[  190.609230][   T82]      351         15352757         39508022       8273791007 S(   1) 0       7f963a7fec ffffff881a30c840 *    systemd-udevd
+[  190.609234][   T82]      352         27418698         89271746       8314771636 S(   1) 0       7f963a7fec ffffff881a30a440 *    systemd-udevd
+[  190.609239][   T82]      354         19763310         77789506       8297706921 S(   1) 0       7f963a7fec ffffff881a30b640 *    systemd-udevd
+[  190.609243][   T82]      364                0        202024368       7515765877 S(   1) 2       7fbb9f7fec ffffff881ab72440 *           crosvm
+[  190.609247][   T82]      366          3981745          3709870       6499441735 S(   1) 1       7fbdbb8edc ffffff881ab75a40 *           crosvm
+[  190.609252][   T82]      367          3950130        225721343       7513715149 S(   1) 2       7fb4a07fec ffffff881ab71240 *           crosvm
+[  190.609256][   T82]      369                0          3884792       6499469027 S(   1) 1       7f979dccb8 ffffff8817fe2440 *           crosvm
+[  190.609260][   T82]      380                0        221257216       7703842421 S(   1) 0       7f97a48044 ffffff880a832440             crosvm
+[  190.609264][   T82]      371          3927213        264601924       7706486045 S(   1) 0       7fa18a7fec ffffff8817fe3640 *           crosvm
+[  190.609268][   T82]      372                0          3742787       6559846263 S(   1) 2       7fbd8fccb8 ffffff8811b18040 *  vconsole-input-
+[  190.609272][   T82]      376                0                0       6560771654 S(   1) 2       7fbd959ef8 ffffff881a309240    vconsole-input-
+[  190.609276][   T82]      377                0                0       6560652149 S(   1) 2       7fbd959ef8 ffffff881a30da40    vconsole-input-
+[  190.609280][   T82]      378                0                0       6560715248 S(   1) 2       7fbd959ef8 ffffff881a308040    vconsole-input-
+[  190.609284][   T82]      379                0                0       6560817487 S(   1) 2       7fbd959ef8 ffffff880a820040    vconsole-input-
+[  190.609289][   T82]      373                0                0       6492766334 S(   1) 0       7fa8079bb4 ffffff881ab70040 *   vsock-test-app
+[  190.609293][   T82]      381                0        245613803       7430819084 S(   1) 1       7fbdbe7fec ffffff880a836c40 *           crosvm
+[  190.609297][   T82]      384         15739167         62764272     147097505536 S(   1) 1       7fa0ad7fec ffffff880a80b640 *  systemd-network
+[  190.609301][   T82]      385                0                0       7406725044 S(   1) 0       7f8a0b7fec ffffff881ab76c40 *  vhost-user-mast
+[  190.609305][   T82]      386                0          3974035       7676860338 S(   1) 0       7f9f2b7fec ffffff8817fe1240 *  vhost-user-mast
+[  190.609310][   T82]      387                0          3772787       7513915437 S(   1) 2       7f8fbd7fec ffffff881c463640 *  vhost-user-mast
+[  190.609314][   T82]      388                0                0       7703907004 S(   1) 0       7f84d37fec ffffff881c461240 *  vhost-user-mast
+[  190.609318][   T82]      389                0          3835129       7706744872 S(   1) 0       7fbb6f7fec ffffff881c466c40 *  vhost-user-mast
+[  190.609322][   T82]      390                0                0       7706728284 S(   1) 0                0 ffffff881c462440 *        vhost-371
+[  190.609326][   T82]      392                0        232149693       7703508983 S(   1) 0       7fa4e47fec ffffff881c464840 *           crosvm
+[  190.609331][   T82]      393                0                0       6986415869 I(1026) 0                0 ffffff881c465a40 *         eth0-fpe
+[  190.609335][   T82]      394         34497423         72081907     109543875632 S(   1) 0       7fbb117fec ffffff881c460040 *  systemd-resolve
+[  190.609339][   T82]      395                0          3987656       7706899742 S(   1) 0       7f9f677fec ffffff8810a02440 *  vhost-user-mast
+[  190.609343][   T82]      403          3997916         15888907     136261866413 S(   1) 1       7f9444e1ac ffffff8826dc1240 *     avahi-daemon
+[  190.609347][   T82]      405                0                0       7756638033 S(   1) 2       7f9444a1b4 ffffff8826dc2440 *     avahi-daemon
+[  190.609351][   T82]      410                0          3926015       8498166808 S(   1) 0       7fbaaa0cf8 ffffff881b76a440 *           agetty
+[  190.609355][   T82]      411                0          7792474      81948594917 S(   1) 1       7f94de8edc ffffff881b76da40 *            login
+[  190.609359][   T82]      465         15739947         35638489      81559565264 S(   1) 2       7fa21a7fec ffffff881b76c840 *  systemd-userdbd
+[  190.609364][   T82]      466          3963464          3995677     186999036181 S(   1) 0       7fab71a6bc ffffff881b76ec40 *  systemd-userwor
+[  190.609368][   T82]      467          3918905          3888152     187196743034 S(   1) 2       7f8cb8a6bc ffffff881b76b640 *  systemd-userwor
+[  190.609372][   T82]      468          3992709          3989765     186999087093 S(   1) 0       7fa2dfa6bc ffffff881b768040 *  systemd-userwor
+[  190.609376][   T82]      470        261536273        106131454      81831663779 S(   1) 0       7f82937fec ffffff881ab74840 *          systemd
+[  190.609380][   T82]      471                0          3989584      81604980134 S(   1) 2       7fb80bea74 ffffff881ab73640 *         (sd-pam)
+[  190.609385][   T82]      476                0         15971589     185982219296 S(   1) 2       7f98b80e90 ffffff8826dc5a40 *               sh
+[  190.609389][   T82] ---------------------------------------------------------------------------------------------------------
+[  190.609392][   T82] debug-snapshot dss: debug-snapshot physical / virtual memory layout:
+[  190.609395][   T82] header          : phys:0xe0000000 / virt:0xffffffc00b1e1000 / size:0x10000 / en:1
+[  190.609398][   T82] log_kernel      : phys:0xe0010000 / virt:0xffffffc00b438000 / size:0x200000 / en:1
+[  190.609402][   T82] log_platform    : phys:0xe0210000 / virt:0xffffffc00b638000 / size:0x400000 / en:1
+[  190.609405][   T82] log_s2d         : phys:0xebf00000 / virt:0xffffffc00e078000 / size:0x3c00000 / en:1
+[  190.609409][   T82] log_arrdumpreset: phys:0xe9d00000 / virt:0xffffffc00c278000 / size:0xf00000 / en:1
+[  190.609412][   T82] log_arrdumppanic: phys:0xeac00000 / virt:0xffffffc00d178000 / size:0xf00000 / en:1
+[  190.609415][   T82] log_first       : phys:0xe0610000 / virt:0xffffffc00ba38000 / size:0x200000 / en:1
+[  190.609418][   T82] log_bcm         : phys:0xebb00000 / virt:0xffffffc011c78000 / size:0x400000 / en:1
+[  190.609422][   T82] log_kmodule     : phys:0xe0e10000 / virt:0xffffffc00c238000 / size:0x40000 / en:1
+[  190.609425][   T82] debug-snapshot dss: total_item_size: 104768KB, dbg_snapshot_log struct size: 5216KB
+[  190.609428][   T82] debug-snapshot-log physical / virtual memory layout:
+[  190.609431][   T82] task_log    : phys:0xe0810080 / virt:0xffffffc00bc38080 / size:0x64000 / en:1
+[  190.609435][   T82] work_log    : phys:0xe0874080 / virt:0xffffffc00bc9c080 / size:0x78000 / en:1
+[  190.609438][   T82] cpuidle_log : phys:0xe08ec080 / virt:0xffffffc00bd14080 / size:0x50000 / en:1
+[  190.609441][   T82] suspend_log : phys:0xe093c080 / virt:0xffffffc00bd64080 / size:0x24000 / en:1
+[  190.609444][   T82] irq_log     : phys:0xe0960080 / virt:0xffffffc00bd88080 / size:0x1e0000 / en:1
+[  190.609447][   T82] reg_log     : phys:0xe0c1c080 / virt:0xffffffc00c044080 / size:0xc8000 / en:1
+[  190.609450][   T82] hrtimer_log : phys:0xe0bb8080 / virt:0xffffffc00bfe0080 / size:0x64000 / en:1
+[  190.609453][   T82] clk_log     : phys:0xe0b40080 / virt:0xffffffc00bf68080 / size:0x8000 / en:1
+[  190.609457][   T82] pmu_log     : phys:0xe0b48080 / virt:0xffffffc00bf70080 / size:0x8000 / en:1
+[  190.609460][   T82] freq_log    : phys:0xe0b50080 / virt:0xffffffc00bf78080 / size:0x60000 / en:1
+[  190.609463][   T82] dm_log      : phys:0xe0bb0080 / virt:0xffffffc00bfd8080 / size:0x8000 / en:1
+[  190.609466][   T82] regulator_log: phys:0xe0ce4080 / virt:0xffffffc00c10c080 / size:0xe000 / en:1
+[  190.609469][   T82] thermal_log : phys:0xe0cf2080 / virt:0xffffffc00c11a080 / size:0xa000 / en:1
+[  190.609472][   T82] acpm_log    : phys:0xe0cfc080 / virt:0xffffffc00c124080 / size:0x8000 / en:1
+[  190.609475][   T82] printk_log  : phys:0xe0d04080 / virt:0xffffffc00c12c080 / size:0x24000 / en:1
+[  190.609479][   T82] ==========================================================
+[  190.609481][   T82] Panic Report(SYS OS)
+[  190.609484][   T82] ==========================================================
+[  190.609486][   T82] <last info(SYS OS)>
+[  190.609489][   T82] CPU ID: 0 ----------------------------------
+[  190.609492][   T82] >>> task    : [ 941]        190.268805 sec,  task_comm: Irq Poll Thread ,     task: 0xffffff8805e1c840, exec_start:     190243794618
+[  190.609498][   T82] >>> work    : [ 485]        189.298121 sec,    work_fn: flush_to_ldisc+0x0/0x150,  en:   3
+[  190.609506][   T82] >>> irq     : [2116]        190.605703 sec,    handler: ipi_handler+0x0/0x344,      irq:        3,         en:  1, [Mismatch]
+[  190.609513][   T82] >>> cpuidle : [ 607]        187.644016 sec,      modes: C1,  state:  0,  stay time:          0,  online_cpus:  3,  en:   3
+[  190.609519][   T82] CPU ID: 1 ----------------------------------
+[  190.609522][   T82] >>> task    : [   9]        187.642000 sec,  task_comm: kworker/1:2     ,     task: 0xffffff880601c840, exec_start:     189733570100
+[  190.609526][   T82] >>> work    : [ 617]        187.642001 sec,    work_fn: uevent_notify_work+0x0/0xc0,  en:   1 [Mismatch]
+[  190.609533][   T82] >>> irq     : [3963]        187.640002 sec,    handler: arch_timer_handler_virt+0x0/0x50,      irq:       11,         en:  3,
+[  190.609539][   T82] >>> cpuidle : [1018]        186.641215 sec,      modes: C1,  state:  0,  stay time:          0,  online_cpus:  3,  en:   3
+[  190.609544][   T82] CPU ID: 2 ----------------------------------
+[  190.609547][   T82] >>> task    : [ 731]        190.598266 sec,  task_comm: swapper/2       ,     task: 0xffffff8800991240, exec_start:       3569188545
+[  190.609551][   T82] >>> work    : [ 632]        190.268662 sec,    work_fn: flush_to_ldisc+0x0/0x150,  en:   3
+[  190.609557][   T82] >>> irq     : [ 918]        190.605705 sec,    handler: ipi_handler+0x0/0x344,      irq:        3,         en:  1, [Mismatch]
+[  190.609563][   T82] >>> cpuidle : [ 199]        187.728640 sec,      modes: C1,  state:  0,  stay time:          0,  online_cpus:  3,  en:   1 [Mismatch]
+[  190.609567][   T82] CPU ID: 3 ----------------------------------
+[  190.609570][   T82] >>> task    : [1023]          0.000000 sec,  task_comm: NULL            ,     task: 0x0               , exec_start:                0
+[  190.609574][   T82] >>> work    : [1023]          0.000000 sec,    work_fn: 0x0,  en:   0
+[  190.609579][   T82] >>> irq     : [4095]          0.000000 sec,    handler: 0x0,      irq:        0,         en:  0,
+[  190.609583][   T82] >>> cpuidle : [1023]          0.000000 sec,      modes: (null),  state:  0,  stay time:          0,  online_cpus:  0,  en:   0
+[  190.609587][   T82] CPU ID: 4 ----------------------------------
+[  190.609590][   T82] >>> task    : [1023]          0.000000 sec,  task_comm: NULL            ,     task: 0x0               , exec_start:                0
+[  190.609594][   T82] >>> work    : [1023]          0.000000 sec,    work_fn: 0x0,  en:   0
+[  190.609598][   T82] >>> irq     : [4095]          0.000000 sec,    handler: 0x0,      irq:        0,         en:  0,
+[  190.609602][   T82] >>> cpuidle : [1023]          0.000000 sec,      modes: (null),  state:  0,  stay time:          0,  online_cpus:  0,  en:   0
+[  190.609606][   T82] CPU ID: 5 ----------------------------------
+[  190.609609][   T82] >>> task    : [1023]          0.000000 sec,  task_comm: NULL            ,     task: 0x0               , exec_start:                0
+[  190.609613][   T82] >>> work    : [1023]          0.000000 sec,    work_fn: 0x0,  en:   0
+[  190.609617][   T82] >>> irq     : [4095]          0.000000 sec,    handler: 0x0,      irq:        0,         en:  0,
+[  190.609621][   T82] >>> cpuidle : [1023]          0.000000 sec,      modes: (null),  state:  0,  stay time:          0,  online_cpus:  0,  en:   0
+[  190.609625][   T82] CPU ID: 6 ----------------------------------
+[  190.609628][   T82] >>> task    : [1023]          0.000000 sec,  task_comm: NULL            ,     task: 0x0               , exec_start:                0
+[  190.609632][   T82] >>> work    : [1023]          0.000000 sec,    work_fn: 0x0,  en:   0
+[  190.609636][   T82] >>> irq     : [4095]          0.000000 sec,    handler: 0x0,      irq:        0,         en:  0,
+[  190.609640][   T82] >>> cpuidle : [1023]          0.000000 sec,      modes: (null),  state:  0,  stay time:          0,  online_cpus:  0,  en:   0
+[  190.609644][   T82] CPU ID: 7 ----------------------------------
+[  190.609647][   T82] >>> task    : [1023]          0.000000 sec,  task_comm: NULL            ,     task: 0x0               , exec_start:                0
+[  190.609651][   T82] >>> work    : [1023]          0.000000 sec,    work_fn: 0x0,  en:   0
+[  190.60
