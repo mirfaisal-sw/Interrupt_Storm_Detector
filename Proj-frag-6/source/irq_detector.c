@@ -37,8 +37,6 @@
 //#define DEBUG
 #define CONFIG_SEQ_READ
 
-struct irq_desc *irq_desc_node;
-int irq;
 static u64 t1, t2;
 
 /*
@@ -258,7 +256,7 @@ int monitor_irq_storm_thread(void *pv)
 	struct irq_num_heads_list *ptr;
 
 	while(!kthread_should_stop()) {
-	pr_alert("In IRQ Poll Thread Function %d\n", i++);
+	pr_debug("In IRQ Poll Thread Function %d\n", i++);
 
 	for_each_irq_desc(irq, priv->desc) {
 
@@ -268,7 +266,7 @@ int monitor_irq_storm_thread(void *pv)
 		if(!priv->desc->action) //|| irq_desc_is_chained(priv->desc))
 			continue;
 
-		pr_alert("IRQ name - %s\n", irq_desc_node->name);
+		//pr_alert("IRQ name - %s\n", priv->desc->name);
 		if(mutex_lock_interruptible(&priv->mlock))
 			return -1;
 	
@@ -321,6 +319,7 @@ static void stop_irq_rate_calc(struct irq_detector_data *mirq_data)
 
 static int show_irq_cmd(struct seq_file *seq, void *pdata)
 {
+	int irq;
 	unsigned long phys_addr = 0x100;
 	unsigned long size = 0x30;
 	struct irq_detector_data *pirq_data = pdata;
@@ -903,20 +902,17 @@ static int irq_detector_probe(struct platform_device *pdev)
 
 	mutex_init(&mirq_data->mlock);
 	spin_lock_init(&mirq_data->slock);
-#if 1
+
 	mirq_data->irq_poll_thread = kthread_create(monitor_irq_storm_thread, 
 					mirq_data, "Irq Poll Thread");
-	if (IS_ERR(mirq_data->irq_poll_thread))
-		return PTR_ERR(mirq_data->irq_poll_thread);
+	if (IS_ERR(mirq_data->irq_poll_thread)) {
+		pr_err("Failed to create kthread\n");
+		goto probe_fail;
+	}
 
-        if(mirq_data->irq_poll_thread) {
-            wake_up_process(mirq_data->irq_poll_thread);
-        } else {
-            pr_err("Cannot create kthread\n");
+        /*if(mirq_data->irq_poll_thread)
+            wake_up_process(mirq_data->irq_poll_thread);*/
 
-            goto probe_fail;
-        }
-#endif
 	pr_alert("DBG: In function - %s, Line - %d\n", __func__, __LINE__);
 
 probe_fail:
