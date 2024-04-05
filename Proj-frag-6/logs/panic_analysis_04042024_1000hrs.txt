@@ -1,0 +1,30 @@
+
+Panic 1 of 2: -
+====================
+ffff800008e25dd0 <irq_scan_work>:
+
+ffff800008e25e08:	35000161 	cbnz	w1, ffff800008e25e34 <irq_scan_work+0x64>
+
+ffff800008e25dd0 + 124 = FFFF800008E25EF4
+
+# aarch64-none-linux-gnu-addr2line -f -e vmlinux FFFF800008E25EF4
+
+irq_scan_work
+irq_detector.c:164
+
+Panic 2 of 2: -
+====================
+[   83.576601] pstate: 200000c5 (nzCv daIF -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   83.583555] pc : kobject_uevent_env+0x50/0x560
+[   83.587998] lr : uevent_notify_work+0x6c/0xb4
+[   83.592348] sp : ffff80000ac0bcf0
+
+
+ffff800008e256b0 <uevent_notify_work>
+
+ffff800008e256b0 + 6C = FFFF800008E2571C
+
+aarch64-none-linux-gnu-addr2line -f -e vmlinux FFFF800008E2571C
+
+spin_unlock_irqrestore
+./include/linux/spinlock.h:405

@@ -103,13 +103,15 @@ enum hrtimer_restart read_irq_interval_cb( struct hrtimer *hrtimer )
 
 	return HRTIMER_RESTART;
 }
-#if 0
+
+#if 1
 static void irq_mon_thread_wake(struct irq_detector_data *priv)
 {
 	if(priv->irq_poll_thread)
 		wake_up_process(priv->irq_poll_thread);
 }
 #endif
+
 /*
  * iirq_scan_work() - our workqueue callback function!
  */
@@ -136,7 +138,7 @@ static void irq_scan_work(struct work_struct *work)
         		goto out;
 		}
 
-		//irq_mon_thread_wake(priv);
+		irq_mon_thread_wake(priv);
 	}
 
 	/*Iterate through all IRQ descriptors*/
@@ -152,12 +154,13 @@ static void irq_scan_work(struct work_struct *work)
 		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
 
 			pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
-			
-			//if(mutex_lock_interruptible(&priv->mlock))
-			//	return;
-
+			//pr_alert("DBG: Line - %d\n", __LINE__);	
 			if((ptr->irq_num == priv->desc->irq_data.irq) && priv->desc->kstat_irqs) {
 				/*Calculate total irq count*/
+
+				if(mutex_lock_interruptible(&priv->mlock))
+					return;
+				//pr_alert("DBG: Line - %d\n", __LINE__);	
 				for_each_online_cpu(cpu_i) {
 					if (priv->desc->kstat_irqs) {
 						ptr->irq_count_per_cpu[cpu_i] =
@@ -167,12 +170,15 @@ static void irq_scan_work(struct work_struct *work)
 					}			
 				}
 
-			if(!tot_irq_cnt)
+			if(!tot_irq_cnt) {
+				mutex_unlock(&priv->mlock);
 				break;
+			}
 
 			ptr->irq_count = tot_irq_cnt;
 			if (ptr->irq_prev_count == 0) {
 				ptr->irq_prev_count = tot_irq_cnt;
+				mutex_unlock(&priv->mlock);
 				goto out;	
 			}
 		
@@ -190,6 +196,7 @@ static void irq_scan_work(struct work_struct *work)
 			node_linked_list =
 				kmalloc(sizeof(struct irq_num_statistics_list), GFP_KERNEL);
 			if(!node_linked_list) {
+				mutex_unlock(&priv->mlock);
 				goto out;
 			}
 
@@ -209,7 +216,7 @@ static void irq_scan_work(struct work_struct *work)
 			ptr->cir_queue_size++;
 			tot_irq_cnt = 0;
 
-			//mutex_unlock(&priv->mlock);
+			mutex_unlock(&priv->mlock);
 			break;
 
 			}/*if ptr->irq_num == */
@@ -258,15 +265,21 @@ static void uevent_notify_work(struct work_struct *work)
 
 int monitor_irq_storm_thread(void *pv)
 {
+	int ret;
 	int i=0;
 	int irq;
 	//unsigned long temp_timestamp;
 	struct irq_detector_data *priv = pv;
 	struct irq_num_heads_list *ptr;
 
+	//ptr = list_first_entry(&priv->irq_num_list_head, struct irq_num_heads_list, list_of_heads);
+	struct list_head   tmp_irq_num_list_head;
+	tmp_irq_num_list_head  = priv->irq_num_list_head;
+
 	while(!kthread_should_stop()) {
 	pr_debug("In IRQ Poll Thread Function %d\n", i++);
-
+	
+	msleep(1000);
 	for_each_irq_desc(irq, priv->desc) {
 
 		if(!priv->desc)
@@ -276,10 +289,11 @@ int monitor_irq_storm_thread(void *pv)
 			continue;
 
 		/*Scan list of IRQ numbers to read IRQ rate*/
-		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
+		list_for_each_entry_continue(ptr, &tmp_irq_num_list_head, list_of_heads) {
 	
-		if(mutex_lock_interruptible(&priv->mlock))
-			return -1;
+		ret = mutex_lock_interruptible(&priv->mlock);
+		if(ret)
+			return ret;
 
 		if(ptr->max_irq_rate > 100) {//Change this param as 10 using some CONFIG macro*/
 			//pr_alert("IRQ# - %d, IRQ rate - %d\n", ptr->irq_num, ptr->max_irq_rate);

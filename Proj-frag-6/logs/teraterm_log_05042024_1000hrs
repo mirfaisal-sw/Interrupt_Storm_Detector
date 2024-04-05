@@ -1,0 +1,2987 @@
+echo on > /proc/irq_diag/irq_diag_cmd
+[   46.865109] DBG: In func - irq_diag_open_cmd
+[   46.869560] DBG: String: on, length - 3
+[   46.873416] Starting timer to fire in 500ms (4294903975)
+root@am64xx-evm:~# [   47.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   47.385436] In our workq function: irq_scan_work
+[   47.390103] delta: 27400 ns (~ 27 us)
+[   47.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[   47.885013] In our workq function: irq_scan_work
+[   47.889663] delta: 21300 ns (~ 21 us)
+[   48.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   48.385012] In our workq function: irq_scan_work
+[   48.389661] delta: 19010 ns (~ 19 us)
+[   48.412737] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000000
+[   48.421540] Mem abort info:
+[   48.424324]   ESR = 0x0000000096000006
+[   48.428081]   EC = 0x25: DABT (current EL), IL = 32 bits
+[   48.433409]   SET = 0, FnV = 0
+[   48.436461]   EA = 0, S1PTW = 0
+[   48.439604]   FSC = 0x06: level 2 translation fault
+[   48.444553] Data abort info:
+[   48.447481]   ISV = 0, ISS = 0x00000006
+[   48.451336]   CM = 0, WnR = 0
+[   48.454311] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000084c08000
+[   48.460759] [0000000000000000] pgd=0800000084c0d003, p4d=0800000084c0d003, pud=0800000084c0c003, pmd=0000000000000000
+[   48.471380] Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
+[   48.477636] Modules linked in:
+[   48.480691] CPU: 0 PID: 56 Comm: Irq Poll Thread Tainted: G        W          6.1.46Mirf-dirty #31
+[   48.489635] Hardware name: Texas Instruments AM642 EVM (DT)
+[   48.495195] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   48.502144] pc : monitor_irq_storm_thread+0x78/0x100
+[   48.507114] lr : monitor_irq_storm_thread+0xdc/0x100
+[   48.512070] sp : ffff80000a9b3e30
+[   48.515374] x29: ffff80000a9b3e30 x28: 0000000000000000 x27: 0000000000000000
+[   48.522503] x26: 0000000000000000 x25: 0000000000000000 x24: 0000000000000001
+[   48.529630] x23: ffff000000c837d0 x22: ffff80000a199000 x21: ffff000000c83680
+[   48.536759] x20: ffff000000c836d0 x19: 0000000000000002 x18: 0000000000000000
+[   48.543887] x17: 0000000000000000 x16: 0000000000000000 x15: 0000000000000000
+[   48.551014] x14: 000000000000019d x13: ffff80000a1b3a38 x12: 0000000000000000
+[   48.558142] x11: 0000000000000040 x10: ffff80000a223c40 x9 : ffff80000a223c38
+[   48.565270] x8 : ffff000000400270 x7 : 0000000000000000 x6 : 0000000000000000
+[   48.572398] x5 : ffff000000400248 x4 : ffff000000400278 x3 : 0000000000000000
+[   48.579525] x2 : 0000000000000000 x1 : 00000000000001f4 x0 : 0000000000000000
+[   48.586654] Call trace:
+[   48.589092]  monitor_irq_storm_thread+0x78/0x100
+[   48.593704]  kthread+0x10c/0x110
+[   48.596929]  ret_from_fork+0x10/0x20
+[   48.600506] Code: 910142b4 910542b7 52800038 90009bb6 (f9400013) 
+[   48.606588] ---[ end trace 0000000000000000 ]---
+[   48.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[   48.885045] In our workq function: irq_scan_work
+[   48.889699] delta: 29985 ns (~ 29 us)
+[   49.378772] In func - read_irq_interval_cb, line - 93, context = 0
+[   49.385026] In our workq function: irq_scan_work
+[   49.389665] delta: 17585 ns (~ 17 us)
+[   49.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   49.885031] In our workq function: irq_scan_work
+[   49.889683] delta: 21330 ns (~ 21 us)
+[   50.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   50.385025] In our workq function: irq_scan_work
+[   50.389672] delta: 19930 ns (~ 19 us)
+[   50.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   50.885058] In our workq function: irq_scan_work
+[   50.889710] delta: 18965 ns (~ 18 us)
+[   51.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   51.385116] In our workq function: irq_scan_work
+[   51.389769] delta: 18785 ns (~ 18 us)
+[   51.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   51.885201] In our workq function: irq_scan_work
+[   51.889863] delta: 18895 ns (~ 18 us)
+[   52.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   52.385182] In our workq function: irq_scan_work
+[   52.389838] delta: 21480 ns (~ 21 us)
+[   52.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   52.885206] In our workq function: irq_scan_work
+[   52.889860] delta: 18965 ns (~ 18 us)
+[   53.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   53.385376] In our workq function: irq_scan_work
+[   53.390051] delta: 24790 ns (~ 24 us)
+[   53.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   53.885383] In our workq function: irq_scan_work
+[   53.890053] delta: 63535 ns (~ 63 us)
+[   54.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[   54.385362] In our workq function: irq_scan_work
+[   54.390033] delta: 25420 ns (~ 25 us)
+[   54.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   54.885341] In our workq function: irq_scan_work
+[   54.890002] delta: 22815 ns (~ 22 us)
+[   55.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   55.385330] In our workq function: irq_scan_work
+[   55.389990] delta: 19535 ns (~ 19 us)
+[   55.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[   55.885367] In our workq function: irq_scan_work
+[   55.890039] delta: 22190 ns (~ 22 us)
+[   56.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   56.385336] In our workq function: irq_scan_work
+[   56.390004] delta: 20405 ns (~ 20 us)
+[   56.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   56.885362] In our workq function: irq_scan_work
+[   56.890033] delta: 20740 ns (~ 20 us)
+[   57.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[   57.385351] In our workq function: irq_scan_work
+[   57.390012] delta: 33700 ns (~ 33 us)
+[   57.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   57.885338] In our workq function: irq_scan_work
+[   57.889999] delta: 20025 ns (~ 20 us)
+[   58.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[   58.385358] In our workq function: irq_scan_work
+[   58.390028] delta: 18975 ns (~ 18 us)
+[   58.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[   58.885329] In our workq function: irq_scan_work
+[   58.889987] delta: 19660 ns (~ 19 us)
+[   59.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   59.385356] In our workq function: irq_scan_work
+[   59.390022] delta: 19745 ns (~ 19 us)
+[   59.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   59.885331] In our workq function: irq_scan_work
+[   59.889998] delta: 18300 ns (~ 18 us)
+[   60.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   60.385332] In our workq function: irq_scan_work
+[   60.389990] delta: 19050 ns (~ 19 us)
+[   60.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   60.885362] In our workq function: irq_scan_work
+[   60.890023] delta: 20085 ns (~ 20 us)
+[   61.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   61.385377] In our workq function: irq_scan_work
+[   61.390031] delta: 34320 ns (~ 34 us)
+[   61.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   61.885417] In our workq function: irq_scan_work
+[   61.890083] delta: 68600 ns (~ 68 us)
+[   62.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   62.385347] In our workq function: irq_scan_work
+[   62.390017] delta: 21110 ns (~ 21 us)
+[   62.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   62.885334] In our workq function: irq_scan_work
+[   62.890006] delta: 18425 ns (~ 18 us)
+[   63.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   63.385363] In our workq function: irq_scan_work
+[   63.390035] delta: 23890 ns (~ 23 us)
+[   63.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[   63.885335] In our workq function: irq_scan_work
+[   63.890007] delta: 19630 ns (~ 19 us)
+[   64.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   64.385483] In our workq function: irq_scan_work
+[   64.390148] delta: 137990 ns (~ 137 us)
+[   64.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[   64.885347] In our workq function: irq_scan_work
+[   64.890018] delta: 24940 ns (~ 24 us)
+[   65.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   65.385352] In our workq function: irq_scan_work
+[   65.390014] delta: 37255 ns (~ 37 us)
+[   65.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   65.885365] In our workq function: irq_scan_work
+[   65.890033] delta: 21395 ns (~ 21 us)
+[   66.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   66.385330] In our workq function: irq_scan_work
+[   66.389996] delta: 18180 ns (~ 18 us)
+[   66.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   66.885363] In our workq function: irq_scan_work
+[   66.890029] delta: 20165 ns (~ 20 us)
+[   67.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   67.385389] In our workq function: irq_scan_work
+[   67.390059] delta: 42150 ns (~ 42 us)
+[   67.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   67.885349] In our workq function: irq_scan_work
+[   67.890024] delta: 23875 ns (~ 23 us)
+[   68.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   68.385362] In our workq function: irq_scan_work
+[   68.390026] delta: 18605 ns (~ 18 us)
+[   68.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   68.885342] In our workq function: irq_scan_work
+[   68.890012] delta: 21160 ns (~ 21 us)
+[   69.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   69.385360] In our workq function: irq_scan_work
+[   69.390032] delta: 18315 ns (~ 18 us)
+[   69.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   69.886068] In our workq function: irq_scan_work
+[   69.890738] delta: 773730 ns (~ 773 us)
+[   70.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   70.385331] In our workq function: irq_scan_work
+[   70.389998] delta: 17585 ns (~ 17 us)
+[   70.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[   70.885356] In our workq function: irq_scan_work
+[   70.890022] delta: 20515 ns (~ 20 us)
+[   71.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   71.385335] In our workq function: irq_scan_work
+[   71.390003] delta: 18115 ns (~ 18 us)
+[   71.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[   71.885356] In our workq function: irq_scan_work
+[   71.890037] delta: 17980 ns (~ 17 us)
+[   72.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   72.385339] In our workq function: irq_scan_work
+[   72.390001] delta: 23215 ns (~ 23 us)
+[   72.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   72.885342] In our workq function: irq_scan_work
+[   72.890004] delta: 21250 ns (~ 21 us)
+[   73.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   73.385368] In our workq function: irq_scan_work
+[   73.390040] delta: 22490 ns (~ 22 us)
+[   73.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   73.885333] In our workq function: irq_scan_work
+[   73.889991] delta: 18820 ns (~ 18 us)
+[   74.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   74.385366] In our workq function: irq_scan_work
+[   74.390042] delta: 20995 ns (~ 20 us)
+[   74.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   74.885383] In our workq function: irq_scan_work
+[   74.890044] delta: 66935 ns (~ 66 us)
+[   75.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   75.385348] In our workq function: irq_scan_work
+[   75.390022] delta: 20620 ns (~ 20 us)
+[   75.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   75.885334] In our workq function: irq_scan_work
+[   75.890001] delta: 21385 ns (~ 21 us)
+[   76.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   76.385345] In our workq function: irq_scan_work
+[   76.390011] delta: 20340 ns (~ 20 us)
+[   76.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   76.885386] In our workq function: irq_scan_work
+[   76.890054] delta: 42715 ns (~ 42 us)
+[   77.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   77.385332] In our workq function: irq_scan_work
+[   77.390000] delta: 18500 ns (~ 18 us)
+[   77.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   77.885355] In our workq function: irq_scan_work
+[   77.890017] delta: 19715 ns (~ 19 us)
+[   78.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   78.385334] In our workq function: irq_scan_work
+[   78.390003] delta: 17900 ns (~ 17 us)
+[   78.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   78.885332] In our workq function: irq_scan_work
+[   78.889999] delta: 19775 ns (~ 19 us)
+[   79.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[   79.385368] In our workq function: irq_scan_work
+[   79.390040] delta: 19085 ns (~ 19 us)
+[   79.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   79.885335] In our workq function: irq_scan_work
+[   79.889997] delta: 17175 ns (~ 17 us)
+[   80.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   80.385379] In our workq function: irq_scan_work
+[   80.390046] delta: 22095 ns (~ 22 us)
+[   80.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   80.885333] In our workq function: irq_scan_work
+[   80.890001] delta: 18255 ns (~ 18 us)
+[   81.378772] In func - read_irq_interval_cb, line - 93, context = 0
+[   81.385348] In our workq function: irq_scan_work
+[   81.390016] delta: 26440 ns (~ 26 us)
+[   81.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   81.885372] In our workq function: irq_scan_work
+[   81.890036] delta: 22845 ns (~ 22 us)
+[   82.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   82.385336] In our workq function: irq_scan_work
+[   82.389996] delta: 23500 ns (~ 23 us)
+[   82.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[   82.885355] In our workq function: irq_scan_work
+[   82.890020] delta: 19200 ns (~ 19 us)
+[   83.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   83.385334] In our workq function: irq_scan_work
+[   83.390021] delta: 20280 ns (~ 20 us)
+[   83.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   83.885330] In our workq function: irq_scan_work
+[   83.889994] delta: 17745 ns (~ 17 us)
+[   84.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   84.385358] In our workq function: irq_scan_work
+[   84.390029] delta: 19500 ns (~ 19 us)
+[   84.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   84.885330] In our workq function: irq_scan_work
+[   84.890000] delta: 18115 ns (~ 18 us)
+[   85.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   85.385362] In our workq function: irq_scan_work
+[   85.390037] delta: 20925 ns (~ 20 us)
+[   85.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   85.885333] In our workq function: irq_scan_work
+[   85.890006] delta: 18560 ns (~ 18 us)
+[   86.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   86.385333] In our workq function: irq_scan_work
+[   86.390005] delta: 21425 ns (~ 21 us)
+[   86.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   86.885353] In our workq function: irq_scan_work
+[   86.890028] delta: 17600 ns (~ 17 us)
+[   87.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   87.385335] In our workq function: irq_scan_work
+[   87.390000] delta: 21395 ns (~ 21 us)
+[   87.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   87.885356] In our workq function: irq_scan_work
+[   87.890028] delta: 18205 ns (~ 18 us)
+[   88.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   88.385337] In our workq function: irq_scan_work
+[   88.390008] delta: 20910 ns (~ 20 us)
+[   88.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   88.885329] In our workq function: irq_scan_work
+[   88.889991] delta: 17520 ns (~ 17 us)
+[   89.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   89.385350] In our workq function: irq_scan_work
+[   89.390011] delta: 18335 ns (~ 18 us)
+[   89.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   89.885339] In our workq function: irq_scan_work
+[   89.890000] delta: 20465 ns (~ 20 us)
+[   90.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   90.385378] In our workq function: irq_scan_work
+[   90.390054] delta: 35930 ns (~ 35 us)
+[   90.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   90.885330] In our workq function: irq_scan_work
+[   90.889988] delta: 20315 ns (~ 20 us)
+[   91.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   91.385366] In our workq function: irq_scan_work
+[   91.390039] delta: 24830 ns (~ 24 us)
+[   91.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   91.885338] In our workq function: irq_scan_work
+[   91.889999] delta: 19840 ns (~ 19 us)
+[   92.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   92.385340] In our workq function: irq_scan_work
+[   92.390008] delta: 23260 ns (~ 23 us)
+[   92.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   92.885360] In our workq function: irq_scan_work
+[   92.890029] delta: 20620 ns (~ 20 us)
+[   93.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   93.385339] In our workq function: irq_scan_work
+[   93.390014] delta: 22340 ns (~ 22 us)
+[   93.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   93.885356] In our workq function: irq_scan_work
+[   93.890025] delta: 18585 ns (~ 18 us)
+[   94.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   94.385333] In our workq function: irq_scan_work
+[   94.390001] delta: 21245 ns (~ 21 us)
+[   94.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   94.885327] In our workq function: irq_scan_work
+[   94.889993] delta: 18395 ns (~ 18 us)
+[   95.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[   95.385379] In our workq function: irq_scan_work
+[   95.390050] delta: 28510 ns (~ 28 us)
+[   95.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   95.885343] In our workq function: irq_scan_work
+[   95.890013] delta: 19420 ns (~ 19 us)
+[   96.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   96.385359] In our workq function: irq_scan_work
+[   96.390029] delta: 19015 ns (~ 19 us)
+[   96.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   96.885329] In our workq function: irq_scan_work
+[   96.889995] delta: 18565 ns (~ 18 us)
+[   97.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   97.385333] In our workq function: irq_scan_work
+[   97.390001] delta: 17945 ns (~ 17 us)
+[   97.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[   97.885376] In our workq function: irq_scan_work
+[   97.890051] delta: 20035 ns (~ 20 us)
+[   98.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[   98.385332] In our workq function: irq_scan_work
+[   98.390004] delta: 17910 ns (~ 17 us)
+[   98.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[   98.885358] In our workq function: irq_scan_work
+[   98.890021] delta: 18020 ns (~ 18 us)
+[   99.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[   99.385343] In our workq function: irq_scan_work
+[   99.390015] delta: 23960 ns (~ 23 us)
+[   99.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[   99.885348] In our workq function: irq_scan_work
+[   99.890024] delta: 22550 ns (~ 22 us)
+[  100.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  100.385369] In our workq function: irq_scan_work
+[  100.390044] delta: 23885 ns (~ 23 us)
+[  100.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  100.885339] In our workq function: irq_scan_work
+[  100.890011] delta: 20905 ns (~ 20 us)
+[  101.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  101.385356] In our workq function: irq_scan_work
+[  101.390026] delta: 19010 ns (~ 19 us)
+[  101.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  101.885361] In our workq function: irq_scan_work
+[  101.890035] delta: 29880 ns (~ 29 us)
+[  102.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  102.385353] In our workq function: irq_scan_work
+[  102.390018] delta: 34860 ns (~ 34 us)
+[  102.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  102.885364] In our workq function: irq_scan_work
+[  102.890036] delta: 21730 ns (~ 21 us)
+[  103.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  103.385336] In our workq function: irq_scan_work
+[  103.389994] delta: 19170 ns (~ 19 us)
+[  103.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  103.885363] In our workq function: irq_scan_work
+[  103.890037] delta: 21390 ns (~ 21 us)
+[  104.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  104.385330] In our workq function: irq_scan_work
+[  104.390009] delta: 19190 ns (~ 19 us)
+[  104.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  104.885335] In our workq function: irq_scan_work
+[  104.890004] delta: 21270 ns (~ 21 us)
+[  105.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  105.385352] In our workq function: irq_scan_work
+[  105.390023] delta: 17805 ns (~ 17 us)
+[  105.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  105.885333] In our workq function: irq_scan_work
+[  105.890002] delta: 22290 ns (~ 22 us)
+[  106.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  106.385353] In our workq function: irq_scan_work
+[  106.390022] delta: 16960 ns (~ 16 us)
+[  106.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  106.885342] In our workq function: irq_scan_work
+[  106.890015] delta: 25715 ns (~ 25 us)
+[  107.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  107.385356] In our workq function: irq_scan_work
+[  107.390025] delta: 17535 ns (~ 17 us)
+[  107.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  107.885334] In our workq function: irq_scan_work
+[  107.890001] delta: 18280 ns (~ 18 us)
+[  108.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  108.385400] In our workq function: irq_scan_work
+[  108.390071] delta: 78525 ns (~ 78 us)
+[  108.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  108.885362] In our workq function: irq_scan_work
+[  108.890040] delta: 20590 ns (~ 20 us)
+[  109.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  109.385341] In our workq function: irq_scan_work
+[  109.390016] delta: 22625 ns (~ 22 us)
+[  109.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  109.885359] In our workq function: irq_scan_work
+[  109.890032] delta: 17985 ns (~ 17 us)
+[  110.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  110.385334] In our workq function: irq_scan_work
+[  110.390002] delta: 21360 ns (~ 21 us)
+[  110.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  110.885332] In our workq function: irq_scan_work
+[  110.889993] delta: 17990 ns (~ 17 us)
+[  111.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  111.385364] In our workq function: irq_scan_work
+[  111.390040] delta: 22620 ns (~ 22 us)
+[  111.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  111.885377] In our workq function: irq_scan_work
+[  111.890043] delta: 49105 ns (~ 49 us)
+[  112.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  112.385358] In our workq function: irq_scan_work
+[  112.390032] delta: 20420 ns (~ 20 us)
+[  112.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  112.885365] In our workq function: irq_scan_work
+[  112.890040] delta: 18155 ns (~ 18 us)
+[  113.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  113.385349] In our workq function: irq_scan_work
+[  113.390020] delta: 20620 ns (~ 20 us)
+[  113.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  113.885340] In our workq function: irq_scan_work
+[  113.889999] delta: 18420 ns (~ 18 us)
+[  114.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  114.385363] In our workq function: irq_scan_work
+[  114.390034] delta: 17870 ns (~ 17 us)
+[  114.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[  114.885341] In our workq function: irq_scan_work
+[  114.890002] delta: 20485 ns (~ 20 us)
+[  115.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  115.385344] In our workq function: irq_scan_work
+[  115.390014] delta: 17445 ns (~ 17 us)
+[  115.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  115.885353] In our workq function: irq_scan_work
+[  115.890038] delta: 22840 ns (~ 22 us)
+[  116.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  116.385351] In our workq function: irq_scan_work
+[  116.390021] delta: 17165 ns (~ 17 us)
+[  116.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  116.885365] In our workq function: irq_scan_work
+[  116.890040] delta: 25895 ns (~ 25 us)
+[  117.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  117.385423] In our workq function: irq_scan_work
+[  117.390085] delta: 21040 ns (~ 21 us)
+[  117.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  117.885353] In our workq function: irq_scan_work
+[  117.890022] delta: 23785 ns (~ 23 us)
+[  118.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  118.385353] In our workq function: irq_scan_work
+[  118.390025] delta: 23285 ns (~ 23 us)
+[  118.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  118.885355] In our workq function: irq_scan_work
+[  118.890026] delta: 24060 ns (~ 24 us)
+[  119.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  119.385342] In our workq function: irq_scan_work
+[  119.390011] delta: 18470 ns (~ 18 us)
+[  119.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  119.885357] In our workq function: irq_scan_work
+[  119.890030] delta: 24065 ns (~ 24 us)
+[  120.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  120.385341] In our workq function: irq_scan_work
+[  120.390004] delta: 18425 ns (~ 18 us)
+[  120.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  120.885356] In our workq function: irq_scan_work
+[  120.890024] delta: 22415 ns (~ 22 us)
+[  121.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  121.385348] In our workq function: irq_scan_work
+[  121.390021] delta: 20745 ns (~ 20 us)
+[  121.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  121.885346] In our workq function: irq_scan_work
+[  121.890019] delta: 19400 ns (~ 19 us)
+[  122.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  122.385357] In our workq function: irq_scan_work
+[  122.390029] delta: 20810 ns (~ 20 us)
+[  122.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  122.885350] In our workq function: irq_scan_work
+[  122.890012] delta: 20300 ns (~ 20 us)
+[  123.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  123.385359] In our workq function: irq_scan_work
+[  123.390039] delta: 20865 ns (~ 20 us)
+[  123.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  123.885342] In our workq function: irq_scan_work
+[  123.890012] delta: 18710 ns (~ 18 us)
+[  124.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  124.385336] In our workq function: irq_scan_work
+[  124.390004] delta: 17895 ns (~ 17 us)
+[  124.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  124.885348] In our workq function: irq_scan_work
+[  124.890008] delta: 18430 ns (~ 18 us)
+[  125.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  125.385339] In our workq function: irq_scan_work
+[  125.390009] delta: 18255 ns (~ 18 us)
+[  125.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  125.885354] In our workq function: irq_scan_work
+[  125.890032] delta: 21905 ns (~ 21 us)
+[  126.378772] In func - read_irq_interval_cb, line - 93, context = 0
+[  126.385354] In our workq function: irq_scan_work
+[  126.390061] delta: 23880 ns (~ 23 us)
+[  126.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  126.885370] In our workq function: irq_scan_work
+[  126.890055] delta: 27480 ns (~ 27 us)
+[  127.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  127.385358] In our workq function: irq_scan_work
+[  127.390024] delta: 21780 ns (~ 21 us)
+[  127.878776] In func - read_irq_interval_cb, line - 93, context = 0
+[  127.885397] In our workq function: irq_scan_work
+[  127.890061] delta: 38485 ns (~ 38 us)
+[  128.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  128.385367] In our workq function: irq_scan_work
+[  128.390043] delta: 21985 ns (~ 21 us)
+[  128.878791] In func - read_irq_interval_cb, line - 93, context = 0
+[  128.885632] In our workq function: irq_scan_work
+[  128.890331] delta: 257500 ns (~ 257 us)
+[  129.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  129.385373] In our workq function: irq_scan_work
+[  129.390051] delta: 26615 ns (~ 26 us)
+[  129.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  129.885365] In our workq function: irq_scan_work
+[  129.890042] delta: 25235 ns (~ 25 us)
+[  130.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  130.385363] In our workq function: irq_scan_work
+[  130.390038] delta: 21180 ns (~ 21 us)
+[  130.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  130.885351] In our workq function: irq_scan_work
+[  130.890018] delta: 19835 ns (~ 19 us)
+[  131.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  131.385351] In our workq function: irq_scan_work
+[  131.390023] delta: 21470 ns (~ 21 us)
+[  131.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  131.885364] In our workq function: irq_scan_work
+[  131.890024] delta: 18980 ns (~ 18 us)
+[  132.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  132.385393] In our workq function: irq_scan_work
+[  132.390072] delta: 23305 ns (~ 23 us)
+[  132.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  132.885348] In our workq function: irq_scan_work
+[  132.890017] delta: 18860 ns (~ 18 us)
+[  133.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  133.385356] In our workq function: irq_scan_work
+[  133.390024] delta: 18610 ns (~ 18 us)
+[  133.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  133.885348] In our workq function: irq_scan_work
+[  133.890010] delta: 17540 ns (~ 17 us)
+[  134.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  134.385346] In our workq function: irq_scan_work
+[  134.390014] delta: 18315 ns (~ 18 us)
+[  134.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  134.885371] In our workq function: irq_scan_work
+[  134.890052] delta: 28900 ns (~ 28 us)
+[  135.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  135.385410] In our workq function: irq_scan_work
+[  135.390091] delta: 79575 ns (~ 79 us)
+[  135.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  135.885351] In our workq function: irq_scan_work
+[  135.890025] delta: 22935 ns (~ 22 us)
+[  136.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  136.385361] In our workq function: irq_scan_work
+[  136.390041] delta: 21945 ns (~ 21 us)
+[  136.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  136.885356] In our workq function: irq_scan_work
+[  136.890040] delta: 21255 ns (~ 21 us)
+[  137.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  137.385348] In our workq function: irq_scan_work
+[  137.390020] delta: 22565 ns (~ 22 us)
+[  137.878777] In func - read_irq_interval_cb, line - 93, context = 0
+[  137.885360] In our workq function: irq_scan_work
+[  137.890032] delta: 24945 ns (~ 24 us)
+[  138.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  138.385339] In our workq function: irq_scan_work
+[  138.389996] delta: 18085 ns (~ 18 us)
+[  138.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  138.885348] In our workq function: irq_scan_work
+[  138.890020] delta: 19125 ns (~ 19 us)
+[  139.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  139.385354] In our workq function: irq_scan_work
+[  139.390029] delta: 21385 ns (~ 21 us)
+[  139.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  139.885340] In our workq function: irq_scan_work
+[  139.890006] delta: 17575 ns (~ 17 us)
+[  140.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  140.385366] In our workq function: irq_scan_work
+[  140.390044] delta: 24400 ns (~ 24 us)
+[  140.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  140.885351] In our workq function: irq_scan_work
+[  140.890024] delta: 19540 ns (~ 19 us)
+[  141.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  141.385343] In our workq function: irq_scan_work
+[  141.390015] delta: 23000 ns (~ 23 us)
+[  141.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  141.885361] In our workq function: irq_scan_work
+[  141.890024] delta: 17865 ns (~ 17 us)
+[  142.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  142.385347] In our workq function: irq_scan_work
+[  142.390016] delta: 17980 ns (~ 17 us)
+[  142.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  142.885357] In our workq function: irq_scan_work
+[  142.890019] delta: 19580 ns (~ 19 us)
+[  143.378772] In func - read_irq_interval_cb, line - 93, context = 0
+[  143.385375] In our workq function: irq_scan_work
+[  143.390038] delta: 38135 ns (~ 38 us)
+[  143.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  143.885346] In our workq function: irq_scan_work
+[  143.890009] delta: 18935 ns (~ 18 us)
+[  144.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  144.385574] In our workq function: irq_scan_work
+[  144.390246] delta: 244855 ns (~ 244 us)
+[  144.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  144.885356] In our workq function: irq_scan_work
+[  144.890032] delta: 21745 ns (~ 21 us)
+[  145.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  145.385353] In our workq function: irq_scan_work
+[  145.390028] delta: 21495 ns (~ 21 us)
+[  145.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  145.885351] In our workq function: irq_scan_work
+[  145.890026] delta: 22430 ns (~ 22 us)
+[  146.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  146.385349] In our workq function: irq_scan_work
+[  146.390020] delta: 22065 ns (~ 22 us)
+[  146.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[  146.885344] In our workq function: irq_scan_work
+[  146.890013] delta: 19230 ns (~ 19 us)
+[  147.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  147.385348] In our workq function: irq_scan_work
+[  147.390036] delta: 21875 ns (~ 21 us)
+[  147.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[  147.885347] In our workq function: irq_scan_work
+[  147.890004] delta: 18510 ns (~ 18 us)
+[  148.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  148.385353] In our workq function: irq_scan_work
+[  148.390025] delta: 20730 ns (~ 20 us)
+[  148.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  148.885344] In our workq function: irq_scan_work
+[  148.890013] delta: 17655 ns (~ 17 us)
+[  149.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  149.385345] In our workq function: irq_scan_work
+[  149.390018] delta: 21455 ns (~ 21 us)
+[  149.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  149.885376] In our workq function: irq_scan_work
+[  149.890046] delta: 49745 ns (~ 49 us)
+[  150.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  150.385343] In our workq function: irq_scan_work
+[  150.390006] delta: 18425 ns (~ 18 us)
+[  150.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  150.885349] In our workq function: irq_scan_work
+[  150.890021] delta: 22265 ns (~ 22 us)
+[  151.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  151.385347] In our workq function: irq_scan_work
+[  151.390011] delta: 18775 ns (~ 18 us)
+[  151.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  151.885359] In our workq function: irq_scan_work
+[  151.890029] delta: 21785 ns (~ 21 us)
+[  152.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  152.385344] In our workq function: irq_scan_work
+[  152.390012] delta: 17965 ns (~ 17 us)
+[  152.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  152.885364] In our workq function: irq_scan_work
+[  152.890033] delta: 24315 ns (~ 24 us)
+[  153.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  153.385345] In our workq function: irq_scan_work
+[  153.390079] delta: 16910 ns (~ 16 us)
+[  153.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  153.885355] In our workq function: irq_scan_work
+[  153.890018] delta: 19845 ns (~ 19 us)
+[  154.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  154.385350] In our workq function: irq_scan_work
+[  154.390021] delta: 21825 ns (~ 21 us)
+[  154.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[  154.885379] In our workq function: irq_scan_work
+[  154.890047] delta: 44655 ns (~ 44 us)
+[  155.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  155.385356] In our workq function: irq_scan_work
+[  155.390027] delta: 20495 ns (~ 20 us)
+[  155.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  155.885343] In our workq function: irq_scan_work
+[  155.890015] delta: 17830 ns (~ 17 us)
+[  156.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  156.385349] In our workq function: irq_scan_work
+[  156.390022] delta: 19095 ns (~ 19 us)
+[  156.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  156.885354] In our workq function: irq_scan_work
+[  156.890023] delta: 23630 ns (~ 23 us)
+[  157.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  157.385346] In our workq function: irq_scan_work
+[  157.390016] delta: 18375 ns (~ 18 us)
+[  157.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  157.885356] In our workq function: irq_scan_work
+[  157.890041] delta: 22645 ns (~ 22 us)
+[  158.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  158.385364] In our workq function: irq_scan_work
+[  158.390040] delta: 19970 ns (~ 19 us)
+[  158.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  158.885358] In our workq function: irq_scan_work
+[  158.890030] delta: 22465 ns (~ 22 us)
+[  159.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  159.385342] In our workq function: irq_scan_work
+[  159.390007] delta: 17950 ns (~ 17 us)
+[  159.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  159.885346] In our workq function: irq_scan_work
+[  159.890017] delta: 19635 ns (~ 19 us)
+[  160.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  160.385347] In our workq function: irq_scan_work
+[  160.390029] delta: 20220 ns (~ 20 us)
+[  160.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  160.885363] In our workq function: irq_scan_work
+[  160.890030] delta: 34650 ns (~ 34 us)
+[  161.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  161.385361] In our workq function: irq_scan_work
+[  161.390031] delta: 21515 ns (~ 21 us)
+[  161.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  161.885355] In our workq function: irq_scan_work
+[  161.890021] delta: 19450 ns (~ 19 us)
+[  162.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  162.385348] In our workq function: irq_scan_work
+[  162.390018] delta: 18325 ns (~ 18 us)
+[  162.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[  162.885358] In our workq function: irq_scan_work
+[  162.890024] delta: 26445 ns (~ 26 us)
+[  163.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  163.385351] In our workq function: irq_scan_work
+[  163.390026] delta: 21155 ns (~ 21 us)
+[  163.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  163.885361] In our workq function: irq_scan_work
+[  163.890033] delta: 24450 ns (~ 24 us)
+[  164.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  164.385338] In our workq function: irq_scan_work
+[  164.390000] delta: 18700 ns (~ 18 us)
+[  164.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  164.885352] In our workq function: irq_scan_work
+[  164.890021] delta: 22775 ns (~ 22 us)
+[  165.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  165.385348] In our workq function: irq_scan_work
+[  165.390010] delta: 19775 ns (~ 19 us)
+[  165.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  165.885351] In our workq function: irq_scan_work
+[  165.890019] delta: 23360 ns (~ 23 us)
+[  166.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  166.385343] In our workq function: irq_scan_work
+[  166.390009] delta: 19635 ns (~ 19 us)
+[  166.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  166.885346] In our workq function: irq_scan_work
+[  166.890013] delta: 18065 ns (~ 18 us)
+[  167.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  167.385359] In our workq function: irq_scan_work
+[  167.390032] delta: 20890 ns (~ 20 us)
+[  167.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  167.885351] In our workq function: irq_scan_work
+[  167.890020] delta: 22905 ns (~ 22 us)
+[  168.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  168.385342] In our workq function: irq_scan_work
+[  168.390027] delta: 19570 ns (~ 19 us)
+[  168.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  168.885346] In our workq function: irq_scan_work
+[  168.890004] delta: 17460 ns (~ 17 us)
+[  169.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  169.385349] In our workq function: irq_scan_work
+[  169.390019] delta: 17385 ns (~ 17 us)
+[  169.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  169.885352] In our workq function: irq_scan_work
+[  169.890024] delta: 22595 ns (~ 22 us)
+[  170.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  170.385346] In our workq function: irq_scan_work
+[  170.390013] delta: 17340 ns (~ 17 us)
+[  170.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  170.885351] In our workq function: irq_scan_work
+[  170.890032] delta: 21180 ns (~ 21 us)
+[  171.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  171.385354] In our workq function: irq_scan_work
+[  171.390022] delta: 18925 ns (~ 18 us)
+[  171.878778] In func - read_irq_interval_cb, line - 93, context = 0
+[  171.885374] In our workq function: irq_scan_work
+[  171.890053] delta: 26425 ns (~ 26 us)
+[  172.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  172.385393] In our workq function: irq_scan_work
+[  172.390058] delta: 62615 ns (~ 62 us)
+[  172.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  172.885348] In our workq function: irq_scan_work
+[  172.890011] delta: 21420 ns (~ 21 us)
+[  173.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  173.385343] In our workq function: irq_scan_work
+[  173.390014] delta: 20570 ns (~ 20 us)
+[  173.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  173.885354] In our workq function: irq_scan_work
+[  173.890024] delta: 22930 ns (~ 22 us)
+[  174.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  174.385342] In our workq function: irq_scan_work
+[  174.390008] delta: 18485 ns (~ 18 us)
+[  174.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  174.885351] In our workq function: irq_scan_work
+[  174.890023] delta: 18740 ns (~ 18 us)
+[  175.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  175.385345] In our workq function: irq_scan_work
+[  175.390003] delta: 18645 ns (~ 18 us)
+[  175.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  175.885353] In our workq function: irq_scan_work
+[  175.890028] delta: 22380 ns (~ 22 us)
+[  176.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  176.385348] In our workq function: irq_scan_work
+[  176.390012] delta: 20125 ns (~ 20 us)
+[  176.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  176.885348] In our workq function: irq_scan_work
+[  176.890017] delta: 20320 ns (~ 20 us)
+[  177.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  177.385343] In our workq function: irq_scan_work
+[  177.390010] delta: 17945 ns (~ 17 us)
+[  177.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  177.885350] In our workq function: irq_scan_work
+[  177.890022] delta: 18660 ns (~ 18 us)
+[  178.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  178.385354] In our workq function: irq_scan_work
+[  178.390021] delta: 19980 ns (~ 19 us)
+[  178.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  178.885341] In our workq function: irq_scan_work
+[  178.890002] delta: 18370 ns (~ 18 us)
+[  179.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  179.385361] In our workq function: irq_scan_work
+[  179.390023] delta: 25635 ns (~ 25 us)
+[  179.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  179.885353] In our workq function: irq_scan_work
+[  179.890024] delta: 18535 ns (~ 18 us)
+[  180.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  180.385348] In our workq function: irq_scan_work
+[  180.390017] delta: 17745 ns (~ 17 us)
+[  180.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  180.885361] In our workq function: irq_scan_work
+[  180.890036] delta: 27625 ns (~ 27 us)
+[  181.378771] In func - read_irq_interval_cb, line - 93, context = 0
+[  181.385383] In our workq function: irq_scan_work
+[  181.390040] delta: 49475 ns (~ 49 us)
+[  181.878776] In func - read_irq_interval_cb, line - 93, context = 0
+[  181.885356] In our workq function: irq_scan_work
+[  181.890028] delta: 21540 ns (~ 21 us)
+[  182.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  182.385351] In our workq function: irq_scan_work
+[  182.390026] delta: 23210 ns (~ 23 us)
+[  182.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  182.885358] In our workq function: irq_scan_work
+[  182.890031] delta: 21285 ns (~ 21 us)
+[  183.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  183.385334] In our workq function: irq_scan_work
+[  183.389995] delta: 19155 ns (~ 19 us)
+[  183.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  183.885352] In our workq function: irq_scan_work
+[  183.890023] delta: 19670 ns (~ 19 us)
+[  184.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  184.385339] In our workq function: irq_scan_work
+[  184.390010] delta: 19775 ns (~ 19 us)
+[  184.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  184.885346] In our workq function: irq_scan_work
+[  184.890007] delta: 19085 ns (~ 19 us)
+[  185.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  185.385368] In our workq function: irq_scan_work
+[  185.390033] delta: 31300 ns (~ 31 us)
+[  185.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  185.885352] In our workq function: irq_scan_work
+[  185.890022] delta: 19520 ns (~ 19 us)
+[  186.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  186.385353] In our workq function: irq_scan_work
+[  186.390021] delta: 19985 ns (~ 19 us)
+[  186.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[  186.885351] In our workq function: irq_scan_work
+[  186.890009] delta: 19700 ns (~ 19 us)
+[  187.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  187.385347] In our workq function: irq_scan_work
+[  187.390012] delta: 18105 ns (~ 18 us)
+[  187.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  187.885342] In our workq function: irq_scan_work
+[  187.890009] delta: 19100 ns (~ 19 us)
+[  188.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  188.385396] In our workq function: irq_scan_work
+[  188.390064] delta: 35890 ns (~ 35 us)
+[  188.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  188.885362] In our workq function: irq_scan_work
+[  188.890034] delta: 19530 ns (~ 19 us)
+[  189.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  189.385341] In our workq function: irq_scan_work
+[  189.390024] delta: 17775 ns (~ 17 us)
+[  189.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  189.885454] In our workq function: irq_scan_work
+[  189.890136] delta: 122145 ns (~ 122 us)
+[  190.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  190.385346] In our workq function: irq_scan_work
+[  190.390018] delta: 23360 ns (~ 23 us)
+[  190.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  190.885339] In our workq function: irq_scan_work
+[  190.890013] delta: 17695 ns (~ 17 us)
+[  191.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  191.385354] In our workq function: irq_scan_work
+[  191.390024] delta: 22270 ns (~ 22 us)
+[  191.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  191.885353] In our workq function: irq_scan_work
+[  191.890019] delta: 19370 ns (~ 19 us)
+[  192.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  192.385365] In our workq function: irq_scan_work
+[  192.390039] delta: 22555 ns (~ 22 us)
+[  192.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  192.885371] In our workq function: irq_scan_work
+[  192.890041] delta: 21930 ns (~ 21 us)
+[  193.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  193.385349] In our workq function: irq_scan_work
+[  193.390008] delta: 18985 ns (~ 18 us)
+[  193.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  193.885352] In our workq function: irq_scan_work
+[  193.890024] delta: 22075 ns (~ 22 us)
+[  194.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  194.385356] In our workq function: irq_scan_work
+[  194.390021] delta: 19135 ns (~ 19 us)
+[  194.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  194.885351] In our workq function: irq_scan_work
+[  194.890022] delta: 19705 ns (~ 19 us)
+[  195.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  195.385344] In our workq function: irq_scan_work
+[  195.390013] delta: 21330 ns (~ 21 us)
+[  195.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  195.885348] In our workq function: irq_scan_work
+[  195.890009] delta: 19620 ns (~ 19 us)
+[  196.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  196.385354] In our workq function: irq_scan_work
+[  196.390026] delta: 20340 ns (~ 20 us)
+[  196.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  196.885353] In our workq function: irq_scan_work
+[  196.890026] delta: 18250 ns (~ 18 us)
+[  197.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  197.385347] In our workq function: irq_scan_work
+[  197.390014] delta: 19505 ns (~ 19 us)
+[  197.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  197.886075] In our workq function: irq_scan_work
+[  197.890744] delta: 762305 ns (~ 762 us)
+[  198.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  198.385351] In our workq function: irq_scan_work
+[  198.390011] delta: 18660 ns (~ 18 us)
+[  198.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  198.885378] In our workq function: irq_scan_work
+[  198.890059] delta: 35700 ns (~ 35 us)
+[  199.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  199.385355] In our workq function: irq_scan_work
+[  199.390025] delta: 22925 ns (~ 22 us)
+[  199.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  199.885355] In our workq function: irq_scan_work
+[  199.890029] delta: 23385 ns (~ 23 us)
+[  200.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  200.385353] In our workq function: irq_scan_work
+[  200.390019] delta: 21625 ns (~ 21 us)
+[  200.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  200.885348] In our workq function: irq_scan_work
+[  200.890019] delta: 18825 ns (~ 18 us)
+[  201.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  201.385342] In our workq function: irq_scan_work
+[  201.390014] delta: 19520 ns (~ 19 us)
+[  201.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  201.885351] In our workq function: irq_scan_work
+[  201.890015] delta: 18180 ns (~ 18 us)
+[  202.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  202.385350] In our workq function: irq_scan_work
+[  202.390016] delta: 17805 ns (~ 17 us)
+[  202.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  202.885359] In our workq function: irq_scan_work
+[  202.890030] delta: 25510 ns (~ 25 us)
+[  203.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  203.385344] In our workq function: irq_scan_work
+[  203.390006] delta: 18580 ns (~ 18 us)
+[  203.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  203.885353] In our workq function: irq_scan_work
+[  203.890019] delta: 23760 ns (~ 23 us)
+[  204.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  204.385349] In our workq function: irq_scan_work
+[  204.390020] delta: 19385 ns (~ 19 us)
+[  204.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  204.885350] In our workq function: irq_scan_work
+[  204.890017] delta: 22220 ns (~ 22 us)
+[  205.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  205.385360] In our workq function: irq_scan_work
+[  205.390032] delta: 21360 ns (~ 21 us)
+[  205.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  205.885344] In our workq function: irq_scan_work
+[  205.890012] delta: 18760 ns (~ 18 us)
+[  206.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  206.385359] In our workq function: irq_scan_work
+[  206.390029] delta: 22465 ns (~ 22 us)
+[  206.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  206.885348] In our workq function: irq_scan_work
+[  206.890016] delta: 17880 ns (~ 17 us)
+[  207.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  207.385340] In our workq function: irq_scan_work
+[  207.390000] delta: 18805 ns (~ 18 us)
+[  207.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  207.885400] In our workq function: irq_scan_work
+[  207.890065] delta: 22690 ns (~ 22 us)
+[  208.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  208.385358] In our workq function: irq_scan_work
+[  208.390037] delta: 22370 ns (~ 22 us)
+[  208.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  208.885359] In our workq function: irq_scan_work
+[  208.890030] delta: 25195 ns (~ 25 us)
+[  209.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  209.385352] In our workq function: irq_scan_work
+[  209.390019] delta: 23770 ns (~ 23 us)
+[  209.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  209.885351] In our workq function: irq_scan_work
+[  209.890011] delta: 22595 ns (~ 22 us)
+[  210.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  210.385346] In our workq function: irq_scan_work
+[  210.390004] delta: 20255 ns (~ 20 us)
+[  210.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  210.885341] In our workq function: irq_scan_work
+[  210.890003] delta: 18865 ns (~ 18 us)
+[  211.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  211.385339] In our workq function: irq_scan_work
+[  211.390012] delta: 20270 ns (~ 20 us)
+[  211.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  211.885359] In our workq function: irq_scan_work
+[  211.890029] delta: 21330 ns (~ 21 us)
+[  212.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  212.385350] In our workq function: irq_scan_work
+[  212.390019] delta: 20840 ns (~ 20 us)
+[  212.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  212.885354] In our workq function: irq_scan_work
+[  212.890026] delta: 23345 ns (~ 23 us)
+[  213.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  213.385342] In our workq function: irq_scan_work
+[  213.390008] delta: 17660 ns (~ 17 us)
+[  213.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  213.885349] In our workq function: irq_scan_work
+[  213.890030] delta: 21130 ns (~ 21 us)
+[  214.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  214.385351] In our workq function: irq_scan_work
+[  214.390020] delta: 17635 ns (~ 17 us)
+[  214.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  214.885345] In our workq function: irq_scan_work
+[  214.890015] delta: 20925 ns (~ 20 us)
+[  215.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  215.385356] In our workq function: irq_scan_work
+[  215.390025] delta: 21340 ns (~ 21 us)
+[  215.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  215.885342] In our workq function: irq_scan_work
+[  215.890008] delta: 18020 ns (~ 18 us)
+[  216.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  216.385345] In our workq function: irq_scan_work
+[  216.390018] delta: 19200 ns (~ 19 us)
+[  216.878772] In func - read_irq_interval_cb, line - 93, context = 0
+[  216.885349] In our workq function: irq_scan_work
+[  216.890037] delta: 23615 ns (~ 23 us)
+[  217.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  217.385344] In our workq function: irq_scan_work
+[  217.390020] delta: 20405 ns (~ 20 us)
+[  217.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  217.885363] In our workq function: irq_scan_work
+[  217.890038] delta: 23385 ns (~ 23 us)
+[  218.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  218.385350] In our workq function: irq_scan_work
+[  218.390019] delta: 19580 ns (~ 19 us)
+[  218.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  218.885382] In our workq function: irq_scan_work
+[  218.890060] delta: 24920 ns (~ 24 us)
+[  219.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  219.385342] In our workq function: irq_scan_work
+[  219.390009] delta: 19975 ns (~ 19 us)
+[  219.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  219.885351] In our workq function: irq_scan_work
+[  219.890021] delta: 21350 ns (~ 21 us)
+[  220.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  220.385364] In our workq function: irq_scan_work
+[  220.390039] delta: 23355 ns (~ 23 us)
+[  220.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  220.885346] In our workq function: irq_scan_work
+[  220.890012] delta: 18765 ns (~ 18 us)
+[  221.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  221.385352] In our workq function: irq_scan_work
+[  221.390023] delta: 22405 ns (~ 22 us)
+[  221.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  221.885351] In our workq function: irq_scan_work
+[  221.890020] delta: 20065 ns (~ 20 us)
+[  222.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  222.385359] In our workq function: irq_scan_work
+[  222.390043] delta: 21785 ns (~ 21 us)
+[  222.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  222.885361] In our workq function: irq_scan_work
+[  222.890033] delta: 20880 ns (~ 20 us)
+[  223.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  223.385338] In our workq function: irq_scan_work
+[  223.390005] delta: 18075 ns (~ 18 us)
+[  223.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  223.885353] In our workq function: irq_scan_work
+[  223.890025] delta: 21185 ns (~ 21 us)
+[  224.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  224.385347] In our workq function: irq_scan_work
+[  224.390014] delta: 17110 ns (~ 17 us)
+[  224.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  224.885355] In our workq function: irq_scan_work
+[  224.890028] delta: 20815 ns (~ 20 us)
+[  225.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  225.385351] In our workq function: irq_scan_work
+[  225.390020] delta: 20110 ns (~ 20 us)
+[  225.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  225.885365] In our workq function: irq_scan_work
+[  225.890044] delta: 33645 ns (~ 33 us)
+[  226.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  226.385349] In our workq function: irq_scan_work
+[  226.390017] delta: 24160 ns (~ 24 us)
+[  226.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  226.885351] In our workq function: irq_scan_work
+[  226.890017] delta: 22615 ns (~ 22 us)
+[  227.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  227.385347] In our workq function: irq_scan_work
+[  227.390015] delta: 22330 ns (~ 22 us)
+[  227.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  227.885348] In our workq function: irq_scan_work
+[  227.890018] delta: 21425 ns (~ 21 us)
+[  228.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  228.385338] In our workq function: irq_scan_work
+[  228.390011] delta: 17930 ns (~ 17 us)
+[  228.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  228.885355] In our workq function: irq_scan_work
+[  228.890025] delta: 19930 ns (~ 19 us)
+[  229.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  229.385343] In our workq function: irq_scan_work
+[  229.390011] delta: 19725 ns (~ 19 us)
+[  229.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  229.885641] In our workq function: irq_scan_work
+[  229.890303] delta: 322635 ns (~ 322 us)
+[  230.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  230.385353] In our workq function: irq_scan_work
+[  230.390023] delta: 21280 ns (~ 21 us)
+[  230.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  230.885344] In our workq function: irq_scan_work
+[  230.890005] delta: 18690 ns (~ 18 us)
+[  231.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  231.385351] In our workq function: irq_scan_work
+[  231.390039] delta: 21505 ns (~ 21 us)
+[  231.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  231.885344] In our workq function: irq_scan_work
+[  231.890013] delta: 18870 ns (~ 18 us)
+[  232.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  232.385349] In our workq function: irq_scan_work
+[  232.390021] delta: 19695 ns (~ 19 us)
+[  232.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  232.885356] In our workq function: irq_scan_work
+[  232.890030] delta: 22620 ns (~ 22 us)
+[  233.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  233.385342] In our workq function: irq_scan_work
+[  233.390013] delta: 16660 ns (~ 16 us)
+
+root@am64xx-evm:~# 
+root@am64xx-evm:~# [  233.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  233.885356] In our workq function: irq_scan_work
+[  233.890023] delta: 20225 ns (~ 20 us)
+[  234.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  234.385336] In our workq function: irq_scan_work
+[  234.390006] delta: 17510 ns (~ 17 us)
+[  234.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  234.885435] In our workq function: irq_scan_work
+[  234.890114] delta: 19305 ns (~ 19 us)
+[  235.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  235.385356] In our workq function: irq_scan_work
+[  235.390039] delta: 24705 ns (~ 24 us)
+[  235.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  235.885350] In our workq function: irq_scan_work
+[  235.890024] delta: 21240 ns (~ 21 us)
+[  236.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  236.385367] In our workq function: irq_scan_work
+[  236.390043] delta: 29865 ns (~ 29 us)
+[  236.878776] In func - read_irq_interval_cb, line - 93, context = 0
+[  236.885347] In our workq function: irq_scan_work
+[  236.890019] delta: 20080 ns (~ 20 us)
+[  237.378775] In func - read_irq_interval_cb, line - 93, context = 0
+[  237.385349] In our workq function: irq_scan_work
+[  237.390019] delta: 21930 ns (~ 21 us)
+[  237.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  237.885358] In our workq function: irq_scan_work
+[  237.890028] delta: 19770 ns (~ 19 us)
+[  238.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  238.385344] In our workq function: irq_scan_work
+[  238.390016] delta: 18970 ns (~ 18 us)
+[  238.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  238.885354] In our workq function: irq_scan_work
+[  238.890015] delta: 20790 ns (~ 20 us)
+[  239.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  239.385346] In our workq function: irq_scan_work
+[  239.390013] delta: 17990 ns (~ 17 us)
+[  239.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  239.885345] In our workq function: irq_scan_work
+[  239.890006] delta: 19655 ns (~ 19 us)
+[  240.378773] In func - read_irq_interval_cb, line - 93, context = 0
+[  240.385345] In our workq function: irq_scan_work
+[  240.390016] delta: 20005 ns (~ 20 us)
+[  240.878773] In func - read_irq_interval_cb, line - 93, context = 0
+[  240.885348] In our workq function: irq_scan_work
+[  240.890019] delta: 18595 ns (~ 18 us)
+[  241.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  241.385352] In our workq function: irq_scan_work
+[  241.390023] delta: 17190 ns (~ 17 us)
+[  241.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  241.885360] In our workq function: irq_scan_work
+[  241.890035] delta: 21415 ns (~ 21 us)
+[  242.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  242.385350] In our workq function: irq_scan_work
+[  242.390021] delta: 18775 ns (~ 18 us)
+[  242.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  242.885353] In our workq function: irq_scan_work
+[  242.890027] delta: 23675 ns (~ 23 us)
+[  243.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  243.385349] In our workq function: irq_scan_work
+[  243.390011] delta: 17620 ns (~ 17 us)
+[  243.878775] In func - read_irq_interval_cb, line - 93, context = 0
+[  243.885353] In our workq function: irq_scan_work
+[  243.890036] delta: 23735 ns (~ 23 us)
+[  244.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  244.385342] In our workq function: irq_scan_work
+[  244.390010] delta: 20370 ns (~ 20 us)
+[  244.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  244.885356] In our workq function: irq_scan_work
+[  244.890028] delta: 23775 ns (~ 23 us)
+[  245.378774] In func - read_irq_interval_cb, line - 93, context = 0
+[  245.385342] In our workq function: irq_scan_work
+[  245.390014] delta: 21365 ns (~ 21 us)
+[  245.878774] In func - read_irq_interval_cb, line - 93, context = 0
+[  245.885343] In our workq function: irq_scan_work
+[  245.890017] delta: 18500 ns (~ 18 us)
+
+root@am64xx-evm:~# 
+root@am64xx-evm:~# [  246.378776] In func - read_irq_interval_cb, line - 93, context = 0
+[  246.385373] In our workq function: irq_scan_work
+[  246.390038] delta: 28380 ns (~ 28 us)
+
+root@am64xx-evm:~# 
+root@am64xx-evm:~# echo off > /proc/irq_diag/irq_diag_cmd[  246.878776] In func - read_irq_interval_cb, line - 93, context = 0
+[  246.885366] In our workq function: irq_scan_work
+[  246.890050] delta: 23840 ns (~ 23 us)
+
+[  247.065051] DBG: In func - irq_diag_open_cmd
+[  247.069476] DBG: String: off, length - 4
+[  247.073416] DBG: Stopping HR timer used for IRQ rate calculation
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# cat /proc/irq_diag/irq_diag_stat
+[  255.886215] DBG: In func - irq_diag_open_stat, id - 55
+[  255.891545] DBG: In func - show_irq_stat, line - 516, Version - Irq Diag Ver - 1.0, Id - 55
+[  255.900771] DBG: In func - show_irq_stat, line - 516, Version - Irq Diag Ver - 1.0, Id - 55
+[  255.910028] DBG: In func - show_irq_stat, line - 516, Version - Irq Diag Ver - 1.0, Id - 55
+[  255.919442] DBG: In func - show_irq_stat, line - 516, Version - Irq Diag Ver - 1.0, Id - 55
+[  255.929324] DBG: In func - show_irq_stat, line - 516, Version - Irq Diag Ver - 1.0, Id - 55
+[  255.940026] DBG: In func - show_irq_stat, line - 516, Version - Irq Diag Ver - 1.0, Id - 55
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+   1           4294850524                 2030                    0
+   1           4294851024                 2032                    2
+   1           4294851524                 2032                    0
+   1           4294852024                 2032                    0
+   1           4294852524                 2032                    0
+   1           4294853024                 2032                    0
+   1           4294853524                 2032                    0
+   1           4294854024                 2032                    0
+   1           4294854524                 2032                    0
+   1           4294855024                 2032                    0
+   1           4294855524                 2032                    0
+   1           4294856024                 2032                    0
+   1           4294856524                 2032                    0
+   1           4294857024                 2032                    0
+   1           4294857524                 2032                    0
+   1           4294858024                 2032                    0
+   1           4294858524                 2032                    0
+   1           4294859024                 2032                    0
+   1           4294859524                 2032                    0
+   1           4294860024                 2032                    0
+   1           4294860524                 2034                    2
+   1           4294861024                 2034                    0
+   1           4294861524                 2034                    0
+   1           4294862024                 2036                    2
+   1           4294862524                 2036                    0
+   1           4294863024                 2036                    0
+   1           4294863524                 2036                    0
+   1           4294864024                 2036                    0
+   1           4294864524                 2036                    0
+   1           4294865024                 2036                    0
+   1           4294865524                 2036                    0
+   1           4294866024                 2036                    0
+   1           4294866524                 2036                    0
+   1           4294867024                 2036                    0
+   1           4294867524                 2038                    2
+   1           4294868024                 2038                    0
+   1           4294868524                 2040                    2
+   1           4294869024                 2040                    0
+   1           4294869524                 2040                    0
+   1           4294870024                 2040                    0
+   1           4294870524                 2040                    0
+   1           4294871024                 2040                    0
+   1           4294871524                 2040                    0
+   1           4294872024                 2040                    0
+   1           4294872524                 2040                    0
+   1           4294873024                 2040                    0
+   1           4294873524                 2040                    0
+   1           4294874024                 2040                    0
+   1           4294874524                 2040                    0
+   1           4294875024                 2040                    0
+   1           4294875524                 2040                    0
+   1           4294876024                 2040                    0
+   1           4294876524                 2040                    0
+   1           4294877024                 2042                    2
+   1           4294877524                 2042                    0
+   1           4294878024                 2042                    0
+   1           4294878524                 2042                    0
+   1           4294879024                 2042                    0
+   1           4294879524                 2042                    0
+   1           4294880024                 2042                    0
+   1           4294880524                 2042                    0
+   1           4294881024                 2042                    0
+   1           4294881524                 2042                    0
+   1           4294882024                 2042                    0
+   1           4294882524                 2042                    0
+   1           4294883024                 2042                    0
+   1           4294883524                 2042                    0
+   1           4294884024                 2042                    0
+   1           4294884524                 2042                    0
+   1           4294885024                 2042                    0
+   1           4294885524                 2042                    0
+   1           4294886024                 2042                    0
+   1           4294886524                 2042                    0
+   1           4294887024                 2044                    2
+   1           4294887524                 2044                    0
+   1           4294888024                 2044                    0
+   1           4294888524                 2044                    0
+   1           4294889024                 2045                    1
+   1           4294889524                 2046                    1
+   1           4294890024                 2046                    0
+   1           4294890524                 2046                    0
+   1           4294891024                 2046                    0
+   1           4294891524                 2046                    0
+   1           4294892024                 2048                    2
+   1           4294892524                 2050                    2
+   1           4294893024                 2050                    0
+   1           4294893524                 2050                    0
+   1           4294894024                 2050                    0
+   1           4294894524                 2050                    0
+   1           4294895024                 2050                    0
+   1           4294895524                 2050                    0
+   1           4294896024                 2050                    0
+   1           4294896524                 2050                    0
+   1           4294897024                 2050                    0
+   1           4294897524                 2050                    0
+   1           4294898024                 2050                    0
+   1           4294898524                 2050                    0
+   1           4294899024                 2050                    0
+   1           4294899524                 2052                    2
+   1           4294900024                 2052                    0
+   1           4294900524                 2052                    0
+   1           4294901024                 2052                    0
+   1           4294901524                 2052                    0
+   1           4294902024                 2052                    0
+   1           4294902524                 2052                    0
+   1           4294903024                 2054                    2
+   1           4294903524                 2054                    0
+   1           4294904024                 2054                    0
+   1           4294904524                 2054                    0
+   1           4294905024                 2054                    0
+   1           4294905524                 2054                    0
+   1           4294906024                 2054                    0
+   1           4294906524                 2054                    0
+   1           4294907024                 2054                    0
+   1           4294907524                 2054                    0
+   1           4294908024                 2054                    0
+   1           4294908524                 2054                    0
+   1           4294909024                 2054                    0
+   1           4294909524                 2054                    0
+   1           4294910024                 2054                    0
+   1           4294910524                 2054                    0
+   1           4294911024                 2054                    0
+   1           4294911524                 2055                    1
+   1           4294912024                 2055                    0
+   1           4294912524                 2055                    0
+   1           4294913024                 2055                    0
+   1           4294913524                 2055                    0
+   1           4294914024                 2055                    0
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+   2           4294850524                 6461                    7
+   2           4294851024                 6473                   12
+   2           4294851524                 6483                   10
+   2           4294852024                 6496                   13
+   2           4294852524                 6506                   10
+   2           4294853024                 6517                   11
+   2           4294853524                 6527                   10
+   2           4294854024                 6535                    8
+   2           4294854524                 6547                   12
+   2           4294855024                 6556                    9
+   2           4294855524                 6587                   31
+   2           4294856024                 6596                    9
+   2           4294856524                 6606                   10
+   2           4294857024                 6622                   16
+   2           4294857524                 6629                    7
+   2           4294858024                 6643                   14
+   2           4294858524                 6653                   10
+   2           4294859024                 6666                   13
+   2           4294859524                 6677                   11
+   2           4294860024                 6686                    9
+   2           4294860524                 6698                   12
+   2           4294861024                 6709                   11
+   2           4294861524                 6722                   13
+   2           4294862024                 6732                   10
+   2           4294862524                 6739                    7
+   2           4294863024                 6751                   12
+   2           4294863524                 6758                    7
+   2           4294864024                 6767                    9
+   2           4294864524                 6775                    8
+   2           4294865024                 6784                    9
+   2           4294865524                 6795                   11
+   2           4294866024                 6808                   13
+   2           4294866524                 6819                   11
+   2           4294867024                 6829                   10
+   2           4294867524                 6837                    8
+   2           4294868024                 6850                   13
+   2           4294868524                 6856                    6
+   2           4294869024                 6869                   13
+   2           4294869524                 6879                   10
+   2           4294870024                 6886                    7
+   2           4294870524                 6900                   14
+   2           4294871024                 6907                    7
+   2           4294871524                 6916                    9
+   2           4294872024                 6928                   12
+   2           4294872524                 6936                    8
+   2           4294873024                 6948                   12
+   2           4294873524                 6956                    8
+   2           4294874024                 6966                   10
+   2           4294874524                 6975                    9
+   2           4294875024                 6984                    9
+   2           4294875524                 6997                   13
+   2           4294876024                 7006                    9
+   2           4294876524                 7015                    9
+   2           4294877024                 7027                   12
+   2           4294877524                 7034                    7
+   2           4294878024                 7046                   12
+   2           4294878524                 7053                    7
+   2           4294879024                 7066                   13
+   2           4294879524                 7075                    9
+   2           4294880024                 7082                    7
+   2           4294880524                 7094                   12
+   2           4294881024                 7101                    7
+   2           4294881524                 7112                   11
+   2           4294882024                 7121                    9
+   2           4294882524                 7129                    8
+   2           4294883024                 7141                   12
+   2           4294883524                 7149                    8
+   2           4294884024                 7160                   11
+   2           4294884524                 7169                    9
+   2           4294885024                 7178                    9
+   2           4294885524                 7190                   12
+   2           4294886024                 7220                   30
+   2           4294886524                 7230                   10
+   2           4294887024                 7241                   11
+   2           4294887524                 7250                    9
+   2           4294888024                 7265                   15
+   2           4294888524                 7273                    8
+   2           4294889024                 7285                   12
+   2           4294889524                 7295                   10
+   2           4294890024                 7305                   10
+   2           4294890524                 7317                   12
+   2           4294891024                 7324                    7
+   2           4294891524                 7334                   10
+   2           4294892024                 7344                   10
+   2           4294892524                 7351                    7
+   2           4294893024                 7365                   14
+   2           4294893524                 7371                    6
+   2           4294894024                 7383                   12
+   2           4294894524                 7391                    8
+   2           4294895024                 7399                    8
+   2           4294895524                 7409                   10
+   2           4294896024                 7421                   12
+   2           4294896524                 7431                   10
+   2           4294897024                 7443                   12
+   2           4294897524                 7451                    8
+   2           4294898024                 7465                   14
+   2           4294898524                 7473                    8
+   2           4294899024                 7486                   13
+   2           4294899524                 7496                   10
+   2           4294900024                 7504                    8
+   2           4294900524                 7516                   12
+   2           4294901024                 7530                   14
+   2           4294901524                 7540                   10
+   2           4294902024                 7550                   10
+   2           4294902524                 7557                    7
+   2           4294903024                 7574                   17
+   2           4294903524                 7584                   10
+   2           4294904024                 7594                   10
+   2           4294904524                 7603                    9
+   2           4294905024                 7614                   11
+   2           4294905524                 7627                   13
+   2           4294906024                 7634                    7
+   2           4294906524                 7644                   10
+   2           4294907024                 7656                   12
+   2           4294907524                 7664                    8
+   2           4294908024                 7676                   12
+   2           4294908524                 7686                   10
+   2           4294909024                 7700                   14
+   2           4294909524                 7711                   11
+   2           4294910024                 7718                    7
+   2           4294910524                 7730                   12
+   2           4294911024                 7737                    7
+   2           4294911524                 7749                   12
+   2           4294912024                 7759                   10
+   2           4294912524                 7765                    6
+   2           4294913024                 7779                   14
+   2           4294913524                 7789                   10
+   2           4294914024                 7805                   16
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+   6           4294850524                  269                    1
+   6           4294851024                  270                    1
+   6           4294851524                  271                    1
+   6           4294852024                  272                    1
+   6           4294852524                  273                    1
+   6           4294853024                  274                    1
+   6           4294853524                  275                    1
+   6           4294854024                  276                    1
+   6           4294854524                  277                    1
+   6           4294855024                  278                    1
+   6           4294855524                  279                    1
+   6           4294856024                  280                    1
+   6           4294856524                  281                    1
+   6           4294857024                  282                    1
+   6           4294857524                  283                    1
+   6           4294858024                  284                    1
+   6           4294858524                  285                    1
+   6           4294859024                  286                    1
+   6           4294859524                  287                    1
+   6           4294860024                  288                    1
+   6           4294860524                  289                    1
+   6           4294861024                  290                    1
+   6           4294861524                  291                    1
+   6           4294862024                  292                    1
+   6           4294862524                  293                    1
+   6           4294863024                  294                    1
+   6           4294863524                  295                    1
+   6           4294864024                  296                    1
+   6           4294864524                  297                    1
+   6           4294865024                  298                    1
+   6           4294865524                  299                    1
+   6           4294866024                  300                    1
+   6           4294866524                  301                    1
+   6           4294867024                  302                    1
+   6           4294867524                  303                    1
+   6           4294868024                  304                    1
+   6           4294868524                  305                    1
+   6           4294869024                  306                    1
+   6           4294869524                  307                    1
+   6           4294870024                  308                    1
+   6           4294870524                  309                    1
+   6           4294871024                  310                    1
+   6           4294871524                  311                    1
+   6           4294872024                  312                    1
+   6           4294872524                  313                    1
+   6           4294873024                  314                    1
+   6           4294873524                  315                    1
+   6           4294874024                  316                    1
+   6           4294874524                  317                    1
+   6           4294875024                  318                    1
+   6           4294875524                  319                    1
+   6           4294876024                  320                    1
+   6           4294876524                  321                    1
+   6           4294877024                  322                    1
+   6           4294877524                  323                    1
+   6           4294878024                  324                    1
+   6           4294878524                  325                    1
+   6           4294879024                  326                    1
+   6           4294879524                  327                    1
+   6           4294880024                  328                    1
+   6           4294880524                  329                    1
+   6           4294881024                  330                    1
+   6           4294881524                  331                    1
+   6           4294882024                  332                    1
+   6           4294882524                  333                    1
+   6           4294883024                  334                    1
+   6           4294883524                  335                    1
+   6           4294884024                  336                    1
+   6           4294884524                  337                    1
+   6           4294885024                  338                    1
+   6           4294885524                  339                    1
+   6           4294886024                  340                    1
+   6           4294886524                  341                    1
+   6           4294887024                  342                    1
+   6           4294887524                  343                    1
+   6           4294888024                  344                    1
+   6           4294888524                  345                    1
+   6           4294889024                  346                    1
+   6           4294889524                  347                    1
+   6           4294890024                  348                    1
+   6           4294890524                  349                    1
+   6           4294891024                  350                    1
+   6           4294891524                  351                    1
+   6           4294892024                  352                    1
+   6           4294892524                  353                    1
+   6           4294893024                  354                    1
+   6           4294893524                  355                    1
+   6           4294894024                  356                    1
+   6           4294894524                  357                    1
+   6           4294895024                  358                    1
+   6           4294895524                  359                    1
+   6           4294896024                  360                    1
+   6           4294896524                  361                    1
+   6           4294897024                  362                    1
+   6           4294897524                  363                    1
+   6           4294898024                  364                    1
+   6           4294898524                  365                    1
+   6           4294899024                  366                    1
+   6           4294899524                  367                    1
+   6           4294900024                  368                    1
+   6           4294900524                  369                    1
+   6           4294901024                  370                    1
+   6           4294901524                  371                    1
+   6           4294902024                  372                    1
+   6           4294902524                  373                    1
+   6           4294903024                  374                    1
+   6           4294903524                  375                    1
+   6           4294904024                  376                    1
+   6           4294904524                  377                    1
+   6           4294905024                  378                    1
+   6           4294905524                  379                    1
+   6           4294906024                  380                    1
+   6           4294906524                  381                    1
+   6           4294907024                  382                    1
+   6           4294907524                  383                    1
+   6           4294908024                  384                    1
+   6           4294908524                  385                    1
+   6           4294909024                  386                    1
+   6           4294909524                  387                    1
+   6           4294910024                  388                    1
+   6           4294910524                  389                    1
+   6           4294911024                  390                    1
+   6           4294911524                  391                    1
+   6           4294912024                  392                    1
+   6           4294912524                  393                    1
+   6           4294913024                  394                    1
+   6           4294913524                  395                    1
+   6           4294914024                  396                    1
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+  11           4294850524                15612                   20
+  11           4294851024                15641                   29
+  11           4294851524                15662                   21
+  11           4294852024                15693                   31
+  11           4294852524                15724                   31
+  11           4294853024                15755                   31
+  11           4294853524                15779                   24
+  11           4294854024                15802                   23
+  11           4294854524                15827                   25
+  11           4294855024                15851                   24
+  11           4294855524                15894                   43
+  11           4294856024                15921                   27
+  11           4294856524                15942                   21
+  11           4294857024                15972                   30
+  11           4294857524                15993                   21
+  11           4294858024                16021                   28
+  11           4294858524                16046                   25
+  11           4294859024                16077                   31
+  11           4294859524                16103                   26
+  11           4294860024                16125                   22
+  11           4294860524                16149                   24
+  11           4294861024                16174                   25
+  11           4294861524                16199                   25
+  11           4294862024                16226                   27
+  11           4294862524                16248                   22
+  11           4294863024                16280                   32
+  11           4294863524                16303                   23
+  11           4294864024                16329                   26
+  11           4294864524                16353                   24
+  11           4294865024                16376                   23
+  11           4294865524                16403                   27
+  11           4294866024                16430                   27
+  11           4294866524                16456                   26
+  11           4294867024                16478                   22
+  11           4294867524                16500                   22
+  11           4294868024                16531                   31
+  11           4294868524                16553                   22
+  11           4294869024                16582                   29
+  11           4294869524                16608                   26
+  11           4294870024                16630                   22
+  11           4294870524                16658                   28
+  11           4294871024                16680                   22
+  11           4294871524                16704                   24
+  11           4294872024                16730                   26
+  11           4294872524                16752                   22
+  11           4294873024                16784                   32
+  11           4294873524                16818                   34
+  11           4294874024                16844                   26
+  11           4294874524                16869                   25
+  11           4294875024                16894                   25
+  11           4294875524                16935                   41
+  11           4294876024                16958                   23
+  11           4294876524                16982                   24
+  11           4294877024                17005                   23
+  11           4294877524                17025                   20
+  11           4294878024                17058                   33
+  11           4294878524                17083                   25
+  11           4294879024                17117                   34
+  11           4294879524                17140                   23
+  11           4294880024                17163                   23
+  11           4294880524                17189                   26
+  11           4294881024                17213                   24
+  11           4294881524                17236                   23
+  11           4294882024                17262                   26
+  11           4294882524                17283                   21
+  11           4294883024                17317                   34
+  11           4294883524                17337                   20
+  11           4294884024                17367                   30
+  11           4294884524                17389                   22
+  11           4294885024                17413                   24
+  11           4294885524                17439                   26
+  11           4294886024                17476                   37
+  11           4294886524                17498                   22
+  11           4294887024                17522                   24
+  11           4294887524                17542                   20
+  11           4294888024                17575                   33
+  11           4294888524                17594                   19
+  11           4294889024                17627                   33
+  11           4294889524                17648                   21
+  11           4294890024                17673                   25
+  11           4294890524                17698                   25
+  11           4294891024                17724                   26
+  11           4294891524                17746                   22
+  11           4294892024                17773                   27
+  11           4294892524                17792                   19
+  11           4294893024                17828                   36
+  11           4294893524                17848                   20
+  11           4294894024                17877                   29
+  11           4294894524                17899                   22
+  11           4294895024                17923                   24
+  11           4294895524                17949                   26
+  11           4294896024                17971                   22
+  11           4294896524                17994                   23
+  11           4294897024                18019                   25
+  11           4294897524                18039                   20
+  11           4294898024                18070                   31
+  11           4294898524                18091                   21
+  11           4294899024                18124                   33
+  11           4294899524                18145                   21
+  11           4294900024                18178                   33
+  11           4294900524                18203                   25
+  11           4294901024                18229                   26
+  11           4294901524                18254                   25
+  11           4294902024                18285                   31
+  11           4294902524                18309                   24
+  11           4294903024                18340                   31
+  11           4294903524                18362                   22
+  11           4294904024                18388                   26
+  11           4294904524                18412                   24
+  11           4294905024                18436                   24
+  11           4294905524                18463                   27
+  11           4294906024                18486                   23
+  11           4294906524                18512                   26
+  11           4294907024                18537                   25
+  11           4294907524                18559                   22
+  11           4294908024                18590                   31
+  11           4294908524                18612                   22
+  11           4294909024                18643                   31
+  11           4294909524                18669                   26
+  11           4294910024                18691                   22
+  11           4294910524                18717                   26
+  11           4294911024                18738                   21
+  11           4294911524                18768                   30
+  11           4294912024                18792                   24
+  11           4294912524                18815                   23
+  11           4294913024                18845                   30
+  11           4294913524                18869                   24
+  11           4294914024                18903                   34
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+  18           4294850524                  411                    0
+  18           4294851024                  411                    0
+  18           4294851524                  411                    0
+  18           4294852024                  411                    0
+  18           4294852524                  411                    0
+  18           4294853024                  411                    0
+  18           4294853524                  411                    0
+  18           4294854024                  411                    0
+  18           4294854524                  411                    0
+  18           4294855024                  411                    0
+  18           4294855524                  411                    0
+  18           4294856024                  411                    0
+  18           4294856524                  411                    0
+  18           4294857024                  411                    0
+  18           4294857524                  411                    0
+  18           4294858024                  411                    0
+  18           4294858524                  411                    0
+  18           4294859024                  411                    0
+  18           4294859524                  411                    0
+  18           4294860024                  411                    0
+  18           4294860524                  411                    0
+  18           4294861024                  411                    0
+  18           4294861524                  411                    0
+  18           4294862024                  411                    0
+  18           4294862524                  411                    0
+  18           4294863024                  411                    0
+  18           4294863524                  411                    0
+  18           4294864024                  411                    0
+  18           4294864524                  411                    0
+  18           4294865024                  411                    0
+  18           4294865524                  411                    0
+  18           4294866024                  411                    0
+  18           4294866524                  411                    0
+  18           4294867024                  411                    0
+  18           4294867524                  411                    0
+  18           4294868024                  411                    0
+  18           4294868524                  411                    0
+  18           4294869024                  411                    0
+  18           4294869524                  411                    0
+  18           4294870024                  411                    0
+  18           4294870524                  411                    0
+  18           4294871024                  411                    0
+  18           4294871524                  411                    0
+  18           4294872024                  411                    0
+  18           4294872524                  411                    0
+  18           4294873024                  411                    0
+  18           4294873524                  411                    0
+  18           4294874024                  411                    0
+  18           4294874524                  411                    0
+  18           4294875024                  411                    0
+  18           4294875524                  411                    0
+  18           4294876024                  411                    0
+  18           4294876524                  411                    0
+  18           4294877024                  411                    0
+  18           4294877524                  411                    0
+  18           4294878024                  411                    0
+  18           4294878524                  411                    0
+  18           4294879024                  411                    0
+  18           4294879524                  411                    0
+  18           4294880024                  411                    0
+  18           4294880524                  411                    0
+  18           4294881024                  411                    0
+  18           4294881524                  411                    0
+  18           4294882024                  411                    0
+  18           4294882524                  411                    0
+  18           4294883024                  411                    0
+  18           4294883524                  411                    0
+  18           4294884024                  411                    0
+  18           4294884524                  411                    0
+  18           4294885024                  411                    0
+  18           4294885524                  411                    0
+  18           4294886024                  411                    0
+  18           4294886524                  411                    0
+  18           4294887024                  411                    0
+  18           4294887524                  411                    0
+  18           4294888024                  411                    0
+  18           4294888524                  411                    0
+  18           4294889024                  411                    0
+  18           4294889524                  411                    0
+  18           4294890024                  411                    0
+  18           4294890524                  411                    0
+  18           4294891024                  411                    0
+  18           4294891524                  411                    0
+  18           4294892024                  411                    0
+  18           4294892524                  411                    0
+  18           4294893024                  411                    0
+  18           4294893524                  411                    0
+  18           4294894024                  411                    0
+  18           4294894524                  411                    0
+  18           4294895024                  411                    0
+  18           4294895524                  411                    0
+  18           4294896024                  411                    0
+  18           4294896524                  411                    0
+  18           4294897024                  411                    0
+  18           4294897524                  411                    0
+  18           4294898024                  411                    0
+  18           4294898524                  411                    0
+  18           4294899024                  411                    0
+  18           4294899524                  411                    0
+  18           4294900024                  411                    0
+  18           4294900524                  411                    0
+  18           4294901024                  411                    0
+  18           4294901524                  411                    0
+  18           4294902024                  411                    0
+  18           4294902524                  411                    0
+  18           4294903024                  411                    0
+  18           4294903524                  411                    0
+  18           4294904024                  411                    0
+  18           4294904524                  411                    0
+  18           4294905024                  411                    0
+  18           4294905524                  411                    0
+  18           4294906024                  411                    0
+  18           4294906524                  411                    0
+  18           4294907024                  411                    0
+  18           4294907524                  411                    0
+  18           4294908024                  411                    0
+  18           4294908524                  411                    0
+  18           4294909024                  411                    0
+  18           4294909524                  411                    0
+  18           4294910024                  411                    0
+  18           4294910524                  411                    0
+  18           4294911024                  411                    0
+  18           4294911524                  411                    0
+  18           4294912024                  411                    0
+  18           4294912524                  411                    0
+  18           4294913024                  411                    0
+  18           4294913524                  411                    0
+  18           4294914024                  411                    0
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+  19           4294850524                 1462                    2
+  19           4294851024                 1468                    6
+  19           4294851524                 1468                    0
+  19           4294852024                 1474                    6
+  19           4294852524                 1476                    2
+  19           4294853024                 1480                    4
+  19           4294853524                 1484                    4
+  19           4294854024                 1484                    0
+  19           4294854524                 1492                    8
+  19           4294855024                 1492                    0
+  19           4294855524                 1496                    4
+  19           4294856024                 1500                    4
+  19           4294856524                 1500                    0
+  19           4294857024                 1508                    8
+  19           4294857524                 1508                    0
+  19           4294858024                 1512                    4
+  19           4294858524                 1516                    4
+  19           4294859024                 1518                    2
+  19           4294859524                 1524                    6
+  19           4294860024                 1524                    0
+  19           4294860524                 1530                    6
+  19           4294861024                 1532                    2
+  19           4294861524                 1536                    4
+  19           4294862024                 1540                    4
+  19           4294862524                 1540                    0
+  19           4294863024                 1548                    8
+  19           4294863524                 1548                    0
+  19           4294864024                 1552                    4
+  19           4294864524                 1556                    4
+  19           4294865024                 1556                    0
+  19           4294865524                 1564                    8
+  19           4294866024                 1564                    0
+  19           4294866524                 1568                    4
+  19           4294867024                 1572                    4
+  19           4294867524                 1572                    0
+  19           4294868024                 1580                    8
+  19           4294868524                 1580                    0
+  19           4294869024                 1584                    4
+  19           4294869524                 1588                    4
+  19           4294870024                 1588                    0
+  19           4294870524                 1596                    8
+  19           4294871024                 1596                    0
+  19           4294871524                 1600                    4
+  19           4294872024                 1604                    4
+  19           4294872524                 1604                    0
+  19           4294873024                 1612                    8
+  19           4294873524                 1612                    0
+  19           4294874024                 1616                    4
+  19           4294874524                 1620                    4
+  19           4294875024                 1620                    0
+  19           4294875524                 1628                    8
+  19           4294876024                 1628                    0
+  19           4294876524                 1632                    4
+  19           4294877024                 1636                    4
+  19           4294877524                 1636                    0
+  19           4294878024                 1644                    8
+  19           4294878524                 1644                    0
+  19           4294879024                 1648                    4
+  19           4294879524                 1652                    4
+  19           4294880024                 1652                    0
+  19           4294880524                 1660                    8
+  19           4294881024                 1660                    0
+  19           4294881524                 1664                    4
+  19           4294882024                 1668                    4
+  19           4294882524                 1668                    0
+  19           4294883024                 1676                    8
+  19           4294883524                 1676                    0
+  19           4294884024                 1680                    4
+  19           4294884524                 1684                    4
+  19           4294885024                 1684                    0
+  19           4294885524                 1692                    8
+  19           4294886024                 1692                    0
+  19           4294886524                 1696                    4
+  19           4294887024                 1700                    4
+  19           4294887524                 1700                    0
+  19           4294888024                 1708                    8
+  19           4294888524                 1708                    0
+  19           4294889024                 1712                    4
+  19           4294889524                 1716                    4
+  19           4294890024                 1716                    0
+  19           4294890524                 1724                    8
+  19           4294891024                 1724                    0
+  19           4294891524                 1728                    4
+  19           4294892024                 1732                    4
+  19           4294892524                 1732                    0
+  19           4294893024                 1740                    8
+  19           4294893524                 1740                    0
+  19           4294894024                 1744                    4
+  19           4294894524                 1748                    4
+  19           4294895024                 1748                    0
+  19           4294895524                 1756                    8
+  19           4294896024                 1756                    0
+  19           4294896524                 1760                    4
+  19           4294897024                 1764                    4
+  19           4294897524                 1764                    0
+  19           4294898024                 1772                    8
+  19           4294898524                 1772                    0
+  19           4294899024                 1776                    4
+  19           4294899524                 1780                    4
+  19           4294900024                 1780                    0
+  19           4294900524                 1788                    8
+  19           4294901024                 1788                    0
+  19           4294901524                 1792                    4
+  19           4294902024                 1796                    4
+  19           4294902524                 1796                    0
+  19           4294903024                 1804                    8
+  19           4294903524                 1804                    0
+  19           4294904024                 1808                    4
+  19           4294904524                 1812                    4
+  19           4294905024                 1812                    0
+  19           4294905524                 1820                    8
+  19           4294906024                 1820                    0
+  19           4294906524                 1824                    4
+  19           4294907024                 1828                    4
+  19           4294907524                 1828                    0
+  19           4294908024                 1836                    8
+  19           4294908524                 1836                    0
+  19           4294909024                 1840                    4
+  19           4294909524                 1844                    4
+  19           4294910024                 1844                    0
+  19           4294910524                 1852                    8
+  19           4294911024                 1852                    0
+  19           4294911524                 1856                    4
+  19           4294912024                 1860                    4
+  19           4294912524                 1860                    0
+  19           4294913024                 1868                    8
+  19           4294913524                 1868                    0
+  19           4294914024                 1872                    4
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+  20           4294850524                 1701                    0
+  20           4294851024                 1701                    0
+  20           4294851524                 1701                    0
+  20           4294852024                 1701                    0
+  20           4294852524                 1701                    0
+  20           4294853024                 1701                    0
+  20           4294853524                 1701                    0
+  20           4294854024                 1701                    0
+  20           4294854524                 1701                    0
+  20           4294855024                 1701                    0
+  20           4294855524                 1701                    0
+  20           4294856024                 1701                    0
+  20           4294856524                 1701                    0
+  20           4294857024                 1701                    0
+  20           4294857524                 1701                    0
+  20           4294858024                 1701                    0
+  20           4294858524                 1701                    0
+  20           4294859024                 1701                    0
+  20           4294859524                 1701                    0
+  20           4294860024                 1701                    0
+  20           4294860524                 1701                    0
+  20           4294861024                 1701                    0
+  20           4294861524                 1701                    0
+  20           4294862024                 1701                    0
+  20           4294862524                 1701                    0
+  20           4294863024                 1701                    0
+  20           4294863524                 1701                    0
+  20           4294864024                 1701                    0
+  20           4294864524                 1701                    0
+  20           4294865024                 1701                    0
+  20           4294865524                 1701                    0
+  20           4294866024                 1701                    0
+  20           4294866524                 1701                    0
+  20           4294867024                 1701                    0
+  20           4294867524                 1701                    0
+  20           4294868024                 1701                    0
+  20           4294868524                 1701                    0
+  20           4294869024                 1701                    0
+  20           4294869524                 1701                    0
+  20           4294870024                 1701                    0
+  20           4294870524                 1701                    0
+  20           4294871024                 1701                    0
+  20           4294871524                 1701                    0
+  20           4294872024                 1701                    0
+  20           4294872524                 1701                    0
+  20           4294873024                 1701                    0
+  20           4294873524                 1701                    0
+  20           4294874024                 1701                    0
+  20           4294874524                 1701                    0
+  20           4294875024                 1701                    0
+  20           4294875524                 1701                    0
+  20           4294876024                 1701                    0
+  20           4294876524                 1701                    0
+  20           4294877024                 1701                    0
+  20           4294877524                 1701                    0
+  20           4294878024                 1701                    0
+  20           4294878524                 1701                    0
+  20           4294879024                 1701                    0
+  20           4294879524                 1701                    0
+  20           4294880024                 1701                    0
+  20           4294880524                 1701                    0
+  20           4294881024                 1701                    0
+  20           4294881524                 1701                    0
+  20           4294882024                 1701                    0
+  20           4294882524                 1701                    0
+  20           4294883024                 1701                    0
+  20           4294883524                 1701                    0
+  20           4294884024                 1701                    0
+  20           4294884524                 1701                    0
+  20           4294885024                 1701                    0
+  20           4294885524                 1701                    0
+  20           4294886024                 1701                    0
+  20           4294886524                 1701                    0
+  20           4294887024                 1701                    0
+  20           4294887524                 1701                    0
+  20           4294888024                 1701                    0
+  20           4294888524                 1701                    0
+  20           4294889024                 1701                    0
+  20           4294889524                 1701                    0
+  20           4294890024                 1701                    0
+  20           4294890524                 1701                    0
+  20           4294891024                 1701                    0
+  20           4294891524                 1701                    0
+  20           4294892024                 1701                    0
+  20           4294892524                 1701                    0
+  20           4294893024                 1701                    0
+  20           4294893524                 1701                    0
+  20           4294894024                 1701                    0
+  20           4294894524                 1701                    0
+  20           4294895024                 1701                    0
+  20           4294895524                 1701                    0
+  20           4294896024                 1701                    0
+  20           4294896524                 1701                    0
+  20           4294897024                 1701                    0
+  20           4294897524                 1701                    0
+  20           4294898024                 1701                    0
+  20           4294898524                 1701                    0
+  20           4294899024                 1701                    0
+  20           4294899524                 1701                    0
+  20           4294900024                 1701                    0
+  20           4294900524                 1701                    0
+  20           4294901024                 1701                    0
+  20           4294901524                 1701                    0
+  20           4294902024                 1701                    0
+  20           4294902524                 1701                    0
+  20           4294903024                 1701                    0
+  20           4294903524                 1701                    0
+  20           4294904024                 1701                    0
+  20           4294904524                 1701                    0
+  20           4294905024                 1701                    0
+  20           4294905524                 1701                    0
+  20           4294906024                 1701                    0
+  20           4294906524                 1701                    0
+  20           4294907024                 1701                    0
+  20           4294907524                 1701                    0
+  20           4294908024                 1701                    0
+  20           4294908524                 1701                    0
+  20           4294909024                 1701                    0
+  20           4294909524                 1701                    0
+  20           4294910024                 1701                    0
+  20           4294910524                 1701                    0
+  20           4294911024                 1701                    0
+  20           4294911524                 1701                    0
+  20           4294912024                 1701                    0
+  20           4294912524                 1701                    0
+  20           4294913024                 1701                    0
+  20           4294913524                 1701                    0
+  20           4294914024                 1701                    0
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+  60           4294850524                    7                    0
+  60           4294851024                    7                    0
+  60           4294851524                    7                    0
+  60           4294852024                    7                    0
+  60           4294852524                    7                    0
+  60           4294853024                    7                    0
+  60           4294853524                    7                    0
+  60           4294854024                    7                    0
+  60           4294854524                    7                    0
+  60           4294855024                    7                    0
+  60           4294855524                    7                    0
+  60           4294856024                    7                    0
+  60           4294856524                    7                    0
+  60           4294857024                    7                    0
+  60           4294857524                    7                    0
+  60           4294858024                    7                    0
+  60           4294858524                    7                    0
+  60           4294859024                    7                    0
+  60           4294859524                    7                    0
+  60           4294860024                    7                    0
+  60           4294860524                    7                    0
+  60           4294861024                    7                    0
+  60           4294861524                    7                    0
+  60           4294862024                    7                    0
+  60           4294862524                    7                    0
+  60           4294863024                    7                    0
+  60           4294863524                    7                    0
+  60           4294864024                    7                    0
+  60           4294864524                    7                    0
+  60           4294865024                    7                    0
+  60           4294865524                    7                    0
+  60           4294866024                    7                    0
+  60           4294866524                    7                    0
+  60           4294867024                    7                    0
+  60           4294867524                    7                    0
+  60           4294868024                    7                    0
+  60           4294868524                    7                    0
+  60           4294869024                    7                    0
+  60           4294869524                    7                    0
+  60           4294870024                    7                    0
+  60           4294870524                    7                    0
+  60           4294871024                    7                    0
+  60           4294871524                    7                    0
+  60           4294872024                    7                    0
+  60           4294872524                    7                    0
+  60           4294873024                    7                    0
+  60           4294873524                    7                    0
+  60           4294874024                    7                    0
+  60           4294874524                    7                    0
+  60           4294875024                    7                    0
+  60           4294875524                    8                    1
+  60           4294876024                    8                    0
+  60           4294876524                    8                    0
+  60           4294877024                    8                    0
+  60           4294877524                    8                    0
+  60           4294878024                    8                    0
+  60           4294878524                    8                    0
+  60           4294879024                    8                    0
+  60           4294879524                    8                    0
+  60           4294880024                    8                    0
+  60           4294880524                    8                    0
+  60           4294881024                    8                    0
+  60           4294881524                    8                    0
+  60           4294882024                    8                    0
+  60           4294882524                    8                    0
+  60           4294883024                    8                    0
+  60           4294883524                    8                    0
+  60           4294884024                    8                    0
+  60           4294884524                    8                    0
+  60           4294885024                    8                    0
+  60           4294885524                    8                    0
+  60           4294886024                    8                    0
+  60           4294886524                    8                    0
+  60           4294887024                    8                    0
+  60           4294887524                    8                    0
+  60           4294888024                    8                    0
+  60           4294888524                    8                    0
+  60           4294889024                    8                    0
+  60           4294889524                    8                    0
+  60           4294890024                    8                    0
+  60           4294890524                    8                    0
+  60           4294891024                    8                    0
+  60           4294891524                    8                    0
+  60           4294892024                    8                    0
+  60           4294892524                    8                    0
+  60           4294893024                    8                    0
+  60           4294893524                    8                    0
+  60           4294894024                    8                    0
+  60           4294894524                    8                    0
+  60           4294895024                    8                    0
+  60           4294895524                    8                    0
+  60           4294896024                    8                    0
+  60           4294896524                    8                    0
+  60           4294897024                    8                    0
+  60           4294897524                    8                    0
+  60           4294898024                    8                    0
+  60           4294898524                    8                    0
+  60           4294899024                    8                    0
+  60           4294899524                    8                    0
+  60           4294900024                    8                    0
+  60           4294900524                    8                    0
+  60           4294901024                    8                    0
+  60           4294901524                    8                    0
+  60           4294902024                    8                    0
+  60           4294902524                    8                    0
+  60           4294903024                    8                    0
+  60           4294903524                    8                    0
+  60           4294904024                    8                    0
+  60           4294904524                    8                    0
+  60           4294905024                    8                    0
+  60           4294905524                    8                    0
+  60           4294906024                    8                    0
+  60           4294906524                    8                    0
+  60           4294907024                    8                    0
+  60           4294907524                    8                    0
+  60           4294908024                    8                    0
+  60           4294908524                    8                    0
+  60           4294909024                    8                    0
+  60           4294909524                    8                    0
+  60           4294910024                    8                    0
+  60           4294910524                    8                    0
+  60           4294911024                    8                    0
+  60           4294911524                    8                    0
+  60           4294912024                    8                    0
+  60           4294912524                    8                    0
+  60           4294913024                    8                    0
+  60           4294913524                    8                    0
+  60           4294914024                    8                    0
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+ 152           4294850524                   25                    0
+ 152           4294851024                   25                    0
+ 152           4294851524                   25                    0
+ 152           4294852024                   25                    0
+ 152           4294852524                   25                    0
+ 152           4294853024                   25                    0
+ 152           4294853524                   25                    0
+ 152           4294854024                   25                    0
+ 152           4294854524                   25                    0
+ 152           4294855024                   25                    0
+ 152           4294855524                   25                    0
+ 152           4294856024                   25                    0
+ 152           4294856524                   25                    0
+ 152           4294857024                   25                    0
+ 152           4294857524                   25                    0
+ 152           4294858024                   25                    0
+ 152           4294858524                   25                    0
+ 152           4294859024                   25                    0
+ 152           4294859524                   25                    0
+ 152           4294860024                   25                    0
+ 152           4294860524                   25                    0
+ 152           4294861024                   25                    0
+ 152           4294861524                   25                    0
+ 152           4294862024                   25                    0
+ 152           4294862524                   25                    0
+ 152           4294863024                   25                    0
+ 152           4294863524                   25                    0
+ 152           4294864024                   25                    0
+ 152           4294864524                   25                    0
+ 152           4294865024                   25                    0
+ 152           4294865524                   25                    0
+ 152           4294866024                   25                    0
+ 152           4294866524                   25                    0
+ 152           4294867024                   25                    0
+ 152           4294867524                   25                    0
+ 152           4294868024                   25                    0
+ 152           4294868524                   25                    0
+ 152           4294869024                   25                    0
+ 152           4294869524                   25                    0
+ 152           4294870024                   25                    0
+ 152           4294870524                   25                    0
+ 152           4294871024                   25                    0
+ 152           4294871524                   25                    0
+ 152           4294872024                   25                    0
+ 152           4294872524                   25                    0
+ 152           4294873024                   25                    0
+ 152           4294873524                   25                    0
+ 152           4294874024                   25                    0
+ 152           4294874524                   25                    0
+ 152           4294875024                   25                    0
+ 152           4294875524                   25                    0
+ 152           4294876024                   25                    0
+ 152           4294876524                   25                    0
+ 152           4294877024                   25                    0
+ 152           4294877524                   25                    0
+ 152           4294878024                   25                    0
+ 152           4294878524                   26                    1
+ 152           4294879024                   26                    0
+ 152           4294879524                   26                    0
+ 152           4294880024                   26                    0
+ 152           4294880524                   26                    0
+ 152           4294881024                   26                    0
+ 152           4294881524                   26                    0
+ 152           4294882024                   26                    0
+ 152           4294882524                   26                    0
+ 152           4294883024                   26                    0
+ 152           4294883524                   26                    0
+ 152           4294884024                   26                    0
+ 152           4294884524                   26                    0
+ 152           4294885024                   26                    0
+ 152           4294885524                   26                    0
+ 152           4294886024                   26                    0
+ 152           4294886524                   26                    0
+ 152           4294887024                   26                    0
+ 152           4294887524                   26                    0
+ 152           4294888024                   26                    0
+ 152           4294888524                   26                    0
+ 152           4294889024                   26                    0
+ 152           4294889524                   26                    0
+ 152           4294890024                   26                    0
+ 152           4294890524                   26                    0
+ 152           4294891024                   26                    0
+ 152           4294891524                   26                    0
+ 152           4294892024                   26                    0
+ 152           4294892524                   26                    0
+ 152           4294893024                   26                    0
+ 152           4294893524                   26                    0
+ 152           4294894024                   26                    0
+ 152           4294894524                   26                    0
+ 152           4294895024                   26                    0
+ 152           4294895524                   26                    0
+ 152           4294896024                   26                    0
+ 152           4294896524                   26                    0
+ 152           4294897024                   26                    0
+ 152           4294897524                   26                    0
+ 152           4294898024                   26                    0
+ 152           4294898524                   26                    0
+ 152           4294899024                   26                    0
+ 152           4294899524                   26                    0
+ 152           4294900024                   26                    0
+ 152           4294900524                   26                    0
+ 152           4294901024                   26                    0
+ 152           4294901524                   26                    0
+ 152           4294902024                   26                    0
+ 152           4294902524                   26                    0
+ 152           4294903024                   26                    0
+ 152           4294903524                   26                    0
+ 152           4294904024                   26                    0
+ 152           4294904524                   26                    0
+ 152           4294905024                   26                    0
+ 152           4294905524                   26                    0
+ 152           4294906024                   26                    0
+ 152           4294906524                   26                    0
+ 152           4294907024                   26                    0
+ 152           4294907524                   26                    0
+ 152           4294908024                   26                    0
+ 152           4294908524                   26                    0
+ 152           4294909024                   26                    0
+ 152           4294909524                   26                    0
+ 152           4294910024                   26                    0
+ 152           4294910524                   26                    0
+ 152           4294911024                   26                    0
+ 152           4294911524                   26                    0
+ 152           4294912024                   26                    0
+ 152           4294912524                   26                    0
+ 152           4294913024                   26                    0
+ 152           4294913524                   26                    0
+ 152           4294914024                   26                    0
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+ 304           4294850524                  391                    0
+ 304           4294851024                  391                    0
+ 304           4294851524                  391                    0
+ 304           4294852024                  391                    0
+ 304           4294852524                  391                    0
+ 304           4294853024                  391                    0
+ 304           4294853524                  391                    0
+ 304           4294854024                  391                    0
+ 304           4294854524                  391                    0
+ 304           4294855024                  391                    0
+ 304           4294855524                  391                    0
+ 304           4294856024                  391                    0
+ 304           4294856524                  391                    0
+ 304           4294857024                  391                    0
+ 304           4294857524                  391                    0
+ 304           4294858024                  391                    0
+ 304           4294858524                  391                    0
+ 304           4294859024                  391                    0
+ 304           4294859524                  391                    0
+ 304           4294860024                  391                    0
+ 304           4294860524                  391                    0
+ 304           4294861024                  391                    0
+ 304           4294861524                  391                    0
+ 304           4294862024                  391                    0
+ 304           4294862524                  391                    0
+ 304           4294863024                  391                    0
+ 304           4294863524                  391                    0
+ 304           4294864024                  391                    0
+ 304           4294864524                  391                    0
+ 304           4294865024                  391                    0
+ 304           4294865524                  391                    0
+ 304           4294866024                  391                    0
+ 304           4294866524                  391                    0
+ 304           4294867024                  391                    0
+ 304           4294867524                  391                    0
+ 304           4294868024                  391                    0
+ 304           4294868524                  391                    0
+ 304           4294869024                  391                    0
+ 304           4294869524                  391                    0
+ 304           4294870024                  391                    0
+ 304           4294870524                  391                    0
+ 304           4294871024                  391                    0
+ 304           4294871524                  391                    0
+ 304           4294872024                  391                    0
+ 304           4294872524                  391                    0
+ 304           4294873024                  391                    0
+ 304           4294873524                  391                    0
+ 304           4294874024                  391                    0
+ 304           4294874524                  391                    0
+ 304           4294875024                  391                    0
+ 304           4294875524                  391                    0
+ 304           4294876024                  391                    0
+ 304           4294876524                  391                    0
+ 304           4294877024                  391                    0
+ 304           4294877524                  391                    0
+ 304           4294878024                  391                    0
+ 304           4294878524                  391                    0
+ 304           4294879024                  391                    0
+ 304           4294879524                  391                    0
+ 304           4294880024                  391                    0
+ 304           4294880524                  391                    0
+ 304           4294881024                  391                    0
+ 304           4294881524                  391                    0
+ 304           4294882024                  391                    0
+ 304           4294882524                  391                    0
+ 304           4294883024                  391                    0
+ 304           4294883524                  391                    0
+ 304           4294884024                  391                    0
+ 304           4294884524                  391                    0
+ 304           4294885024                  391                    0
+ 304           4294885524                  391                    0
+ 304           4294886024                  391                    0
+ 304           4294886524                  391                    0
+ 304           4294887024                  391                    0
+ 304           4294887524                  391                    0
+ 304           4294888024                  391                    0
+ 304           4294888524                  391                    0
+ 304           4294889024                  391                    0
+ 304           4294889524                  391                    0
+ 304           4294890024                  391                    0
+ 304           4294890524                  391                    0
+ 304           4294891024                  391                    0
+ 304           4294891524                  391                    0
+ 304           4294892024                  391                    0
+ 304           4294892524                  391                    0
+ 304           4294893024                  391                    0
+ 304           4294893524                  391                    0
+ 304           4294894024                  391                    0
+ 304           4294894524                  391                    0
+ 304           4294895024                  391                    0
+ 304           4294895524                  391                    0
+ 304           4294896024                  391                    0
+ 304           4294896524                  391                    0
+ 304           4294897024                  391                    0
+ 304           4294897524                  391                    0
+ 304           4294898024                  391                    0
+ 304           4294898524                  391                    0
+ 304           4294899024                  391                    0
+ 304           4294899524                  391                    0
+ 304           4294900024                  391                    0
+ 304           4294900524                  391                    0
+ 304           4294901024                  401                   10
+ 304           4294901524                  401                    0
+ 304           4294902024                  401                    0
+ 304           4294902524                  401                    0
+ 304           4294903024                  401                    0
+ 304           4294903524                  401                    0
+ 304           4294904024                  401                    0
+ 304           4294904524                  401                    0
+ 304           4294905024                  401                    0
+ 304           4294905524                  401                    0
+ 304           4294906024                  401                    0
+ 304           4294906524                  401                    0
+ 304           4294907024                  401                    0
+ 304           4294907524                  401                    0
+ 304           4294908024                  401                    0
+ 304           4294908524                  401                    0
+ 304           4294909024                  401                    0
+ 304           4294909524                  401                    0
+ 304           4294910024                  401                    0
+ 304           4294910524                  401                    0
+ 304           4294911024                  401                    0
+ 304           4294911524                  401                    0
+ 304           4294912024                  401                    0
+ 304           4294912524                  401                    0
+ 304           4294913024                  401                    0
+ 304           4294913524                  411                   10
+ 304           4294914024                  424                   13
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+ 305           4294850524                    2                    0
+ 305           4294851024                    2                    0
+ 305           4294851524                    2                    0
+ 305           4294852024                    2                    0
+ 305           4294852524                    2                    0
+ 305           4294853024                    2                    0
+ 305           4294853524                    2                    0
+ 305           4294854024                    2                    0
+ 305           4294854524                    2                    0
+ 305           4294855024                    2                    0
+ 305           4294855524                    2                    0
+ 305           4294856024                    2                    0
+ 305           4294856524                    2                    0
+ 305           4294857024                    2                    0
+ 305           4294857524                    2                    0
+ 305           4294858024                    2                    0
+ 305           4294858524                    2                    0
+ 305           4294859024                    2                    0
+ 305           4294859524                    2                    0
+ 305           4294860024                    2                    0
+ 305           4294860524                    2                    0
+ 305           4294861024                    2                    0
+ 305           4294861524                    2                    0
+ 305           4294862024                    2                    0
+ 305           4294862524                    2                    0
+ 305           4294863024                    2                    0
+ 305           4294863524                    2                    0
+ 305           4294864024                    2                    0
+ 305           4294864524                    2                    0
+ 305           4294865024                    2                    0
+ 305           4294865524                    2                    0
+ 305           4294866024                    2                    0
+ 305           4294866524                    2                    0
+ 305           4294867024                    2                    0
+ 305           4294867524                    2                    0
+ 305           4294868024                    2                    0
+ 305           4294868524                    2                    0
+ 305           4294869024                    2                    0
+ 305           4294869524                    2                    0
+ 305           4294870024                    2                    0
+ 305           4294870524                    2                    0
+ 305           4294871024                    2                    0
+ 305           4294871524                    2                    0
+ 305           4294872024                    2                    0
+ 305           4294872524                    2                    0
+ 305           4294873024                    2                    0
+ 305           4294873524                    2                    0
+ 305           4294874024                    2                    0
+ 305           4294874524                    2                    0
+ 305           4294875024                    2                    0
+ 305           4294875524                    2                    0
+ 305           4294876024                    2                    0
+ 305           4294876524                    2                    0
+ 305           4294877024                    2                    0
+ 305           4294877524                    2                    0
+ 305           4294878024                    2                    0
+ 305           4294878524                    2                    0
+ 305           4294879024                    2                    0
+ 305           4294879524                    2                    0
+ 305           4294880024                    2                    0
+ 305           4294880524                    2                    0
+ 305           4294881024                    2                    0
+ 305           4294881524                    2                    0
+ 305           4294882024                    2                    0
+ 305           4294882524                    2                    0
+ 305           4294883024                    2                    0
+ 305           4294883524                    2                    0
+ 305           4294884024                    2                    0
+ 305           4294884524                    2                    0
+ 305           4294885024                    2                    0
+ 305           4294885524                    2                    0
+ 305           4294886024                    2                    0
+ 305           4294886524                    2                    0
+ 305           4294887024                    2                    0
+ 305           4294887524                    2                    0
+ 305           4294888024                    2                    0
+ 305           4294888524                    2                    0
+ 305           4294889024                    2                    0
+ 305           4294889524                    2                    0
+ 305           4294890024                    2                    0
+ 305           4294890524                    2                    0
+ 305           4294891024                    2                    0
+ 305           4294891524                    2                    0
+ 305           4294892024                    2                    0
+ 305           4294892524                    2                    0
+ 305           4294893024                    2                    0
+ 305           4294893524                    2                    0
+ 305           4294894024                    2                    0
+ 305           4294894524                    2                    0
+ 305           4294895024                    2                    0
+ 305           4294895524                    2                    0
+ 305           4294896024                    2                    0
+ 305           4294896524                    2                    0
+ 305           4294897024                    2                    0
+ 305           4294897524                    2                    0
+ 305           4294898024                    2                    0
+ 305           4294898524                    2                    0
+ 305           4294899024                    2                    0
+ 305           4294899524                    2                    0
+ 305           4294900024                    2                    0
+ 305           4294900524                    2                    0
+ 305           4294901024                    2                    0
+ 305           4294901524                    2                    0
+ 305           4294902024                    2                    0
+ 305           4294902524                    2                    0
+ 305           4294903024                    2                    0
+ 305           4294903524                    2                    0
+ 305           4294904024                    2                    0
+ 305           4294904524                    2                    0
+ 305           4294905024                    2                    0
+ 305           4294905524                    2                    0
+ 305           4294906024                    2                    0
+ 305           4294906524                    2                    0
+ 305           4294907024                    2                    0
+ 305           4294907524                    2                    0
+ 305           4294908024                    2                    0
+ 305           4294908524                    2                    0
+ 305           4294909024                    2                    0
+ 305           4294909524                    2                    0
+ 305           4294910024                    2                    0
+ 305           4294910524                    2                    0
+ 305           4294911024                    2                    0
+ 305           4294911524                    2                    0
+ 305           4294912024                    2                    0
+ 305           4294912524                    2                    0
+ 305           4294913024                    2                    0
+ 305           4294913524                    2                    0
+ 305           4294914024                    2                    0
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+ 311           4294850524                  283                    0
+ 311           4294851024                  283                    0
+ 311           4294851524                  283                    0
+ 311           4294852024                  283                    0
+ 311           4294852524                  283                    0
+ 311           4294853024                  283                    0
+ 311           4294853524                  283                    0
+ 311           4294854024                  283                    0
+ 311           4294854524                  283                    0
+ 311           4294855024                  283                    0
+ 311           4294855524                  283                    0
+ 311           4294856024                  283                    0
+ 311           4294856524                  283                    0
+ 311           4294857024                  283                    0
+ 311           4294857524                  283                    0
+ 311           4294858024                  283                    0
+ 311           4294858524                  283                    0
+ 311           4294859024                  283                    0
+ 311           4294859524                  283                    0
+ 311           4294860024                  283                    0
+ 311           4294860524                  283                    0
+ 311           4294861024                  283                    0
+ 311           4294861524                  283                    0
+ 311           4294862024                  283                    0
+ 311           4294862524                  283                    0
+ 311           4294863024                  283                    0
+ 311           4294863524                  283                    0
+ 311           4294864024                  283                    0
+ 311           4294864524                  283                    0
+ 311           4294865024                  283                    0
+ 311           4294865524                  283                    0
+ 311           4294866024                  283                    0
+ 311           4294866524                  283                    0
+ 311           4294867024                  283                    0
+ 311           4294867524                  283                    0
+ 311           4294868024                  283                    0
+ 311           4294868524                  283                    0
+ 311           4294869024                  283                    0
+ 311           4294869524                  283                    0
+ 311           4294870024                  283                    0
+ 311           4294870524                  283                    0
+ 311           4294871024                  283                    0
+ 311           4294871524                  283                    0
+ 311           4294872024                  283                    0
+ 311           4294872524                  283                    0
+ 311           4294873024                  283                    0
+ 311           4294873524                  283                    0
+ 311           4294874024                  283                    0
+ 311           4294874524                  283                    0
+ 311           4294875024                  283                    0
+ 311           4294875524                  283                    0
+ 311           4294876024                  283                    0
+ 311           4294876524                  283                    0
+ 311           4294877024                  283                    0
+ 311           4294877524                  283                    0
+ 311           4294878024                  283                    0
+ 311           4294878524                  283                    0
+ 311           4294879024                  283                    0
+ 311           4294879524                  283                    0
+ 311           4294880024                  283                    0
+ 311           4294880524                  283                    0
+ 311           4294881024                  283                    0
+ 311           4294881524                  283                    0
+ 311           4294882024                  283                    0
+ 311           4294882524                  283                    0
+ 311           4294883024                  283                    0
+ 311           4294883524                  283                    0
+ 311           4294884024                  283                    0
+ 311           4294884524                  283                    0
+ 311           4294885024                  283                    0
+ 311           4294885524                  283                    0
+ 311           4294886024                  283                    0
+ 311           4294886524                  283                    0
+ 311           4294887024                  283                    0
+ 311           4294887524                  283                    0
+ 311           4294888024                  283                    0
+ 311           4294888524                  283                    0
+ 311           4294889024                  283                    0
+ 311           4294889524                  283                    0
+ 311           4294890024                  283                    0
+ 311           4294890524                  283                    0
+ 311           4294891024                  283                    0
+ 311           4294891524                  283                    0
+ 311           4294892024                  283                    0
+ 311           4294892524                  283                    0
+ 311           4294893024                  283                    0
+ 311           4294893524                  283                    0
+ 311           4294894024                  283                    0
+ 311           4294894524                  283                    0
+ 311           4294895024                  283                    0
+ 311           4294895524                  283                    0
+ 311           4294896024                  283                    0
+ 311           4294896524                  283                    0
+ 311           4294897024                  283                    0
+ 311           4294897524                  283                    0
+ 311           4294898024                  283                    0
+ 311           4294898524                  283                    0
+ 311           4294899024                  283                    0
+ 311           4294899524                  283                    0
+ 311           4294900024                  283                    0
+ 311           4294900524                  283                    0
+ 311           4294901024                  283                    0
+ 311           4294901524                  283                    0
+ 311           4294902024                  283                    0
+ 311           4294902524                  283                    0
+ 311           4294903024                  283                    0
+ 311           4294903524                  283                    0
+ 311           4294904024                  283                    0
+ 311           4294904524                  283                    0
+ 311           4294905024                  283                    0
+ 311           4294905524                  283                    0
+ 311           4294906024                  283                    0
+ 311           4294906524                  283                    0
+ 311           4294907024                  283                    0
+ 311           4294907524                  283                    0
+ 311           4294908024                  283                    0
+ 311           4294908524                  283                    0
+ 311           4294909024                  283                    0
+ 311           4294909524                  283                    0
+ 311           4294910024                  283                    0
+ 311           4294910524                  283                    0
+ 311           4294911024                  283                    0
+ 311           4294911524                  283                    0
+ 311           4294912024                  283                    0
+ 311           4294912524                  283                    0
+ 311           4294913024                  283                    0
+ 311           4294913524                  283                    0
+ 311           4294914024                  283                    0
+IRQ No. 	Time Stamp(ms)       IRQ Count 	      IRQ Rate/500ms
+-------------------------------------------------------------------
+ 499           4294850524                 6655                    0
+ 499           4294851024                 6655                    0
+ 499           4294851524                 6655                    0
+ 499           4294852024                 6655                    0
+ 499           4294852524                 6655                    0
+ 499           4294853024                 6655                    0
+ 499           4294853524                 6655                    0
+ 499           4294854024                 6655                    0
+ 499           4294854524                 6655                    0
+ 499           4294855024                 6655                    0
+ 499           4294855524                 6655                    0
+ 499           4294856024                 6655                    0
+ 499           4294856524                 6655                    0
+ 499           4294857024                 6655                    0
+ 499           4294857524                 6655                    0
+ 499           4294858024                 6655                    0
+ 499           4294858524                 6655                    0
+ 499           4294859024                 6655                    0
+ 499           4294859524                 6655                    0
+ 499           4294860024                 6655                    0
+ 499           4294860524                 6655                    0
+ 499           4294861024                 6655                    0
+ 499           4294861524                 6661                    6
+ 499           4294862024                 6661                    0
+ 499           4294862524                 6661                    0
+ 499           4294863024                 6661                    0
+ 499           4294863524                 6661                    0
+ 499           4294864024                 6661                    0
+ 499           4294864524                 6661                    0
+ 499           4294865024                 6661                    0
+ 499           4294865524                 6661                    0
+ 499           4294866024                 6664                    3
+ 499           4294866524                 6664                    0
+ 499           4294867024                 6664                    0
+ 499           4294867524                 6664                    0
+ 499           4294868024                 6664                    0
+ 499           4294868524                 6664                    0
+ 499           4294869024                 6664                    0
+ 499           4294869524                 6664                    0
+ 499           4294870024                 6664                    0
+ 499           4294870524                 6664                    0
+ 499           4294871024                 6664                    0
+ 499           4294871524                 6664                    0
+ 499           4294872024                 6664                    0
+ 499           4294872524                 6664                    0
+ 499           4294873024                 6664                    0
+ 499           4294873524                 6664                    0
+ 499           4294874024                 6664                    0
+ 499           4294874524                 6664                    0
+ 499           4294875024                 6664                    0
+ 499           4294875524                 6664                    0
+ 499           4294876024                 6664                    0
+ 499           4294876524                 6664                    0
+ 499           4294877024                 6664                    0
+ 499           4294877524                 6664                    0
+ 499           4294878024                 6664                    0
+ 499           4294878524                 6664                    0
+ 499           4294879024                 6664                    0
+ 499           4294879524                 6664                    0
+ 499           4294880024                 6664                    0
+ 499           4294880524                 6664                    0
+ 499           4294881024                 6664                    0
+ 499           4294881524                 6664                    0
+ 499           4294882024                 6664                    0
+ 499           4294882524                 6664                    0
+ 499           4294883024                 6664                    0
+ 499           4294883524                 6664                    0
+ 499           4294884024                 6664                    0
+ 499           4294884524                 6664                    0
+ 499           4294885024                 6664                    0
+ 499           4294885524                 6664                    0
+ 499           4294886024                 6664                    0
+ 499           4294886524                 6664                    0
+ 499           4294887024                 6664                    0
+ 499           4294887524                 6664                    0
+ 499           4294888024                 6664                    0
+ 499           4294888524                 6664                    0
+ 499           4294889024                 6664                    0
+ 499           4294889524                 6664                    0
+ 499           4294890024                 6664                    0
+ 499           4294890524                 6664                    0
+ 499           4294891024                 6664                    0
+ 499           4294891524                 6664                    0
+ 499           4294892024                 6664                    0
+ 499           4294892524                 6664                    0
+ 499           4294893024                 6664                    0
+ 499           4294893524                 6664                    0
+ 499           4294894024                 6664                    0
+ 499           4294894524                 6664                    0
+ 499           4294895024                 6664                    0
+ 499           4294895524                 6664                    0
+ 499           4294896024                 6664                    0
+ 499           4294896524                 6664                    0
+ 499           4294897024                 6664                    0
+ 499           4294897524                 6664                    0
+ 499           4294898024                 6664                    0
+ 499           4294898524                 6664                    0
+ 499           4294899024                 6664                    0
+ 499           4294899524                 6664                    0
+ 499           4294900024                 6664                    0
+ 499           4294900524                 6664                    0
+ 499           4294901024                 6664                    0
+ 499           4294901524                 6664                    0
+ 499           4294902024                 6664                    0
+ 499           4294902524                 6664                    0
+ 499           4294903024                 6664                    0
+ 499           4294903524                 6664                    0
+ 499           4294904024                 6664                    0
+ 499           4294904524                 6664                    0
+ 499           4294905024                 6664                    0
+ 499           4294905524                 6664                    0
+ 499           4294906024                 6664                    0
+ 499           4294906524                 6664                    0
+ 499           4294907024                 6664                    0
+ 499           4294907524                 6664                    0
+ 499           4294908024                 6664                    0
+ 499           4294908524                 6664                    0
+ 499           4294909024                 6664                    0
+ 499           4294909524                 6664                    0
+ 499           4294910024                 6664                    0
+ 499           4294910524                 6664                    0
+ 499           4294911024                 6664                    0
+ 499           4294911524                 6664                    0
+ 499           4294912024                 6664                    0
+ 499           4294912524                 6664                    0
+ 499           4294913024                 6664                    0
+ 499           4294913524                 6664                    0
+ 499           4294914024                 6664                    0
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# cat /proc/interrupts 
+           CPU0       CPU1       
+  9:          0          0     GICv3  25 Level     vgic
+ 11:      10835       8897     GICv3  30 Level     arch_timer
+ 12:          0          0     GICv3  27 Level     kvm guest vtimer
+ 17:          0          0     GICv3  23 Level     arm-pmu
+ 18:        411          0     GICv3  66 Level     4d000000.mailbox thr_012
+ 19:       2034          0     GICv3 194 Level     20010000.i2c
+ 20:       1701          0  MSI-INTA 1713152 Level     485c0100.dma-controller chan0
+ 60:          9          0  MSI-INTA 1970704 Level     8000000.ethernet-tx0
+152:         27          0  MSI-INTA 1971728 Level     8000000.ethernet
+304:       2353          0     GICv3 210 Level     2800000.serial
+305:          2          0     GICv3 171 Level     fc40000.spi
+307:          0          0     GICv3 134 Level     8000000.ethernet
+310:          0          0     GICv3 129 Level     39000000.cpts
+311:        283          0     GICv3 165 Level     mmc0
+499:       6673          0     GICv3 166 Level     mmc1
+IPI0:       606       1458       Rescheduling interrupts
+IPI1:      3476       4728       Function call interrupts
+IPI2:         0          0       CPU stop interrupts
+IPI3:         0          0       CPU stop (for crash dump) interrupts
+IPI4:         0          0       Timer broadcast interrupts
+IPI5:         0        396       IRQ work interrupts
+IPI6:         0          0       CPU wake-up interrupts
+Err:          0
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
+root@am64xx-evm:~# 
