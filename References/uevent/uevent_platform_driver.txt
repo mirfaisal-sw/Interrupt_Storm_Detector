@@ -28,3 +28,87 @@ https://mjmwired.net/kernel/Documentation/driver-model/platform.txt
 III. Reference code
 ====
 URL: https://android.googlesource.com/kernel/msm/+/android-msm-mako-3.4-jb-mr1/drivers/usb/gadget/android.c
+
+
+IV.
+https://elixir.bootlin.com/linux/latest/source/drivers/thermal/intel/int340x_thermal/int3400_thermal.c#L487
+
+priv->pdev = pdev;
+
+V. 
+URL: - https://elixir.bootlin.com/linux/latest/source/drivers/usb/host/xhci-histb.c#L388 
+
+static int xhci_histb_probe(struct platform_device *pdev)
+{
+	struct device *dev = &pdev->dev;
+	struct xhci_hcd_histb *histb;
+	
+	//....
+	
+	histb = devm_kzalloc(dev, sizeof(*histb), GFP_KERNEL);
+	if (!histb)
+		return -ENOMEM;
+
+	histb->dev = dev;
+	
+	//....
+}
+	
+
+VI. Code reference: -
+
+File: - drivers/pci/controller/dwc/vddd920/pcie-dddexynos-v920-rc-auto.c
+
+static int dexynos_v920_pcie_probe(struct platform_device *pdev)
+{
+    struct device *dev = &pdev->dev;
+	struct dw_pcie *pci;
+	 
+	pci->dev = &pdev->dev;
+	//....
+	exynos_pcie->pci = pci;
+	
+	//....
+	
+}
+
+struct dw_pcie {
+        struct device           *dev;
+        void __iomem            *dbi_base;
+        void __iomem            *dbi_base2;
+        /* Used when iatu_unroll_enabled is true */
+        void __iomem            *atu_base;
+        size_t                  atu_size;
+        u32                     num_ib_windows;
+        u32                     num_ob_windows;
+        struct pcie_port        pp;
+        struct dw_pcie_ep       ep;
+        const struct dw_pcie_ops *ops;
+        unsigned int            version;
+        int                     num_lanes;
+        int                     link_gen;
+        u8                      n_fts[2];
+        bool                    iatu_unroll_enabled: 1;
+        bool                    io_cfg_atu_shared: 1;
+};
+
+
+struct exynos_pcie {
+	struct dw_pcie          *pci;
+	void __iomem            *elbi_base;
+	void __iomem            *gen_subsys_base;
+	void __iomem            *elbi_base_other;
+	void __iomem            *e32_phy_base;
+	void __iomem            *atu_base;
+	void __iomem            *phy_base;
+	void __iomem            *soc_ctrl_base;
+	void __iomem            *pmu_base;
+	void __iomem            *sysreg_base;
+	void __iomem            *rc_dbi_base;
+	void __iomem            *shadow_dbi_base;
+	....
+};
+
+
+
+		

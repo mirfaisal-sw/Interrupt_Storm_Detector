@@ -38,7 +38,7 @@
 //#define DEBUG
 #define CONFIG_SEQ_READ
 
-static struct platform_device *irq_detector_device;
+//static struct platform_device *irq_detector_device;
 static u64 t1, t2;
 
 /*
@@ -303,13 +303,13 @@ static void uevent_notify_func(struct irq_detector_data *priv)
 	//pr_alert("DBG: kobj name - %s, kobj parent name - %s\n",
 	//		kobject_name(kobj), kobject_name(kobj->parent));
 
-	pr_alert("DBG: kobj = %p\n", kobj);
+	//pr_alert("DBG: kobj = %p\n", kobj);
 	//pr_alert("DBG: kobj->parent = %p\n", kobj->parent);
-	pr_alert("DBG: kobj name - %s\n",kobject_name(kobj));
+	//pr_alert("DBG: kobj name - %s\n",kobject_name(kobj));
         if (kobj) {
                 envp[1] = NULL;
                 pr_alert("Sending event..\n");
-                //kobject_uevent_env(kobj, KOBJ_CHANGE, envp);
+                kobject_uevent_env(kobj, KOBJ_CHANGE, envp);
         }
 
         //spin_unlock_irqrestore(&priv->slock, flags);
@@ -317,7 +317,7 @@ static void uevent_notify_func(struct irq_detector_data *priv)
 
 int monitor_irq_storm_thread(void *pv)
 {
-	int ret;
+	//int ret;
 	int i = 0;
 	int irq;
 	//unsigned long temp_timestamp;
@@ -954,6 +954,9 @@ static int irq_detector_probe(struct platform_device *pdev)
 	scnprintf(mirq_data->version_id, 64, "Irq Diag Ver - 1.0");
 	mirq_data->id = 55;
 
+	/*set platdevice to driver data*/
+	mirq_data->pdev = pdev;
+
 	mirq_data->mproc_files = (struct irq_diag_file *)irq_diag_files;
 	mirq_data->mproc_param_files = (struct irq_diag_file *)irq_diag_param_files;
 
@@ -1075,7 +1078,7 @@ static struct platform_device irq_detector_device = {
 };
 #endif
 
-#if 1
+#if 0
 static int __init irq_detector_init(void)
 {
 	/*if (platform_device_register(&irq_detector_device))
