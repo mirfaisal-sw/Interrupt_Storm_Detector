@@ -1,0 +1,39 @@
+
+Kernel verion - 6.8.4
+File - /drivers/usb/core/hub.c
+----------------------------------
+
+/* Handle notifying userspace about hub over-current events */
+static void port_over_current_notify(struct usb_port *port_dev)
+{
+	char *envp[3] = { NULL, NULL, NULL };
+	struct device *hub_dev;
+	char *port_dev_path;
+
+	sysfs_notify(&port_dev->dev.kobj, NULL, "over_current_count");
+
+	hub_dev = port_dev->dev.parent;
+
+	if (!hub_dev)
+		return;
+
+	port_dev_path = kobject_get_path(&port_dev->dev.kobj, GFP_KERNEL);
+	if (!port_dev_path)
+		return;
+
+	envp[0] = kasprintf(GFP_KERNEL, "OVER_CURRENT_PORT=%s", port_dev_path);
+	if (!envp[0])
+		goto exit;
+
+	envp[1] = kasprintf(GFP_KERNEL, "OVER_CURRENT_COUNT=%u",
+			port_dev->over_current_count);
+	if (!envp[1])
+		goto exit;
+
+	kobject_uevent_env(&hub_dev->kobj, KOBJ_CHANGE, envp);
+
+exit:
+	kfree(envp[1]);
+	kfree(envp[0]);
+	kfree(port_dev_path);
+}

@@ -19,7 +19,8 @@ Panic 2 of 2: -
 [   83.587998] lr : uevent_notify_work+0x6c/0xb4
 [   83.592348] sp : ffff80000ac0bcf0
 
-
+lr: 
+-----
 ffff800008e256b0 <uevent_notify_work>
 
 ffff800008e256b0 + 6C = FFFF800008E2571C
@@ -28,3 +29,15 @@ aarch64-none-linux-gnu-addr2line -f -e vmlinux FFFF800008E2571C
 
 spin_unlock_irqrestore
 ./include/linux/spinlock.h:405
+
+PC: -
+------
+ffff800008e25718 <kobject_uevent_env> 
+ffff800008e25718 + 50 = ffff800008e25768
+
+aarch64-none-linux-gnu-addr2line -f -e vmlinux ffff800008e25768
+# aarch64-none-linux-gnu-addr2line -f -e vmlinux ffff800008e25768
+
+irq_diag_release_cmd
+
+/home/mir/My_Workspace/TMDS64EVM/TMDS64EVM_SDK_Install/SDK_Install_Path/board-support/ti-linux-kernel-6.1.46+gitAUTOINC+247b2535b2-g247b2535b2/drivers/irq_detector/irq_detector.c:374

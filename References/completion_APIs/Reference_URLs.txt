@@ -1,0 +1,6 @@
+
+
+1) John Madieu Book, Chapter - 1
+	https://subscription.packtpub.com/book/iot-and-hardware/9781789342048/2/ch02lvl1sec04/the-kernel-locking-api-and-shared-objects
+	
+2) https://embetronicx.com/tutorials/linux/device-drivers/completion-in-linux/

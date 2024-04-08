@@ -1,0 +1,21 @@
+
+
+	root@am64xx-evm:/sys/devices/platform#
+root@am64xx-evm:/sys/devices/platform#
+root@am64xx-evm:/sys/devices/platform# ls
+Fixed MDIO bus.0        can-phy1                fixed-regulator-sd      fixedregulator-vsys3v3  irq_detector            mdio-mux-1              pmu                     reg-dummy               timer-cl0-cpu0
+bus@f4000               firmware:optee          fixedregulator-evm12v0  fixedregulator-vsys5v0  l2-cache0               mux-controller          power                   serial8250              uevent
+can-phy0                firmware:psci           fixedregulator-vddb     icssg1-eth              leds                    platform-framebuffer.0  psci-cpuidle            snd-soc-dummy
+root@am64xx-evm:/sys/devices/platform#
+root@am64xx-evm:/sys/devices/platform#
+root@am64xx-evm:/sys/devices/platform#
+root@am64xx-evm:/sys/devices/platform#
+root@am64xx-evm:/sys/devices/platform# cd irq_detector/
+root@am64xx-evm:/sys/devices/platform/irq_detector#
+root@am64xx-evm:/sys/devices/platform/irq_detector#
+root@am64xx-evm:/sys/devices/platform/irq_detector# ls
+driver           driver_override  modalias         of_node          power            subsystem        uevent
+root@am64xx-evm:/sys/devices/platform/irq_detector#
+root@am64xx-evm:/sys/devices/platform/irq_detector#
+root@am64xx-evm:/sys/devices/platform/irq_detector#
+root@am64xx-evm:/sys/devices/platform/irq_detector#

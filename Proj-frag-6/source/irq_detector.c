@@ -22,6 +22,7 @@
 #include <linux/sched.h>  
 #include <linux/delay.h>
 #include <linux/atomic.h>
+#include <linux/completion.h>
 #include <linux/hrtimer.h>
 #include <linux/ktime.h>
 #include <linux/kstrtox.h>
@@ -37,6 +38,7 @@
 //#define DEBUG
 #define CONFIG_SEQ_READ
 
+static struct platform_device *irq_detector_device;
 static u64 t1, t2;
 
 /*
@@ -53,6 +55,7 @@ struct irq_detector_data {
 	uint8_t 			id;
 	struct platform_device		*pdev;
 	struct mutex			mlock;
+	struct completion		complete;
 	spinlock_t			slock;
 	struct proc_dir_entry		*proc_dir;
 	struct irq_diag_file		*mproc_files;
@@ -217,6 +220,7 @@ static void irq_scan_work(struct work_struct *work)
 			tot_irq_cnt = 0;
 
 			mutex_unlock(&priv->mlock);
+			complete(&priv->complete);
 			break;
 
 			}/*if ptr->irq_num == */
@@ -231,6 +235,7 @@ out:
 	SHOW_DELTA(t2, t1);
 }
 
+#if 1
 /*
  * uevent_notify_work() - workqueue for user space notify work.
  */
@@ -238,48 +243,99 @@ static void uevent_notify_work(struct work_struct *work)
 {
 	struct irq_detector_data *priv = container_of(work, struct irq_detector_data, notify_work);
 	struct platform_device *plat_dev = priv->pdev;
-	int idx = 0;
-	char *envp[3];
-	unsigned long flags;
+	
+	char event_string[20];
+	char *envp[2] = {event_string, NULL};
+	struct kobject *kobj = NULL;
 
-	spin_lock_irqsave(&priv->slock, flags);
+	pr_alert("DBG: In func - %s, line - %d, Version - %s, Id - %d\n",
+                        __func__, __LINE__, priv->version_id, priv->id);
+	//spin_lock_irqsave(&priv->slock, flags);
+
 	/*Fill environment data to send to user space */
 	switch(priv->status_flag) {
 	case 1:
-		envp[idx++] = "ERROR_EVENT=IRQ_STORM";
+		snprintf(event_string, 20, "ERROR_EVENT=IRQ_STORM");
 		break;
 	case 2: 
-		envp[idx++] = "ERROR_EVENT=XYZ_ERROR";
+		snprintf(event_string, 20, "ERROR_EVENT=XYZ_ERROR");
 		break;
 	default: 
 		break;
 	}
 
-	if (idx > 0) {
-		envp[idx++] = NULL;
-		kobject_uevent_env(&plat_dev->dev.kobj, KOBJ_CHANGE, envp);
+	kobj = &plat_dev->dev.kobj;
+	if (kobj) {
+		envp[1] = NULL;
+		pr_alert("Sending event..\n");
+		kobject_uevent_env(kobj, KOBJ_CHANGE, envp);
 	}
 
-	spin_unlock_irqrestore(&priv->slock, flags);
+	//spin_unlock_irqrestore(&priv->slock, flags);
+}
+#endif
+
+static void uevent_notify_func(struct irq_detector_data *priv)
+{
+        struct platform_device *plat_dev = priv->pdev;
+        char event_string[20];
+        char *envp[2] = {event_string, NULL};
+        struct kobject *kobj = NULL;
+
+        pr_alert("DBG: In func - %s, line - %d, Version - %s, Id - %d\n",
+                        __func__, __LINE__, priv->version_id, priv->id);
+        //spin_lock_irqsave(&priv->slock, flags);
+
+        /*Fill environment data to send to user space */
+        switch(priv->status_flag) {
+        case 1:
+                snprintf(event_string, 20, "ERROR_EVENT=IRQ_STORM");
+                break;
+        case 2:
+                snprintf(event_string, 20, "ERROR_EVENT=XYZ_ERROR");
+                break;
+        default:
+                break;
+        }
+
+        kobj = &plat_dev->dev.kobj;
+	//pr_alert("DBG: kobj = %p, kobj->parent = %p\n", kobj, kobj->parent);
+	//pr_alert("DBG: kobj name - %s, kobj parent name - %s\n",
+	//		kobject_name(kobj), kobject_name(kobj->parent));
+
+	pr_alert("DBG: kobj = %p\n", kobj);
+	//pr_alert("DBG: kobj->parent = %p\n", kobj->parent);
+	pr_alert("DBG: kobj name - %s\n",kobject_name(kobj));
+        if (kobj) {
+                envp[1] = NULL;
+                pr_alert("Sending event..\n");
+                //kobject_uevent_env(kobj, KOBJ_CHANGE, envp);
+        }
+
+        //spin_unlock_irqrestore(&priv->slock, flags);
 }
 
 int monitor_irq_storm_thread(void *pv)
 {
 	int ret;
-	int i=0;
+	int i = 0;
 	int irq;
 	//unsigned long temp_timestamp;
-	struct irq_detector_data *priv = pv;
+	struct irq_detector_data *priv = (struct irq_detector_data *)pv;
 	struct irq_num_heads_list *ptr;
 
+	pr_alert("DBG: In func - %s, line - %d, Version - %s, Id - %d\n",
+                        __func__, __LINE__, priv->version_id, priv->id);
 	//ptr = list_first_entry(&priv->irq_num_list_head, struct irq_num_heads_list, list_of_heads);
-	struct list_head   tmp_irq_num_list_head;
-	tmp_irq_num_list_head  = priv->irq_num_list_head;
+	//struct list_head   tmp_irq_num_list_head;
+	//tmp_irq_num_list_head  = priv->irq_num_list_head;
 
 	while(!kthread_should_stop()) {
-	pr_debug("In IRQ Poll Thread Function %d\n", i++);
+	pr_alert("In IRQ Poll Thread Function %d\n", i++);
 	
 	msleep(1000);
+	wait_for_completion_interruptible(&priv->complete);
+
 	for_each_irq_desc(irq, priv->desc) {
 
 		if(!priv->desc)
@@ -289,22 +345,27 @@ int monitor_irq_storm_thread(void *pv)
 			continue;
 
 		/*Scan list of IRQ numbers to read IRQ rate*/
-		list_for_each_entry_continue(ptr, &tmp_irq_num_list_head, list_of_heads) {
-	
-		ret = mutex_lock_interruptible(&priv->mlock);
+		list_for_each_entry(ptr, &priv->irq_num_list_head, list_of_heads) {
+		//pr_alert("DBG: In func - %s, line - %d\n", __func__, __LINE__);	
+		/*ret = mutex_lock_interruptible(&priv->mlock);
 		if(ret)
-			return ret;
+			return ret;*/
+		if(!ptr)
+			continue;
 
-		if(ptr->max_irq_rate > 100) {//Change this param as 10 using some CONFIG macro*/
+		if(ptr->max_irq_rate > 10) {//Change this param as 10 using some CONFIG macro*/
 			//pr_alert("IRQ# - %d, IRQ rate - %d\n", ptr->irq_num, ptr->max_irq_rate);
 			priv->status_flag = 1;
-			schedule_work(&priv->notify_work);
+			//schedule_work(&priv->notify_work);
+			uevent_notify_func(priv);
 		}
-	
-		mutex_unlock(&priv->mlock);
+
+		//mutex_unlock(&priv->mlock);
 
 		}
 	}
+
+	reinit_completion(&priv->complete);	
     }
     return 0;
 }
@@ -885,6 +946,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 		goto probe_fail;
 	}
 	np = pdev->dev.of_node;
+	//pdev->dev.kobj.parent = NULL;
 
 	mirq_data = devm_kzalloc(dev, sizeof(*mirq_data), GFP_KERNEL);
         if (!mirq_data)
@@ -917,6 +979,7 @@ static int irq_detector_probe(struct platform_device *pdev)
 	}
 
 	mutex_init(&mirq_data->mlock);
+	init_completion(&mirq_data->complete);
 	spin_lock_init(&mirq_data->slock);
 
 	mirq_data->irq_poll_thread = kthread_create(monitor_irq_storm_thread, 
@@ -937,11 +1000,11 @@ probe_fail:
 
 static int irq_detector_remove(struct platform_device *pdev)
 {
-    struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
-    int ret = 0;
+	struct irq_detector_data *mirq_data = platform_get_drvdata(pdev);
+	int ret = 0;
 
 	/* Wait for any pending work (queue) to finish*/
-    if (cancel_work_sync(&mirq_data->scan_work))
+	if (cancel_work_sync(&mirq_data->scan_work))
 		pr_info("yes, there was indeed some pending work; now done...\n");
 	
 	hrtimer_cancel(&mirq_data->mhr_timer);
@@ -964,6 +1027,7 @@ static const struct of_device_id irq_detector_of_match_table[] = {
 	{ .compatible = "mirfaisal,irq_detector", .data = NULL },
 	{ },
 };
+MODULE_DEVICE_TABLE(of, irq_detector_of_match_table);
 
 static int devicemodel_suspend(struct device *dev)
 {
@@ -992,21 +1056,44 @@ static const struct dev_pm_ops devicemodel_pm_ops = {
 
 static struct platform_driver irq_detector_driver = {
 	
-	.driver = {
-		.name = "devicemodel_example",
-		.pm = &devicemodel_pm_ops,
-	},
-
 	.probe = irq_detector_probe,
 	.remove = irq_detector_remove,
 	.driver = {
 		.name = "irq_detector",
 		.owner = THIS_MODULE,
 		.of_match_table = irq_detector_of_match_table,
+		.pm = &devicemodel_pm_ops,
 	}
 };
 
 module_platform_driver(irq_detector_driver);
+
+#if 0
+static struct platform_device irq_detector_device = {
+	.name = "irq_detector",
+	.id = -1,
+};
+#endif
+
+#if 1
+static int __init irq_detector_init(void)
+{
+	/*if (platform_device_register(&irq_detector_device))
+                pr_info("IRQ_DETECTOR: failed to register device\n");
+
+	return 0;*/
+	int error;
+
+	irq_detector_device = platform_device_alloc("irq_detector", -1);
+	if (!irq_detector_device)
+		error = -ENOMEM;
+
+	error = platform_device_add(irq_detector_device);
+
+	return error;
+}
+device_initcall(irq_detector_init);
+#endif
 
 MODULE_AUTHOR("Mir Faisal <mirfaisalfos@gmail.com>");
 MODULE_DESCRIPTION("IRQ Detector");

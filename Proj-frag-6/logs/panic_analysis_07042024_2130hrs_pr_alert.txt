@@ -1,0 +1,170 @@
+
+
+109.000016] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000028
+[  109.008806] Mem abort info:
+[  109.011614]   ESR = 0x0000000096000005
+[  109.015374]   EC = 0x25: DABT (current EL), IL = 32 bits
+[  109.020698]   SET = 0, FnV = 0
+[  109.023802]   EA = 0, S1PTW = 0
+[  109.026937]   FSC = 0x05: level 1 translation fault
+[  109.031838] Data abort info:
+[  109.034715]   ISV = 0, ISS = 0x00000005
+[  109.038563]   CM = 0, WnR = 0
+[  109.041541] user pgtable: 4k pages, 48-bit VAs, pgdp=00000000816f7000
+[  109.047986] [0000000000000028] pgd=0800000084fe7003, p4d=0800000084fe7003, pud=0000000000000000
+[  109.056715] Internal error: Oops: 0000000096000005 [#1] PREEMPT SMP
+[  109.062975] Modules linked in:
+[  109.066026] CPU: 0 PID: 55 Comm: Irq Poll Thread Tainted: G        W          6.1.46Mirf-dirty #57
+[  109.074970] Hardware name: Texas Instruments AM642 EVM (DT)
+[  109.080529] pstate: 60000005 (nZCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[  109.087478] pc : monitor_irq_storm_thread+0x178/0x1fc
+[  109.092536] lr : monitor_irq_storm_thread+0x178/0x1fc
+[  109.097582] sp : ffff80000a97bdd0
+[  109.100886] x29: ffff80000a97bdd0 x28: ffff0000012945b0 x27: ffff80000998d9d8
+[  109.108015] x26: ffff80000a2440e8 x25: ffff80000998dcd0 x24: 0000000000000001
+[  109.115144] x23: ffff8000094e7550 x22: ffff80000998d970 x21: 0000000000000000
+[  109.122271] x20: ffff000004d5e000 x19: ffff000001294480 x18: ffffffffffffffff
+[  109.129399] x17: 6169442071724920 x16: 2d206e6f69737265 x15: 56202c343832202d
+[  109.136527] x14: 20656e696c202c63 x13: 524f54535f515249 x12: 3d544e4556455f52
+[  109.143655] x11: 000000000000025f x10: ffff80000a22f7a0 x9 : ffff80000a1d3eb8
+[  109.150783] x8 : ffff000000dbe740 x7 : 5f5152493d544e45 x6 : 56455f524f525245
+[  109.157911] x5 : ffff80000a97be68 x4 : 0000000000000015 x3 : 0000000000000000
+[  109.165039] x2 : 0000000000000000 x1 : ffff000000dbe740 x0 : 0000000000000015
+[  109.172168] Call trace:
+[  109.174607]  monitor_irq_storm_thread+0x178/0x1fc
+[  109.179308]  kthread+0x10c/0x110
+[  109.182534]  ret_from_fork+0x10/0x20
+[  109.186110] Code: aa0503e0 9126a042 d2800281 97ff7fd5 (f94016a1)
+
+
+
+monitor_irq_storm_thread
+
+# aarch64-none-linux-gnu-objdump -D vmlinux | grep monitor_irq_storm_thread
+
+ffff80000906e1d8 <monitor_irq_storm_thread>:
+
+ffff80000906e24c:	54000a41 	b.ne	ffff80000906e394 <monitor_irq_storm_thread+0x1bc>  // b.any
+
+ffff80000906e29c:	5400076d 	b.le	ffff80000906e388 <monitor_irq_storm_thread+0x1b0>
+
+ffff80000906e2a0:	b50000a0 	cbnz	x0, ffff80000906e2b4 <monitor_irq_storm_thread+0xdc>
+
+ffff80000906e2b0:	17fffff8 	b	ffff80000906e290 <monitor_irq_storm_thread+0xb8>
+
+ffff80000906e2b8:	b4ffff60 	cbz	x0, ffff80000906e2a4 <monitor_irq_storm_thread+0xcc>
+
+ffff80000906e2cc:	54fffec0 	b.eq	ffff80000906e2a4 <monitor_irq_storm_thread+0xcc>  // b.none
+
+ffff80000906e2d0:	b4000594 	cbz	x20, ffff80000906e380 <monitor_irq_storm_thread+0x1a8>
+
+ffff80000906e2dc:	5400052d 	b.le	ffff80000906e380 <monitor_irq_storm_thread+0x1a8>
+
+ffff80000906e318:	54000120 	b.eq	ffff80000906e33c <monitor_irq_storm_thread+0x164>  // b.none
+
+ffff80000906e320:	54000181 	b.ne	ffff80000906e350 <monitor_irq_storm_thread+0x178>  // b.any
+
+ffff80000906e338:	14000006 	b	ffff80000906e350 <monitor_irq_storm_thread+0x178>
+
+ffff80000906e360:	b4000115 	cbz	x21, ffff80000906e380 <monitor_irq_storm_thread+0x1a8>
+
+ffff80000906e384:	17ffffd1 	b	ffff80000906e2c8 <monitor_irq_storm_thread+0xf0>
+
+ffff80000906e390:	17ffffad 	b	ffff80000906e244 <monitor_irq_storm_thread+0x6c>
+
+ffff80000906e3a8:	54000040 	b.eq	ffff80000906e3b0 <monitor_irq_storm_thread+0x1d8>  // b.none
+
+
+
+
+
+ffff80000906e1d8 + 178 = ffff80000906e320
+
+#  aarch64-none-linux-gnu-addr2line -f -e vmlinux ffff80000906e350
+
+uevent_notify_func
+drivers/irq_detector/irq_detector.c:301
+-------------------------------------------------
+kobj = &plat_dev->dev.kobj;
+
+Line 301: pr_alert("DBG: kobj->parent = %p\n", kobj->parent);
+
+In probe function:  pdev->dev.kobj.parent = NULL;
+
+Code: - 
+--------
+
+uevent_notify_func()
+{
+	//...
+	obj = &plat_dev->dev.kobj;
+    pr_alert("DBG: kobj->parent = %p\n", kobj->parent);
+    if (kobj) {
+        envp[1] = NULL;
+		pr_alert("Sending event..\n");
+		kobject_uevent_env(kobj, KOBJ_CHANGE, envp);
+    }
+	//...
+}
+
+Probable solution: -
+--------------------------
+1. https://stackoverflow.com/questions/68806301/what-is-my-parent-device-and-how-do-i-get-a-pointer-to-it
+		platform_device_add()
+2. https://elixir.bootlin.com/linux/latest/source/arch/arm/mach-omap1/devices.c#L158
+
+3. https://elixir.bootlin.com/linux/latest/source/drivers/input/serio/maceps2.c#L184
+
+
+	int error;
+
+	irq_detector_device = platform_device_alloc("irq_detector", -1);
+	if (!irq_detector_device) 
+		error = -ENOMEM;
+	
+	error = platform_device_add(irq_detector_device);
+	
+	return error;
+	
+Result: - {Same panic}
+[   23.056198] DBG: In func - uevent_notify_func, line - 285, Version - Irq Diag Ver - 1.0, Id - 55
+[   23.065003] Sending event..
+[   23.067803] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000010
+[   23.076587] Mem abort info:
+[   23.079372]   ESR = 0x0000000096000006
+[   23.083142]   EC = 0x25: DABT (current EL), IL = 32 bits
+[   23.088617]   SET = 0, FnV = 0
+[   23.091675]   EA = 0, S1PTW = 0
+[   23.094839]   FSC = 0x06: level 2 translation fault
+[   23.099735] Data abort info:
+[   23.102626]   ISV = 0, ISS = 0x00000006
+[   23.106469]   CM = 0, WnR = 0
+[   23.109442] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000084afc000
+[   23.115890] [0000000000000010] pgd=0800000084b00003, p4d=0800000084b00003, pud=0800000084afe003, pmd=0000000000000000
+[   23.126530] Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
+[   23.132788] Modules linked in:
+[   23.135842] CPU: 0 PID: 56 Comm: Irq Poll Thread Tainted: G        W          6.1.46Mirf-dirty #60
+[   23.144788] Hardware name: Texas Instruments AM642 EVM (DT)
+[   23.150347] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   23.157297] pc : kobject_uevent_env+0x4c/0x594
+[   23.161744] lr : monitor_irq_storm_thread+0x198/0x1ec
+[   23.166790] sp : ffff80000a9abd60
+[   23.170094] x29: ffff80000a9abd60 x28: 0000000000000010 x27: ffff80000998d998
+[   23.177224] x26: ffff80000a9abe40 x25: ffff80000998d9c8 x24: 0000000000000002
+[   23.184351] x23: ffff800009988100 x22: ffff8000094e7550 x21: ffff800009504dd8
+[   23.191480] x20: ffff00000be96200 x19: ffff000001065080 x18: ffffffffffffffff
+[   23.198608] x17: 6169442071724920 x16: 2d206e6f69737265 x15: ffff80008a9abac7
+[   23.205736] x14: 0000000000000000 x13: ffff80000a1d3eb8 x12: 0000000000000432
+[   23.212863] x11: 0000000000000166 x10: ffff80000a22e048 x9 : ffff80000a1d3eb8
+[   23.219991] x8 : 0000000100001166 x7 : ffff80000a22beb8 x6 : 0000000000002190
+[   23.227119] x5 : ffff00007fbb8a40 x4 : 0000000000000000 x3 : 0000000000000000
+[   23.234246] x2 : ffff80000a9abe40 x1 : 0000000000000002 x0 : 0000000000000010
+[   23.241375] Call trace:
+[   23.243814]  kobject_uevent_env+0x4c/0x594
+[   23.247904]  monitor_irq_storm_thread+0x198/0x1ec
+[   23.252603]  kthread+0x10c/0x110
+[   23.255829]  ret_from_fork+0x10/0x20
+[   23.259406] Code: 54000081 3940f000 321d0000 3900f380 (f9400381)
+[   23.265487] ---[ end trace 0000000000000000 ]---
+[   23.518177] In func - read_irq_interval_cb, line - 96, context = 0
+[   23.524448] In our workq function: irq_scan_work

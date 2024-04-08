@@ -1,0 +1,35 @@
+
+uevent
+==========
+uevent is event-based, so there is no polling. Triggering uevent happened in many
+cases and I would rather start with figuring out what uevent types are exist?
+
+File: - include/linux/kobject.h
+
+enum kobject_action {
+    KOBJ_ADD,
+    KOBJ_REMOVE,
+    KOBJ_CHANGE,
+    KOBJ_MOVE,
+    KOBJ_ONLINE,
+    KOBJ_OFFLINE,
+    KOBJ_MAX
+};
+
+So it's
+
+Add event
+Remove event
+Change event
+Move event
+Online event
+Offline event
+KOBJ_MAX is special and marks and of enum.
+
+There are 2 functions that actually sends uevent - kobject_uevent and kobject_uevent_env.
+These functions are called with on of the actions listed above.
+
+Finally, to answer your questions. There are no predefined cases that will trigger uevent.
+If you search for calls of kobject_uevent and kobject_uevent_env you will see that it's happens
+in various callbacks in different unrelated kernel subsystems.
+

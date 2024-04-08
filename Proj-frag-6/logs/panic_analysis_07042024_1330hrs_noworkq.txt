@@ -1,0 +1,39 @@
+
+
+[   66.077348] Sending event..
+[   66.080174] Unable to handle kernel NULL pointer dereference at virtual address 0000000000000030
+[   66.089052] Mem abort info:
+[   66.091860]   ESR = 0x0000000096000006
+[   66.095736]   EC = 0x25: DABT (current EL), IL = 32 bits
+[   66.101163]   SET = 0, FnV = 0
+[   66.104244]   EA = 0, S1PTW = 0
+[   66.107660]   FSC = 0x06: level 2 translation fault
+[   66.112744] Data abort info:
+[   66.115641]   ISV = 0, ISS = 0x00000006
+[   66.119580]   CM = 0, WnR = 0
+[   66.122662] user pgtable: 4k pages, 48-bit VAs, pgdp=0000000087658000
+[   66.129241] [0000000000000030] pgd=08000000876a0003, p4d=08000000876a0003, pud=0800000087667003, pmd=0000000000000000
+[   66.140593] Internal error: Oops: 0000000096000006 [#1] PREEMPT SMP
+[   66.146887] Modules linked in:
+[   66.149950] CPU: 0 PID: 57 Comm: Irq Poll Thread Tainted: G        W          6.1.46Mirf-dirty #53
+[   66.158897] Hardware name: Texas Instruments AM642 EVM (DT)
+[   66.164459] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   66.171410] pc : kobject_uevent_env+0x50/0x554
+[   66.175858] lr : monitor_irq_storm_thread+0x198/0x1ec
+[   66.180905] sp : ffff80000bbf3d50
+[   66.184211] x29: ffff80000bbf3d50 x28: ffff000001629eb0 x27: ffff800009c89900
+[   66.191346] x26: ffff80000a84aaf8 x25: ffff800009c83488 x24: 0000000000000010
+[   66.198480] x23: ffff80000bbf3e40 x22: ffff800009746210 x21: 0000000000000002
+[   66.205613] x20: 0000000000000010 x19: ffff000001629c80 x18: ffffffffffffffff
+[   66.212747] x17: 6169442071724920 x16: 2d206e6f69737265 x15: ffff80008bbf3aa7
+[   66.219882] x14: 0000000000000000 x13: ffff80000a7da6e0 x12: 00000000000009ea
+[   66.227015] x11: 000000000000034e x10: ffff80000a8326e0 x9 : ffff80000a7da6e0
+[   66.234149] x8 : 00000000ffffefff x7 : ffff80000a8326e0 x6 : 0000000000000000
+[   66.241282] x5 : ffff00007b7f6cd0 x4 : 0000000000000000 x3 : 0000000000000010
+[   66.248415] x2 : ffff80000bbf3e40 x1 : 0000000000000002 x0 : 0000000000000010
+[   66.255549] Call trace:
+[   66.257988]  kobject_uevent_env+0x50/0x554
+[   66.262079]  monitor_irq_storm_thread+0x198/0x1ec
+[   66.266779]  kthread+0x118/0x11c
+[   66.270006]  ret_from_fork+0x10/0x20
+[   66.273585] Code: aa1403e3 14000003 f9400c63 b4002743 (f9401073)

@@ -1,0 +1,80 @@
+
+
+[   59.382000] Workqueue: events uevent_notify_work
+[   59.386630] pstate: 20000005 (nzCv daif -PAN -UAO -TCO -DIT -SSBS BTYPE=--)
+[   59.393581] pc : kobject_uevent_env+0x50/0x560
+[   59.398022] lr : uevent_notify_work+0x94/0xf0
+[   59.402373] sp : ffff80000ba43ca0
+[   59.405679] x29: ffff80000ba43ca0 x28: ffff80000a7ab000 x27: ffff00007b9f9e05
+[   59.412814] x26: ffff800009c83360 x25: ffff80000a7d2190 x24: 0000000000000000
+[   59.419947] x23: ffff80000ba43d40 x22: ffff800009746150 x21: 0000000000000002
+[   59.427080] x20: 0000000000000010 x19: ffff000001abec80 x18: ffffffffffffffff
+[   59.434214] x17: 0000000000000000 x16: 0000000000000000 x15: ffff80008ba439f7
+[   59.441347] x14: 0000000000000000 x13: ffff80000a7da6e0 x12: 00000000000009de
+[   59.448480] x11: 000000000000034a x10: ffff80000a8326e0 x9 : ffff80000a7da6e0
+[   59.455613] x8 : 00000000ffffefff x7 : ffff80000a8326e0 x6 : 0000000000000000
+[   59.462746] x5 : ffff00007b9e4cd0 x4 : ffff00007b9e4cd0 x3 : 0000000000000010
+[   59.469878] x2 : ffff80000ba43d40 x1 : 0000000000000002 x0 : 0000000000000010
+[   59.477012] Call trace:
+[   59.479452]  kobject_uevent_env+0x50/0x560
+[   59.483541]  uevent_notify_work+0x94/0xf0
+[   59.487546]  process_one_work+0x288/0x5c0
+[   59.491554]  worker_thread+0x74/0x450
+[   59.495211]  kthread+0x118/0x11c
+[   59.498436]  ret_from_fork+0x10/0x20
+[   59.502013] Code: aa1403e3 14000003 f9400c63 b4000883 (f9401073)
+[   59.508098] ---[ end trace 0000000000000000 ]---
+
+
+=========================================================================
+
+# aarch64-none-linux-gnu-objdump -D vmlinux | grep uevent_notify_work
+
+ffff800009284a2c <uevent_notify_work>:
+ffff80000804580c:	9447f515 	bl	ffff800009242c60 <kobject_uevent_env>
+ffff800009242c60 <kobject_uevent_env>:
+
+--------------------------------------------------------------------------
+ffff800009242c60 + 50 = FFFF800009242CB0
+aarch64-none-linux-gnu-addr2line -f -e vmlinux FFFF800009242CB0
+
+Source code: lib/kobject_uevent.c:482
+
+
+int kobject_uevent_env(struct kobject *kobj, enum kobject_action action,
+                       char *envp_ext[])
+{
+	struct kobj_uevent_env *env;
+	const char *action_string = kobject_actions[action];
+	const char *devpath = NULL;
+	const char *subsystem;
+	struct kobject *top_kobj;
+	struct kset *kset;
+	const struct kset_uevent_ops *uevent_ops;
+	int i = 0;
+	int retval = 0;
+
+	/*
+	 * Mark "remove" event done regardless of result, for some subsystems
+	 * do not want to re-trigger "remove" event via automatic cleanup.
+	 */
+	if (action == KOBJ_REMOVE)
+			kobj->state_remove_uevent_sent = 1;
+
+	pr_debug("kobject: '%s' (%p): %s\n",
+			 kobject_name(kobj), kobj, __func__);
+
+	/* search the kset we belong to */
+	top_kobj = kobj;
+	
+===>while (!top_kobj->kset && top_kobj->parent)
+			top_kobj = top_kobj->parent;
+
+	if (!top_kobj->kset) {
+			pr_debug("kobject: '%s' (%p): %s: attempted to send uevent "
+					 "without kset!\n", kobject_name(kobj), kobj,
+					 __func__);
+			return -EINVAL;
+	}
+	//....
+}
