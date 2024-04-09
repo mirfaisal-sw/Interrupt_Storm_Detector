@@ -1,5 +1,0 @@
-config IRQ_DETECTOR
-        bool "AMD CS5535 and CS5536 southbridge core functions"
-        help
-          This is the core driver for CS5535/CS5536 MFD functions.  This is
-          necessary for using the board's GPIO and MFGPT functionality.
