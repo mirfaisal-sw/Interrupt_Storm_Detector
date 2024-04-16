@@ -1,0 +1,7 @@
+
+
+
+1. https://documentation.suse.com/sles/12-SP5/html/SLES-all/cha-udev.html
+
+
+2. 

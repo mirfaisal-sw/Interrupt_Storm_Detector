@@ -1,0 +1,18 @@
+
+
+
+	cd /proc/irq_diag/irq_diag_param
+	
+	echo 500 > IRQ_STORM_THRESHOLD
+	
+	
+	
+	Test: -
+	
+	root@idcevo-hv-v920:~# cd /proc/irq_diag/irq_diag_param
+root@idcevo-hv-v920:/proc/irq_diag/irq_diag_param#
+root@idcevo-hv-v920:/proc/irq_diag/irq_diag_param# echo 500 > IRQ_STORM_THRESHOLD
+[   55.434523][  T454] DBG: In func - irq_diag_open_threshold, id - 55
+[   55.434816][  T454] DBG: In func - irq_diag_write_threshold, id - 55
+[   55.436086][  T454] In func - irq_diag_write_threshold, irq strom threshold - 500
+
