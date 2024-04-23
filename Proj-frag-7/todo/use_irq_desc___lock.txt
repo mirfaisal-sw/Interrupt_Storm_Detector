@@ -1,0 +1,292 @@
+
+
+
+Use "struct irq_desc { .lock }" to prevent torn read: - 
+===========================================================
+
+ernel/irq/debugfs.c:168:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/debugfs.c:186:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/proc.c:92:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/proc.c:95:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/proc.c:307:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/proc.c:315:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/proc.c:504:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/proc.c:533:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/pm.c:30: * Called from __setup_irq() with desc->lock held after @action has
+
+kernel/irq/pm.c:54: * Called from __free_irq() with desc->lock held after @action has
+
+kernel/irq/pm.c:142:		raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/pm.c:144:		raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/pm.c:198:		raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/pm.c:200:		raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/resend.c:104: * Is called with interrupts disabled and desc->lock held.
+
+kernel/irq/cpuhotplug.c:164:		raw_spin_lock(&desc->lock);
+
+kernel/irq/cpuhotplug.c:166:		raw_spin_unlock(&desc->lock);
+
+kernel/irq/cpuhotplug.c:226:		raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/cpuhotplug.c:228:		raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/manage.c:54:		raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:70:		raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:185: *	set_cpus_allowed_ptr() here as we hold desc->lock and this
+
+kernel/irq/manage.c:460:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:462:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:523:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:528:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:568:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:571:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:1082:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/manage.c:1099:		raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/manage.c:1120:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/manage.c:1146:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/manage.c:1159:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/manage.c:1253:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/manage.c:1255:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/manage.c:1346:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:1354:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:1490: *     desc->lock	Provides serialization against hard interrupts
+
+kernel/irq/manage.c:1492: * chip_bus_lock and desc->lock are sufficient for all other management and
+
+kernel/irq/manage.c:1575:	 * chip bus lock and desc->lock. Also protects against handing out
+
+kernel/irq/manage.c:1604:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:1811:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:1836:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:1878:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:1890:			raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:1919:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:1987:		raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:1989:		raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:2045:/* This function must be called with desc->lock held */
+
+kernel/irq/manage.c:2088:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:2093:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:2345:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:2352:		raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:2356:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:2465:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:2484:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:2493:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/manage.c:2701:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/manage.c:2703:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/autoprobe.c:46:		raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:57:		raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:69:		raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:75:		raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:87:		raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:98:		raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:124:		raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:132:		raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:163:		raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/autoprobe.c:174:		raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:174:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:179:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:191:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:194:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:206:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:209:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:222:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:225:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:238:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:241:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:255:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:261:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/irqdesc.c:411:	raw_spin_lock_init(&desc->lock);
+
+kernel/irq/irqdesc.c:412:	lockdep_set_class(&desc->lock, &irq_desc_lock_class);
+
+kernel/irq/irqdesc.c:562:		.lock		= __RAW_SPIN_LOCK_UNLOCKED(irq_desc->lock),
+
+kernel/irq/irqdesc.c:601:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/irqdesc.c:603:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/irqdesc.c:863:		raw_spin_lock_irqsave(&desc->lock, *flags);
+
+kernel/irq/irqdesc.c:869:	__releases(&desc->lock)
+
+kernel/irq/irqdesc.c:871:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/irqdesc.c:992:		lockdep_set_class(&desc->lock, lock_class);
+
+kernel/irq/chip.c:468:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/chip.c:480:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/chip.c:489:	raw_spin_lock_irq(&desc->lock);
+
+kernel/irq/chip.c:493:	raw_spin_unlock_irq(&desc->lock);
+
+kernel/irq/chip.c:542:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:558:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:577:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:591:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:595:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:599:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:632:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:655:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:693:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:718:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:723:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:777:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:825:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:841:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:872:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:1144:		raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/chip.c:1152:		raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/chip.c:1174:		raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/chip.c:1182:		raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+kernel/irq/chip.c:1204:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:1232:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:1237:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:1255:	raw_spin_lock(&desc->lock);
+
+kernel/irq/chip.c:1281:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/chip.c:1286:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/migration.c:63:	assert_raw_spin_locked(&desc->lock);
+
+kernel/irq/handle.c:88:	 * in threads_oneshot are serialized via desc->lock against
+
+kernel/irq/handle.c:94:	 *	spin_lock(desc->lock);
+
+kernel/irq/handle.c:96:	 *	spin_unlock(desc->lock);
+
+kernel/irq/handle.c:99:	 *	spin_lock(desc->lock);
+
+kernel/irq/handle.c:101:	 *	spin_unlock(desc->lock);
+
+kernel/irq/handle.c:106:	 *	spin_lock(desc->lock);
+
+kernel/irq/handle.c:108:	 *		spin_unlock(desc->lock);
+
+kernel/irq/handle.c:115:	 *	spin_unlock(desc->lock);
+
+kernel/irq/handle.c:118:	 * or we are waiting in the flow handler for desc->lock to be
+
+kernel/irq/handle.c:120:	 * IRQTF_RUNTHREAD under desc->lock. If set it leaves
+
+kernel/irq/handle.c:211:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/handle.c:215:	raw_spin_lock(&desc->lock);
+
+kernel/irq/spurious.c:37:	__must_hold(&desc->lock)
+
+kernel/irq/spurious.c:46:		raw_spin_unlock(&desc->lock);
+
+kernel/irq/spurious.c:49:		raw_spin_lock(&desc->lock);
+
+kernel/irq/spurious.c:67:	raw_spin_lock(&desc->lock);
+
+kernel/irq/spurious.c:114:	raw_spin_unlock(&desc->lock);
+
+kernel/irq/spurious.c:209:	 * We need to take desc->lock here. note_interrupt() is called
+
+kernel/irq/spurious.c:210:	 * w/o desc->lock held, but IRQ_PROGRESS set. We might race
+
+kernel/irq/spurious.c:212:	 * desc->lock here. See synchronize_irq().
+
+kernel/irq/spurious.c:214:	raw_spin_lock_irqsave(&desc->lock, flags);
+
+kernel/irq/spurious.c:222:	raw_spin_unlock_irqrestore(&desc->lock, flags);
+
+include/linux/irqdesc.h:50: * @request_mutex:	mutex to protect request/free before locking desc->lock
+
