@@ -1,0 +1,10 @@
+
+
+	1. Simulate spurious IRQ by mistaken call of spin_lock calls to disable and enable already disabled interrupts.
+	
+	
+	
+	2. Explore: 
+	https://blog.dowhile0.org/2021/06/09/a-lethal-spurious-interrupt/
+	
+	https://www.uwsg.indiana.edu/hypermail/linux/kernel/0901.0/03093.html
