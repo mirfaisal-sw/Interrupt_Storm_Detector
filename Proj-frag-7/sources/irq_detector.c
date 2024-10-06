@@ -255,7 +255,8 @@ static void uevent_notify_work(struct work_struct *work)
 	/*Fill environment data to send to user space */
 	switch(priv->status_flag) {
 	case 1:
-		snprintf(event_string, 20, "ERROR_EVENT=IRQ_STORM");
+		snprintf(event_string, 20, "IRQ No. - %d,IRQ ERROR_EVENT=IRQ_STORM",
+									priv->desc->irq_data.irq);
 		kobj = &plat_dev->dev.kobj;
 		break;
 		
