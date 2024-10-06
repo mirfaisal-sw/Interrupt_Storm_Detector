@@ -1,0 +1,18 @@
+
+
+
+# ./uevent_receeive_app
+
+
+
+
+
+
+ msg:change@/devices/platform/irq_detectorlength:322
+
+
+
+
+
+ msg:change@/devices/platform/irq_detectorlength:322
+ msg:change@/devices/platform/irq_detectorlength:322

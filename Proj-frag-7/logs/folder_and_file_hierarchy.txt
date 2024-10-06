@@ -1,0 +1,12 @@
+
+
+# cd /proc/irq_diag/
+
+# ls /proc/irq_diag/
+irq_diag_cmd  irq_diag_param  irq_diag_stat
+
+# cd irq_diag_param/
+
+root@am64xx-evm:/proc/irq_diag/irq_diag_param# ls
+CIRCULAR_QUEUE_NODES  IRQ_STORM_THRESHOLD  SAMPLING_INTERVAL
+
