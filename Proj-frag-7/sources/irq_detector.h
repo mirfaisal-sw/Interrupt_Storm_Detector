@@ -6,7 +6,7 @@
 #include <linux/list.h>
 
 #define DEBUG_IRQ_NUM_UNDER_TEST		1U
-#define MAX_CPU					8U
+#define MAX_CPU							8U
 
 //TODO: This param will be configurable.
 #define MAX_CIRCULAR_QUEUE_SIZE			128U
@@ -37,12 +37,12 @@ struct irq_num_heads_list {
 	 * number to create linked list of IRQ statistics.
 	 */ 
 	struct list_head	list_of_heads;
-	int			irq_num;
-        int			irq_count_per_cpu[MAX_CPU];
-        int			irq_prev_count;
-        int 			irq_count;
-	int			max_irq_rate;
-	int 			cir_queue_size;
+	int					irq_num;
+    int					irq_count_per_cpu[MAX_CPU];
+    int					irq_prev_count;
+    int					irq_count;
+	int					max_irq_rate;
+	int 				cir_queue_size;
 	/*To make linked list of IRQ statistics for each 
 	 * IRQ number.
 	 */
@@ -54,10 +54,10 @@ struct irq_num_heads_list {
  */
 struct irq_num_statistics_list {
 
-        struct list_head	list_node;
-        int 			irq_num;
-        int 			irq_count;
-        int			irq_rate;
+	struct list_head	list_node;
+	int					irq_num;
+	int 				irq_count;
+	int					irq_rate;
 	unsigned long		last_irq_timestamp;
 	unsigned long		irq_timestamp;
 };

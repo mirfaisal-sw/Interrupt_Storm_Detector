@@ -17,6 +17,7 @@
 #include <linux/irqnr.h>
 #include <linux/irqdesc.h>
 //#include <irq/internals.h>
+
 #include <linux/of.h>
 #include <linux/kthread.h>
 #include <linux/sched.h>  
@@ -32,8 +33,8 @@
 #include "irq_detector.h"
 
 #define SAMPLING_INTERVAL	500L /*10 milli second*/
-#define MS_TO_NS(x)		(x * 1E6L)
-#define MAX_SIZE		32
+#define MS_TO_NS(x)			(x * 1E6L)
+#define MAX_SIZE			32
 
 //#define DEBUG
 #define CONFIG_SEQ_READ
@@ -51,33 +52,33 @@ struct irq_diag_file {
 };
 
 struct irq_detector_data {
-	char				version_id[64];
-	uint8_t 			id;
+	char						version_id[64];
+	uint8_t						id;
 	struct platform_device		*pdev;
-	struct mutex			mlock;
-	struct completion		complete;
-	spinlock_t			slock;
+	struct mutex				mlock;
+	struct completion			complete;
+	spinlock_t					slock;
 	struct proc_dir_entry		*proc_dir;
 	struct irq_diag_file		*mproc_files;
 	struct proc_dir_entry		*proc_subdir;
 	struct irq_diag_file		*mproc_param_files;
-	unsigned long			irq_interval_threshold_us;
-	atomic_t 			inst_irq_rate;
-	void				*virt_addr;
-	phys_addr_t			phys_addr;
-	int				irq;
-	struct irq_desc 		*desc;
-	struct hrtimer 			mhr_timer;
-	struct task_struct		*irq_poll_thread;
+	unsigned long				irq_interval_threshold_us;
+	atomic_t					inst_irq_rate;
+	void						*virt_addr;
+	phys_addr_t					phys_addr;
+	int							irq;
+	struct irq_desc				*desc;
+	struct hrtimer				mhr_timer;
+	struct task_struct			*irq_poll_thread;
 	/* Head for list of IRQ numbers and there is an
 	 * individual link lists for each IRQ number.
 	 */
-	struct list_head		irq_num_list_head;
+	struct list_head			irq_num_list_head;
 	struct irq_num_heads_list	*irq_num_heads;
-	bool				irq_num_head_list_created;
-	struct work_struct          	scan_work;
-	struct work_struct		notify_work;
-	unsigned int			status_flag;
+	bool						irq_num_head_list_created;
+	struct work_struct			scan_work;
+	struct work_struct			notify_work;
+	unsigned int				status_flag;
 };
 
 int create_list_of_all_irq_numbers(struct irq_detector_data *pirq_data);
@@ -159,8 +160,8 @@ static void irq_scan_work(struct work_struct *work)
 			pr_debug("DBG:list of heads loop, Irq num - %d\n", ptr->irq_num);
 			//pr_alert("DBG: Line - %d\n", __LINE__);	
 			if((ptr->irq_num == priv->desc->irq_data.irq) && priv->desc->kstat_irqs) {
+				
 				/*Calculate total irq count*/
-
 				if(mutex_lock_interruptible(&priv->mlock))
 					return;
 				//pr_alert("DBG: Line - %d\n", __LINE__);	
@@ -255,15 +256,18 @@ static void uevent_notify_work(struct work_struct *work)
 	switch(priv->status_flag) {
 	case 1:
 		snprintf(event_string, 20, "ERROR_EVENT=IRQ_STORM");
+		kobj = &plat_dev->dev.kobj;
 		break;
+		
 	case 2: 
 		snprintf(event_string, 20, "ERROR_EVENT=XYZ_ERROR");
+		kobj = &plat_dev->dev.kobj;
 		break;
+		
 	default: 
 		break;
 	}
-
-	kobj = &plat_dev->dev.kobj;
+	
 	if (kobj) {
 		kobject_uevent_env(kobj, KOBJ_CHANGE, envp);
 	}
