@@ -24,4 +24,22 @@
 	2.) Run script using udev
 	https://www.youtube.com/watch?v=RbTi3L080dY
 	
+	3.) Custom udev message example: -
 	
+	File -  / drivers / gpu / drm / i915 / i915_irq.c
+	kernel - 6.11.3
+	
+	File -  / drivers / net / ethernet / qlogic / qlcnic / qlcnic_minidump.c
+	Kernel - 6.11.3
+	
+	
+	4.) Note: 
+	The third arg in API kobj_uevent_env(), we pass custom message only using custom 
+	environment variable.
+	
+	Standard environment variable : -
+	ACTION=
+	DEVPATH=
+	SUBSYSTEM=
+	SEQNUM=
+	USEC_INITIALIZED=
