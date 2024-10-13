@@ -32,6 +32,8 @@
 
 #include "irq_detector.h"
 
+#define pr_format(fmt) "IRQ_TRACE: %s()" fmt, __func__
+
 #define SAMPLING_INTERVAL	500L /*10 milli second*/
 #define MS_TO_NS(x)			(x * 1E6L)
 #define MAX_SIZE			32
