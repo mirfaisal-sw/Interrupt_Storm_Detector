@@ -1,0 +1,48 @@
+
+
+I. Connecting with COM port: -
+----------------------------------
+If target is connected to PC via USB cable, it detects 4 COM ports.
+For example - COM 3, 4, 5, 6.
+
+Connect with COM port 3 for console access.
+Login ID: root
+
+II. Setting IP address to connect with target: -
+--------------------------------------------------
+
+ifconfig eth1 192.168.137.5 up
+
+Upper RJ45 of target should be used to connect with the target.
+
+III. Login with WinSCP using below credentials: -
+----------------------------------------------------
+
+IP addr - 192.168.137.5
+User - root
+Pwd - root
+
+Using winscp:
+- copy Image file "Image" to target's folder /boot.
+- Copy file "k3-am642-evm.dtb"  to target's folder /boot/dtb/ti.
+
+III. Commands to operate IRQ Detector: -
+----------------------------------------------
+1. Files and folders: -
+
+cd /proc/irq_diag
+ls
+irq_diag_cmd
+irq_diag_stat
+
+2. Start: - 
+echo on > /proc/irq_diag/irq_diag_cmd
+
+Stop: - 
+echo off > /proc/irq_diag/irq_diag_cmd
+
+Read data: - 
+cat /proc/irq_diag/irq_diag_stat
+
+dmesg -n 1
+

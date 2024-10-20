@@ -1,0 +1,83 @@
+
+
+Reference: -
+----------------
+https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/09_00_00_03/exports/docs/devices/AM64X/Overview/Download_and_Install_the_SDK.html
+
+SDK Installer download link: -
+--------------------------------
+https://www.ti.com/tool/PROCESSOR-SDK-AM64X
+
+Procedure: -
+------------
+chmod +x ./ti-processor-sdk-linux-am64xx-evm-<version>-Linux-x86-Install.bin
+./ti-processor-sdk-linux-am64xx-evm-<version>-Linux-x86-Install.bin
+
+Directory structure: -
+-------------------------
+• bin - Contains the helper scripts for configuring the host system and target device. Most of these scripts are used by the setup.sh script.
+• board-support - Contains the SDK components that need to be modified when porting to a custom platform. This includes the kernel and boot loaders as well as any out of tree drivers.
+• docs - Contains various SDK documentation such as the software manifest and additional user’s guide. This is also the location where you can find the training directory with the device training materials.
+• example-applications - Contains the sources for the TI provided example applications seen during the out-of-box demonstration.
+• filesystem - Contains the reference file systems. These include the smaller base file system as well as the full-featured SDK file system.
+• linux-devkit - Contains the cross-compile toolchain and libraries to speed development for the target device.
+• Makefile - Provides build targets for many of the SDK components from the top-level of the SDK.
+• Rules.make - Sets default values used by the top-level Makefile as well as sub-component Makefiles.
+• setup.sh - Configures the users host system as well as the target system for development.
+
+Pasted from <https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/08_02_00_23/exports/docs/linux/Overview_Directory_Structure_Overview.html> 
+
+
+Kernel source build guide: -
+-------------------------------
+Referernce: - https://software-dl.ti.com/processor-sdk-linux/esd/AM64X/08_05_00_21/exports/docs/linux/Foundational_Components_Kernel_Users_Guide.html
+
+
+Building kernel: -
+=========================
+
+Path of linux kernel in installed SDK -
+/home/mir/My_Workspace/TMDS64EVM/TMDS64EVM_SDK_Install/SDK_Install_Path/board-support/ti-linux-kernel-6.1.46+gitAUTOINC+247b2535b2-g247b2535b2
+
+# export PATH=<sdk path>/linux-devkit/sysroots/x86_64-arago-linux/usr/bin:$PATH
+
+export PATH=/home/mir/My_Workspace/Cross_Compiler/arm-gnu-toolchain-11.3.rel1-x86_64-aarch64-none-linux-gnu/bin:$PATH
+
+# make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- distclean
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- defconfig ti_am64x_pcie_rc.config
+
+Or
+
+# make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- tisdk_am64xx-evm_defconfig
+
+## To customize run menuconfig
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- menuconfig
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- Image
+
+## AM64x EVM -> k3-am642-evm.dts
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- ti/k3-am642-evm.dtb
+# make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- dtbs
+
+make ARCH=arm64 CROSS_COMPILE=aarch64-none-linux-gnu- modules
+
+
+## Installing the kernel to SD card
+
+cd /home/mir/My_Workspace/TMDS64EVM/TMDS64EVM_SDK_Install/SDK_Install_Path/board-support/ti-linux-kernel-6.1.46+gitAUTOINC+247b2535b2-g247b2535b2
+
+mount /dev/sdb2 /mnt
+sudo cp arch/arm64/boot/Image /mnt/boot
+sudo cp arch/arm64/boot/dts/ti/k3-am642-evm.dtb /mnt/boot/dtb/ti
+sudo make ARCH=arm64 INSTALL_MOD_PATH=/mnt modules_install
+
+Note: - 
+Append INSTALL_MOD_STRIP=1 to the make modules_install command to reduce the size of the resulting installation
+
+
+
+
+

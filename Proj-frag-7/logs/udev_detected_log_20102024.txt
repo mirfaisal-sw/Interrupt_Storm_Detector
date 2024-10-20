@@ -1,0 +1,40 @@
+
+
+root@am64xx-evm:~#
+root@am64xx-evm:~# ifconfig eth1 192.168.137.5 up
+root@am64xx-evm:~#
+
+
+root@am64xx-evm:~# udevadm monitor -p /sys/devices/platform/irq_detector
+monitor will print the received events for:
+UDEV - the event which udev sends out after rule processing
+KERNEL - the kernel uevent
+
+KERNEL[258.689440] change   /devices/platform/irq_detector (platform)
+ACTION=change
+DEVPATH=/devices/platform/irq_detector
+SUBSYSTEM=platform
+IRQ ERROR_EVENT=IRQ
+DRIVER=irq_detector
+OF_NAME=irq_detector
+OF_FULLNAME=/irq_detector
+OF_COMPATIBLE_0=mirfaisal,irq_detector
+OF_COMPATIBLE_N=1
+MODALIAS=of:Nirq_detectorT(null)Cmirfaisal,irq_detector
+SEQNUM=3997
+
+UDEV  [258.696436] change   /devices/platform/irq_detector (platform)
+ACTION=change
+DEVPATH=/devices/platform/irq_detector
+SUBSYSTEM=platform
+IRQ ERROR_EVENT=IRQ
+DRIVER=irq_detector
+OF_NAME=irq_detector
+OF_FULLNAME=/irq_detector
+OF_COMPATIBLE_0=mirfaisal,irq_detector
+OF_COMPATIBLE_N=1
+MODALIAS=of:Nirq_detectorT(null)Cmirfaisal,irq_detector
+SEQNUM=3997
+USEC_INITIALIZED=12274423
+ID_PATH=platform-irq_detector
+ID_PATH_TAG=platform-irq_detector
